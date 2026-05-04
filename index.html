@@ -26,7 +26,7 @@
       --font-body: 'DM Sans', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
     body {
       font-family: var(--font-body);
@@ -182,18 +182,18 @@
       bottom: 32px;
       right: 32px;
       z-index: 200;
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: var(--color-text);
-      border: none;
+      background: transparent;
+      border: 1.2px solid var(--color-border);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.2s ease;
+      transition: opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease;
     }
 
     .back-to-top.visible {
@@ -201,7 +201,12 @@
       pointer-events: all;
     }
 
-    .back-to-top:hover { transform: translateY(-3px); }
+    .back-to-top:hover {
+      background: var(--color-text);
+      border-color: var(--color-text);
+    }
+
+    .back-to-top:hover svg path { stroke: white; }
 
     .back-to-top svg {
       width: 20px;
@@ -222,14 +227,14 @@
 
     /* ── PROJECTS SECTION ── */
     #projects {
-      padding: 100px 89px 120px;
+      padding: 80px 50px 120px;
     }
 
     /* Featured project */
     .project-featured {
       display: flex;
       align-items: center;
-      gap: 56px;
+      gap: 40px;
       margin-bottom: 80px;
       opacity: 0;
       transform: translateY(40px);
@@ -242,10 +247,10 @@
     }
 
     .project-featured .project-img {
-      width: 480px;
+      width: 591px;
       flex-shrink: 0;
-      aspect-ratio: 4/3;
-      border-radius: 20px;
+      height: 373px;
+      border-radius: 24px;
       background: #d9d9d9;
       overflow: hidden;
     }
@@ -264,7 +269,7 @@
     .projects-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px 48px;
+      gap: 60px 40px;
     }
 
     .project-card {
@@ -284,12 +289,11 @@
 
     .project-card .project-img {
       width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 16px;
+      height: 310px;
+      border-radius: 24px;
       background: #d9d9d9;
       overflow: hidden;
-      margin-bottom: 10px;
-      position: relative;
+      margin-bottom: 0;
     }
 
     .project-card .project-img img {
@@ -298,7 +302,7 @@
       object-fit: cover;
     }
 
-    /* Tags ABOVE image, not inside */
+    /* Tags above image */
     .project-card .project-tags {
       position: static;
       margin-bottom: 10px;
@@ -307,62 +311,60 @@
     /* Shared project info styles */
     .project-tags {
       display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 12px;
+      margin-bottom: 10px;
     }
 
     .tag {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--color-text-light);
-      border: 1px solid var(--color-border);
+      border: 1.3px solid var(--color-border);
       border-radius: 30px;
-      padding: 4px 12px;
-      letter-spacing: 0.3px;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(4px);
+      padding: 4px 16px;
+      letter-spacing: 0.2px;
     }
 
     .project-title {
       font-family: var(--font-body);
       font-weight: 500;
-      font-size: clamp(16px, 1.4vw, 20px);
+      font-size: 26px;
       color: var(--color-text);
-      margin-bottom: 8px;
+      margin-top: 24px;
+      margin-bottom: 12px;
       line-height: 1.2;
     }
 
     .project-desc {
-      font-size: clamp(12px, 0.9vw, 14px);
+      font-size: 17px;
       font-weight: 300;
       color: var(--color-text);
       line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .view-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       color: var(--color-text);
     }
 
     .view-link-circle {
-      width: 30px;
-      height: 30px;
-      border: 1px solid var(--color-border);
+      width: 37px;
+      height: 37px;
+      border: 1.2px solid var(--color-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: background 0.2s, transform 0.2s;
+      transition: background 0.2s;
     }
 
     .view-link:hover .view-link-circle {
       background: var(--color-text);
-      transform: scale(1.08);
     }
 
     .view-link:hover .view-link-circle svg path {
@@ -370,13 +372,13 @@
     }
 
     .view-link-circle svg {
-      width: 13px;
-      height: 13px;
+      width: 15px;
+      height: 15px;
       transform: rotate(-90deg);
     }
 
     .view-link-text {
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 300;
       border-bottom: 0.5px solid var(--color-text);
       padding-bottom: 2px;
@@ -655,7 +657,7 @@
 
   <!-- BACK TO TOP -->
   <button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
       <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
