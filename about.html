@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me — Carmela Domingues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Aveburg';
+      src: url('Aveburg-Grande-Demo.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-text: #1d1d1d;
+      --color-text-light: #4f4e4e;
+      --color-bg: #ffffff;
+      --color-border: #1d1d1d;
+      --font-display: 'Aveburg', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --margin: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 80px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--margin);
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(29,29,29,0.08);
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 40px;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #e8a598 0%, #c9a0dc 40%, #8ec5d6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 52px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.4; }
+    .nav-links a.active { opacity: 0.4; }
+
+    /* ── ABOUT CONTENT ── */
+    #about {
+      padding: 160px var(--margin) 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 80px;
+      align-items: start;
+    }
+
+    /* LEFT COLUMN */
+    .about-left {
+      position: sticky;
+      top: 100px;
+    }
+
+    .about-title {
+      font-family: 'Aveburg', serif;
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 1.1;
+      color: var(--color-text);
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .about-title.visible { opacity: 1; transform: translateY(0); }
+
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s 0.2s ease, transform 0.8s 0.2s ease;
+    }
+
+    .about-text.visible { opacity: 1; transform: translateY(0); }
+
+    .about-text p {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--color-text);
+    }
+
+    /* RIGHT COLUMN — photo grid */
+    .about-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding-top: 32px;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: visible;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .photo-card.visible { opacity: 1; transform: translateY(0); }
+    .photo-card:nth-child(2) { transition-delay: 0.08s; }
+    .photo-card:nth-child(3) { transition-delay: 0.04s; }
+    .photo-card:nth-child(4) { transition-delay: 0.12s; }
+    .photo-card:nth-child(5) { transition-delay: 0.06s; }
+    .photo-card:nth-child(6) { transition-delay: 0.14s; }
+
+    .photo-card img,
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      object-fit: cover;
+      background: #d9d9d9;
+      display: block;
+    }
+
+    .photo-label {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      background: white;
+      border: 0.5px solid rgba(29,29,29,0.15);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-text);
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* Large photo spans full width */
+    .photo-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .photo-card.wide img,
+    .photo-card.wide .photo-placeholder {
+      aspect-ratio: 16 / 9;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 0.5px solid rgba(29,29,29,0.5);
+      padding: 16px 50px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .footer-left h3 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .footer-left p { font-size: 13px; color: var(--color-text); }
+
+    .footer-icons { display: flex; gap: 12px; align-items: center; }
+    .footer-icons a { color: var(--color-text); transition: opacity 0.2s; display: flex; }
+    .footer-icons a:hover { opacity: 0.5; }
+    .footer-icons svg { width: 32px; height: 32px; }
+
+    .footer-copy {
+      font-family: var(--font-display);
+      font-size: 10px;
+      color: var(--color-text);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 200;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.2px solid var(--color-border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--color-text); border-color: var(--color-text); }
+    .back-to-top:hover svg path { stroke: white; }
+    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="index.html">CD</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="about.html" class="active">About Me</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <!-- LEFT -->
+    <div class="about-left">
+      <h1 class="about-title">The full story about my ux/ui design journey</h1>
+      <div class="about-text">
+        <p>It all started on Tumblr in 2008… weird, I know, but I promise it's going to make sense.</p>
+        <p>I was just a teenager when I fell down the rabbit hole of edits and gifs around the internet. Something clicked. I taught myself Photoshop from scratch, late nights and endless YouTube tutorials. And just like that, a designer was born.</p>
+        <p>I graduated in Business at the University of Rio Grande do Sul. Not the obvious path, but it taught me to think about people, systems, and strategy, which turns out to be half of UX. My heart was always somewhere between pixels and people, so I chased it through internships and roles at companies like SAP and Telus, turning real problems into real solutions. Born and raised in Brazil, that chase made me pack my life into suitcases and move to Lisbon to do a Master's in Design Management at IADE. Spoiler: it was the best idea I've ever had. But I believe this is just one stop on a longer journey.</p>
+        <p>Figma, Photoshop, and Illustrator are where I live. I could spend hours bringing wireframes to life, the graphic designer in me never really went away. Sometimes I get brave and venture into front-end code, which always ends with a deep appreciation for developers (seriously, praise them). My favorite tool, honestly, is curiosity.</p>
+        <p>When I'm not designing, you'll find me at a new restaurant, at a concert, or reorganizing something that didn't need reorganizing. Oh, and if you're into astrology, I'm a Virgo, which basically explains everything I just said.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT — photos -->
+    <div class="about-right">
+
+      <div class="photo-card">
+        <div class="photo-placeholder"></div>
+        <span class="photo-label">Me being a drama queen with my dad</span>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder"></div>
+        <span class="photo-label">Graduated yay!</span>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder"></div>
+        <span class="photo-label">Cowboy Carter Tour</span>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder"></div>
+        <span class="photo-label">Fav city in the whole world</span>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder"></div>
+        <span class="photo-label">Mel and Lola CEOs of barking</span>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder"></div>
+        <span class="photo-label">Home</span>
+      </div>
+
+      <div class="photo-card wide">
+        <div class="photo-placeholder"></div>
+        <span class="photo-label">Ladies That UX Lisbon</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h3>Let's connect!</h3>
+        <p>Always happy to chat about design over a virtual cup of coffee.</p>
+      </div>
+      <div class="footer-icons">
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="mailto:carmela@email.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Carmela Domingues</p>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+    const nav = document.querySelector('nav');
+    const backToTop = document.querySelector('.back-to-top');
+    const footer = document.querySelector('footer');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      nav.classList.toggle('scrolled', scrollY > 50);
+
+      if (scrollY > 400) {
+        backToTop.classList.add('visible');
+        const footerTop = footer.getBoundingClientRect().top;
+        if (footerTop < window.innerHeight) {
+          backToTop.style.bottom = (window.innerHeight - footerTop + 16) + 'px';
+        } else {
+          backToTop.style.bottom = '32px';
+        }
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.about-title, .about-text, .photo-card').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
