@@ -81,6 +81,7 @@
     }
 
     .nav-links a:hover { opacity: 0.5; }
+    .nav-links a.active { opacity: 0.4; }
 
     /* ── HERO ── */
     #hero {
@@ -167,7 +168,45 @@
     }
 
     .projects-btn:hover .projects-btn-circle {
-      transform: translateY(4px);
+      background: var(--color-text);
+      transform: none;
+    }
+
+    .projects-btn:hover .projects-btn-circle svg path {
+      stroke: white;
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 200;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-text);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .back-to-top:hover { transform: translateY(-3px); }
+
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+      transform: rotate(180deg);
     }
 
     .projects-btn-circle svg {
@@ -246,10 +285,10 @@
     .project-card .project-img {
       width: 100%;
       aspect-ratio: 16/9;
-      border-radius: 20px;
+      border-radius: 16px;
       background: #d9d9d9;
       overflow: hidden;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       position: relative;
     }
 
@@ -259,13 +298,10 @@
       object-fit: cover;
     }
 
-    /* Tags inside image */
+    /* Tags ABOVE image, not inside */
     .project-card .project-tags {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      margin-bottom: 0;
-      z-index: 2;
+      position: static;
+      margin-bottom: 10px;
     }
 
     /* Shared project info styles */
@@ -504,12 +540,12 @@
     <div class="projects-grid">
 
       <div class="project-card">
+        <div class="project-tags">
+          <span class="tag">ADD A FEATURE</span>
+          <span class="tag">UX/UI DESIGN</span>
+        </div>
         <div class="project-img">
           <img src="" alt="Project 2" onerror="this.style.display='none'" />
-          <div class="project-tags">
-            <span class="tag">ADD A FEATURE</span>
-            <span class="tag">UX/UI DESIGN</span>
-          </div>
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
@@ -524,12 +560,12 @@
       </div>
 
       <div class="project-card">
+        <div class="project-tags">
+          <span class="tag">ADD A FEATURE</span>
+          <span class="tag">UX/UI DESIGN</span>
+        </div>
         <div class="project-img">
           <img src="" alt="Project 3" onerror="this.style.display='none'" />
-          <div class="project-tags">
-            <span class="tag">ADD A FEATURE</span>
-            <span class="tag">UX/UI DESIGN</span>
-          </div>
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
@@ -544,12 +580,12 @@
       </div>
 
       <div class="project-card">
+        <div class="project-tags">
+          <span class="tag">ADD A FEATURE</span>
+          <span class="tag">UX/UI DESIGN</span>
+        </div>
         <div class="project-img">
           <img src="" alt="Project 4" onerror="this.style.display='none'" />
-          <div class="project-tags">
-            <span class="tag">ADD A FEATURE</span>
-            <span class="tag">UX/UI DESIGN</span>
-          </div>
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
@@ -564,12 +600,12 @@
       </div>
 
       <div class="project-card">
+        <div class="project-tags">
+          <span class="tag">ADD A FEATURE</span>
+          <span class="tag">UX/UI DESIGN</span>
+        </div>
         <div class="project-img">
           <img src="" alt="Project 5" onerror="this.style.display='none'" />
-          <div class="project-tags">
-            <span class="tag">ADD A FEATURE</span>
-            <span class="tag">UX/UI DESIGN</span>
-          </div>
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
@@ -617,16 +653,50 @@
     <p class="footer-copy">© 2025 Carmela Domingues</p>
   </footer>
 
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
   <script>
     // Nav transparente → branca no scroll
     const nav = document.querySelector('nav');
+    const backToTop = document.querySelector('.back-to-top');
+    const homeLink = document.querySelector('.nav-links a[href="#"]');
+    const projectsLink = document.querySelector('.nav-links a[href="#projects"]');
+    const projectsSection = document.getElementById('projects');
+
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
+      const scrollY = window.scrollY;
+
+      // Nav background
+      if (scrollY > 50) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');
       }
+
+      // Back to top
+      if (scrollY > 400) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+
+      // Active nav link
+      if (projectsSection && scrollY >= projectsSection.offsetTop - 100) {
+        projectsLink.classList.add('active');
+        homeLink.classList.remove('active');
+      } else {
+        homeLink.classList.add('active');
+        projectsLink.classList.remove('active');
+      }
     });
+
+    // Trigger once on load
+    homeLink.classList.add('active');
 
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
