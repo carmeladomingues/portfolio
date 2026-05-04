@@ -119,7 +119,7 @@
     .hero-title {
       font-family: var(--font-body);
       font-weight: 400;
-      font-size: 72px;
+      font-size: 80px;
       line-height: 1.15;
       color: var(--color-text);
     }
@@ -553,11 +553,6 @@
     </div>
   </section>
 
-  <!-- BLOB ACIMA DO FOOTER -->
-  <div class="footer-blob-section">
-    <img src="bg1copiar.png" alt="" />
-  </div>
-
   <footer>
     <div class="footer-inner">
       <div class="footer-left">
@@ -601,7 +596,7 @@
 
       // Botão some antes do footer
       const footerTop = footer.getBoundingClientRect().top;
-      const showBtn = scrollY > 400 && footerTop > window.innerHeight - 100;
+      const showBtn = scrollY > 400 && footerTop > window.innerHeight;
       backToTop.classList.toggle('visible', showBtn);
 
       // Nav ativa
