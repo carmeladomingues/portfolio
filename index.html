@@ -75,7 +75,7 @@
 
     .nav-links a {
       font-size: 20px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--color-text);
       text-decoration: none;
       transition: opacity 0.2s;
@@ -119,7 +119,7 @@
     .hero-title {
       font-family: var(--font-body);
       font-weight: 400;
-      font-size: clamp(48px, 6.5vw, 100px);
+      font-size: 72px;
       line-height: 1.15;
       color: var(--color-text);
     }
@@ -131,7 +131,7 @@
     }
 
     .hero-sub {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 200;
       color: #2c2c2c;
       letter-spacing: 0.48px;
@@ -154,8 +154,8 @@
     }
 
     .projects-btn-circle {
-      width: 69px;
-      height: 69px;
+      width: 50px;
+      height: 50px;
       border: 1.2px solid var(--color-border);
       border-radius: 50%;
       display: flex;
@@ -167,12 +167,14 @@
 
     .projects-btn:hover .projects-btn-circle { background: var(--color-text); }
     .projects-btn:hover .projects-btn-circle svg path { stroke: white; }
-    .projects-btn-circle svg { width: 28px; height: 28px; }
+    .projects-btn-circle svg { width: 20px; height: 20px; }
 
     .projects-btn-label {
-      font-size: 32px;
+      font-size: 22px;
       font-weight: 400;
       letter-spacing: 0.64px;
+      border-bottom: 1px solid var(--color-text);
+      padding-bottom: 2px;
     }
 
     /* ── PROJECTS SECTION ── */
@@ -313,28 +315,33 @@
 
     .view-link:hover .view-link-text { opacity: 0.6; }
 
-    /* ── FOOTER ── */
-    footer {
+    /* ── FOOTER BLOB ── */
+    .footer-blob-section {
       position: relative;
-      z-index: 1;
-      border-top: 0.5px solid rgba(29,29,29,0.5);
-      padding: 20px 50px 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 4px;
+      height: 200px;
       overflow: hidden;
+      pointer-events: none;
     }
 
-    .footer-blob {
+    .footer-blob-section img {
       position: absolute;
       right: 0;
       bottom: 0;
       width: 531px;
       height: 773px;
-      pointer-events: none;
-      z-index: 0;
       object-fit: cover;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 0.5px solid rgba(29,29,29,0.5);
+      padding: 16px 50px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
     }
 
     .footer-inner {
@@ -342,31 +349,26 @@
       align-items: flex-start;
       justify-content: space-between;
       width: 100%;
-      position: relative;
-      z-index: 1;
     }
 
     .footer-left h3 {
       font-family: var(--font-display);
       font-weight: 400;
-      font-size: 20px;
-      margin-bottom: 6px;
+      font-size: 16px;
+      margin-bottom: 4px;
     }
 
-    .footer-left p { font-size: 17px; color: var(--color-text); }
+    .footer-left p { font-size: 13px; color: var(--color-text); }
 
-    .footer-icons { display: flex; gap: 15px; align-items: center; }
-
+    .footer-icons { display: flex; gap: 12px; align-items: center; }
     .footer-icons a { color: var(--color-text); transition: opacity 0.2s; display: flex; }
     .footer-icons a:hover { opacity: 0.5; }
-    .footer-icons svg { width: 42px; height: 42px; }
+    .footer-icons svg { width: 32px; height: 32px; }
 
     .footer-copy {
       font-family: var(--font-display);
       font-size: 10px;
       color: var(--color-text);
-      position: relative;
-      z-index: 1;
     }
 
     /* ── BACK TO TOP ── */
@@ -551,8 +553,12 @@
     </div>
   </section>
 
+  <!-- BLOB ACIMA DO FOOTER -->
+  <div class="footer-blob-section">
+    <img src="bg1copiar.png" alt="" />
+  </div>
+
   <footer>
-    <img class="footer-blob" src="bg1copiar.png" alt="" />
     <div class="footer-inner">
       <div class="footer-left">
         <h3>Let's connect!</h3>
