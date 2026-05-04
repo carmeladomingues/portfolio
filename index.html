@@ -225,7 +225,7 @@
     .projects-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px 56px;
+      gap: 64px 48px;
     }
 
     .project-card {
@@ -245,11 +245,12 @@
 
     .project-card .project-img {
       width: 100%;
-      aspect-ratio: 16/10;
+      aspect-ratio: 16/9;
       border-radius: 20px;
       background: #d9d9d9;
       overflow: hidden;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      position: relative;
     }
 
     .project-card .project-img img {
@@ -258,52 +259,63 @@
       object-fit: cover;
     }
 
+    /* Tags inside image */
+    .project-card .project-tags {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      margin-bottom: 0;
+      z-index: 2;
+    }
+
     /* Shared project info styles */
     .project-tags {
       display: flex;
-      gap: 14px;
-      margin-bottom: 24px;
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
     .tag {
-      font-size: 16px;
+      font-size: 11px;
       font-weight: 400;
       color: var(--color-text-light);
-      border: 1.3px solid var(--color-border);
+      border: 1px solid var(--color-border);
       border-radius: 30px;
-      padding: 6px 22px;
+      padding: 4px 12px;
       letter-spacing: 0.3px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(4px);
     }
 
     .project-title {
       font-family: var(--font-body);
       font-weight: 500;
-      font-size: clamp(18px, 1.6vw, 24px);
+      font-size: clamp(16px, 1.4vw, 20px);
       color: var(--color-text);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       line-height: 1.2;
     }
 
     .project-desc {
-      font-size: clamp(13px, 1vw, 16px);
+      font-size: clamp(12px, 0.9vw, 14px);
       font-weight: 300;
       color: var(--color-text);
       line-height: 1.6;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     .view-link {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       text-decoration: none;
       color: var(--color-text);
     }
 
     .view-link-circle {
-      width: 44px;
-      height: 44px;
-      border: 1.2px solid var(--color-border);
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--color-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -322,13 +334,13 @@
     }
 
     .view-link-circle svg {
-      width: 18px;
-      height: 18px;
+      width: 13px;
+      height: 13px;
       transform: rotate(-90deg);
     }
 
     .view-link-text {
-      font-size: 22px;
+      font-size: 14px;
       font-weight: 300;
       border-bottom: 0.5px solid var(--color-text);
       padding-bottom: 2px;
@@ -494,10 +506,10 @@
       <div class="project-card">
         <div class="project-img">
           <img src="" alt="Project 2" onerror="this.style.display='none'" />
-        </div>
-        <div class="project-tags">
-          <span class="tag">ADD A FEATURE</span>
-          <span class="tag">UX/UI DESIGN</span>
+          <div class="project-tags">
+            <span class="tag">ADD A FEATURE</span>
+            <span class="tag">UX/UI DESIGN</span>
+          </div>
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
@@ -514,10 +526,10 @@
       <div class="project-card">
         <div class="project-img">
           <img src="" alt="Project 3" onerror="this.style.display='none'" />
-        </div>
-        <div class="project-tags">
-          <span class="tag">ADD A FEATURE</span>
-          <span class="tag">UX/UI DESIGN</span>
+          <div class="project-tags">
+            <span class="tag">ADD A FEATURE</span>
+            <span class="tag">UX/UI DESIGN</span>
+          </div>
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
@@ -534,10 +546,10 @@
       <div class="project-card">
         <div class="project-img">
           <img src="" alt="Project 4" onerror="this.style.display='none'" />
-        </div>
-        <div class="project-tags">
-          <span class="tag">ADD A FEATURE</span>
-          <span class="tag">UX/UI DESIGN</span>
+          <div class="project-tags">
+            <span class="tag">ADD A FEATURE</span>
+            <span class="tag">UX/UI DESIGN</span>
+          </div>
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
@@ -554,10 +566,10 @@
       <div class="project-card">
         <div class="project-img">
           <img src="" alt="Project 5" onerror="this.style.display='none'" />
-        </div>
-        <div class="project-tags">
-          <span class="tag">ADD A FEATURE</span>
-          <span class="tag">UX/UI DESIGN</span>
+          <div class="project-tags">
+            <span class="tag">ADD A FEATURE</span>
+            <span class="tag">UX/UI DESIGN</span>
+          </div>
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
@@ -596,9 +608,8 @@
           </svg>
         </a>
         <a href="mailto:carmela@email.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <path d="M2 7l10 7 10-7"/>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
           </svg>
         </a>
       </div>
