@@ -92,14 +92,17 @@
       display: grid;
       grid-template-columns: var(--sidebar-w) 1fr;
       gap: 0 60px;
-      padding: 0 var(--margin) 120px;
+      padding: 60px var(--margin) 120px;
       align-items: start;
     }
 
     /* ── SIDEBAR ── */
     .sidebar {
-      position: sticky; top: 100px;
-      height: fit-content; align-self: start;
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+      align-self: start;
+      z-index: 1;
     }
 
     .sidebar-menu {
