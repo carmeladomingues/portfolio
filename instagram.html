@@ -170,6 +170,7 @@
       grid-template-columns: var(--sidebar-w) 1fr;
       gap: 0 var(--gap);
       padding: 0 var(--margin) 120px;
+      align-items: start;
     }
 
     /* ── SIDEBAR ── */
@@ -177,6 +178,8 @@
       position: sticky;
       top: 100px;
       height: fit-content;
+      align-self: flex-start;
+      z-index: 10;
     }
 
     .sidebar-menu {
