@@ -93,18 +93,17 @@
       grid-template-columns: 220px 1fr;
       gap: 0 60px;
       padding: 60px var(--margin) 120px;
-      align-items: start;
-      position: relative;
     }
 
     /* ── SIDEBAR ── */
     .sidebar {
-      position: sticky;
+      width: 220px;
+    }
+
+    .sidebar-inner {
+      position: fixed;
       top: 100px;
       width: 220px;
-      height: fit-content;
-      align-self: start;
-      overflow: hidden;
     }
 
     .sidebar-menu {
@@ -356,16 +355,18 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-      <nav class="sidebar-menu">
-        <a href="#overview" class="sidebar-item active">Project Overview</a>
-        <a href="#why" class="sidebar-item">Why Instagram?</a>
-        <a href="#hypothesis" class="sidebar-item">Hypothesis</a>
-        <a href="#persona" class="sidebar-item">Persona</a>
-        <a href="#creation" class="sidebar-item">Creation Process</a>
-        <a href="#ideation" class="sidebar-item">Ideation</a>
-        <a href="#prototype" class="sidebar-item">Prototype</a>
-        <a href="#learnings" class="sidebar-item">Learnings</a>
-      </nav>
+      <div class="sidebar-inner">
+        <nav class="sidebar-menu">
+          <a href="#overview" class="sidebar-item active">Project Overview</a>
+          <a href="#why" class="sidebar-item">Why Instagram?</a>
+          <a href="#hypothesis" class="sidebar-item">Hypothesis</a>
+          <a href="#persona" class="sidebar-item">Persona</a>
+          <a href="#creation" class="sidebar-item">Creation Process</a>
+          <a href="#ideation" class="sidebar-item">Ideation</a>
+          <a href="#prototype" class="sidebar-item">Prototype</a>
+          <a href="#learnings" class="sidebar-item">Learnings</a>
+        </nav>
+      </div>
     </aside>
 
     <!-- CONTENT -->
