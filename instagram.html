@@ -89,39 +89,12 @@
 
     /* ── BODY LAYOUT ── */
     .body-wrap {
-      display: flex;
-      gap: 60px;
       padding: 60px var(--margin) 120px;
-      align-items: flex-start;
-    }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      width: 220px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 100px;
-    }
-
-    .sidebar-inner {
-      width: 220px;
-    }
-
-    .sidebar-menu {
-      background: rgba(245,245,245,0.4);
-      border-radius: 20px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      width: 100%;
     }
 
     /* ── CONTENT ── */
     .content {
-      flex: 1;
-      min-width: 0;
-      padding-top: 0;
+      width: 100%;
     }
 
     .sidebar-item {
@@ -360,22 +333,6 @@
 
   <!-- BODY -->
   <div class="body-wrap">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar-inner">
-        <nav class="sidebar-menu">
-          <a href="#overview" class="sidebar-item active">Project Overview</a>
-          <a href="#why" class="sidebar-item">Why Instagram?</a>
-          <a href="#hypothesis" class="sidebar-item">Hypothesis</a>
-          <a href="#persona" class="sidebar-item">Persona</a>
-          <a href="#creation" class="sidebar-item">Creation Process</a>
-          <a href="#ideation" class="sidebar-item">Ideation</a>
-          <a href="#prototype" class="sidebar-item">Prototype</a>
-          <a href="#learnings" class="sidebar-item">Learnings</a>
-        </nav>
-      </div>
-    </aside>
 
     <!-- CONTENT -->
     <main class="content">
