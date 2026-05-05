@@ -743,8 +743,10 @@
     const sidebar = document.querySelector('.sidebar');
 
     function updateSidebarPosition() {
-      const rect = sidebar.getBoundingClientRect();
-      sidebarInner.style.left = rect.left + 'px';
+      if (sidebar && sidebarInner) {
+        const rect = sidebar.getBoundingClientRect();
+        sidebarInner.style.left = rect.left + 'px';
+      }
     }
 
     updateSidebarPosition();
