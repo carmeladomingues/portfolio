@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Next Event on Instagram — Carmela Domingues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    @font-face {
+      font-family: 'Aveburg';
+      src: url('Aveburg-Grande-Demo.otf') format('opentype');
+      font-weight: 400;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-text: #1d1d1d;
+      --color-light: #6b6b6b;
+      --color-bg: #ffffff;
+      --color-accent: #FFE8E3;
+      --color-border: #e0e0e0;
+      --font-display: 'Aveburg', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --margin: 120px;
+      --sidebar-w: 180px;
+      --gap: 60px;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 80px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(29,29,29,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--margin);
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 40px;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #e8a598 0%, #c9a0dc 40%, #8ec5d6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 52px; list-style: none; }
+
+    .nav-links a {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.4; }
+    .nav-links a.active { opacity: 0.4; }
+
+    /* ── HERO ── */
+    .case-hero {
+      padding: 120px var(--margin) 0;
+    }
+
+    .case-tags {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .case-tag {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-light);
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      padding: 4px 16px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--color-text);
+      margin-bottom: 20px;
+    }
+
+    .case-subtitle {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--color-light);
+      margin-bottom: 48px;
+      max-width: 800px;
+    }
+
+    /* ── INFO CARDS ── */
+    .info-cards {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .info-card {
+      padding: 28px 32px;
+      border-right: 1px solid var(--color-border);
+    }
+
+    .info-card:last-child { border-right: none; }
+
+    .info-card-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--color-text);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .info-card-value {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    /* ── BANNER ── */
+    .case-banner {
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+
+    .case-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .case-body {
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      gap: 0 var(--gap);
+      padding: 0 var(--margin) 120px;
+    }
+
+    /* ── SIDEBAR ── */
+    .case-sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .sidebar-menu {
+      background: #f7f7f7;
+      border-radius: 12px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sidebar-item {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-light);
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      display: block;
+    }
+
+    .sidebar-item:hover { color: var(--color-text); }
+    .sidebar-item.active {
+      background: white;
+      color: var(--color-text);
+      font-weight: 500;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* ── CONTENT ── */
+    .case-content { min-width: 0; }
+
+    /* Section */
+    .case-section {
+      margin-bottom: 80px;
+      scroll-margin-top: 100px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .section-text {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--color-text);
+      margin-bottom: 24px;
+    }
+
+    /* Accent block */
+    .accent-block {
+      background: var(--color-accent);
+      border-radius: 16px;
+      padding: 40px 48px;
+      margin-bottom: 24px;
+    }
+
+    /* Insight cards */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .insight-card {
+      background: var(--color-accent);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .insight-number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+
+    .insight-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+
+    /* Chart */
+    .chart-wrap {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 24px 0;
+      height: 320px;
+    }
+
+    /* Proof of concept */
+    .poc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .poc-card {
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .poc-card-label {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-light);
+      margin-bottom: 8px;
+    }
+
+    .poc-card-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* Persona */
+    .persona-block {
+      background: var(--color-accent);
+      border-radius: 16px;
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .persona-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: #d9d9d9;
+      overflow: hidden;
+    }
+
+    .persona-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .persona-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+
+    .persona-role {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--color-light);
+      margin-bottom: 20px;
+    }
+
+    .persona-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .persona-detail-label {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-light);
+      margin-bottom: 6px;
+    }
+
+    .persona-detail-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* Goals */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      counter-reset: goal;
+    }
+
+    .goal-card {
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      counter-increment: goal;
+      position: relative;
+    }
+
+    .goal-number {
+      font-family: var(--font-display);
+      font-size: 40px;
+      color: #e0e0e0;
+      margin-bottom: 12px;
+    }
+
+    .goal-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* Benchmarking */
+    .bench-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .bench-item:last-child { border-bottom: none; }
+
+    .bench-img {
+      width: 120px;
+      height: 80px;
+      border-radius: 8px;
+      background: #d9d9d9;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bench-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .bench-name {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .bench-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--color-light);
+    }
+
+    /* Userflow */
+    .flow-img {
+      width: 100%;
+      border-radius: 12px;
+      background: #f5f5f5;
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      margin: 24px 0;
+    }
+
+    .flow-img img { width: 100%; display: block; }
+    .flow-placeholder { height: 120px; display: flex; align-items: center; justify-content: center; color: var(--color-light); font-size: 14px; }
+
+    /* Fidelity */
+    .fidelity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .fidelity-img {
+      border-radius: 12px;
+      background: #d9d9d9;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .fidelity-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* High fidelity */
+    .hifi-block {
+      background: var(--color-accent);
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 24px;
+    }
+
+    .hifi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .hifi-screen {
+      border-radius: 12px;
+      background: #d9d9d9;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+    }
+
+    .hifi-screen img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Video placeholder */
+    .video-placeholder {
+      width: 100%;
+      height: 300px;
+      background: #f0f0f0;
+      border-radius: 16px;
+      border: 2px dashed var(--color-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--color-light);
+      font-size: 15px;
+      margin: 24px 0;
+    }
+
+    .video-placeholder svg { width: 40px; height: 40px; opacity: 0.4; }
+
+    /* Image placeholder */
+    .img-placeholder {
+      width: 100%;
+      background: #d9d9d9;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-light);
+      font-size: 13px;
+    }
+
+    /* Learnings */
+    .learnings-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .learning-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .learning-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #D4856A;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .learning-text {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid rgba(29,29,29,0.5);
+      padding: 16px 50px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .footer-left h3 { font-family: var(--font-display); font-size: 16px; margin-bottom: 4px; }
+    .footer-left p { font-size: 13px; }
+    .footer-icons { display: flex; gap: 12px; align-items: center; }
+    .footer-icons a { color: var(--color-text); transition: opacity 0.2s; display: flex; }
+    .footer-icons a:hover { opacity: 0.5; }
+    .footer-icons svg { width: 32px; height: 32px; }
+    .footer-copy { font-family: var(--font-display); font-size: 10px; }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      z-index: 200;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.2px solid #1d1d1d;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, background 0.2s, border-color 0.2s;
+    }
+
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: #1d1d1d; }
+    .back-to-top:hover svg path { stroke: white; }
+    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="index.html">CD</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <div class="case-tags">
+      <span class="case-tag">ADD A FEATURE</span>
+      <span class="case-tag">UX/UI DESIGN</span>
+    </div>
+    <h1 class="case-title">Your Next Event On Instagram</h1>
+    <p class="case-subtitle">This case study brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <p class="info-card-label">ROLE</p>
+        <p class="info-card-value">UX/UI Designer in a solo personal project</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label">SCOPE</p>
+        <p class="info-card-value">Discover and research, benchmarking, low-fidelity wireframes, high-fidelity prototypes, UX research, market research, mobile application</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label">TOOLS</p>
+        <p class="info-card-value">Figma and Figjam</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label">TIMEFRAME</p>
+        <p class="info-card-value">3 weeks</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="case-banner">
+    <img src="bannerinstagram.png" alt="Your Next Event on Instagram" />
+  </div>
+
+  <!-- MAIN BODY -->
+  <div class="case-body">
+
+    <!-- SIDEBAR -->
+    <aside class="case-sidebar">
+      <nav class="sidebar-menu">
+        <a href="#overview" class="sidebar-item active">Project Overview</a>
+        <a href="#why" class="sidebar-item">Why Instagram?</a>
+        <a href="#hypothesis" class="sidebar-item">Hypothesis</a>
+        <a href="#persona" class="sidebar-item">Persona</a>
+        <a href="#creation" class="sidebar-item">Creation Process</a>
+        <a href="#ideation" class="sidebar-item">Ideation</a>
+        <a href="#prototype" class="sidebar-item">Prototype</a>
+        <a href="#learnings" class="sidebar-item">Learnings</a>
+      </nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="case-content">
+
+      <!-- PROJECT OVERVIEW -->
+      <section class="case-section" id="overview">
+        <p class="section-label">Project Overview</p>
+        <div class="accent-block">
+          <h2 class="section-title">A purpose for a career transition</h2>
+          <p class="section-text">With a background in Graphic Design and Marketing, I had always been drawn to UX/UI. After nearly six years in the field, including two as the lead of Social Media & Design at an IT company, I decided it was time to make the transition official. With the support of our Design Director, I was invited to present a project to the US design team board.</p>
+          <p class="section-text">I spent an entire weekend brainstorming ideas for this project until, after missing a party I really wanted to go to, the answer hit me. It got me thinking about the old Facebook Events feature, where you could find local happenings, see who was going, and actually feel connected to what was around you. I missed that. And then I thought: what if Instagram had that?</p>
+        </div>
+      </section>
+
+      <!-- WHY INSTAGRAM -->
+      <section class="case-section" id="why">
+        <p class="section-label">Why Instagram?</p>
+        <h2 class="section-title">Research</h2>
+        <p class="section-text">Instagram has over 2 billion monthly active users, with 70% of them under 34 years old. It's where people go to discover, be inspired, and stay connected — but events? That's still a gap. Despite being a platform built on visual storytelling, Instagram has no native way to discover, share, or plan events together.</p>
+
+        <!-- CHART 1 — Generation Bar Chart -->
+        <div class="chart-wrap">
+          <canvas id="genChart"></canvas>
+        </div>
+
+        <!-- CHART 2 — Growth Line Chart -->
+        <div class="chart-wrap">
+          <canvas id="growthChart"></canvas>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 40px;">Insights</h2>
+        <div class="insight-grid">
+          <div class="insight-card">
+            <p class="insight-number">87%</p>
+            <p class="insight-text">of users follow at least one business on Instagram</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-number">70%</p>
+            <p class="insight-text">of Instagram users are under 34 years old</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-number">2B+</p>
+            <p class="insight-text">monthly active users worldwide</p>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 40px;">Proof of concept</h2>
+        <p class="section-text">Instagram tested an Events tab in 2021 but quietly removed it. The demand was there — the execution wasn't refined enough. This gave me confidence that the problem was real, and the opportunity was still open.</p>
+        <div class="poc-grid">
+          <div class="poc-card">
+            <p class="poc-card-label">What existed</p>
+            <p class="poc-card-text">Facebook Events — a feature that allowed users to discover and RSVP to local events, see who's going, and share with friends.</p>
+          </div>
+          <div class="poc-card">
+            <p class="poc-card-label">The gap</p>
+            <p class="poc-card-text">Instagram, despite its visual nature and massive user base, had no equivalent feature — leaving event discovery fragmented across Stories, bios, and DMs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HYPOTHESIS -->
+      <section class="case-section" id="hypothesis">
+        <p class="section-label">Hypothesis</p>
+        <h2 class="section-title">If Instagram had a native events feature...</h2>
+        <p class="section-text">Users would be more likely to discover, attend, and share local events — increasing engagement and time spent on the platform, while helping businesses and creators reach relevant audiences more effectively.</p>
+        <p class="section-text">The hypothesis was grounded in three pillars: discoverability, social proof, and seamless planning — all things Instagram already does well in other contexts.</p>
+      </section>
+
+      <!-- PERSONA -->
+      <section class="case-section" id="persona">
+        <p class="section-label">Persona</p>
+        <h2 class="section-title">Meet Luana</h2>
+        <div class="persona-block">
+          <div>
+            <div class="persona-photo">
+              <div style="width:100%;height:100%;background:#d9d9d9;"></div>
+            </div>
+          </div>
+          <div>
+            <p class="persona-name">Luana Silva, 24</p>
+            <p class="persona-role">Graphic Designer | SP, Brazil</p>
+            <p class="section-text" style="font-size:15px;">"I love going out but I always find out about events too late, or I end up missing things because nobody told me."</p>
+            <div class="persona-details">
+              <div>
+                <p class="persona-detail-label">Goals</p>
+                <p class="persona-detail-text">Discover events that match her taste. Find out who else is going. Plan outings easily with friends.</p>
+              </div>
+              <div>
+                <p class="persona-detail-label">Frustrations</p>
+                <p class="persona-detail-text">Missing events she would have loved. Having to check multiple apps. No social context for events.</p>
+              </div>
+              <div>
+                <p class="persona-detail-label">Behaviours</p>
+                <p class="persona-detail-text">Uses Instagram daily. Follows local venues and artists. Checks Stories for event hints.</p>
+              </div>
+              <div>
+                <p class="persona-detail-label">Why Instagram?</p>
+                <p class="persona-detail-text">Already uses it to discover things she loves — music, art, food. It feels natural to find events there too.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CREATION PROCESS -->
+      <section class="case-section" id="creation">
+        <p class="section-label">Creation Process</p>
+        <h2 class="section-title">Goals in mind</h2>
+        <p class="section-text">Before jumping into design, I mapped out the core goals the feature needed to achieve — from the user's perspective and from Instagram's business perspective.</p>
+
+        <div class="goals-grid">
+          <div class="goal-card">
+            <p class="goal-number">01</p>
+            <p class="goal-text">Make it easy to discover events that feel personally relevant</p>
+          </div>
+          <div class="goal-card">
+            <p class="goal-number">02</p>
+            <p class="goal-text">Add social context — see who else is going, invite friends</p>
+          </div>
+          <div class="goal-card">
+            <p class="goal-number">03</p>
+            <p class="goal-text">Keep it native to Instagram — no new app, no friction</p>
+          </div>
+          <div class="goal-card">
+            <p class="goal-number">04</p>
+            <p class="goal-text">Help creators and businesses reach the right audience</p>
+          </div>
+          <div class="goal-card">
+            <p class="goal-number">05</p>
+            <p class="goal-text">Make planning and RSVPing feel effortless and fun</p>
+          </div>
+          <div class="goal-card">
+            <p class="goal-number">06</p>
+            <p class="goal-text">Stay consistent with Instagram's existing design language</p>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 48px;">Benchmarking</h2>
+        <p class="section-text">I analyzed existing event-related features across major platforms to understand what worked, what didn't, and where the whitespace was.</p>
+
+        <div style="margin-top: 24px;">
+          <div class="bench-item">
+            <div class="bench-img"><div style="height:100%;background:#e9e9e9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;">Facebook</div></div>
+            <div>
+              <p class="bench-name">Facebook Events</p>
+              <p class="bench-text">The gold standard for event discovery. Strong on social proof and RSVP, but the platform has lost younger audiences. The feature exists but the context is wrong.</p>
+            </div>
+          </div>
+          <div class="bench-item">
+            <div class="bench-img"><div style="height:100%;background:#e9e9e9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;">Eventbrite</div></div>
+            <div>
+              <p class="bench-name">Eventbrite</p>
+              <p class="bench-text">Great for ticketed events and discovery, but lacks the social layer. You don't know who's going unless they're also on Eventbrite and connected to you.</p>
+            </div>
+          </div>
+          <div class="bench-item">
+            <div class="bench-img"><div style="height:100%;background:#e9e9e9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;">Shotgun</div></div>
+            <div>
+              <p class="bench-name">Shotgun</p>
+              <p class="bench-text">Popular in Europe for nightlife events. Strong visual identity, but limited to a niche audience and requires yet another app download.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 48px;">Userflow</h2>
+        <p class="section-text">I mapped the complete user journey — from discovering an event on their feed to RSVPing, inviting friends, and creating their own event.</p>
+        <div class="flow-img">
+          <div class="flow-placeholder">[ Userflow diagram — image placeholder ]</div>
+        </div>
+      </section>
+
+      <!-- IDEATION -->
+      <section class="case-section" id="ideation">
+        <p class="section-label">Ideation</p>
+        <h2 class="section-title">Low fidelity</h2>
+        <p class="section-text">The first sketches focused on fitting the Events feature naturally into Instagram's existing navigation — without adding cognitive load or breaking the experience users already know.</p>
+        <div class="fidelity-grid">
+          <div class="fidelity-img"><div style="height:100%;background:#d9d9d9;border-radius:12px;"></div></div>
+          <div class="fidelity-img"><div style="height:100%;background:#d9d9d9;border-radius:12px;"></div></div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 48px;">Mid fidelity</h2>
+        <p class="section-text">With the structure validated, I moved into mid-fidelity — adding real content, testing hierarchy and spacing, and making sure the feature felt native to Instagram's design language.</p>
+        <div class="fidelity-grid">
+          <div class="fidelity-img"><div style="height:100%;background:#d9d9d9;border-radius:12px;"></div></div>
+          <div class="fidelity-img"><div style="height:100%;background:#d9d9d9;border-radius:12px;"></div></div>
+        </div>
+      </section>
+
+      <!-- PROTOTYPE -->
+      <section class="case-section" id="prototype">
+        <p class="section-label">Prototype</p>
+        <h2 class="section-title">High fidelity</h2>
+        <p class="section-text">The final prototype brings together all the research, insights, and iterations into a polished, functional design that lives naturally within Instagram.</p>
+
+        <div class="hifi-block">
+          <div class="hifi-grid">
+            <div class="hifi-screen"><div style="height:100%;background:#c9c9c9;border-radius:12px;"></div></div>
+            <div class="hifi-screen"><div style="height:100%;background:#c9c9c9;border-radius:12px;"></div></div>
+            <div class="hifi-screen"><div style="height:100%;background:#c9c9c9;border-radius:12px;"></div></div>
+            <div class="hifi-screen"><div style="height:100%;background:#c9c9c9;border-radius:12px;"></div></div>
+          </div>
+        </div>
+
+        <!-- VIDEO PLACEHOLDER -->
+        <div class="video-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>Prototype video — coming soon</span>
+        </div>
+
+        <p class="section-label" style="margin-top: 40px;">What this project taught me</p>
+        <h2 class="section-title">Key decisions & rationale</h2>
+        <p class="section-text">Every design decision was intentional. Here are the ones that shaped the final outcome the most.</p>
+      </section>
+
+      <!-- LEARNINGS -->
+      <section class="case-section" id="learnings">
+        <p class="section-label">Learnings</p>
+        <h2 class="section-title">What this project taught me</h2>
+        <div class="learnings-list">
+          <div class="learning-item">
+            <div class="learning-dot"></div>
+            <p class="learning-text">Constraints are creative fuel. Working within Instagram's existing design system forced me to be more intentional about every decision.</p>
+          </div>
+          <div class="learning-item">
+            <div class="learning-dot"></div>
+            <p class="learning-text">Research shapes everything. The proof of concept and market data didn't just validate the idea — they guided every design decision.</p>
+          </div>
+          <div class="learning-item">
+            <div class="learning-dot"></div>
+            <p class="learning-text">Social context is underrated. The "who else is going" layer turned out to be the most valuable differentiator from existing solutions.</p>
+          </div>
+          <div class="learning-item">
+            <div class="learning-dot"></div>
+            <p class="learning-text">Native feels better. Integrating the feature into existing navigation rather than creating a new tab made it feel like it always belonged there.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h3>Let's connect!</h3>
+        <p>Always happy to chat about design over a virtual cup of coffee.</p>
+      </div>
+      <div class="footer-icons">
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="mailto:carmela@email.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Carmela Domingues</p>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+    // Back to top
+    const backToTop = document.querySelector('.back-to-top');
+    const footer = document.querySelector('footer');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 400) {
+        backToTop.classList.add('visible');
+        const footerTop = footer.getBoundingClientRect().top;
+        backToTop.style.bottom = footerTop < window.innerHeight
+          ? (window.innerHeight - footerTop + 16) + 'px'
+          : '32px';
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Sidebar active on scroll
+    const sections = document.querySelectorAll('.case-section');
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          sidebarItems.forEach(item => {
+            item.classList.toggle('active', item.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
+
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // Charts
+    new Chart(document.getElementById('genChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Gen Z', 'Millennials', 'Gen X', 'Baby Boomers'],
+        datasets: [{
+          data: [37, 25, 20, 12],
+          backgroundColor: ['#D4856A', '#E8A898', '#F0C4B8', '#FFE8E3'],
+          borderRadius: 6,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#888', font: { size: 13 } }, border: { display: false } },
+          y: { min: 0, max: 40, grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#888', font: { size: 13 }, stepSize: 10 }, border: { display: false } }
+        }
+      },
+      plugins: [{
+        afterDatasetsDraw(chart) {
+          const ctx = chart.ctx;
+          chart.data.datasets[0].data.forEach((val, i) => {
+            const meta = chart.getDatasetMeta(0).data[i];
+            ctx.fillStyle = '#555'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText(val, meta.x, meta.y - 8);
+          });
+        }
+      }]
+    });
+
+    new Chart(document.getElementById('growthChart'), {
+      type: 'line',
+      data: {
+        labels: ['2024', '2025', '2026', '2027'],
+        datasets: [{
+          label: 'Projected Instagram Users (Billion)',
+          data: [1.33, 1.40, 1.48, 1.56],
+          borderColor: '#D4856A', backgroundColor: '#D4856A',
+          pointBackgroundColor: '#D4856A', pointRadius: 6,
+          borderWidth: 2, tension: 0,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(0,0,0,0.06)', borderDash: [4,4] }, ticks: { color: '#888', font: { size: 13 } }, border: { display: false }, title: { display: true, text: 'Year', color: '#888' } },
+          y: { min: 1.30, max: 1.60, grid: { color: 'rgba(0,0,0,0.06)', borderDash: [4,4] }, ticks: { color: '#888', font: { size: 13 }, callback: v => v.toFixed(2) }, border: { display: false }, title: { display: true, text: 'Users (Billion)', color: '#888' } }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
