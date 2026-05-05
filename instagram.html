@@ -60,12 +60,20 @@
     /* ── HERO ── */
     .hero { padding: 120px var(--margin) 0; }
 
+    .case-tag {
+      font-size: 12px; font-weight: 400; color: #888;
+      border: 1px solid #ccc; border-radius: 30px;
+      padding: 3px 14px; display: inline-block;
+    }
+
+    .case-tags { display: flex; gap: 10px; margin-bottom: 16px; }
+
     .hero-title {
-      font-size: 56px; font-weight: 400; line-height: 1.1; margin-bottom: 8px;
+      font-size: 40px; font-weight: 400; line-height: 1.1; margin-bottom: 8px;
     }
     .hero-title span { font-weight: 500; }
 
-    .hero-sub { font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 30px; white-space: nowrap; }
+    .hero-sub { font-size: 16px; font-weight: 300; color: #555; margin-bottom: 30px; }
 
     /* Info card */
     .info-card {
@@ -156,7 +164,7 @@
 
     .insights-cols { display: flex; gap: 108px; }
 
-    .insight-col { width: 218px; font-size: 18px; }
+    .insight-col { width: 218px; font-size: 18px; text-align: center; }
     .insight-col-title { font-weight: 500; margin-bottom: 8px; }
     .insight-col-text { font-weight: 300; line-height: 1.6; }
 
@@ -378,6 +386,9 @@
         <div class="chart-wrap">
           <canvas id="genChart"></canvas>
         </div>
+        <p style="font-size:10px; color:#bbb; margin-top:-16px; margin-bottom:24px;">
+          <a href="https://revistacasaejardim.globo.com/Casa-e-Jardim/Bem-Estar/noticia/2019/11/estudo-aponta-que-frequentar-festas-e-shows-aumenta-expectativa-de-vida.html" target="_blank" style="color:#bbb; text-decoration:underline;">Fonte: Revista Casa e Jardim — Estudo aponta que frequentar festas e shows aumenta expectativa de vida</a>
+        </p>
 
         <!-- Chart 2 -->
         <div class="chart-wrap">
