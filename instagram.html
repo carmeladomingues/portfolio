@@ -6,7 +6,7 @@
   <title>Your Next Event on Instagram — Carmela Domingues</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
   <style>
     @font-face {
@@ -18,596 +18,290 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --color-text: #1d1d1d;
-      --color-light: #6b6b6b;
-      --color-bg: #ffffff;
-      --color-accent: #FFE8E3;
-      --color-border: #e0e0e0;
-      --font-display: 'Aveburg', serif;
-      --font-body: 'DM Sans', sans-serif;
+      --accent: #FFE8E3;
+      --accent-border: #ffbbad;
+      --text: #1d1d1d;
+      --text-light: rgba(79,78,78,0.67);
+      --bg: #ffffff;
+      --card-bg: rgba(242,240,237,0.29);
+      --font: 'DM Sans', sans-serif;
+      --aveburg: 'Aveburg', serif;
       --margin: 120px;
       --sidebar-w: 180px;
-      --gap: 60px;
+      --content-left: calc(var(--margin) + var(--sidebar-w) + 60px);
     }
 
     html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--color-bg);
-      color: var(--color-text);
-      overflow-x: hidden;
-    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
 
     /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       height: 80px;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 0.5px solid rgba(29,29,29,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 var(--margin);
     }
 
     .logo {
-      font-family: var(--font-display);
-      font-size: 40px;
-      letter-spacing: 4px;
+      font-family: var(--aveburg); font-size: 40px; letter-spacing: 4px;
       background: linear-gradient(135deg, #e8a598 0%, #c9a0dc 40%, #8ec5d6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-decoration: none;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-decoration: none;
     }
 
     .nav-links { display: flex; gap: 52px; list-style: none; }
-
-    .nav-links a {
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--color-text);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .nav-links a:hover { opacity: 0.4; }
-    .nav-links a.active { opacity: 0.4; }
+    .nav-links a { font-size: 20px; font-weight: 400; color: var(--text); text-decoration: none; transition: opacity 0.2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 0.4; }
 
     /* ── HERO ── */
-    .case-hero {
-      padding: 120px var(--margin) 0;
-    }
+    .hero { padding: 120px var(--margin) 0; }
 
-    .case-tags {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
+    .hero-title {
+      font-size: 56px; font-weight: 400; line-height: 1.1; margin-bottom: 8px;
     }
+    .hero-title span { font-weight: 500; }
 
-    .case-tag {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--color-light);
-      border: 1px solid #ccc;
-      border-radius: 30px;
-      padding: 4px 16px;
-    }
+    .hero-sub { font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 30px; }
 
-    .case-title {
-      font-family: var(--font-body);
-      font-size: 56px;
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--color-text);
-      margin-bottom: 20px;
-    }
-
-    .case-subtitle {
-      font-size: 18px;
-      font-weight: 300;
-      color: var(--color-light);
-      margin-bottom: 48px;
-      max-width: 800px;
-    }
-
-    /* ── INFO CARDS ── */
-    .info-cards {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr 1fr;
-      gap: 0;
-      border: 1px solid var(--color-accent);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 48px;
-    }
-
+    /* Info card */
     .info-card {
-      padding: 28px 32px;
-      border-right: 1px solid var(--color-accent);
+      border: 1.3px solid var(--accent-border);
+      border-radius: 40px;
+      padding: 20px 37px;
+      display: flex; gap: 60px; align-items: flex-start;
+      margin-bottom: 48px;
     }
 
-    .info-card:last-child { border-right: none; }
+    .info-block { display: flex; flex-direction: column; gap: 2px; }
+    .info-block:nth-child(2) { width: 454px; }
+    .info-block:nth-child(1) { width: 198px; }
 
-    .info-card-label {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--color-text);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .info-card-value {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--color-text);
-      line-height: 1.5;
-    }
+    .info-label { font-size: 24px; font-weight: 600; }
+    .info-value { font-size: 20px; font-weight: 300; line-height: 1.5; }
 
     /* ── BANNER ── */
-    .case-banner {
-      width: 100%;
-      height: 420px;
-      overflow: hidden;
-      margin-bottom: 80px;
-    }
+    .banner { width: 100%; height: 600px; overflow: hidden; }
+    .banner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-    .case-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-
-    /* ── MAIN LAYOUT ── */
-    .case-body {
+    /* ── BODY LAYOUT ── */
+    .body-wrap {
       display: grid;
       grid-template-columns: var(--sidebar-w) 1fr;
-      gap: 0 var(--gap);
+      gap: 0 60px;
       padding: 0 var(--margin) 120px;
       align-items: start;
     }
 
     /* ── SIDEBAR ── */
-    .case-sidebar {
-      position: sticky;
-      top: 100px;
-      height: fit-content;
-      align-self: flex-start;
-      z-index: 10;
+    .sidebar {
+      position: sticky; top: 100px;
+      height: fit-content; align-self: start;
     }
 
     .sidebar-menu {
-      background: white;
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+      background: rgba(245,245,245,0.4);
+      border-radius: 20px; padding: 20px;
+      display: flex; flex-direction: column; gap: 24px;
     }
 
     .sidebar-item {
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--color-light);
-      padding: 12px 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-      display: block;
-      line-height: 1.4;
+      font-size: 15px; font-weight: 500; color: var(--text);
+      text-decoration: none; display: block;
+      transition: opacity 0.2s;
     }
 
-    .sidebar-item:hover { color: var(--color-text); }
-    .sidebar-item.active {
-      background: #f2f2f2;
-      color: var(--color-text);
-      font-weight: 500;
-    }
+    .sidebar-item:not(.active) { color: var(--text-light); font-weight: 500; }
+    .sidebar-item:hover { opacity: 0.7; }
 
     /* ── CONTENT ── */
-    .case-content { min-width: 0; }
+    .content { padding-top: 40px; }
 
-    /* Section */
-    .case-section {
-      margin-bottom: 80px;
-      scroll-margin-top: 100px;
+    /* Section header */
+    .sec-label { font-size: 24px; font-weight: 500; color: var(--text-light); margin-bottom: 6px; }
+    .sec-title { font-size: 36px; font-weight: 500; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
+    .sec-text { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
+
+    .section { margin-bottom: 80px; scroll-margin-top: 100px; }
+
+    /* Overview card */
+    .overview-card {
+      background: rgba(242,240,237,0.2);
+      border-radius: 40px;
+      box-shadow: 4px 0px 10px 0px rgba(0,0,0,0.1);
+      padding: 42px 27px;
+      display: flex; gap: 42px; align-items: center;
     }
 
-    .section-label {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--color-light);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+    .overview-img {
+      width: 342px; height: 417px; flex-shrink: 0;
+      background: var(--accent); border-radius: 40px;
     }
 
-    .section-title {
-      font-family: var(--font-body);
-      font-size: 40px;
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 24px;
-    }
+    .overview-text { flex: 1; display: flex; flex-direction: column; gap: 10px; }
 
-    .section-text {
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--color-text);
-      margin-bottom: 24px;
-    }
-
-    /* Accent block */
-    .accent-block {
-      background: var(--color-accent);
-      border-radius: 16px;
-      padding: 40px 48px;
-      margin-bottom: 24px;
-    }
-
-    /* Insight cards */
-    .insight-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
+    /* Insights */
+    .insights-box {
+      background: var(--accent); border-radius: 20px;
+      padding: 20px 20px 20px 15px;
       margin-top: 24px;
     }
 
-    .insight-card {
-      background: var(--color-accent);
-      border-radius: 12px;
-      padding: 24px;
+    .insights-title { font-size: 36px; font-weight: 500; margin-bottom: 36px; }
+
+    .insights-cols { display: flex; gap: 108px; }
+
+    .insight-col { width: 218px; font-size: 18px; }
+    .insight-col-title { font-weight: 500; margin-bottom: 8px; }
+    .insight-col-text { font-weight: 300; line-height: 1.6; }
+
+    /* Hypothesis cards */
+    .hyp-row { display: flex; gap: 60px; align-items: center; margin-top: 24px; }
+    .hyp-intro { font-size: 18px; font-weight: 300; width: 204px; }
+    .hyp-cards { display: flex; gap: 60px; }
+    .hyp-card {
+      background: var(--card-bg); border-radius: 20px;
+      box-shadow: 4px 0px 10px 2px rgba(0,0,0,0.1);
+      padding: 35px 21px; width: 228px; height: 208px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hyp-card p { font-size: 18px; font-weight: 300; line-height: 1.6; width: 177px; }
+
+    /* Persona */
+    .persona-quote {
+      border: 1px solid var(--accent-border); border-radius: 40px;
+      padding: 24px 32px; display: flex; align-items: center;
+      margin-bottom: 26px;
+    }
+    .persona-quote-text { font-size: 18px; font-weight: 300; line-height: 1.6; width: 537px; }
+    .persona-avatar {
+      width: 144px; height: 144px; border-radius: 50%;
+      background: #d9d9d9; overflow: hidden; flex-shrink: 0; margin-left: -10px;
+    }
+    .persona-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .persona-cards { display: flex; gap: 26px; }
+    .persona-card {
+      border: 1px solid var(--accent-border); border-radius: 40px;
+      padding: 24px 32px; flex: 1;
+    }
+    .persona-card-title { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+    .persona-card ul { font-size: 18px; font-weight: 300; line-height: 1.7; padding-left: 20px; }
+
+    .persona-pains {
+      border: 1px solid var(--accent-border); border-radius: 40px;
+      padding: 24px 32px; width: 380px; margin-top: 26px;
+    }
+    .persona-why {
+      background: var(--accent); border-radius: 40px;
+      padding: 24px 32px; width: 380px;
+    }
+    .persona-pains-title, .persona-why-title { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+    .persona-pains ul, .persona-why ul { font-size: 18px; font-weight: 300; line-height: 1.7; padding-left: 20px; }
+
+    .persona-side-note {
+      font-size: 16px; font-weight: 300; color: #b6b6b6;
+      width: 204px; text-align: right; line-height: 1.5;
+      margin-left: auto; margin-top: 16px;
     }
 
-    .insight-number {
-      font-family: var(--font-display);
-      font-size: 36px;
-      color: var(--color-text);
-      margin-bottom: 8px;
+    /* Goals grid */
+    .goals-grid { display: flex; gap: 22px; margin-top: 24px; }
+    .goals-col { display: flex; flex-direction: column; gap: 15px; width: 282px; }
+    .goal-card {
+      background: var(--accent); border-radius: 20px;
+      padding: 25px; display: flex; gap: 10px; align-items: center;
     }
+    .goal-num { font-size: 36px; font-weight: 700; flex-shrink: 0; }
+    .goal-text { font-size: 18px; font-weight: 300; line-height: 1.6; }
+    .goal-text strong { font-weight: 400; }
 
-    .insight-text {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.5;
-      color: var(--color-text);
+    /* Benchmarking */
+    .bench-item { display: flex; gap: 15px; align-items: center; margin-bottom: 32px; }
+    .bench-img { width: 178px; height: 365px; flex-shrink: 0; border-radius: 8px; background: #d9d9d9; overflow: hidden; }
+    .bench-img img { width: 100%; height: 100%; object-fit: cover; }
+    .bench-info { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+    .bench-name { font-size: 20px; font-weight: 400; }
+    .bench-card {
+      background: var(--card-bg); border-radius: 20px;
+      box-shadow: 4px 0px 10px 0px rgba(0,0,0,0.15);
+      padding: 25px 12px;
     }
+    .bench-card-row { display: flex; gap: 10px; align-items: flex-start; }
+    .bench-emoji { font-size: 20px; flex-shrink: 0; }
+    .bench-card-text { font-size: 16px; font-weight: 300; line-height: 1.6; }
+
+    /* Userflow */
+    .flow-img { width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+    .flow-img img { width: 100%; display: block; }
+    .flow-placeholder { height: 120px; background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px; }
+
+    /* Fidelity screens */
+    .screens-row { display: flex; gap: 16px; align-items: flex-start; margin-top: 24px; }
+    .screen { flex-shrink: 0; border-radius: 8px; overflow: hidden; box-shadow: 4px 0px 10px 2px rgba(0,0,0,0.05); }
+    .screen img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .screen-placeholder { background: #d9d9d9; }
+
+    .screen-with-caption { display: flex; flex-direction: column; gap: 10px; width: 215px; }
+    .screen-caption { font-size: 16px; font-weight: 400; color: #4f4e4e; line-height: 1.5; }
+
+    /* High fidelity block */
+    .hifi-block {
+      background: var(--accent); border-radius: 20px;
+      padding: 20px 22px; margin-top: 24px;
+      display: flex; flex-direction: column; gap: 22px;
+    }
+    .hifi-row { display: flex; gap: 16px; align-items: flex-start; }
 
     /* Chart */
     .chart-wrap {
-      background: white;
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 32px;
-      margin: 24px 0;
-      height: 320px;
+      background: white; border: 1px solid #e0e0e0;
+      border-radius: 16px; padding: 32px; margin: 24px 0; height: 320px;
     }
-
-    /* Proof of concept */
-    .poc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .poc-card {
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    .poc-card-label {
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-light);
-      margin-bottom: 8px;
-    }
-
-    .poc-card-text {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    /* Persona */
-    .persona-block {
-      background: var(--color-accent);
-      border-radius: 16px;
-      padding: 40px 48px;
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 24px;
-    }
-
-    .persona-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: #d9d9d9;
-      overflow: hidden;
-    }
-
-    .persona-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .persona-name {
-      font-family: var(--font-display);
-      font-size: 28px;
-      margin-bottom: 4px;
-    }
-
-    .persona-role {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--color-light);
-      margin-bottom: 20px;
-    }
-
-    .persona-details {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .persona-detail-label {
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-light);
-      margin-bottom: 6px;
-    }
-
-    .persona-detail-text {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.5;
-    }
-
-    /* Goals */
-    .goals-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      counter-reset: goal;
-    }
-
-    .goal-card {
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 24px;
-      counter-increment: goal;
-      position: relative;
-    }
-
-    .goal-number {
-      font-family: var(--font-display);
-      font-size: 40px;
-      color: #e0e0e0;
-      margin-bottom: 12px;
-    }
-
-    .goal-text {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    /* Benchmarking */
-    .bench-item {
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .bench-item:last-child { border-bottom: none; }
-
-    .bench-img {
-      width: 120px;
-      height: 80px;
-      border-radius: 8px;
-      background: #d9d9d9;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    .bench-img img { width: 100%; height: 100%; object-fit: cover; }
-
-    .bench-name {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .bench-text {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.6;
-      color: var(--color-light);
-    }
-
-    /* Userflow */
-    .flow-img {
-      width: 100%;
-      border-radius: 12px;
-      background: #f5f5f5;
-      border: 1px solid var(--color-border);
-      overflow: hidden;
-      margin: 24px 0;
-    }
-
-    .flow-img img { width: 100%; display: block; }
-    .flow-placeholder { height: 120px; display: flex; align-items: center; justify-content: center; color: var(--color-light); font-size: 14px; }
-
-    /* Fidelity */
-    .fidelity-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .fidelity-img {
-      border-radius: 12px;
-      background: #d9d9d9;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-    }
-
-    .fidelity-img img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* High fidelity */
-    .hifi-block {
-      background: var(--color-accent);
-      border-radius: 16px;
-      padding: 40px;
-      margin-top: 24px;
-    }
-
-    .hifi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .hifi-screen {
-      border-radius: 12px;
-      background: #d9d9d9;
-      overflow: hidden;
-      aspect-ratio: 9/16;
-    }
-
-    .hifi-screen img { width: 100%; height: 100%; object-fit: cover; }
 
     /* Video placeholder */
-    .video-placeholder {
-      width: 100%;
-      height: 300px;
-      background: #f0f0f0;
-      border-radius: 16px;
-      border: 2px dashed var(--color-border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: var(--color-light);
-      font-size: 15px;
-      margin: 24px 0;
-    }
-
-    .video-placeholder svg { width: 40px; height: 40px; opacity: 0.4; }
-
-    /* Image placeholder */
-    .img-placeholder {
-      width: 100%;
-      background: #d9d9d9;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-light);
-      font-size: 13px;
-    }
-
-    /* Learnings */
-    .learnings-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .learning-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .learning-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #D4856A;
-      flex-shrink: 0;
-      margin-top: 8px;
-    }
-
-    .learning-text {
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.7;
+    .video-ph {
+      width: 100%; height: 300px; background: #f5f5f5;
+      border-radius: 16px; border: 2px dashed #ddd;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; color: #999; font-size: 15px; margin-top: 24px;
     }
 
     /* ── FOOTER ── */
     footer {
       border-top: 0.5px solid rgba(29,29,29,0.5);
       padding: 16px 50px 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 4px;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
     }
-
-    .footer-inner {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .footer-left h3 { font-family: var(--font-display); font-size: 16px; margin-bottom: 4px; }
+    .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
+    .footer-left h3 { font-family: var(--aveburg); font-size: 16px; margin-bottom: 4px; }
     .footer-left p { font-size: 13px; }
     .footer-icons { display: flex; gap: 12px; align-items: center; }
-    .footer-icons a { color: var(--color-text); transition: opacity 0.2s; display: flex; }
+    .footer-icons a { color: var(--text); transition: opacity 0.2s; display: flex; }
     .footer-icons a:hover { opacity: 0.5; }
     .footer-icons svg { width: 32px; height: 32px; }
-    .footer-copy { font-family: var(--font-display); font-size: 10px; }
+    .footer-copy { font-family: var(--aveburg); font-size: 10px; }
 
     /* ── BACK TO TOP ── */
     .back-to-top {
-      position: fixed;
-      bottom: 32px; right: 32px;
-      z-index: 200;
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: transparent;
-      border: 1.2px solid #1d1d1d;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
+      position: fixed; bottom: 32px; right: 32px; z-index: 200;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: transparent; border: 1.2px solid var(--text);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
       transition: opacity 0.3s, background 0.2s, border-color 0.2s;
     }
-
     .back-to-top.visible { opacity: 1; pointer-events: all; }
-    .back-to-top:hover { background: #1d1d1d; }
+    .back-to-top:hover { background: var(--text); }
     .back-to-top:hover svg path { stroke: white; }
     .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="logo" href="index.html">CD</a>
     <ul class="nav-links">
@@ -619,44 +313,40 @@
   </nav>
 
   <!-- HERO -->
-  <div class="case-hero">
-    <div class="case-tags">
-      <span class="case-tag">ADD A FEATURE</span>
-      <span class="case-tag">UX/UI DESIGN</span>
-    </div>
-    <h1 class="case-title">Your Next Event On Instagram</h1>
-    <p class="case-subtitle">This case study brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
+  <div class="hero">
+    <h1 class="hero-title"><span>Your Next Event </span>On Instagram</h1>
+    <p class="hero-sub">This case study brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
 
-    <div class="info-cards">
-      <div class="info-card">
-        <p class="info-card-label">ROLE</p>
-        <p class="info-card-value">UX/UI Designer in a solo personal project</p>
+    <div class="info-card">
+      <div class="info-block">
+        <p class="info-label">ROLE</p>
+        <p class="info-value">UX/UI Designer in a solo personal project</p>
       </div>
-      <div class="info-card">
-        <p class="info-card-label">SCOPE</p>
-        <p class="info-card-value">Discover and research, benchmarking, low-fidelity wireframes, high-fidelity prototypes, UX research, market research, mobile application</p>
+      <div class="info-block">
+        <p class="info-label">SCOPE</p>
+        <p class="info-value">Discover and research, benchmarking, low-fidelity wireframes, high-fidelity prototypes, UX research, market research, mobile application</p>
       </div>
-      <div class="info-card">
-        <p class="info-card-label">TOOLS</p>
-        <p class="info-card-value">Figma and Figjam</p>
+      <div class="info-block">
+        <p class="info-label">TOOLS</p>
+        <p class="info-value">Figma and Figjam</p>
       </div>
-      <div class="info-card">
-        <p class="info-card-label">TIMEFRAME</p>
-        <p class="info-card-value">3 weeks</p>
+      <div class="info-block">
+        <p class="info-label">TIMEFRAME</p>
+        <p class="info-value">3 weeks</p>
       </div>
     </div>
   </div>
 
   <!-- BANNER -->
-  <div class="case-banner">
+  <div class="banner">
     <img src="bannerinstagram.png" alt="Your Next Event on Instagram" />
   </div>
 
-  <!-- MAIN BODY -->
-  <div class="case-body">
+  <!-- BODY -->
+  <div class="body-wrap">
 
     <!-- SIDEBAR -->
-    <aside class="case-sidebar">
+    <aside class="sidebar">
       <nav class="sidebar-menu">
         <a href="#overview" class="sidebar-item active">Project Overview</a>
         <a href="#why" class="sidebar-item">Why Instagram?</a>
@@ -670,245 +360,332 @@
     </aside>
 
     <!-- CONTENT -->
-    <main class="case-content">
+    <main class="content">
 
       <!-- PROJECT OVERVIEW -->
-      <section class="case-section" id="overview">
-        <p class="section-label">Project Overview</p>
-        <div class="accent-block">
-          <h2 class="section-title">A purpose for a career transition</h2>
-          <p class="section-text">With a background in Graphic Design and Marketing, I had always been drawn to UX/UI. After nearly six years in the field, including two as the lead of Social Media & Design at an IT company, I decided it was time to make the transition official. With the support of our Design Director, I was invited to present a project to the US design team board.</p>
-          <p class="section-text">I spent an entire weekend brainstorming ideas for this project until, after missing a party I really wanted to go to, the answer hit me. It got me thinking about the old Facebook Events feature, where you could find local happenings, see who was going, and actually feel connected to what was around you. I missed that. And then I thought: what if Instagram had that?</p>
+      <div class="section" id="overview">
+        <div class="overview-card">
+          <div class="overview-img"></div>
+          <div class="overview-text">
+            <p class="sec-label">Project Overview</p>
+            <p class="sec-title">A purpose for a career transition</p>
+            <p class="sec-text">With a background in Graphic Design and Marketing, I had always been drawn to UX/UI. After nearly six years in the field, including two as the lead of Social Media & Design at an IT company, I decided it was time to make the transition official. With the support of our Design Director, I was invited to present a project to the US design team board.</p>
+            <p class="sec-text">I spent an entire weekend brainstorming ideas for this project until, after missing a party I really wanted to go to, the answer hit me. It got me thinking about the old Facebook Events feature, where you could find local happenings, see who was going, and actually feel connected to what was around you. I missed that. And then I thought: what if Instagram had that?</p>
+          </div>
         </div>
-      </section>
+      </div>
 
       <!-- WHY INSTAGRAM -->
-      <section class="case-section" id="why">
-        <p class="section-label">Why Instagram?</p>
-        <h2 class="section-title">Research</h2>
-        <p class="section-text">Instagram has over 2 billion monthly active users, with 70% of them under 34 years old. It's where people go to discover, be inspired, and stay connected — but events? That's still a gap. Despite being a platform built on visual storytelling, Instagram has no native way to discover, share, or plan events together.</p>
+      <div class="section" id="why">
+        <p class="sec-label">Why Instagram?</p>
+        <p class="sec-title">Research</p>
+        <p class="sec-text">To back up my idea, I did some desk research. One stat stood out: in a 2023 survey with 1,033 Brazilian respondents, 64% already use social networks for online research, with Gen Z leading the shift away from traditional search engines. If people are already living on Instagram, why not find their events there too?</p>
+        <p class="sec-text">Here's what I found:</p>
 
-        <!-- CHART 1 — Generation Bar Chart -->
+        <!-- Chart 1 -->
         <div class="chart-wrap">
           <canvas id="genChart"></canvas>
         </div>
 
-        <!-- CHART 2 — Growth Line Chart -->
+        <!-- Chart 2 -->
         <div class="chart-wrap">
           <canvas id="growthChart"></canvas>
         </div>
 
-        <h2 class="section-title" style="margin-top: 40px;">Insights</h2>
-        <div class="insight-grid">
-          <div class="insight-card">
-            <p class="insight-number">87%</p>
-            <p class="insight-text">of users follow at least one business on Instagram</p>
-          </div>
-          <div class="insight-card">
-            <p class="insight-number">70%</p>
-            <p class="insight-text">of Instagram users are under 34 years old</p>
-          </div>
-          <div class="insight-card">
-            <p class="insight-number">2B+</p>
-            <p class="insight-text">monthly active users worldwide</p>
-          </div>
-        </div>
-
-        <h2 class="section-title" style="margin-top: 40px;">Proof of concept</h2>
-        <p class="section-text">Instagram tested an Events tab in 2021 but quietly removed it. The demand was there — the execution wasn't refined enough. This gave me confidence that the problem was real, and the opportunity was still open.</p>
-        <div class="poc-grid">
-          <div class="poc-card">
-            <p class="poc-card-label">What existed</p>
-            <p class="poc-card-text">Facebook Events — a feature that allowed users to discover and RSVP to local events, see who's going, and share with friends.</p>
-          </div>
-          <div class="poc-card">
-            <p class="poc-card-label">The gap</p>
-            <p class="poc-card-text">Instagram, despite its visual nature and massive user base, had no equivalent feature — leaving event discovery fragmented across Stories, bios, and DMs.</p>
+        <!-- Insights -->
+        <div class="insights-box">
+          <p class="insights-title">Insights</p>
+          <div class="insights-cols">
+            <div class="insight-col">
+              <p class="insight-col-title">Fragmentation of Information:</p>
+              <p class="insight-col-text">Demonstrates how event information is scattered across different sources, making it difficult to find relevant events.</p>
+            </div>
+            <div class="insight-col" style="width:211px">
+              <p class="insight-col-title">Lack of Personalization:</p>
+              <p class="insight-col-text">Illustrates how the lack of personalization in event searches overwhelms users with events that don't align with their interests.</p>
+            </div>
+            <div class="insight-col" style="width:225px">
+              <p class="insight-col-title">Limitations in Interaction:</p>
+              <p class="insight-col-text">An example of how the absence of a dedicated platform for interaction during events results in missed opportunities to make new connections and expand one's social network.</p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- HYPOTHESIS -->
-      <section class="case-section" id="hypothesis">
-        <p class="section-label">Hypothesis</p>
-        <h2 class="section-title">If Instagram had a native events feature...</h2>
-        <p class="section-text">Users would be more likely to discover, attend, and share local events — increasing engagement and time spent on the platform, while helping businesses and creators reach relevant audiences more effectively.</p>
-        <p class="section-text">The hypothesis was grounded in three pillars: discoverability, social proof, and seamless planning — all things Instagram already does well in other contexts.</p>
-      </section>
+      <div class="section" id="hypothesis">
+        <p class="sec-label">Hypothesis</p>
+        <p class="sec-title">Proof of concept</p>
+        <div class="hyp-row">
+          <p class="hyp-intro">From the research, two hypotheses emerged:</p>
+          <div class="hyp-cards">
+            <div class="hyp-card">
+              <p>Consolidating event information into a single platform would increase community engagement.</p>
+            </div>
+            <div class="hyp-card">
+              <p>Integrating interaction tools into event platforms would help attendees connect and reduce feelings of isolation.</p>
+            </div>
+          </div>
+        </div>
+        <p class="sec-text" style="margin-top:24px">To validate these hypotheses, I interviewed a small group of friends who are heavy Instagram users. Most expressed nostalgia for Facebook's event features and said they find it tedious to search for party accounts just to see what's happening on the weekends. I also used Instagram Stories' Questions feature to gather broader feedback from my followers, asking whether they missed having an events feature on the platform. The responses confirmed there was a real appetite for it.</p>
+      </div>
 
       <!-- PERSONA -->
-      <section class="case-section" id="persona">
-        <p class="section-label">Persona</p>
-        <h2 class="section-title">Meet Luana</h2>
-        <div class="persona-block">
-          <div>
-            <div class="persona-photo">
-              <div style="width:100%;height:100%;background:#d9d9d9;"></div>
-            </div>
-          </div>
-          <div>
-            <p class="persona-name">Luana Silva, 24</p>
-            <p class="persona-role">Graphic Designer | SP, Brazil</p>
-            <p class="section-text" style="font-size:15px;">"I love going out but I always find out about events too late, or I end up missing things because nobody told me."</p>
-            <div class="persona-details">
-              <div>
-                <p class="persona-detail-label">Goals</p>
-                <p class="persona-detail-text">Discover events that match her taste. Find out who else is going. Plan outings easily with friends.</p>
-              </div>
-              <div>
-                <p class="persona-detail-label">Frustrations</p>
-                <p class="persona-detail-text">Missing events she would have loved. Having to check multiple apps. No social context for events.</p>
-              </div>
-              <div>
-                <p class="persona-detail-label">Behaviours</p>
-                <p class="persona-detail-text">Uses Instagram daily. Follows local venues and artists. Checks Stories for event hints.</p>
-              </div>
-              <div>
-                <p class="persona-detail-label">Why Instagram?</p>
-                <p class="persona-detail-text">Already uses it to discover things she loves — music, art, food. It feels natural to find events there too.</p>
-              </div>
-            </div>
+      <div class="section" id="persona">
+        <p class="sec-label">Persona</p>
+        <p class="sec-title">Luana Silva, 24 | Graphic Designer | SP, Brazil</p>
+
+        <div class="persona-quote">
+          <p class="persona-quote-text">Luana is a young, creative professional who works as a graphic designer in a trendy agency. She's a heavy social media user and loves exploring the vibrant cultural scene of her city and is always on the lookout for the latest parties, art exhibitions, and live music events.</p>
+          <div class="persona-avatar">
+            <img src="https://www.figma.com/api/mcp/asset/91a28c77-f6b9-4bce-8337-282d460f9d25" alt="Luana" />
           </div>
         </div>
-      </section>
+
+        <div class="persona-cards">
+          <div class="persona-card">
+            <p class="persona-card-title">Interests</p>
+            <ul>
+              <li>Going to parties, music concerts, and art exhibitions.</li>
+              <li>Discovering unique experiences in the city.</li>
+              <li>Engaging with friends.</li>
+            </ul>
+          </div>
+          <div class="persona-card">
+            <p class="persona-card-title">Goals</p>
+            <ul>
+              <li>Discover local events without having to search multiple platforms.</li>
+              <li>Stay connected with friends and the cultural scene in one place.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:26px; margin-top:26px; align-items:flex-start;">
+          <div class="persona-pains">
+            <p class="persona-pains-title">Pains</p>
+            <ul>
+              <li>Fragmented Information: struggles to track events across multiple platforms.</li>
+              <li>Boring Recommendations: gets generic suggestions that don't match her taste.</li>
+              <li>Missed Events: finds out about things too late.</li>
+            </ul>
+          </div>
+
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding-top:60px;">
+            <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" style="transform:rotate(90deg)">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="persona-why">
+            <p class="persona-why-title">Why the feature would help her?</p>
+            <ul>
+              <li>She's already on Instagram, no new app needed.</li>
+              <li>Event recommendations based on who she follows.</li>
+              <li>She can see which friends are going.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="persona-side-note">To better understand the target users, I created a persona that captured their goals, interests, and pain points, keeping their needs at the center of every design decision.</p>
+      </div>
 
       <!-- CREATION PROCESS -->
-      <section class="case-section" id="creation">
-        <p class="section-label">Creation Process</p>
-        <h2 class="section-title">Goals in mind</h2>
-        <p class="section-text">Before jumping into design, I mapped out the core goals the feature needed to achieve — from the user's perspective and from Instagram's business perspective.</p>
+      <div class="section" id="creation">
+        <p class="sec-label">Creation Process</p>
+        <p class="sec-title">Goals in mind</p>
+        <p class="sec-text">With Luana's needs in mind, it was time to start building.</p>
 
         <div class="goals-grid">
-          <div class="goal-card">
-            <p class="goal-number">01</p>
-            <p class="goal-text">Make it easy to discover events that feel personally relevant</p>
-          </div>
-          <div class="goal-card">
-            <p class="goal-number">02</p>
-            <p class="goal-text">Add social context — see who else is going, invite friends</p>
-          </div>
-          <div class="goal-card">
-            <p class="goal-number">03</p>
-            <p class="goal-text">Keep it native to Instagram — no new app, no friction</p>
-          </div>
-          <div class="goal-card">
-            <p class="goal-number">04</p>
-            <p class="goal-text">Help creators and businesses reach the right audience</p>
-          </div>
-          <div class="goal-card">
-            <p class="goal-number">05</p>
-            <p class="goal-text">Make planning and RSVPing feel effortless and fun</p>
-          </div>
-          <div class="goal-card">
-            <p class="goal-number">06</p>
-            <p class="goal-text">Stay consistent with Instagram's existing design language</p>
-          </div>
-        </div>
-
-        <h2 class="section-title" style="margin-top: 48px;">Benchmarking</h2>
-        <p class="section-text">I analyzed existing event-related features across major platforms to understand what worked, what didn't, and where the whitespace was.</p>
-
-        <div style="margin-top: 24px;">
-          <div class="bench-item">
-            <div class="bench-img"><div style="height:100%;background:#e9e9e9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;">Facebook</div></div>
-            <div>
-              <p class="bench-name">Facebook Events</p>
-              <p class="bench-text">The gold standard for event discovery. Strong on social proof and RSVP, but the platform has lost younger audiences. The feature exists but the context is wrong.</p>
+          <div class="goals-col">
+            <div class="goal-card">
+              <p class="goal-num">1.</p>
+              <p class="goal-text"><strong>Make it super easy to find all kinds of local events:</strong> whether you're into art, music, sports, or just want to party all night long.</p>
+            </div>
+            <div class="goal-card">
+              <p class="goal-num">4.</p>
+              <p class="goal-text"><strong>Keep everyone in the loop</strong> about upcoming events and important updates with personalized notifications, no more missing events!</p>
             </div>
           </div>
-          <div class="bench-item">
-            <div class="bench-img"><div style="height:100%;background:#e9e9e9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;">Eventbrite</div></div>
-            <div>
-              <p class="bench-name">Eventbrite</p>
-              <p class="bench-text">Great for ticketed events and discovery, but lacks the social layer. You don't know who's going unless they're also on Eventbrite and connected to you.</p>
+          <div class="goals-col">
+            <div class="goal-card">
+              <p class="goal-num">2.</p>
+              <p class="goal-text"><strong>Personalize the experience</strong> so users can filter events like a pro, choosing what they want based on location, event type, and date, because nobody wants to stumble into a boring lecture on a Saturday night!</p>
+            </div>
+            <div class="goal-card">
+              <p class="goal-num">5.</p>
+              <p class="goal-text"><strong>Make planning social activities</strong> by allowing users to save events, share them with friends, and maybe even coordinate who brings the snacks!</p>
             </div>
           </div>
-          <div class="bench-item">
-            <div class="bench-img"><div style="height:100%;background:#e9e9e9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;">Shotgun</div></div>
-            <div>
-              <p class="bench-name">Shotgun</p>
-              <p class="bench-text">Popular in Europe for nightlife events. Strong visual identity, but limited to a niche audience and requires yet another app download.</p>
+          <div class="goals-col">
+            <div class="goal-card">
+              <p class="goal-num">3.</p>
+              <p class="goal-text"><strong>Boost the social vibes</strong> by letting users RSVP to events, chat with fellow mates, and share their epic experiences, let's make some memories!</p>
+            </div>
+            <div class="goal-card">
+              <p class="goal-num">6.</p>
+              <p class="goal-text"><strong>Create an Instagram feature</strong> that's as easy to use ensuring users have a fun time navigating and interacting without getting lost in confusion!</p>
             </div>
           </div>
         </div>
 
-        <h2 class="section-title" style="margin-top: 48px;">Userflow</h2>
-        <p class="section-text">I mapped the complete user journey — from discovering an event on their feed to RSVPing, inviting friends, and creating their own event.</p>
+        <!-- Benchmarking -->
+        <p class="sec-title" style="margin-top:50px">Benchmarking</p>
+        <p class="sec-text">Before diving into design, I played detective and looked at what competitors were already doing, especially since most users I interviewed mentioned Facebook with nostalgia.</p>
+        <p class="sec-text">I analyzed the mobile version of four competitors to gather insights and shape the feature.</p>
+
+        <div class="bench-item">
+          <div class="bench-img">
+            <img src="https://www.figma.com/api/mcp/asset/1ada01b2-e4dc-4018-bfda-f51cc3949ea6" alt="Ingresse" />
+          </div>
+          <div class="bench-info">
+            <p class="bench-name">Ingresse 🇧🇷</p>
+            <div class="bench-card">
+              <div class="bench-card-row">
+                <span class="bench-emoji">✅</span>
+                <p class="bench-card-text">The feature has a clean aesthetic that opens directly to the user's current location, showcasing upcoming events right away.<br><br>It has good usability, making it easy for users to navigate and find what they're looking for.</p>
+              </div>
+            </div>
+            <div class="bench-card" style="margin-top:15px">
+              <div class="bench-card-row">
+                <span class="bench-emoji">❌</span>
+                <p class="bench-card-text">However, one downside is that the date and time appear too small on the screen, which needs to be improved.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bench-item">
+          <div class="bench-img">
+            <img src="https://www.figma.com/api/mcp/asset/ee49cf04-b84d-470d-be55-1c238be45438" alt="Sympla" />
+          </div>
+          <div class="bench-info">
+            <p class="bench-name">Sympla 🇧🇷</p>
+            <div class="bench-card">
+              <div class="bench-card-row">
+                <span class="bench-emoji">✅</span>
+                <p class="bench-card-text">The feature includes a great search bar that allows users to easily find what they're looking for. Events are categorized, making it simple to navigate.<br><br>It highlights the most viewed events from the last 24 hours, which adds a sense of urgency and excitement.</p>
+              </div>
+            </div>
+            <div class="bench-card" style="margin-top:15px">
+              <div class="bench-card-row">
+                <span class="bench-emoji">❌</span>
+                <p class="bench-card-text">While it works well overall, it feels a bit crowded, and could use some simplification for a better experience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bench-item">
+          <div class="bench-img">
+            <img src="https://www.figma.com/api/mcp/asset/fa8a284f-ee8e-4a34-a5fd-b5d439011b94" alt="Baladapp" />
+          </div>
+          <div class="bench-info">
+            <p class="bench-name">Baladapp 🇧🇷</p>
+            <div class="bench-card">
+              <div class="bench-card-row">
+                <span class="bench-emoji">❌</span>
+                <p class="bench-card-text">It doesn't open directly to the user's location, requiring them to enter that information manually.<br><br>Additionally, the highlighted events take up a lot of screen space, creating a cluttered appearance that detracts from the overall user experience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bench-item">
+          <div class="bench-img">
+            <img src="https://www.figma.com/api/mcp/asset/360b776b-025b-4b6d-8246-dba3c5d15eb2" alt="Facebook" />
+          </div>
+          <div class="bench-info">
+            <p class="bench-name">Facebook 🇧🇺🇸</p>
+            <div class="bench-card">
+              <div class="bench-card-row">
+                <span class="bench-emoji">✅</span>
+                <p class="bench-card-text">The feature includes a "Create Event" button, which is a great addition I hadn't considered before. It also has well defined categories, making it easy for users to navigate through different types of events.<br><br>Additionally, it shows events based on the GPS location from the user's phone, ensuring that users can discover activities happening nearby.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Userflow -->
+        <p class="sec-title" style="margin-top:50px">Userflow</p>
+        <p class="sec-text">Before jumping into wireframes, I mapped out the user flow to make sure every possible move had a clear path, for me and for the user.</p>
         <div class="flow-img">
-          <div class="flow-placeholder">[ Userflow diagram — image placeholder ]</div>
+          <img src="https://www.figma.com/api/mcp/asset/1adb42fe-7fd3-447a-ab97-e883097e3691" alt="Userflow" />
         </div>
-      </section>
+        <div style="text-align:center; margin-top:16px;">
+          <img src="https://www.figma.com/api/mcp/asset/45e35f16-cf2b-4123-aeb3-026e6f8246c2" alt="Userflow detail" style="max-width:633px; width:100%;" />
+        </div>
+      </div>
 
       <!-- IDEATION -->
-      <section class="case-section" id="ideation">
-        <p class="section-label">Ideation</p>
-        <h2 class="section-title">Low fidelity</h2>
-        <p class="section-text">The first sketches focused on fitting the Events feature naturally into Instagram's existing navigation — without adding cognitive load or breaking the experience users already know.</p>
-        <div class="fidelity-grid">
-          <div class="fidelity-img"><div style="height:100%;background:#d9d9d9;border-radius:12px;"></div></div>
-          <div class="fidelity-img"><div style="height:100%;background:#d9d9d9;border-radius:12px;"></div></div>
+      <div class="section" id="ideation">
+        <p class="sec-label">Ideation</p>
+        <p class="sec-title">Low fidelity</p>
+        <p class="sec-text">This was my first project in Figma. I had taken a beginner's course, but I learn best by doing, so I jumped in. My Photoshop background helped with the basics, and the rest was trial and error.</p>
+        <p class="sec-text">Before even opening Figma, I sketched every wireframe on paper and tested it with 5 Instagram users to get early feedback.</p>
+
+        <div style="display:flex; gap:16px; margin-top:24px; align-items:flex-start;">
+          <img src="https://www.figma.com/api/mcp/asset/4e1c6e9d-91dd-4c2f-b490-7252746129c1" alt="Low fi sketch" style="width:170px; height:290px; object-fit:cover; border-radius:8px;" />
+          <img src="https://www.figma.com/api/mcp/asset/874273f4-4836-4733-88c6-be3d56999356" alt="Low fi wireframe" style="width:380px; height:290px; object-fit:cover; border-radius:8px;" />
         </div>
 
-        <h2 class="section-title" style="margin-top: 48px;">Mid fidelity</h2>
-        <p class="section-text">With the structure validated, I moved into mid-fidelity — adding real content, testing hierarchy and spacing, and making sure the feature felt native to Instagram's design language.</p>
-        <div class="fidelity-grid">
-          <div class="fidelity-img"><div style="height:100%;background:#d9d9d9;border-radius:12px;"></div></div>
-          <div class="fidelity-img"><div style="height:100%;background:#d9d9d9;border-radius:12px;"></div></div>
+        <p class="sec-title" style="margin-top:48px">Mid fidelity</p>
+        <p class="sec-text">With the sketches validated, I moved to Figma and built out the wireframes for both user flows, which made the jump to UI design a lot smoother.</p>
+
+        <div class="screens-row" style="margin-top:24px; align-items:flex-start;">
+          <img src="https://www.figma.com/api/mcp/asset/3b53754e-27a1-43b2-8ed6-fdd30eafa59c" alt="Mid fi 1" style="width:215px; height:466px; object-fit:cover; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+          <img src="https://www.figma.com/api/mcp/asset/9ad9f582-c553-4670-aa1d-bb3c542b7df8" alt="Mid fi 2" style="width:215px; height:619px; object-fit:cover; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+          <img src="https://www.figma.com/api/mcp/asset/ce2ab03f-2de9-47af-b3e5-310ba17cfff2" alt="Mid fi 3" style="width:211px; height:620px; object-fit:cover; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+          <img src="https://www.figma.com/api/mcp/asset/a1f0fb34-e823-4347-a113-aca9ec3e6336" alt="Mid fi 4" style="width:215px; height:466px; object-fit:cover; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
         </div>
-      </section>
+      </div>
 
       <!-- PROTOTYPE -->
-      <section class="case-section" id="prototype">
-        <p class="section-label">Prototype</p>
-        <h2 class="section-title">High fidelity</h2>
-        <p class="section-text">The final prototype brings together all the research, insights, and iterations into a polished, functional design that lives naturally within Instagram.</p>
+      <div class="section" id="prototype">
+        <p class="sec-label">Prototype</p>
+        <p class="sec-title">High fidelity</p>
+        <p class="sec-text">For the UI, I wanted it to feel as close to Instagram as possible, so I downloaded the font, icons, and used screenshots from my own account as reference. Once that was done, I decided to go a step further and build a full prototype, the brief didn't ask for one, but I'm a Virgo, so here we are. And since I'm a huge fan of The Office, I used the characters as the faces and names throughout the events. Obviously.</p>
 
         <div class="hifi-block">
-          <div class="hifi-grid">
-            <div class="hifi-screen"><div style="height:100%;background:#c9c9c9;border-radius:12px;"></div></div>
-            <div class="hifi-screen"><div style="height:100%;background:#c9c9c9;border-radius:12px;"></div></div>
-            <div class="hifi-screen"><div style="height:100%;background:#c9c9c9;border-radius:12px;"></div></div>
-            <div class="hifi-screen"><div style="height:100%;background:#c9c9c9;border-radius:12px;"></div></div>
+          <div class="hifi-row">
+            <div class="screen-with-caption">
+              <img src="https://www.figma.com/api/mcp/asset/4330a468-d5cf-4d97-a222-e49a1625a59f" alt="Hifi 1" style="width:215px; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+              <p class="screen-caption">In this concept, Instagram's bottom bar features an Events button next to Reels.</p>
+            </div>
+            <img src="https://www.figma.com/api/mcp/asset/fbaaef7d-df05-4541-a3cd-89afb9190fa7" alt="Hifi 2" style="width:215px; height:466px; object-fit:cover; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+            <img src="https://www.figma.com/api/mcp/asset/7a1f7838-4295-4cac-b6b1-4b290bea35df" alt="Hifi 3" style="width:215px; height:624px; object-fit:cover; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+            <img src="https://www.figma.com/api/mcp/asset/4e1c6e9d-91dd-4c2f-b490-7252746129c1" alt="Hifi 4" style="width:215px; height:466px; object-fit:cover; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+          </div>
+          <div class="hifi-row" style="align-items:flex-end;">
+            <div class="screen-with-caption">
+              <p class="screen-caption">Find the best events for you with smart filters.</p>
+              <img src="https://www.figma.com/api/mcp/asset/695d9559-8e8d-4667-aefc-c2e1a7ab4225" alt="Hifi 5" style="width:215px; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+            </div>
+            <img src="https://www.figma.com/api/mcp/asset/1f020150-066b-48f8-94d2-99788e95ad18" alt="Hifi 6" style="width:215px; height:466px; object-fit:cover; border-radius:8px;" />
+            <img src="https://www.figma.com/api/mcp/asset/f471d431-b628-4756-9ecc-398ce9c92879" alt="Hifi 7" style="width:215px; height:466px; object-fit:cover; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+            <div class="screen-with-caption">
+              <p class="screen-caption">Share the event with your friends.</p>
+              <img src="https://www.figma.com/api/mcp/asset/576def01-3115-4200-8cd2-85056f4e10e0" alt="Hifi 8" style="width:215px; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
+            </div>
           </div>
         </div>
 
-        <!-- VIDEO PLACEHOLDER -->
-        <div class="video-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/>
+        <!-- Video placeholder -->
+        <div class="video-ph">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z" fill="#ccc" stroke="none"/>
           </svg>
           <span>Prototype video — coming soon</span>
         </div>
-
-        <p class="section-label" style="margin-top: 40px;">What this project taught me</p>
-        <h2 class="section-title">Key decisions & rationale</h2>
-        <p class="section-text">Every design decision was intentional. Here are the ones that shaped the final outcome the most.</p>
-      </section>
+      </div>
 
       <!-- LEARNINGS -->
-      <section class="case-section" id="learnings">
-        <p class="section-label">Learnings</p>
-        <h2 class="section-title">What this project taught me</h2>
-        <div class="learnings-list">
-          <div class="learning-item">
-            <div class="learning-dot"></div>
-            <p class="learning-text">Constraints are creative fuel. Working within Instagram's existing design system forced me to be more intentional about every decision.</p>
-          </div>
-          <div class="learning-item">
-            <div class="learning-dot"></div>
-            <p class="learning-text">Research shapes everything. The proof of concept and market data didn't just validate the idea — they guided every design decision.</p>
-          </div>
-          <div class="learning-item">
-            <div class="learning-dot"></div>
-            <p class="learning-text">Social context is underrated. The "who else is going" layer turned out to be the most valuable differentiator from existing solutions.</p>
-          </div>
-          <div class="learning-item">
-            <div class="learning-dot"></div>
-            <p class="learning-text">Native feels better. Integrating the feature into existing navigation rather than creating a new tab made it feel like it always belonged there.</p>
-          </div>
-        </div>
-      </section>
+      <div class="section" id="learnings">
+        <p class="sec-label">Learnings</p>
+        <p class="sec-title">What this project taught me</p>
+        <p class="sec-text">This project taught me more than I expected. Reading books like The Design of Everyday Things pulled me deeper into design theory, but the real learning happened by doing. I built everything from scratch, figured things out through trial and error, and discovered that empathy isn't just a buzzword, it's what makes a design actually work. Every conversation with friends and mentors added something new.</p>
+        <p class="sec-text">And then there was Figma. I went from knowing almost nothing to building every component from scratch (including figuring out what a component even was). Auto-layout felt like a nightmare, but I made it through.</p>
+        <p class="sec-text">Even though the job position ended up being canceled, the feedback and lessons from those three weeks only made me more certain: I want a long career in UX/UI.</p>
+      </div>
 
     </main>
   </div>
@@ -937,7 +714,6 @@
     <p class="footer-copy">© 2025 Carmela Domingues</p>
   </footer>
 
-  <!-- BACK TO TOP -->
   <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
       <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -945,7 +721,6 @@
   </button>
 
   <script>
-    // Back to top
     const backToTop = document.querySelector('.back-to-top');
     const footer = document.querySelector('footer');
 
@@ -954,42 +729,33 @@
       if (scrollY > 400) {
         backToTop.classList.add('visible');
         const footerTop = footer.getBoundingClientRect().top;
-        backToTop.style.bottom = footerTop < window.innerHeight
-          ? (window.innerHeight - footerTop + 16) + 'px'
-          : '32px';
+        backToTop.style.bottom = footerTop < window.innerHeight ? (window.innerHeight - footerTop + 16) + 'px' : '32px';
       } else {
         backToTop.classList.remove('visible');
       }
     });
 
-    // Sidebar active on scroll
-    const sections = document.querySelectorAll('.case-section');
+    // Sidebar active
+    const sections = document.querySelectorAll('.section');
     const sidebarItems = document.querySelectorAll('.sidebar-item');
-
-    const sectionObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
           sidebarItems.forEach(item => {
-            item.classList.toggle('active', item.getAttribute('href') === `#${id}`);
+            item.classList.toggle('active', item.getAttribute('href') === '#' + id);
           });
         }
       });
-    }, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
+    }, { threshold: 0.2, rootMargin: '-80px 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s));
 
-    sections.forEach(s => sectionObserver.observe(s));
-
-    // Charts
+    // Chart 1
     new Chart(document.getElementById('genChart'), {
       type: 'bar',
       data: {
         labels: ['Gen Z', 'Millennials', 'Gen X', 'Baby Boomers'],
-        datasets: [{
-          data: [37, 25, 20, 12],
-          backgroundColor: ['#D4856A', '#E8A898', '#F0C4B8', '#FFE8E3'],
-          borderRadius: 6,
-          borderSkipped: false,
-        }]
+        datasets: [{ data: [37,25,20,12], backgroundColor: ['#D4856A','#E8A898','#F0C4B8','#FFE8E3'], borderRadius: 6, borderSkipped: false }]
       },
       options: {
         responsive: true, maintainAspectRatio: false,
@@ -999,29 +765,22 @@
           y: { min: 0, max: 40, grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#888', font: { size: 13 }, stepSize: 10 }, border: { display: false } }
         }
       },
-      plugins: [{
-        afterDatasetsDraw(chart) {
-          const ctx = chart.ctx;
-          chart.data.datasets[0].data.forEach((val, i) => {
-            const meta = chart.getDatasetMeta(0).data[i];
-            ctx.fillStyle = '#555'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
-            ctx.fillText(val, meta.x, meta.y - 8);
-          });
-        }
-      }]
+      plugins: [{ afterDatasetsDraw(chart) {
+        const ctx = chart.ctx;
+        chart.data.datasets[0].data.forEach((val, i) => {
+          const meta = chart.getDatasetMeta(0).data[i];
+          ctx.fillStyle = '#555'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText(val, meta.x, meta.y - 8);
+        });
+      }}]
     });
 
+    // Chart 2
     new Chart(document.getElementById('growthChart'), {
       type: 'line',
       data: {
-        labels: ['2024', '2025', '2026', '2027'],
-        datasets: [{
-          label: 'Projected Instagram Users (Billion)',
-          data: [1.33, 1.40, 1.48, 1.56],
-          borderColor: '#D4856A', backgroundColor: '#D4856A',
-          pointBackgroundColor: '#D4856A', pointRadius: 6,
-          borderWidth: 2, tension: 0,
-        }]
+        labels: ['2024','2025','2026','2027'],
+        datasets: [{ data: [1.33,1.40,1.48,1.56], borderColor: '#D4856A', backgroundColor: '#D4856A', pointBackgroundColor: '#D4856A', pointRadius: 6, borderWidth: 2, tension: 0 }]
       },
       options: {
         responsive: true, maintainAspectRatio: false,
