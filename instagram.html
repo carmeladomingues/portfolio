@@ -745,7 +745,17 @@
       }
     });
 
-    // Sidebar active
+    // Position sidebar correctly
+    const sidebarInner = document.querySelector('.sidebar-inner');
+    const sidebar = document.querySelector('.sidebar');
+
+    function updateSidebarPosition() {
+      const rect = sidebar.getBoundingClientRect();
+      sidebarInner.style.left = rect.left + 'px';
+    }
+
+    updateSidebarPosition();
+    window.addEventListener('resize', updateSidebarPosition);
     const sections = document.querySelectorAll('.section');
     const sidebarItems = document.querySelectorAll('.sidebar-item');
     const observer = new IntersectionObserver((entries) => {
