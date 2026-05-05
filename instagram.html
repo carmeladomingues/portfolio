@@ -90,25 +90,31 @@
     /* ── BODY LAYOUT ── */
     .body-wrap {
       display: grid;
-      grid-template-columns: var(--sidebar-w) 1fr;
+      grid-template-columns: 220px 1fr;
       gap: 0 60px;
       padding: 60px var(--margin) 120px;
       align-items: start;
+      position: relative;
     }
 
     /* ── SIDEBAR ── */
     .sidebar {
       position: sticky;
       top: 100px;
+      width: 220px;
       height: fit-content;
       align-self: start;
-      z-index: 1;
+      overflow: hidden;
     }
 
     .sidebar-menu {
       background: rgba(245,245,245,0.4);
-      border-radius: 20px; padding: 20px;
-      display: flex; flex-direction: column; gap: 24px;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
     }
 
     .sidebar-item {
