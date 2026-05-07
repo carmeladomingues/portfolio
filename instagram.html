@@ -97,12 +97,34 @@
 
     /* ── BODY LAYOUT ── */
     .body-wrap {
+      display: flex;
+      flex-direction: row;
+      gap: 60px;
       padding: 60px var(--margin) 120px;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      align-self: flex-start;
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-menu {
+      background: rgba(245,245,245,0.4);
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     /* ── CONTENT ── */
     .content {
-      width: 100%;
+      flex: 1;
+      min-width: 0;
     }
 
     .sidebar-item {
@@ -118,7 +140,18 @@
     .content { padding-top: 40px; }
 
     /* Section header */
-    .sec-label { font-size: 24px; font-weight: 500; color: var(--text-light); margin-bottom: 6px; }
+    .sidebar-item {
+      font-size: 14px;
+      font-weight: 400;
+      color: #999;
+      text-decoration: none;
+      display: block;
+      transition: color 0.2s;
+      line-height: 1.4;
+    }
+
+    .sidebar-item:hover { color: var(--text); }
+    .sidebar-item.active { color: var(--text); font-weight: 500; }
     .sec-title { font-size: 36px; font-weight: 500; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
     .sec-text { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
 
@@ -354,6 +387,20 @@
 
   <!-- BODY -->
   <div class="body-wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <nav class="sidebar-menu">
+        <a href="#overview" class="sidebar-item active">Project Overview</a>
+        <a href="#why" class="sidebar-item">Why Instagram?</a>
+        <a href="#hypothesis" class="sidebar-item">Hypothesis</a>
+        <a href="#persona" class="sidebar-item">Persona</a>
+        <a href="#creation" class="sidebar-item">Creation Process</a>
+        <a href="#ideation" class="sidebar-item">Ideation</a>
+        <a href="#prototype" class="sidebar-item">Prototype</a>
+        <a href="#learnings" class="sidebar-item">Learnings</a>
+      </nav>
+    </aside>
 
     <!-- CONTENT -->
     <main class="content">
