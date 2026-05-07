@@ -147,7 +147,7 @@
     }
 
     .sec-label { font-size: 24px; font-weight: 300; color: var(--text-light); margin-bottom: 6px; }
-    .sec-title { font-size: 36px; font-weight: 500; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
+    .sec-title { font-size: 36px; font-weight: 400; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
     .sec-text { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
 
     .section { margin-bottom: 80px; scroll-margin-top: 100px; }
@@ -815,19 +815,25 @@
     window.addEventListener('resize', fixSidebar);
     window.addEventListener('scroll', handleSidebarVisibility);
     setTimeout(fixSidebar, 100);
+    // Sidebar active based on scroll position
     const sections = document.querySelectorAll('.section');
     const sidebarItems = document.querySelectorAll('.sidebar-item');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          sidebarItems.forEach(item => {
-            item.classList.toggle('active', item.getAttribute('href') === '#' + id);
-          });
+
+    function updateActiveSection() {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= 150) {
+          current = section.id;
         }
       });
-    }, { threshold: 0.2, rootMargin: '-80px 0px -60% 0px' });
-    sections.forEach(s => observer.observe(s));
+      sidebarItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveSection);
+    updateActiveSection();
 
     // Chart 1
     new Chart(document.getElementById('genChart'), {
