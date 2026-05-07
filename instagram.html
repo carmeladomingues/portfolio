@@ -197,8 +197,8 @@
 
     .insights-title { font-size: 36px; font-weight: 500; margin-bottom: 36px; }
 
-    .insights-cols { display: flex; gap: 60px; justify-content: center; }
-    .insight-col { flex: 1; font-size: 18px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .insights-cols { display: flex; gap: 43px; justify-content: flex-start; }
+    .insight-col { font-size: 18px; text-align: left; display: flex; flex-direction: column; }
     .insight-col-title { font-weight: 500; margin-bottom: 8px; }
     .insight-col-text { font-weight: 300; line-height: 1.6; text-wrap: balance; max-width: 220px; }
 
@@ -425,19 +425,27 @@
 
       <!-- WHY INSTAGRAM -->
       <div class="section" id="why">
-        <p class="sec-label">Why Instagram?</p>
-        <p class="sec-title">Research</p>
-        <p class="sec-text">To back up my idea, I did some desk research. One stat stood out: in a 2023 survey with 1,033 Brazilian respondents, 64% already use social networks for online research, with Gen Z leading the shift away from traditional search engines. If people are already living on Instagram, why not find their events there too?</p>
-     
-
-        <!-- Chart 1 -->
-        <div class="chart-wrap">
-          <canvas id="genChart"></canvas>
+        <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:40px;">
+          <div style="width:424px; flex-shrink:0;">
+            <p class="sec-label">Why Instagram?</p>
+            <p class="sec-title">Research</p>
+            <p class="sec-text">To back up my idea, I did some desk research. One stat stood out: in a 2023 survey with 1,033 Brazilian respondents, 64% already use social networks for online research, with Gen Z leading the shift away from traditional search engines. If people are already living on Instagram, why not find their events there too?</p>
+            <p class="sec-text">Here's what I found:</p>
+          </div>
+          <div style="flex:1;">
+            <div class="chart-wrap">
+              <canvas id="genChart"></canvas>
+            </div>
+            <p style="font-size:10px; color:#bbb; margin-top:8px;">
+              <a href="https://revistacasaejardim.globo.com/Casa-e-Jardim/Bem-Estar/noticia/2019/11/estudo-aponta-que-frequentar-festas-e-shows-aumenta-expectativa-de-vida.html" target="_blank" style="color:#bbb; text-decoration:underline;">Fonte: Revista Casa e Jardim</a>
+            </p>
+          </div>
         </div>
-        <p style="font-size:10px; color:#bbb; margin-top:-16px; margin-bottom:24px;">
-          <a href="https://revistacasaejardim.globo.com/Casa-e-Jardim/Bem-Estar/noticia/2019/11/estudo-aponta-que-frequentar-festas-e-shows-aumenta-expectativa-de-vida.html" target="_blank" style="color:#bbb; text-decoration:underline;">Source: Revista Casa e Jardim — Estudo aponta que frequentar festas e shows aumenta expectativa de vida</a>
-        </p>
 
+        <!-- Chart 2 full width -->
+        <div class="chart-wrap" style="margin-bottom:40px;">
+          <canvas id="growthChart"></canvas>
+        </div>
 
         <!-- Insights -->
         <div class="insights-box">
