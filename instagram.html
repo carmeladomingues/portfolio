@@ -120,6 +120,9 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .sidebar-item {
@@ -779,15 +782,35 @@
     function fixSidebar() {
       const sidebar = document.querySelector('.sidebar');
       const menu = document.querySelector('.sidebar-menu');
-      if (sidebar && menu) {
+      const bodyWrap = document.querySelector('.body-wrap');
+      if (sidebar && menu && bodyWrap) {
         const rect = sidebar.getBoundingClientRect();
-        menu.style.left = (rect.left + window.scrollX) + 'px';
+        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+        menu.style.left = (rect.left + scrollX) + 'px';
+        menu.style.visibility = 'visible';
       }
     }
 
-    window.addEventListener('load', fixSidebar);
+    // Show/hide sidebar based on scroll position
+    function handleSidebarVisibility() {
+      const menu = document.querySelector('.sidebar-menu');
+      const bodyWrap = document.querySelector('.body-wrap');
+      if (!menu || !bodyWrap) return;
+      const bodyTop = bodyWrap.getBoundingClientRect().top;
+      if (bodyTop <= 100) {
+        menu.style.opacity = '1';
+      } else {
+        menu.style.opacity = '0';
+      }
+    }
+
+    window.addEventListener('load', () => {
+      fixSidebar();
+      handleSidebarVisibility();
+    });
     window.addEventListener('resize', fixSidebar);
-    fixSidebar();
+    window.addEventListener('scroll', handleSidebarVisibility);
+    setTimeout(fixSidebar, 100);
     const sections = document.querySelectorAll('.section');
     const sidebarItems = document.querySelectorAll('.sidebar-item');
     const observer = new IntersectionObserver((entries) => {
