@@ -146,7 +146,7 @@
       min-width: 0;
     }
 
-    .sec-label { font-size: 24px; font-weight: 300; color: var(--text-light); margin-bottom: 6px; }
+    .sec-label { font-size: 20px; font-weight: 300; color: var(--text-light); margin-bottom: 2px; }
     .sec-title { font-size: 36px; font-weight: 400; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
     .sec-text { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
 
@@ -820,10 +820,10 @@
     const sidebarItems = document.querySelectorAll('.sidebar-item');
 
     function updateActiveSection() {
-      let current = '';
+      let current = sections[0].id;
       sections.forEach(section => {
         const top = section.getBoundingClientRect().top;
-        if (top <= 150) {
+        if (top <= 160) {
           current = section.id;
         }
       });
