@@ -108,12 +108,12 @@
     .sidebar {
       width: 220px;
       flex-shrink: 0;
-      position: sticky;
-      top: 100px;
-      align-self: flex-start;
     }
 
     .sidebar-menu {
+      position: fixed;
+      top: 100px;
+      width: 220px;
       background: rgba(245,245,245,0.4);
       border-radius: 20px;
       padding: 20px;
@@ -775,19 +775,19 @@
       }
     });
 
-    // Position sidebar correctly
-    const sidebarInner = document.querySelector('.sidebar-inner');
-    const sidebar = document.querySelector('.sidebar');
-
-    function updateSidebarPosition() {
-      if (sidebar && sidebarInner) {
+    // Fix sidebar position
+    function fixSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      const menu = document.querySelector('.sidebar-menu');
+      if (sidebar && menu) {
         const rect = sidebar.getBoundingClientRect();
-        sidebarInner.style.left = rect.left + 'px';
+        menu.style.left = (rect.left + window.scrollX) + 'px';
       }
     }
 
-    updateSidebarPosition();
-    window.addEventListener('resize', updateSidebarPosition);
+    window.addEventListener('load', fixSidebar);
+    window.addEventListener('resize', fixSidebar);
+    fixSidebar();
     const sections = document.querySelectorAll('.section');
     const sidebarItems = document.querySelectorAll('.sidebar-item');
     const observer = new IntersectionObserver((entries) => {
