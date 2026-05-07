@@ -146,7 +146,7 @@
       min-width: 0;
     }
 
-    .sec-label { font-size: 24px; font-weight: 500; color: var(--text-light); margin-bottom: 6px; }
+    .sec-label { font-size: 24px; font-weight: 300; color: var(--text-light); margin-bottom: 6px; }
     .sec-title { font-size: 36px; font-weight: 500; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
     .sec-text { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
 
@@ -157,7 +157,7 @@
       background: rgba(242,240,237,0.2);
       border-radius: 40px;
       box-shadow: 4px 0px 10px 0px rgba(0,0,0,0.1);
-      padding: 42px 27px;
+      padding: 32px 27px;
       display: flex;
       gap: 42px;
       align-items: flex-start;
@@ -197,11 +197,10 @@
 
     .insights-title { font-size: 36px; font-weight: 500; margin-bottom: 36px; }
 
-    .insights-cols { display: flex; gap: 108px; }
-
-    .insight-col { width: 218px; font-size: 18px; text-align: center; }
+    .insights-cols { display: flex; gap: 60px; justify-content: center; }
+    .insight-col { flex: 1; font-size: 18px; text-align: center; display: flex; flex-direction: column; align-items: center; }
     .insight-col-title { font-weight: 500; margin-bottom: 8px; }
-    .insight-col-text { font-weight: 300; line-height: 1.6; }
+    .insight-col-text { font-weight: 300; line-height: 1.6; text-wrap: balance; max-width: 220px; }
 
     /* Hypothesis cards */
     .hyp-row { display: flex; gap: 60px; align-items: center; margin-top: 24px; }
@@ -448,11 +447,11 @@
               <p class="insight-col-title">Fragmentation of Information:</p>
               <p class="insight-col-text">Demonstrates how event information is scattered across different sources, making it difficult to find relevant events.</p>
             </div>
-            <div class="insight-col" style="width:211px">
+            <div class="insight-col">
               <p class="insight-col-title">Lack of Personalization:</p>
               <p class="insight-col-text">Illustrates how the lack of personalization in event searches overwhelms users with events that don't align with their interests.</p>
             </div>
-            <div class="insight-col" style="width:225px">
+            <div class="insight-col">
               <p class="insight-col-title">Limitations in Interaction:</p>
               <p class="insight-col-text">An example of how the absence of a dedicated platform for interaction during events results in missed opportunities to make new connections and expand one's social network.</p>
             </div>
