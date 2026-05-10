@@ -819,35 +819,43 @@
       <div class="section" id="ideation">
         <p class="sec-label">Ideation</p>
         <p class="sec-title">Mapping the experience before building it</p>
-        <p class="sec-text">Before moving into high fidelity, the full user flow was mapped, tracing every path a user could take from the moment they open the app to reaching their destination. The flow branches into five main paths: planning a route, checking accessibility warnings, getting help from Ada, contributing reviews, and accessing saved places.</p>
+        <p class="sec-text">Before moving into high fidelity, the full user flow was mapped — tracing every path a user could take from the moment they open the app to reaching their destination. The flow branches into five main paths: planning a route, checking accessibility warnings, getting help from Ada, contributing reviews, and accessing saved places. All paths converge on the same goal: arriving at the desired location independently and with confidence.</p>
 
-        <p class="sec-title" style="margin-top:40px;">Mid fidelity</p>
-        <p class="sec-text">The screens focused on structure, hierarchy, and interaction logic. Four key screens were developed: Home, with the map area, quick filters, and a live warnings strip; Warnings, with a filterable feed of real-time accessibility alerts in list and map view; Ada, the AI assistant chat interface; and Routes, with transport mode tabs, the recommended route, and inline accessibility warnings.</p>
+        <img src="userflow.png" alt="User Flow" style="width:100%; border-radius:12px; margin:24px 0;" />
 
-        <div class="screens-row">
-          <div class="screen-item">
-            <div class="screen-img" style="background:#e8e8e8; display:flex; align-items:center; justify-content:center;">
-              <p style="font-size:12px; color:#999; text-align:center;">Home</p>
+        <p class="sec-title" style="margin-top:48px;">Mid fidelity</p>
+        <p class="sec-text">The wireframes focused on structure, hierarchy, and interaction logic across the key screens — making sure every path had a clear purpose before moving to visual design.</p>
+        <img src="midfidelityaddapta.png" alt="Mid Fidelity Screens" style="width:100%; border-radius:12px; margin:24px 0;" />
+
+        <!-- Mid-fi content cards -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:16px;">
+          <div style="background:#f7f7ff; border-radius:16px; padding:24px;">
+            <p style="font-size:14px; font-weight:500; color:#6259e8; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.06em;">Warnings</p>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div style="background:white; border-radius:10px; padding:10px 12px; border-left:3px solid #ffcb00;"><p style="font-size:12px; font-weight:500;">Picoas Station — Elevator out of service</p><p style="font-size:11px; font-weight:300; color:#666; margin-top:3px;">The elevator to the Blue Line is temporarily unavailable.</p></div>
+              <div style="background:white; border-radius:10px; padding:10px 12px; border-left:3px solid #ffcb00;"><p style="font-size:12px; font-weight:500;">Bus 727 — Stop with lowered platform unavailable</p><p style="font-size:11px; font-weight:300; color:#666; margin-top:3px;">Next accessible stop: Av. de Roma.</p></div>
+              <div style="background:white; border-radius:10px; padding:10px 12px; border-left:3px solid #ffcb00;"><p style="font-size:12px; font-weight:500;">Marquês de Pombal — Blue Line elevator offline</p><p style="font-size:11px; font-weight:300; color:#666; margin-top:3px;">Maintenance expected until 18:00.</p></div>
             </div>
-            <p class="screen-caption">Home — map with quick filters and live warnings</p>
           </div>
-          <div class="screen-item">
-            <div class="screen-img" style="background:#e8e8e8; display:flex; align-items:center; justify-content:center;">
-              <p style="font-size:12px; color:#999; text-align:center;">Warnings</p>
+          <div style="background:#f7f7ff; border-radius:16px; padding:24px;">
+            <p style="font-size:14px; font-weight:500; color:#6259e8; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.06em;">Chat (Ada)</p>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div style="background:#edebff; border-radius:10px; padding:10px 12px;"><p style="font-size:11px; font-weight:300; line-height:1.5;">Hi! I'm Ada, your accessibility assistant.</p></div>
+              <div style="background:white; border-radius:10px; padding:10px 12px; align-self:flex-end; max-width:85%; border:1px solid #edebff;"><p style="font-size:11px; font-weight:300;">Can you check if Picoas station is accessible right now?</p></div>
+              <div style="background:#edebff; border-radius:10px; padding:10px 12px;"><p style="font-size:11px; font-weight:300; line-height:1.5;">⚠️ Elevator out of service. ✅ Accessible nearby: Saldanha (600m) and Marquês de Pombal (800m).</p></div>
+              <div style="background:white; border-radius:10px; padding:10px 12px; align-self:flex-end; max-width:85%; border:1px solid #edebff;"><p style="font-size:11px; font-weight:300;">Show me a route to Saldanha?</p></div>
+              <div style="background:#edebff; border-radius:10px; padding:10px 12px;"><p style="font-size:11px; font-weight:300; line-height:1.5;">🚶 Exit via Rua Tomás Ribeiro → Av. da República → Saldanha (ramp available). ~8 min.</p></div>
             </div>
-            <p class="screen-caption">Warnings — filterable accessibility alerts feed</p>
           </div>
-          <div class="screen-item">
-            <div class="screen-img" style="background:#e8e8e8; display:flex; align-items:center; justify-content:center;">
-              <p style="font-size:12px; color:#999; text-align:center;">Ada</p>
+          <div style="background:#f7f7ff; border-radius:16px; padding:24px; grid-column:1/-1;">
+            <p style="font-size:14px; font-weight:500; color:#6259e8; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.06em;">Routes — Oceanário de Lisboa</p>
+            <p style="font-size:12px; font-weight:300; color:#6259e8; margin-bottom:10px;">Adappta recommends</p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <div style="background:white; border-radius:10px; padding:10px 14px; border:1px solid #edebff; flex:1; min-width:180px;"><p style="font-size:13px; font-weight:400;">♿×6 → 🚌 26B or 🚌 728</p><p style="font-size:11px; font-weight:300; color:#666; margin-top:3px;">Every 6 min · from Tomas Ribeiro St.</p></div>
+              <div style="background:white; border-radius:10px; padding:10px 14px; border:1px solid #edebff; flex:1; min-width:180px;"><p style="font-size:13px; font-weight:400;">♿×9 → 🚌 734 → ♿×2</p><p style="font-size:11px; font-weight:300; color:#666; margin-top:3px;">Every 8 min · from Vasco da Gama</p></div>
+              <div style="background:white; border-radius:10px; padding:10px 14px; border:1px solid #edebff; flex:1; min-width:180px;"><p style="font-size:13px; font-weight:400;">♿×10 → 🚇 Red → ♿×3</p><p style="font-size:11px; font-weight:300; color:#666; margin-top:3px;">Every 8 min · from Oriente Station</p></div>
             </div>
-            <p class="screen-caption">Ada — AI assistant chat interface</p>
-          </div>
-          <div class="screen-item">
-            <div class="screen-img" style="background:#e8e8e8; display:flex; align-items:center; justify-content:center;">
-              <p style="font-size:12px; color:#999; text-align:center;">Routes</p>
-            </div>
-            <p class="screen-caption">Routes — accessible route options with inline warnings</p>
+            <div style="background:#fff3e0; border-radius:10px; padding:8px 12px; margin-top:10px; display:flex; gap:8px; align-items:center;"><span>⚠️</span><p style="font-size:12px;">Elevator out of service</p></div>
           </div>
         </div>
       </div>
@@ -855,44 +863,23 @@
       <!-- PROTOTYPE & TESTING -->
       <div class="section" id="prototype">
         <p class="sec-label">Prototype & Testing</p>
-        <p class="sec-title">Putting the design to the test</p>
-        <p class="sec-text">The interactive prototype was built in Figma, connecting all key screens into a navigable flow — from opening the app and searching for a destination, through checking live warnings, chatting with Ada, and selecting an accessible route.</p>
-
-        <p class="sec-title" style="margin-top:40px;">High fidelity</p>
-        <p class="sec-text">The high fidelity screens were built in Figma with real Lisbon map data, live content, and accessibility-first interaction patterns throughout. Colour, typography, and the Addapta visual identity were applied across all screens, bringing the brand and the interface together into a fully resolved product.</p>
+        <p class="sec-title">High fidelity</p>
+        <p class="sec-text">The high fidelity screens were built in Figma with real Lisbon map data, live content, and accessibility-first interaction patterns throughout. Colour, typography, and the Adappta visual identity were applied across all screens, bringing the brand and the interface together into a fully resolved product.</p>
 
         <div class="hifi-block">
-          <div class="screens-row" style="margin-top:0;">
-            <div class="screen-item">
-              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
-                <p style="font-size:12px; color:white; text-align:center;">Home HiFi</p>
-              </div>
-              <p class="screen-caption">Home</p>
-            </div>
-            <div class="screen-item">
-              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
-                <p style="font-size:12px; color:white; text-align:center;">Warnings HiFi</p>
-              </div>
-              <p class="screen-caption">Warnings</p>
-            </div>
-            <div class="screen-item">
-              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
-                <p style="font-size:12px; color:white; text-align:center;">Ada HiFi</p>
-              </div>
-              <p class="screen-caption">Ada</p>
-            </div>
-            <div class="screen-item">
-              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
-                <p style="font-size:12px; color:white; text-align:center;">Routes HiFi</p>
-              </div>
-              <p class="screen-caption">Routes</p>
-            </div>
-            <div class="screen-item">
-              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
-                <p style="font-size:12px; color:white; text-align:center;">Profile HiFi</p>
-              </div>
-              <p class="screen-caption">Profile</p>
-            </div>
+          <div style="display:flex; gap:16px; overflow-x:auto; padding-bottom:8px; margin-bottom:16px;">
+            <div style="flex-shrink:0; text-align:center;"><img src="homeaddapta.png" alt="Home" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Home</p></div>
+            <div style="flex-shrink:0; text-align:center;"><img src="searchaddapta.png" alt="Search" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Search</p></div>
+            <div style="flex-shrink:0; text-align:center;"><img src="route1.png" alt="Route 1" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Routes</p></div>
+            <div style="flex-shrink:0; text-align:center;"><img src="route2.png" alt="Route 2" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Route Detail</p></div>
+            <div style="flex-shrink:0; text-align:center;"><img src="route3.png" alt="Route 3" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Navigation</p></div>
+          </div>
+          <div style="display:flex; gap:16px; overflow-x:auto; padding-bottom:8px;">
+            <div style="flex-shrink:0; text-align:center;"><img src="route4.png" alt="Route 4" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Arrival</p></div>
+            <div style="flex-shrink:0; text-align:center;"><img src="warning.png" alt="Warnings" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Warnings</p></div>
+            <div style="flex-shrink:0; text-align:center;"><img src="warning2.png" alt="Warning Detail" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Warning Detail</p></div>
+            <div style="flex-shrink:0; text-align:center;"><img src="chatbotaddapta.png" alt="Ada" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Ada</p></div>
+            <div style="flex-shrink:0; text-align:center;"><img src="profile.png" alt="Profile" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Profile</p></div>
           </div>
         </div>
 
@@ -903,7 +890,7 @@
           <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">The warnings feed and community reviews were highlighted as standout features</p></div>
           <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">The app shows strong potential for use beyond daily routines</p></div>
           <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">The Addapta seal conveys trust and social value</p></div>
-          <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">Ada was well received, with a voice version identified as a valuable improvement for in-the-moment assistance</p></div>
+          <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">Ada was well received — a voice version was identified as a valuable improvement for in-the-moment assistance</p></div>
         </div>
       </div>
 
