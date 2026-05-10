@@ -285,7 +285,7 @@
 
   <!-- BANNER -->
   <div class="banner">
-    <img src="banneraddapta.png" alt="Addapta banner" />
+    <img src="Banneraddapta.png" alt="Addapta banner" />
   </div>
 
   <!-- BODY -->
@@ -341,32 +341,89 @@
         <p class="sec-title">Three tracks, one clear problem</p>
         <p class="sec-text">The research was approached across three tracks, building a layered understanding of the problem before touching any design tool.</p>
 
-        <p class="sec-text"><strong>Survey</strong> with respondents across Lisbon:</p>
-        <div style="display:flex; gap:40px; margin:24px 0; flex-wrap:wrap;">
+        <!-- Desk Research block -->
+        <div style="background:#edebff; padding:30px 29px; margin-bottom:54px;">
+          <p style="font-size:18px; font-weight:300; line-height:1.7; color:#1d1d1d;">
+            <strong style="font-weight:500;">Desk Research </strong>Articles, reports, and journalism about the daily reality of people with reduced mobility in Portugal were analyzed. Three themes kept surfacing: the need to plan every trip far in advance, the constant conditioning caused by inaccessible infrastructure, and how the lack of accessible routes leads to social exclusion. One headline captured it bluntly: <em>"Lack of accessibility is the biggest problem in Portugal for people with reduced mobility."</em>
+          </p>
+        </div>
+
+        <!-- Field Research -->
+        <p style="font-size:18px; font-weight:300; line-height:1.7; color:#1d1d1d; margin-bottom:49px;">
+          <strong style="font-weight:500;">Field Research & Survey Ethnographic </strong>observation complemented the desk research documenting how people with reduced mobility actually navigated Lisbon, their workarounds, their frustrations, the invisible decisions they make constantly.
+        </p>
+
+        <!-- Stats -->
+        <div style="display:flex; gap:46px; align-items:center; margin-bottom:54px; justify-content:center;">
           <div style="text-align:center;">
-            <p style="font-size:48px; font-weight:300; color:var(--purple);">51.5%</p>
-            <p style="font-size:15px; font-weight:300; color:var(--text-light); max-width:160px;">had reduced mobility</p>
+            <p style="font-size:56px; font-weight:500; color:#1d1d1d; line-height:1;">52</p>
+            <p style="font-size:16px; font-weight:400; color:#1d1d1d; line-height:1.4;">Respondents<br>across Lisbon</p>
           </div>
-          <div style="text-align:center;">
-            <p style="font-size:48px; font-weight:300; color:var(--purple);">88.5%</p>
-            <p style="font-size:15px; font-weight:300; color:var(--text-light); max-width:160px;">had regular contact with someone who does</p>
-          </div>
-          <div style="text-align:center;">
-            <p style="font-size:48px; font-weight:300; color:var(--purple);">25%</p>
-            <p style="font-size:15px; font-weight:300; color:var(--text-light); max-width:160px;">lived or spent time regularly in the area</p>
+          <!-- Donut charts using SVG -->
+          <div style="display:flex; gap:75px; align-items:center;">
+            <!-- 25% donut -->
+            <div style="position:relative; width:171px; height:171px;">
+              <svg width="171" height="171" viewBox="0 0 171 171">
+                <circle cx="85.5" cy="85.5" r="70" fill="none" stroke="#e8e6f0" stroke-width="12"/>
+                <circle cx="85.5" cy="85.5" r="70" fill="none" stroke="#6259e8" stroke-width="12" stroke-dasharray="439.82" stroke-dashoffset="329.87" stroke-linecap="round" transform="rotate(-90 85.5 85.5)"/>
+              </svg>
+              <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center;">
+                <p style="font-size:28px; font-weight:500; color:#1d1d1d;">25%</p>
+                <p style="font-size:11px; font-weight:300; color:#666; line-height:1.4;">had reduced<br>mobility</p>
+              </div>
+            </div>
+            <!-- 51.5% donut -->
+            <div style="position:relative; width:171px; height:171px;">
+              <svg width="171" height="171" viewBox="0 0 171 171">
+                <circle cx="85.5" cy="85.5" r="70" fill="none" stroke="#e8e6f0" stroke-width="12"/>
+                <circle cx="85.5" cy="85.5" r="70" fill="none" stroke="#6259e8" stroke-width="12" stroke-dasharray="439.82" stroke-dashoffset="213.27" stroke-linecap="round" transform="rotate(-90 85.5 85.5)"/>
+              </svg>
+              <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; width:145px;">
+                <p style="font-size:28px; font-weight:500; color:#1d1d1d;">51.5%</p>
+                <p style="font-size:11px; font-weight:300; color:#666; line-height:1.4;">had regular contact with someone who does</p>
+              </div>
+            </div>
+            <!-- 88.5% donut -->
+            <div style="position:relative; width:171px; height:171px;">
+              <svg width="171" height="171" viewBox="0 0 171 171">
+                <circle cx="85.5" cy="85.5" r="70" fill="none" stroke="#e8e6f0" stroke-width="12"/>
+                <circle cx="85.5" cy="85.5" r="70" fill="none" stroke="#6259e8" stroke-width="12" stroke-dasharray="439.82" stroke-dashoffset="50.58" stroke-linecap="round" transform="rotate(-90 85.5 85.5)"/>
+              </svg>
+              <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; width:145px;">
+                <p style="font-size:28px; font-weight:500; color:#1d1d1d;">88.5%</p>
+                <p style="font-size:11px; font-weight:300; color:#666; line-height:1.4;">lived or spent time regularly in the area</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <p class="sec-text"><strong>User Interviews</strong> were conducted with wheelchair users, ranging from 25 to 70 years old, both in person and online, lasting between 30 and 60 minutes each. What emerged was consistent and striking:</p>
-        <div class="research-list">
-          <div class="research-item"><div class="research-dot"></div><p class="research-text">Everything requires advance planning</p></div>
-          <div class="research-item"><div class="research-dot"></div><p class="research-text">Ramps are poorly built or simply don't exist</p></div>
-          <div class="research-item"><div class="research-dot"></div><p class="research-text">Physical barriers are constant</p></div>
-          <div class="research-item"><div class="research-dot"></div><p class="research-text">Laws exist, but aren't enforced</p></div>
-          <div class="research-item"><div class="research-dot"></div><p class="research-text">Cobblestone streets make wheelchair navigation difficult</p></div>
-          <div class="research-item"><div class="research-dot"></div><p class="research-text">Spaces aren't accessible</p></div>
-          <div class="research-item"><div class="research-dot"></div><p class="research-text">Private transport doesn't guarantee accessibility</p></div>
+        <!-- User Interviews -->
+        <div style="background:#edebff; padding:30px 29px; margin-bottom:24px;">
+          <p style="font-size:18px; line-height:1.7; color:#1d1d1d;">
+            <strong style="font-weight:500;">User Interviews </strong><span style="font-weight:300;">were conducted with wheelchair users, ranging from 25 to 70 years old, both in person and online, lasting between 30 and 60 minutes each. What emerged was consistent and striking:</span>
+          </p>
         </div>
+
+        <!-- Tags -->
+        <div style="display:flex; flex-direction:column; gap:15px; align-items:center; margin-bottom:54px;">
+          <div style="display:flex; gap:9px;">
+            <span style="border:1px solid #6259e8; border-radius:40px; padding:10px 12px; font-size:16px; font-weight:300; color:#666; white-space:nowrap;">Everything requires advance planning</span>
+            <span style="border:1px solid #6259e8; border-radius:40px; padding:10px 12px; font-size:16px; font-weight:300; color:#666; white-space:nowrap;">Ramps are poorly built or simply don't exist</span>
+          </div>
+          <div style="display:flex; gap:9px;">
+            <span style="border:1px solid #6259e8; border-radius:40px; padding:10px 12px; font-size:16px; font-weight:300; color:#666; white-space:nowrap;">Physical barriers are constant</span>
+            <span style="border:1px solid #6259e8; border-radius:40px; padding:10px 12px; font-size:16px; font-weight:300; color:#666; white-space:nowrap;">Laws exist, but aren't enforced</span>
+          </div>
+          <div style="display:flex; gap:9px;">
+            <span style="border:1px solid #6259e8; border-radius:40px; padding:10px 12px; font-size:16px; font-weight:300; color:#666; white-space:nowrap;">Cobblestone streets make wheelchair navigation difficult</span>
+            <span style="border:1px solid #6259e8; border-radius:40px; padding:10px 12px; font-size:16px; font-weight:300; color:#666; white-space:nowrap;">Spaces aren't accessible</span>
+          </div>
+          <div style="display:flex; gap:9px;">
+            <span style="border:1px solid #6259e8; border-radius:40px; padding:10px 12px; font-size:16px; font-weight:300; color:#666; white-space:nowrap;">Private transport doesn't guarantee accessibility</span>
+          </div>
+        </div>
+
+        <p class="sec-text">These three research tracks converged on the same conclusion: the problem isn't just physical infrastructure. It's the complete absence of a tool that gives people with reduced mobility reliable, real-time information to navigate the city on their own terms.</p>
       </div>
 
       <!-- PERSONA -->
