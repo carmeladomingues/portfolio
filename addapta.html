@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Addapta — Carmela Domingues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Aveburg';
+      src: url('Aveburg-Grande-Demo.otf') format('opentype');
+      font-weight: 400;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #EDE8F5;
+      --accent-border: #c9b8e8;
+      --text: #1d1d1d;
+      --text-light: rgba(79,78,78,0.67);
+      --bg: #ffffff;
+      --font: 'DM Sans', sans-serif;
+      --aveburg: 'Aveburg', serif;
+      --margin: 120px;
+      --purple: #6B48C8;
+      --yellow: #F5C842;
+      --blue: #4A90D9;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 80px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(29,29,29,0.08);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--margin);
+    }
+
+    .logo {
+      font-family: var(--aveburg); font-size: 40px; letter-spacing: 4px;
+      background: linear-gradient(135deg, #e8a598 0%, #c9a0dc 40%, #8ec5d6 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 52px; list-style: none; }
+    .nav-links a { font-size: 20px; font-weight: 400; color: var(--text); text-decoration: none; transition: opacity 0.2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 0.4; }
+
+    /* ── HERO ── */
+    .hero { padding: 120px var(--margin) 0; }
+
+    .case-tags { display: flex; gap: 10px; margin-bottom: 16px; }
+    .case-tag { font-size: 12px; font-weight: 400; color: #888; border: 1px solid #ccc; border-radius: 30px; padding: 3px 14px; }
+
+    .hero-title { font-size: 40px; font-weight: 400; line-height: 1.1; margin-bottom: 8px; }
+    .hero-sub { font-size: 16px; font-weight: 300; color: #555; margin-bottom: 30px; }
+
+    .info-card {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 40px; padding: 20px 37px;
+      display: flex; gap: 60px; align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    .info-block { display: flex; flex-direction: column; gap: 4px; }
+    .info-label { font-size: 15px; font-weight: 600; letter-spacing: 0.05em; }
+    .info-value { font-size: 15px; font-weight: 300; line-height: 1.5; max-width: 400px; }
+
+    /* ── BANNER ── */
+    .banner { width: 100%; height: 600px; overflow: hidden; background: var(--accent); display: flex; align-items: center; justify-content: center; }
+    .banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .banner-placeholder { font-size: 18px; font-weight: 300; color: var(--text-light); }
+
+    /* ── BODY LAYOUT ── */
+    .body-wrap {
+      display: flex; flex-direction: row; gap: 60px;
+      padding: 60px var(--margin) 120px;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { width: 220px; flex-shrink: 0; }
+
+    .sidebar-menu {
+      position: fixed; top: 100px; width: 220px;
+      background: rgba(245,245,245,0.4);
+      border-radius: 20px; padding: 20px;
+      display: flex; flex-direction: column; gap: 20px;
+      visibility: hidden; opacity: 0;
+      transition: opacity 0.3s ease;
+      height: auto; overflow: visible;
+    }
+
+    .sidebar-item {
+      font-size: 14px; font-weight: 400; color: #999;
+      text-decoration: none; display: block;
+      transition: color 0.2s; line-height: 1.4;
+    }
+
+    .sidebar-item:hover { color: var(--text); }
+    .sidebar-item.active { color: var(--text); font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { flex: 1; min-width: 0; }
+
+    .sec-label { font-size: 20px; font-weight: 300; color: var(--text-light); margin-bottom: 2px; }
+    .sec-title { font-size: 36px; font-weight: 400; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
+    .sec-text { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
+
+    .section { margin-bottom: 80px; scroll-margin-top: 100px; }
+
+    /* Overview card */
+    .overview-card {
+      background: var(--accent);
+      border-radius: 24px; padding: 40px;
+      display: flex; gap: 40px; align-items: flex-start;
+      margin-top: 24px;
+    }
+
+    .overview-img {
+      width: 280px; flex-shrink: 0;
+      border-radius: 16px; overflow: hidden;
+      background: #d9d9d9;
+    }
+
+    .overview-img img { width: 100%; display: block; }
+    .overview-text { flex: 1; }
+
+    /* Stats */
+    .stats-row { display: flex; gap: 40px; margin: 32px 0; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; }
+    .stat-donut { position: relative; width: 100px; height: 100px; margin-bottom: 12px; }
+    .stat-label { font-size: 14px; font-weight: 300; color: var(--text); text-align: center; max-width: 150px; line-height: 1.5; }
+
+    /* Research list */
+    .research-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .research-item { display: flex; gap: 12px; align-items: flex-start; }
+    .research-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: 8px; }
+    .research-text { font-size: 18px; font-weight: 300; line-height: 1.6; }
+
+    /* Persona cards */
+    .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    .persona-card {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 24px; padding: 32px;
+    }
+
+    .persona-name { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+    .persona-role { font-size: 15px; font-weight: 300; color: var(--text-light); margin-bottom: 20px; }
+    .persona-section-title { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-light); margin-bottom: 8px; margin-top: 16px; }
+    .persona-section-text { font-size: 16px; font-weight: 300; line-height: 1.6; }
+
+    /* Design questions */
+    .questions-list { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+    .question-item {
+      background: var(--accent); border-radius: 16px;
+      padding: 20px 24px; font-size: 18px; font-weight: 300; line-height: 1.6;
+    }
+    .question-item strong { font-weight: 500; }
+
+    /* SWOT */
+    .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .swot-card { border-radius: 16px; padding: 24px; }
+    .swot-card.strengths { background: var(--accent); }
+    .swot-card.weaknesses { background: #FFF8E8; }
+    .swot-card.opportunities { background: #E8F4F8; }
+    .swot-card.threats { background: #FFF0F0; }
+    .swot-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+    .swot-text { font-size: 15px; font-weight: 300; line-height: 1.7; }
+
+    /* Features */
+    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    .feature-card { border: 1px solid #eee; border-radius: 16px; padding: 24px; }
+    .feature-icon { font-size: 24px; margin-bottom: 12px; }
+    .feature-title { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+    .feature-text { font-size: 16px; font-weight: 300; line-height: 1.6; color: var(--text-light); }
+
+    /* Brand colors */
+    .brand-colors { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+    .brand-color { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .color-swatch { width: 80px; height: 80px; border-radius: 50%; }
+    .color-name { font-size: 12px; font-weight: 400; text-align: center; max-width: 80px; }
+
+    /* Screens */
+    .screens-row { display: flex; gap: 16px; margin-top: 24px; overflow-x: auto; padding-bottom: 8px; }
+    .screen-item { flex-shrink: 0; width: 200px; }
+    .screen-img { width: 200px; height: 430px; background: #d9d9d9; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .screen-img img { width: 100%; height: 100%; object-fit: cover; }
+    .screen-caption { font-size: 13px; font-weight: 300; color: var(--text-light); margin-top: 10px; text-align: center; }
+
+    /* High fidelity block */
+    .hifi-block { background: var(--accent); border-radius: 20px; padding: 32px; margin-top: 24px; }
+
+    /* Testing results */
+    .testing-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .testing-item { display: flex; gap: 12px; align-items: flex-start; }
+    .testing-check { color: var(--purple); font-size: 18px; flex-shrink: 0; }
+    .testing-text { font-size: 18px; font-weight: 300; line-height: 1.6; }
+
+    /* Learnings */
+    .learnings-list { display: flex; flex-direction: column; gap: 24px; margin-top: 24px; }
+    .learning-item { display: flex; gap: 16px; }
+    .learning-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: 10px; }
+    .learning-text { font-size: 18px; font-weight: 300; line-height: 1.7; }
+    .learning-text strong { font-weight: 500; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid rgba(29,29,29,0.5);
+      padding: 16px 50px 12px;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+    }
+    .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
+    .footer-left h3 { font-family: var(--aveburg); font-size: 16px; margin-bottom: 4px; }
+    .footer-left p { font-size: 13px; }
+    .footer-icons { display: flex; gap: 12px; align-items: center; }
+    .footer-icons a { color: var(--text); transition: opacity 0.2s; display: flex; }
+    .footer-icons a:hover { opacity: 0.5; }
+    .footer-icons svg { width: 32px; height: 32px; }
+    .footer-copy { font-family: var(--aveburg); font-size: 10px; }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed; bottom: 32px; right: 32px; z-index: 200;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: transparent; border: 1.2px solid var(--text);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, background 0.2s;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--text); }
+    .back-to-top:hover svg path { stroke: white; }
+    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="index.html">CD</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="case-tags">
+      <span class="case-tag">APPLICATION</span>
+      <span class="case-tag">UX/UI DESIGN</span>
+    </div>
+    <h1 class="hero-title">Addapta — Mobility-First Navigation App</h1>
+    <p class="hero-sub">Addapta is a mobile navigation app that helps people with reduced mobility move through the city independently.</p>
+
+    <div class="info-card">
+      <div class="info-block">
+        <p class="info-label">ROLE</p>
+        <p class="info-value">UX/UI Designer in a master's project</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">SCOPE</p>
+        <p class="info-value">Design thinking, UX Research, desk research, ethnographic observation, personas, competitive analysis, wireframing, UI design, branding</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">TOOLS</p>
+        <p class="info-value">Figma, Photoshop and Miro</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">TIMEFRAME</p>
+        <p class="info-value">3 months</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <p class="banner-placeholder">[ Banner Addapta ]</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <nav class="sidebar-menu">
+        <a href="#overview" class="sidebar-item active">Project Overview</a>
+        <a href="#research" class="sidebar-item">Research</a>
+        <a href="#persona" class="sidebar-item">Persona</a>
+        <a href="#problem" class="sidebar-item">Problem</a>
+        <a href="#strategy" class="sidebar-item">Strategy</a>
+        <a href="#concept" class="sidebar-item">Concept</a>
+        <a href="#identity" class="sidebar-item">Visual Identity</a>
+        <a href="#ideation" class="sidebar-item">Ideation</a>
+        <a href="#prototype" class="sidebar-item">Prototype & Testing</a>
+        <a href="#learnings" class="sidebar-item">Learnings</a>
+      </nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- PROJECT OVERVIEW -->
+      <div class="section" id="overview">
+        <p class="sec-label">Project Overview</p>
+        <p class="sec-title">The city belongs to everyone</p>
+        <p class="sec-text">This academic project was developed across all disciplines of the Design Management programme and it was born from a course-wide challenge: choose one of the UN Sustainable Development Goals and design a product or service that genuinely addresses it.</p>
+        <p class="sec-text">I chose SDG 10 — Reducing Inequalities, focusing on one of the most tangible and overlooked inequalities in urban life: the inability of people with reduced mobility to move through a city independently and safely.</p>
+        <p class="sec-text">Getting around Lisbon shouldn't require courage. For wheelchair users and people with reduced mobility, every trip involves invisible planning, checking whether elevators are working, whether ramps exist, whether the pavement is safe. Standard navigation apps weren't built with this in mind. Adappta was.</p>
+      </div>
+
+      <!-- RESEARCH -->
+      <div class="section" id="research">
+        <p class="sec-label">Research</p>
+        <p class="sec-title">Three tracks, one clear problem</p>
+        <p class="sec-text">The research was approached across three tracks, building a layered understanding of the problem before touching any design tool.</p>
+
+        <p class="sec-text"><strong>Survey</strong> with respondents across Lisbon:</p>
+        <div style="display:flex; gap:40px; margin:24px 0; flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <p style="font-size:48px; font-weight:300; color:var(--purple);">51.5%</p>
+            <p style="font-size:15px; font-weight:300; color:var(--text-light); max-width:160px;">had reduced mobility</p>
+          </div>
+          <div style="text-align:center;">
+            <p style="font-size:48px; font-weight:300; color:var(--purple);">88.5%</p>
+            <p style="font-size:15px; font-weight:300; color:var(--text-light); max-width:160px;">had regular contact with someone who does</p>
+          </div>
+          <div style="text-align:center;">
+            <p style="font-size:48px; font-weight:300; color:var(--purple);">25%</p>
+            <p style="font-size:15px; font-weight:300; color:var(--text-light); max-width:160px;">lived or spent time regularly in the area</p>
+          </div>
+        </div>
+
+        <p class="sec-text"><strong>User Interviews</strong> were conducted with wheelchair users, ranging from 25 to 70 years old, both in person and online, lasting between 30 and 60 minutes each. What emerged was consistent and striking:</p>
+        <div class="research-list">
+          <div class="research-item"><div class="research-dot"></div><p class="research-text">Everything requires advance planning</p></div>
+          <div class="research-item"><div class="research-dot"></div><p class="research-text">Ramps are poorly built or simply don't exist</p></div>
+          <div class="research-item"><div class="research-dot"></div><p class="research-text">Physical barriers are constant</p></div>
+          <div class="research-item"><div class="research-dot"></div><p class="research-text">Laws exist, but aren't enforced</p></div>
+          <div class="research-item"><div class="research-dot"></div><p class="research-text">Cobblestone streets make wheelchair navigation difficult</p></div>
+          <div class="research-item"><div class="research-dot"></div><p class="research-text">Spaces aren't accessible</p></div>
+          <div class="research-item"><div class="research-dot"></div><p class="research-text">Private transport doesn't guarantee accessibility</p></div>
+        </div>
+      </div>
+
+      <!-- PERSONA -->
+      <div class="section" id="persona">
+        <p class="sec-label">Persona</p>
+        <p class="sec-title">Getting to know the people Addapta was designed for</p>
+        <p class="sec-text">Two personas were developed to represent the range of people Addapta was designed for — different ages, different life contexts, but the same daily struggle with an inaccessible city.</p>
+
+        <div class="persona-grid">
+          <div class="persona-card">
+            <p class="persona-name">Madalena, 32</p>
+            <p class="persona-role">Lawyer · Algés, PT</p>
+            <p class="persona-section-title">Pains</p>
+            <p class="persona-section-text">Limited accessible dining options; unreliable accessibility information; lack of support networks at work.</p>
+            <p class="persona-section-title">Needs</p>
+            <p class="persona-section-text">Accessible local recommendations; parking near her workplace; to live independently without the extra burden her condition often brings.</p>
+            <p class="persona-section-title">Goal</p>
+            <p class="persona-section-text">To live her life fully and independently, without the additional worries her condition creates.</p>
+          </div>
+          <div class="persona-card">
+            <p class="persona-name">Miguel, 45</p>
+            <p class="persona-role">Project Manager · Benfica, Lisboa</p>
+            <p class="persona-section-title">Pains</p>
+            <p class="persona-section-text">Inaccessible public spaces that block his desire to explore; unreliable accessibility information for new locations.</p>
+            <p class="persona-section-title">Needs</p>
+            <p class="persona-section-text">Regular contact with other people with reduced mobility; spaces with proper ramps, adapted restrooms, and accessible parking.</p>
+            <p class="persona-section-title">Goal</p>
+            <p class="persona-section-text">To live life to the fullest, experience new things, and stay present in the lives of those close to him.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROBLEM -->
+      <div class="section" id="problem">
+        <p class="sec-label">Problem</p>
+        <p class="sec-title">From research insights to design direction</p>
+        <p class="sec-text">The User Journey Map, built around Madalena, traced her experience from planning a weekly trip to Lisbon all the way through to reflecting on it. The emotional arc was consistent: anxiety in the planning phase, brief relief when a viable route was found, and frustration when unexpected barriers appeared.</p>
+        <p class="sec-text">These insights converged into five design questions:</p>
+
+        <div class="questions-list">
+          <div class="question-item">How can <strong>accessibility information</strong> be delivered in real time, before and during a trip?</div>
+          <div class="question-item">How can <strong>route planning</strong> feel effortless instead of exhausting?</div>
+          <div class="question-item">How can <strong>users contribute and validate</strong> accessibility data together?</div>
+          <div class="question-item">How can people <strong>discover new accessible places</strong> with confidence?</div>
+          <div class="question-item">How can the experience feel <strong>empowering, not limiting?</strong></div>
+        </div>
+      </div>
+
+      <!-- STRATEGY -->
+      <div class="section" id="strategy">
+        <p class="sec-label">Strategy & Positioning</p>
+        <p class="sec-title">Understanding the market before entering it</p>
+        <p class="sec-text">A SWOT analysis confirmed Addapta's opportunity: an innovative app in an underserved market, with deep personalisation and an inclusion-first certification seal, but dependent on external partnerships to build its data foundation, and exposed to the risk of low initial awareness and future competitors.</p>
+
+        <div class="swot-grid">
+          <div class="swot-card strengths">
+            <p class="swot-title">Strengths</p>
+            <p class="swot-text">Personalisation — allows users to select preferences and individual needs. Promotes inclusion and improvements for minorities. Addapta seal — impact designed for minorities, but visible to all. Offering an innovative app that doesn't yet exist in the market.</p>
+          </div>
+          <div class="swot-card weaknesses">
+            <p class="swot-title">Weaknesses</p>
+            <p class="swot-text">Lack of information that can strengthen our business model. Dependency on partnerships and external companies.</p>
+          </div>
+          <div class="swot-card opportunities">
+            <p class="swot-title">Opportunities</p>
+            <p class="swot-text">Implementation and growth in a non-existent market. Gathering associations and organisations as partners.</p>
+          </div>
+          <div class="swot-card threats">
+            <p class="swot-title">Threats</p>
+            <p class="swot-text">Lack of awareness about our app. New competitors who can imitate the concept. User disengagement.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONCEPT -->
+      <div class="section" id="concept">
+        <p class="sec-label">Concept</p>
+        <p class="sec-title">Navigating the city shouldn't require courage</p>
+        <p class="sec-text">Addapta is a mobile navigation app built from the ground up for people with reduced mobility. Not an accessibility filter added on top of an existing map — a product designed entirely around their needs, from the first screen to the last interaction.</p>
+        <p class="sec-text">The concept is simple: give people the information they actually need, when they need it, so they can move through the city independently and with confidence.</p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <p class="feature-icon">♿</p>
+            <p class="feature-title">Accessible Routes</p>
+            <p class="feature-text">Routes are planned around what actually matters: ramps, elevators, curb cuts, surface quality, and step-free paths. Users can filter by transport mode and save favourite routes.</p>
+          </div>
+          <div class="feature-card">
+            <p class="feature-icon">⚠️</p>
+            <p class="feature-title">Real-time Alerts</p>
+            <p class="feature-text">Real-time alerts about barriers that change daily — broken elevators, blocked ramps, roadworks, events that cut off accessible paths.</p>
+          </div>
+          <div class="feature-card">
+            <p class="feature-icon">💬</p>
+            <p class="feature-title">Ada, the AI Assistant</p>
+            <p class="feature-text">A built-in accessibility assistant that answers questions, suggests alternative routes, and proactively alerts users when conditions on their usual paths change.</p>
+          </div>
+          <div class="feature-card">
+            <p class="feature-icon">⭐</p>
+            <p class="feature-title">Community Reviews</p>
+            <p class="feature-text">Users contribute directly to Addapta's data by rating places and flagging accessibility issues, keeping information accurate and community-validated.</p>
+          </div>
+          <div class="feature-card">
+            <p class="feature-icon">🔖</p>
+            <p class="feature-title">Saved Places</p>
+            <p class="feature-text">Favourite locations and routes saved and organised into custom lists, with nearby accessible recommendations always at hand.</p>
+          </div>
+          <div class="feature-card">
+            <p class="feature-icon">✅</p>
+            <p class="feature-title">The Addapta Seal</p>
+            <p class="feature-text">A certification awarded to places that meet real accessibility standards, visible to all users regardless of mobility — turning inclusion into something the whole city can see and value.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL IDENTITY -->
+      <div class="section" id="identity">
+        <p class="sec-label">Visual Identity</p>
+        <p class="sec-title">A visual identity built around inclusion</p>
+        <p class="sec-text">The Addapta identity was designed to feel confident, warm, and accessible — nothing clinical, nothing cold. The logo combines a rounded, approachable typeface with a custom detail on the "d" that subtly references a wheelchair, connecting the brand to its purpose without being heavy-handed about it.</p>
+        <p class="sec-text">The colour palette tells the same story as the product. Purple tones bring a sense of trust and forward-thinking. Yellow adds energy and warmth, representing the autonomy the app aims to give its users. And Blue rounds out the palette with openness and calm.</p>
+
+        <div class="brand-colors">
+          <div class="brand-color">
+            <div class="color-swatch" style="background:#C8B4E8;"></div>
+            <p class="color-name">Accessible Lavender</p>
+          </div>
+          <div class="brand-color">
+            <div class="color-swatch" style="background:#6B48C8;"></div>
+            <p class="color-name">Mobility Purple</p>
+          </div>
+          <div class="brand-color">
+            <div class="color-swatch" style="background:#4A2D9C;"></div>
+            <p class="color-name">Innovation Violet</p>
+          </div>
+          <div class="brand-color">
+            <div class="color-swatch" style="background:#F5C842;"></div>
+            <p class="color-name">Independent Yellow</p>
+          </div>
+          <div class="brand-color">
+            <div class="color-swatch" style="background:#4A90D9;"></div>
+            <p class="color-name">Inclusive Blue</p>
+          </div>
+          <div class="brand-color">
+            <div class="color-swatch" style="background:#1d1d1d;"></div>
+            <p class="color-name">Black Wheel</p>
+          </div>
+          <div class="brand-color">
+            <div class="color-swatch" style="background:#f5f5f5; border:1px solid #eee;"></div>
+            <p class="color-name">Universal White</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IDEATION -->
+      <div class="section" id="ideation">
+        <p class="sec-label">Ideation</p>
+        <p class="sec-title">Mapping the experience before building it</p>
+        <p class="sec-text">Before moving into high fidelity, the full user flow was mapped, tracing every path a user could take from the moment they open the app to reaching their destination. The flow branches into five main paths: planning a route, checking accessibility warnings, getting help from Ada, contributing reviews, and accessing saved places.</p>
+
+        <p class="sec-title" style="margin-top:40px;">Mid fidelity</p>
+        <p class="sec-text">The screens focused on structure, hierarchy, and interaction logic. Four key screens were developed: Home, with the map area, quick filters, and a live warnings strip; Warnings, with a filterable feed of real-time accessibility alerts in list and map view; Ada, the AI assistant chat interface; and Routes, with transport mode tabs, the recommended route, and inline accessibility warnings.</p>
+
+        <div class="screens-row">
+          <div class="screen-item">
+            <div class="screen-img" style="background:#e8e8e8; display:flex; align-items:center; justify-content:center;">
+              <p style="font-size:12px; color:#999; text-align:center;">Home</p>
+            </div>
+            <p class="screen-caption">Home — map with quick filters and live warnings</p>
+          </div>
+          <div class="screen-item">
+            <div class="screen-img" style="background:#e8e8e8; display:flex; align-items:center; justify-content:center;">
+              <p style="font-size:12px; color:#999; text-align:center;">Warnings</p>
+            </div>
+            <p class="screen-caption">Warnings — filterable accessibility alerts feed</p>
+          </div>
+          <div class="screen-item">
+            <div class="screen-img" style="background:#e8e8e8; display:flex; align-items:center; justify-content:center;">
+              <p style="font-size:12px; color:#999; text-align:center;">Ada</p>
+            </div>
+            <p class="screen-caption">Ada — AI assistant chat interface</p>
+          </div>
+          <div class="screen-item">
+            <div class="screen-img" style="background:#e8e8e8; display:flex; align-items:center; justify-content:center;">
+              <p style="font-size:12px; color:#999; text-align:center;">Routes</p>
+            </div>
+            <p class="screen-caption">Routes — accessible route options with inline warnings</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROTOTYPE & TESTING -->
+      <div class="section" id="prototype">
+        <p class="sec-label">Prototype & Testing</p>
+        <p class="sec-title">Putting the design to the test</p>
+        <p class="sec-text">The interactive prototype was built in Figma, connecting all key screens into a navigable flow — from opening the app and searching for a destination, through checking live warnings, chatting with Ada, and selecting an accessible route.</p>
+
+        <p class="sec-title" style="margin-top:40px;">High fidelity</p>
+        <p class="sec-text">The high fidelity screens were built in Figma with real Lisbon map data, live content, and accessibility-first interaction patterns throughout. Colour, typography, and the Addapta visual identity were applied across all screens, bringing the brand and the interface together into a fully resolved product.</p>
+
+        <div class="hifi-block">
+          <div class="screens-row" style="margin-top:0;">
+            <div class="screen-item">
+              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
+                <p style="font-size:12px; color:white; text-align:center;">Home HiFi</p>
+              </div>
+              <p class="screen-caption">Home</p>
+            </div>
+            <div class="screen-item">
+              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
+                <p style="font-size:12px; color:white; text-align:center;">Warnings HiFi</p>
+              </div>
+              <p class="screen-caption">Warnings</p>
+            </div>
+            <div class="screen-item">
+              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
+                <p style="font-size:12px; color:white; text-align:center;">Ada HiFi</p>
+              </div>
+              <p class="screen-caption">Ada</p>
+            </div>
+            <div class="screen-item">
+              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
+                <p style="font-size:12px; color:white; text-align:center;">Routes HiFi</p>
+              </div>
+              <p class="screen-caption">Routes</p>
+            </div>
+            <div class="screen-item">
+              <div class="screen-img" style="background:#c9b8e8; display:flex; align-items:center; justify-content:center;">
+                <p style="font-size:12px; color:white; text-align:center;">Profile HiFi</p>
+              </div>
+              <p class="screen-caption">Profile</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="sec-text" style="margin-top:32px;">The feedback validated the core concept and surfaced key insights:</p>
+        <div class="testing-list">
+          <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">The app genuinely responds to the real needs of people with reduced mobility</p></div>
+          <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">The interface feels simple and the features are clear</p></div>
+          <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">The warnings feed and community reviews were highlighted as standout features</p></div>
+          <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">The app shows strong potential for use beyond daily routines</p></div>
+          <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">The Addapta seal conveys trust and social value</p></div>
+          <div class="testing-item"><p class="testing-check">✓</p><p class="testing-text">Ada was well received, with a voice version identified as a valuable improvement for in-the-moment assistance</p></div>
+        </div>
+      </div>
+
+      <!-- LEARNINGS -->
+      <div class="section" id="learnings">
+        <p class="sec-label">Learnings</p>
+        <p class="sec-title">What building for inclusion really taught</p>
+
+        <div class="learnings-list">
+          <div class="learning-item">
+            <div class="learning-dot"></div>
+            <p class="learning-text"><strong>Research is everything.</strong> The quality of the final design was directly proportional to the depth of the research. Talking to wheelchair users, reading their frustrations, and observing how they navigate the city made every design decision sharper and more grounded.</p>
+          </div>
+          <div class="learning-item">
+            <div class="learning-dot"></div>
+            <p class="learning-text"><strong>Inclusion is a design challenge, not a checklist.</strong> Accessibility can't be added at the end. It has to be the starting point, from the first flow to the last interaction pattern.</p>
+          </div>
+          <div class="learning-item">
+            <div class="learning-dot"></div>
+            <p class="learning-text"><strong>Community makes the product.</strong> The most valuable insight from testing was that users don't just want to consume information — they want to contribute to it. The warnings feed and review system weren't just features; they were the heart of the product.</p>
+          </div>
+          <div class="learning-item">
+            <div class="learning-dot"></div>
+            <p class="learning-text"><strong>A strong concept needs a strong identity.</strong> Branding Addapta as a confident, warm, city-facing product — not a clinical assistive tool — changed how people related to it. The seal, the name, the colours all worked together to make inclusion feel desirable, not exceptional.</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h3>Let's connect!</h3>
+        <p>Always happy to chat about design over a virtual cup of coffee.</p>
+      </div>
+      <div class="footer-icons">
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="mailto:carmela@email.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Carmela Domingues</p>
+  </footer>
+
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+    // Back to top
+    const backToTop = document.querySelector('.back-to-top');
+    const footer = document.querySelector('footer');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 400) {
+        backToTop.classList.add('visible');
+        const footerTop = footer.getBoundingClientRect().top;
+        backToTop.style.bottom = footerTop < window.innerHeight ? (window.innerHeight - footerTop + 16) + 'px' : '32px';
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Fix sidebar position
+    function fixSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      const menu = document.querySelector('.sidebar-menu');
+      const bodyWrap = document.querySelector('.body-wrap');
+      if (sidebar && menu && bodyWrap) {
+        const rect = sidebar.getBoundingClientRect();
+        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+        menu.style.left = (rect.left + scrollX) + 'px';
+        menu.style.visibility = 'visible';
+      }
+    }
+
+    function handleSidebarVisibility() {
+      const menu = document.querySelector('.sidebar-menu');
+      const bodyWrap = document.querySelector('.body-wrap');
+      if (!menu || !bodyWrap) return;
+      const bodyTop = bodyWrap.getBoundingClientRect().top;
+      menu.style.opacity = bodyTop <= 100 ? '1' : '0';
+    }
+
+    window.addEventListener('load', () => { fixSidebar(); handleSidebarVisibility(); });
+    window.addEventListener('resize', fixSidebar);
+    window.addEventListener('scroll', handleSidebarVisibility);
+    setTimeout(fixSidebar, 100);
+
+    // Sidebar active
+    const sections = document.querySelectorAll('.section');
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+    function updateActiveSection() {
+      let current = sections[0].id;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= 160) current = section.id;
+      });
+      sidebarItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveSection);
+    updateActiveSection();
+  </script>
+
+</body>
+</html>
