@@ -866,21 +866,45 @@
         <p class="sec-title">High fidelity</p>
         <p class="sec-text">The high fidelity screens were built in Figma with real Lisbon map data, live content, and accessibility-first interaction patterns throughout. Colour, typography, and the Adappta visual identity were applied across all screens, bringing the brand and the interface together into a fully resolved product.</p>
 
-        <div class="hifi-block">
-          <div style="display:flex; gap:16px; overflow-x:auto; padding-bottom:8px; margin-bottom:16px;">
-            <div style="flex-shrink:0; text-align:center;"><img src="homeaddapta.png" alt="Home" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Home</p></div>
-            <div style="flex-shrink:0; text-align:center;"><img src="searchaddapta.png" alt="Search" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Search</p></div>
-            <div style="flex-shrink:0; text-align:center;"><img src="route1.png" alt="Route 1" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Routes</p></div>
-            <div style="flex-shrink:0; text-align:center;"><img src="route2.png" alt="Route 2" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Route Detail</p></div>
-            <div style="flex-shrink:0; text-align:center;"><img src="route3.png" alt="Route 3" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Navigation</p></div>
+        <div class="hifi-block" style="display:flex; flex-direction:column; gap:40px;">
+
+          <!-- Row 1: Home + Search | text -->
+          <div style="display:flex; gap:24px; align-items:center;">
+            <div style="display:flex; gap:16px; flex-shrink:0;">
+              <img src="homeaddapta.png" alt="Home" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" />
+              <img src="searchaddapta.png" alt="Search" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" />
+            </div>
+            <p style="font-size:18px; font-weight:300; line-height:1.7; color:#1d1d1d; flex:1;">The map opens immediately, with accessibility quick filters (elevators, accessible cafés, accessible stops) and a live warnings strip at the bottom showing nearby barrier alerts in real time.</p>
           </div>
-          <div style="display:flex; gap:16px; overflow-x:auto; padding-bottom:8px;">
-            <div style="flex-shrink:0; text-align:center;"><img src="route4.png" alt="Route 4" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Arrival</p></div>
-            <div style="flex-shrink:0; text-align:center;"><img src="warning.png" alt="Warnings" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Warnings</p></div>
-            <div style="flex-shrink:0; text-align:center;"><img src="warning2.png" alt="Warning Detail" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Warning Detail</p></div>
-            <div style="flex-shrink:0; text-align:center;"><img src="chatbotaddapta.png" alt="Ada" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Ada</p></div>
-            <div style="flex-shrink:0; text-align:center;"><img src="profile.png" alt="Profile" style="width:180px; height:390px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" /><p style="font-size:12px; font-weight:300; color:#666; margin-top:8px;">Profile</p></div>
+
+          <!-- Row 2: Route 1, 2, 3, 4 | text -->
+          <div style="display:flex; gap:24px; align-items:center;">
+            <p style="font-size:18px; font-weight:300; line-height:1.7; color:#1d1d1d; flex:1;">Users choose between wheelchair, bus, and car modes. Adappta surfaces the recommended route first, with clear time estimates, accessibility confirmation, and inline warnings when barriers like out-of-service elevators affect the journey.</p>
+            <div style="display:flex; gap:16px; flex-shrink:0;">
+              <img src="route1.png" alt="Route 1" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" />
+              <img src="route2.png" alt="Route 2" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" />
+              <img src="route3.png" alt="Route 3" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" />
+              <img src="route4.png" alt="Route 4" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" />
+            </div>
           </div>
+
+          <!-- Row 3: Warnings + Warnings map | text -->
+          <div style="display:flex; gap:24px; align-items:center;">
+            <div style="display:flex; gap:16px; flex-shrink:0;">
+              <img src="warning.png" alt="Warnings" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" />
+              <img src="warning2.png" alt="Warnings Map" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" />
+            </div>
+            <p style="font-size:18px; font-weight:300; line-height:1.7; color:#1d1d1d; flex:1;">A dedicated feed of live accessibility alerts, filterable by type (elevator, route, event, surface), viewable in both list and map mode. Each card includes context, timing, and alternative suggestions.</p>
+          </div>
+
+          <!-- Row 4: Chatbot | text | Profile | text -->
+          <div style="display:flex; gap:24px; align-items:center;">
+            <img src="chatbotaddapta.png" alt="Ada" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12); flex-shrink:0;" />
+            <p style="font-size:18px; font-weight:300; line-height:1.7; color:#1d1d1d; flex:1;">Ada — The AI assistant answers natural language questions, checks real-time accessibility conditions, and suggests alternative routes — all within a conversational interface designed to feel helpful, not clinical.</p>
+            <img src="profile.png" alt="Profile" style="width:215px; height:466px; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.12); flex-shrink:0;" />
+            <p style="font-size:18px; font-weight:300; line-height:1.7; color:#1d1d1d; flex:1;">Users track their saved routes and places, review past trips, rate accessibility, and see their community impact: routes logged, issues reported, and people helped.</p>
+          </div>
+
         </div>
 
         <p class="sec-text" style="margin-top:32px;">The feedback validated the core concept and surfaced key insights:</p>
