@@ -850,14 +850,12 @@
         item.classList.toggle('active', item.getAttribute('href') === `#${sectionId}`);
       });
     }
-
-  let ticking = false;
-
 function updateActiveSection() {
   const currentId = getCurrentSectionId();
   setActiveSidebarItem(currentId);
 }
 
+let ticking = false;
 function onScrollSpy() {
   if (!ticking) {
     window.requestAnimationFrame(() => {
@@ -872,17 +870,18 @@ sidebarItems.forEach(item => {
   item.addEventListener('click', () => {
     const targetId = item.getAttribute('href').replace('#', '');
     setActiveSidebarItem(targetId);
-
-    setTimeout(updateActiveSection, 700);
+    setTimeout(updateActiveSection, 800);
   });
 });
 
 window.addEventListener('scroll', onScrollSpy);
+
 window.addEventListener('hashchange', () => {
   const targetId = window.location.hash.replace('#', '');
   setActiveSidebarItem(targetId);
-  setTimeout(updateActiveSection, 700);
+  setTimeout(updateActiveSection, 800);
 });
+
 window.addEventListener('load', updateActiveSection);
 updateActiveSection();
 
