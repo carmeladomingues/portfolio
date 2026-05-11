@@ -851,54 +851,62 @@
       });
     }
 
-    let isAnchorScrolling = false;
-    let anchorScrollTimer = null;
+  let isAnchorScrolling = false;
+  let anchorScrollTimer = null;
 
-    function updateActiveSection() {
-      if (isAnchorScrolling) return;
-      const currentId = getCurrentSectionId();
-      setActiveSidebarItem(currentId);
-    }
+  function updateActiveSection() {
+    if (isAnchorScrolling) return;
+    const currentId = getCurrentSectionId();
+    setActiveSidebarItem(currentId);
+  }
 
-    function finishAnchorScroll() {
-      isAnchorScrolling = false;
-      updateActiveSection();
-    }
+  function finishAnchorScroll() {
+    clearTimeout(anchorScrollTimer);
+    isAnchorScrolling = false;
+    updateActiveSection();
+  }
 
-    function holdClickedActiveState(sectionId) {
-      setActiveSidebarItem(sectionId);
-      isAnchorScrolling = true;
+  function holdClickedActiveState(sectionId) {
+    setActiveSidebarItem(sectionId);
+    isAnchorScrolling = true;
 
-      clearTimeout(anchorScrollTimer);
-      anchorScrollTimer = setTimeout(finishAnchorScroll, 900);
-    }
+    clearTimeout(anchorScrollTimer);
+    anchorScrollTimer = setTimeout(finishAnchorScroll, 1200);
+  }
 
-    let ticking = false;
-    function onScrollSpy() {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          updateActiveSection();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-
-    sidebarItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const targetId = item.getAttribute('href').replace('#', '');
-        holdClickedActiveState(targetId);
+  let ticking = false;
+  function onScrollSpy() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActiveSection();
+        ticking = false;
       });
-    });
+      ticking = true;
+    }
+  }
 
-    window.addEventListener('scroll', onScrollSpy);
-    window.addEventListener('scrollend', finishAnchorScroll);
-    window.addEventListener('hashchange', () => {
-      const targetId = window.location.hash.replace('#', '');
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const targetId = item.getAttribute('href').replace('#', '');
       holdClickedActiveState(targetId);
     });
-    window.addEventListener('load', updateActiveSection);
-    updateActiveSection();
+  });
+
+  window.addEventListener('scroll', onScrollSpy);
+  window.addEventListener('scrollend', finishAnchorScroll);
+  window.addEventListener('wheel', finishAnchorScroll, { passive: true });
+  window.addEventListener('touchstart', finishAnchorScroll, { passive: true });
+  window.addEventListener('keydown', event => {
+    const scrollKeys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '];
+    if (scrollKeys.includes(event.key)) finishAnchorScroll();
+  });
+
+  window.addEventListener('hashchange', () => {
+    const targetId = window.location.hash.replace('#', '');
+    holdClickedActiveState(targetId);
+  });
+  window.addEventListener('load', updateActiveSection);
+  updateActiveSection();
 
   </script>
 
