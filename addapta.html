@@ -851,67 +851,40 @@
       });
     }
 
-  let pendingTargetId = null;
-
-  function isNearPendingTarget() {
-    if (!pendingTargetId) return true;
-
-    const targetSection = document.getElementById(pendingTargetId);
-    if (!targetSection) return true;
-
-    const targetTop = Math.abs(targetSection.getBoundingClientRect().top - 84);
-    return targetTop < 24;
-  }
-
-  function resumeScrollSpy() {
-    pendingTargetId = null;
-    updateActiveSection();
-  }
-
-  function updateActiveSection() {
-    if (pendingTargetId && !isNearPendingTarget()) return;
-
-    pendingTargetId = null;
-    const currentId = getCurrentSectionId();
-    setActiveSidebarItem(currentId);
-  }
-
   let ticking = false;
-  function onScrollSpy() {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        updateActiveSection();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
 
-  sidebarItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const targetId = item.getAttribute('href').replace('#', '');
-      pendingTargetId = targetId;
-      setActiveSidebarItem(targetId);
+function updateActiveSection() {
+  const currentId = getCurrentSectionId();
+  setActiveSidebarItem(currentId);
+}
+
+function onScrollSpy() {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      updateActiveSection();
+      ticking = false;
     });
-  });
+    ticking = true;
+  }
+}
 
-  window.addEventListener('scroll', onScrollSpy);
-
-  window.addEventListener('wheel', resumeScrollSpy, { passive: true });
-  window.addEventListener('touchstart', resumeScrollSpy, { passive: true });
-  window.addEventListener('keydown', event => {
-    const scrollKeys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '];
-    if (scrollKeys.includes(event.key)) resumeScrollSpy();
-  });
-
-  window.addEventListener('hashchange', () => {
-    const targetId = window.location.hash.replace('#', '');
-    pendingTargetId = targetId;
+sidebarItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const targetId = item.getAttribute('href').replace('#', '');
     setActiveSidebarItem(targetId);
-  });
 
-  window.addEventListener('load', updateActiveSection);
-  updateActiveSection();
+    setTimeout(updateActiveSection, 700);
+  });
+});
+
+window.addEventListener('scroll', onScrollSpy);
+window.addEventListener('hashchange', () => {
+  const targetId = window.location.hash.replace('#', '');
+  setActiveSidebarItem(targetId);
+  setTimeout(updateActiveSection, 700);
+});
+window.addEventListener('load', updateActiveSection);
+updateActiveSection();
 
   </script>
 
