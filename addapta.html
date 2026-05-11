@@ -850,6 +850,22 @@
         item.classList.toggle('active', item.getAttribute('href') === `#${sectionId}`);
       });
     }
+    function getCurrentSectionId() {
+  if (!sections.length) return null;
+
+  const triggerLine = window.innerHeight * 0.35;
+  let currentId = sections[0].id;
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top <= triggerLine) {
+      currentId = section.id;
+    }
+  });
+
+  return currentId;
+}
 function updateActiveSection() {
   const currentId = getCurrentSectionId();
   setActiveSidebarItem(currentId);
