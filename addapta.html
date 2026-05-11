@@ -1033,28 +1033,24 @@
       if (!sections.length) return null;
 
       const topOffset = 140;
+      const bottomOffset = window.innerHeight - 40;
       let currentId = sections[0].id;
-      let minDistance = Infinity;
+      let maxVisibleHeight = 0;
 
       sections.forEach(section => {
-        const rectTop = section.getBoundingClientRect().top;
-        const distance = Math.abs(rectTop - topOffset);
+        const rect = section.getBoundingClientRect();
+        const visibleTop = Math.max(rect.top, topOffset);
+        const visibleBottom = Math.min(rect.bottom, bottomOffset);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
 
-        if (rectTop <= topOffset + 40) {
+        if (visibleHeight > maxVisibleHeight) {
           currentId = section.id;
-        }
-
-        if (distance < minDistance && rectTop > topOffset - 200) {
-          minDistance = distance;
+          maxVisibleHeight = visibleHeight;
         }
       });
 
-      const passedSections = sections.filter(section => section.getBoundingClientRect().top <= topOffset + 40);
-      if (passedSections.length) {
-        return passedSections[passedSections.length - 1].id;
-      }
-
       return currentId;
+
     }
 
     function updateActiveSection() {
