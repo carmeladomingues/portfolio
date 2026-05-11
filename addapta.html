@@ -966,33 +966,26 @@
       });
     }
 
-    function getCurrentSectionId() {
-      if (!sections.length) return null;
-
-      const topOffset = 140;
-      const bottomOffset = window.innerHeight - 40;
-      let currentId = sections[0].id;
-      let maxVisibleHeight = 0;
-
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const visibleTop = Math.max(rect.top, topOffset);
-        const visibleBottom = Math.min(rect.bottom, bottomOffset);
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-
-        if (visibleHeight > maxVisibleHeight) {
-          currentId = section.id;
-          maxVisibleHeight = visibleHeight;
-        }
-      });
-
-      return currentId;
-
-    }
+    let isAnchorScrolling = false;
+    let anchorScrollTimer = null;
 
     function updateActiveSection() {
+      if (isAnchorScrolling) return;
       const currentId = getCurrentSectionId();
       setActiveSidebarItem(currentId);
+    }
+
+    function finishAnchorScroll() {
+      isAnchorScrolling = false;
+      updateActiveSection();
+    }
+
+    function holdClickedActiveState(sectionId) {
+      setActiveSidebarItem(sectionId);
+      isAnchorScrolling = true;
+
+      clearTimeout(anchorScrollTimer);
+      anchorScrollTimer = setTimeout(finishAnchorScroll, 900);
     }
 
     let ticking = false;
@@ -1009,18 +1002,19 @@
     sidebarItems.forEach(item => {
       item.addEventListener('click', () => {
         const targetId = item.getAttribute('href').replace('#', '');
-        setActiveSidebarItem(targetId);
+        holdClickedActiveState(targetId);
       });
     });
 
     window.addEventListener('scroll', onScrollSpy);
+    window.addEventListener('scrollend', finishAnchorScroll);
     window.addEventListener('hashchange', () => {
       const targetId = window.location.hash.replace('#', '');
-      setActiveSidebarItem(targetId);
-      setTimeout(updateActiveSection, 120);
+      holdClickedActiveState(targetId);
     });
     window.addEventListener('load', updateActiveSection);
     updateActiveSection();
+
   </script>
 
 </body>
