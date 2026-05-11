@@ -851,27 +851,29 @@
       });
     }
 
-  let isAnchorScrolling = false;
-  let anchorScrollTimer = null;
+  let pendingTargetId = null;
 
-  function updateActiveSection() {
-    if (isAnchorScrolling) return;
-    const currentId = getCurrentSectionId();
-    setActiveSidebarItem(currentId);
+  function isNearPendingTarget() {
+    if (!pendingTargetId) return true;
+
+    const targetSection = document.getElementById(pendingTargetId);
+    if (!targetSection) return true;
+
+    const targetTop = Math.abs(targetSection.getBoundingClientRect().top - 84);
+    return targetTop < 24;
   }
 
-  function finishAnchorScroll() {
-    clearTimeout(anchorScrollTimer);
-    isAnchorScrolling = false;
+  function resumeScrollSpy() {
+    pendingTargetId = null;
     updateActiveSection();
   }
 
-  function holdClickedActiveState(sectionId) {
-    setActiveSidebarItem(sectionId);
-    isAnchorScrolling = true;
+  function updateActiveSection() {
+    if (pendingTargetId && !isNearPendingTarget()) return;
 
-    clearTimeout(anchorScrollTimer);
-    anchorScrollTimer = setTimeout(finishAnchorScroll, 1200);
+    pendingTargetId = null;
+    const currentId = getCurrentSectionId();
+    setActiveSidebarItem(currentId);
   }
 
   let ticking = false;
@@ -888,23 +890,26 @@
   sidebarItems.forEach(item => {
     item.addEventListener('click', () => {
       const targetId = item.getAttribute('href').replace('#', '');
-      holdClickedActiveState(targetId);
+      pendingTargetId = targetId;
+      setActiveSidebarItem(targetId);
     });
   });
 
   window.addEventListener('scroll', onScrollSpy);
-  window.addEventListener('scrollend', finishAnchorScroll);
-  window.addEventListener('wheel', finishAnchorScroll, { passive: true });
-  window.addEventListener('touchstart', finishAnchorScroll, { passive: true });
+
+  window.addEventListener('wheel', resumeScrollSpy, { passive: true });
+  window.addEventListener('touchstart', resumeScrollSpy, { passive: true });
   window.addEventListener('keydown', event => {
     const scrollKeys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '];
-    if (scrollKeys.includes(event.key)) finishAnchorScroll();
+    if (scrollKeys.includes(event.key)) resumeScrollSpy();
   });
 
   window.addEventListener('hashchange', () => {
     const targetId = window.location.hash.replace('#', '');
-    holdClickedActiveState(targetId);
+    pendingTargetId = targetId;
+    setActiveSidebarItem(targetId);
   });
+
   window.addEventListener('load', updateActiveSection);
   updateActiveSection();
 
