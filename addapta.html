@@ -1019,20 +1019,74 @@
     setTimeout(fixSidebar, 100);
 
     // Sidebar active
-    const sections = document.querySelectorAll('.section');
-    const sidebarItems = document.querySelectorAll('.sidebar-item');
+    const sections = Array.from(document.querySelectorAll('.section'));
+    const sidebarItems = Array.from(document.querySelectorAll('.sidebar-item'));
 
-    function updateActiveSection() {
-      let current = sections[0].id;
-      sections.forEach(section => {
-        if (section.getBoundingClientRect().top <= 160) current = section.id;
-      });
+    function setActiveSidebarItem(sectionId) {
+      if (!sectionId) return;
       sidebarItems.forEach(item => {
-        item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+        item.classList.toggle('active', item.getAttribute('href') === `#${sectionId}`);
       });
     }
 
-    window.addEventListener('scroll', updateActiveSection);
+    function getCurrentSectionId() {
+      if (!sections.length) return null;
+
+      const topOffset = 140;
+      let currentId = sections[0].id;
+      let minDistance = Infinity;
+
+      sections.forEach(section => {
+        const rectTop = section.getBoundingClientRect().top;
+        const distance = Math.abs(rectTop - topOffset);
+
+        if (rectTop <= topOffset + 40) {
+          currentId = section.id;
+        }
+
+        if (distance < minDistance && rectTop > topOffset - 200) {
+          minDistance = distance;
+        }
+      });
+
+      const passedSections = sections.filter(section => section.getBoundingClientRect().top <= topOffset + 40);
+      if (passedSections.length) {
+        return passedSections[passedSections.length - 1].id;
+      }
+
+      return currentId;
+    }
+
+    function updateActiveSection() {
+      const currentId = getCurrentSectionId();
+      setActiveSidebarItem(currentId);
+    }
+
+    let ticking = false;
+    function onScrollSpy() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const targetId = item.getAttribute('href').replace('#', '');
+        setActiveSidebarItem(targetId);
+      });
+    });
+
+    window.addEventListener('scroll', onScrollSpy);
+    window.addEventListener('hashchange', () => {
+      const targetId = window.location.hash.replace('#', '');
+      setActiveSidebarItem(targetId);
+      setTimeout(updateActiveSection, 120);
+    });
+    window.addEventListener('load', updateActiveSection);
     updateActiveSection();
   </script>
 
