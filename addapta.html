@@ -177,11 +177,11 @@
     .swot-text { font-size: 15px; font-weight: 300; line-height: 1.7; }
 
     /* Features */
-    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
-    .feature-card { border: 1.3px solid var(--accent-border); border-radius: 16px; padding: 24px; }
-    .feature-icon { font-size: 24px; margin-bottom: 12px; }
-    .feature-title { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
-    .feature-text { font-size: 16px; font-weight: 300; line-height: 1.6; color: var(--text-light); }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+.feature-card { border: 1.3px solid var(--accent-border); border-radius: 16px; padding: 20px; }
+.feature-icon { font-size: 20px;  margin-bottom: 10px; }
+.feature-title { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+.feature-text { font-size: 14px; font-weight: 300; line-height: 1.5; color: var(--text-light); }
 
     /* Brand colors */
     .brand-colors { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
@@ -542,6 +542,11 @@
             <p class="feature-title">Accessible Routes</p>
             <p class="feature-text">Routes are planned around what actually matters: ramps, elevators, curb cuts, surface quality, and step-free paths. Users can filter by transport mode and save favourite routes.</p>
           </div>
+           <div class="feature-card">
+            <p class="feature-icon">⚡️</p>
+            <p class="feature-title">Physical effort & slope detection</p>
+            <p class="feature-text">Routes are evaluated based on incline levels, terrain conditions and physical effort required during navigation, helping users choose paths that better match their mobility needs.</p>
+          </div>
           <div class="feature-card">
             <p class="feature-icon">⚠️</p>
             <p class="feature-title">Real-time Alerts</p>
@@ -557,15 +562,10 @@
             <p class="feature-title">Community Reviews</p>
             <p class="feature-text">Users contribute directly to Addapta's data by rating places and flagging accessibility issues, keeping information accurate and community-validated.</p>
           </div>
-          <div class="feature-card">
+           <div class="feature-card">
             <p class="feature-icon">🔖</p>
             <p class="feature-title">Saved Places</p>
             <p class="feature-text">Favourite locations and routes saved and organised into custom lists, with nearby accessible recommendations always at hand.</p>
-          </div>
-          <div class="feature-card">
-            <p class="feature-icon">✅</p>
-            <p class="feature-title">The Addapta Seal</p>
-            <p class="feature-text">A certification awarded to places that meet real accessibility standards, visible to all users regardless of mobility — turning inclusion into something the whole city can see and value.</p>
           </div>
         </div>
       </div>
