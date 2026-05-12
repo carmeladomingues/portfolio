@@ -664,90 +664,98 @@
   To make route accessibility easier to understand at a glance, Adappta introduced a colour-based scoring system and contextual terrain tags. Together, they helped users quickly evaluate physical effort, accessibility barriers, and route suitability before starting navigation.
 </p>
 
-<!-- Accessibility score system -->
-<div style="margin-top:32px;">
+<!-- Accessibility score system + terrain tags -->
+<div style="display:grid; grid-template-columns:1.4fr 1fr; gap:40px; align-items:start; margin-top:32px;">
 
-  <h3 style="font-size:28px; font-weight:500; margin-bottom:20px;">
-    Accessibility score system
-  </h3>
+  <!-- LEFT COLUMN -->
+  <div>
 
-  <div style="border:1.2px solid var(--accent-border); border-radius:20px; overflow:hidden;">
+    <h3 style="font-size:24px; font-weight:500; margin-bottom:20px;">
+      Accessibility score system
+    </h3>
 
-    <div style="display:grid; grid-template-columns:0.7fr 1.8fr 1fr; padding:18px 22px; font-weight:500; border-bottom:1px solid var(--accent-border);">
-      <p>Label</p>
-      <p>Colour</p>
-    </div>
+    <div style="border:1.2px solid var(--accent-border); border-radius:20px; overflow:hidden;">
 
-    <div style="display:grid; grid-template-columns:0.7fr 1.8fr 1fr; padding:18px 22px; border-bottom:1px solid var(--accent-border);">
-      <p>Fully accessible</p>
-      <p>🟢 Green</p>
-    </div>
+      <div style="display:grid; grid-template-columns:1.8fr 1fr; padding:14px 18px; font-weight:500; border-bottom:1px solid var(--accent-border);">
+        <p>Label</p>
+        <p>Colour</p>
+      </div>
 
-    <div style="display:grid; grid-template-columns:0.7fr 1.8fr 1fr; padding:18px 22px; border-bottom:1px solid var(--accent-border);">
-      <p>Low effort</p>
-      <p>🟢 Light green</p>
-    </div>
+      <div style="display:grid; grid-template-columns:1.8fr 1fr; padding:14px 18px; border-bottom:1px solid var(--accent-border);">
+        <p>Fully accessible</p>
+        <p>🟢 Green</p>
+      </div>
 
-    <div style="display:grid; grid-template-columns:0.7fr 1.8fr 1fr; padding:18px 22px; border-bottom:1px solid var(--accent-border);">
-      <p>Moderate effort</p>
-      <p>🟡 Yellow</p>
-    </div>
+      <div style="display:grid; grid-template-columns:1.8fr 1fr; padding:14px 18px; border-bottom:1px solid var(--accent-border);">
+        <p>Low effort</p>
+        <p>🟢 Light green</p>
+      </div>
 
-    <div style="display:grid; grid-template-columns:0.7fr 1.8fr 1fr; padding:18px 22px; border-bottom:1px solid var(--accent-border);">
-      <p>High effort</p>
-      <p>🟠 Orange</p>
-    </div>
+      <div style="display:grid; grid-template-columns:1.8fr 1fr; padding:14px 18px; border-bottom:1px solid var(--accent-border);">
+        <p>Moderate effort</p>
+        <p>🟡 Yellow</p>
+      </div>
 
-    <div style="display:grid; grid-template-columns:0.7fr 1.8fr 1fr; padding:18px 22px;">
-      <p>Not recommended</p>
-      <p>🔴 Red</p>
+      <div style="display:grid; grid-template-columns:1.8fr 1fr; padding:14px 18px; border-bottom:1px solid var(--accent-border);">
+        <p>High effort</p>
+        <p>🟠 Orange</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1.8fr 1fr; padding:14px 18px;">
+        <p>Not recommended</p>
+        <p>🔴 Red</p>
+      </div>
+
     </div>
 
   </div>
 
-  <!-- Terrain tags -->
-  <h3 style="font-size:28px; font-weight:500; margin-top:48px; margin-bottom:20px;">
-    Terrain tags
-  </h3>
+  <!-- RIGHT COLUMN -->
+  <div>
 
-  <div style="display:flex; flex-wrap:wrap; gap:12px;">
+    <h3 style="font-size:24px; font-weight:500; margin-bottom:20px;">
+      Terrain tags
+    </h3>
 
-    <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:10px 16px;">
-      Smooth sidewalks
-    </span>
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
 
-    <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:10px 16px;">
-      Elevator access
-    </span>
+      <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:8px 14px; font-size:15px;">
+        Smooth sidewalks
+      </span>
 
-    <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:10px 16px;">
-      Flat terrain
-    </span>
+      <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:8px 14px; font-size:15px;">
+        Elevator access
+      </span>
 
-    <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:10px 16px;">
-      Moderate slope
-    </span>
+      <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:8px 14px; font-size:15px;">
+        Flat terrain
+      </span>
 
-    <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:10px 16px;">
-      Medium effort
-    </span>
+      <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:8px 14px; font-size:15px;">
+        Moderate slope
+      </span>
 
-    <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:10px 16px;">
-      Steep streets ahead
-    </span>
+      <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:8px 14px; font-size:15px;">
+        Medium effort
+      </span>
 
-    <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:10px 16px;">
-      Cobblestone sections
-    </span>
+      <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:8px 14px; font-size:15px;">
+        Steep streets ahead
+      </span>
 
-    <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:10px 16px;">
-      No accessible entrance
-    </span>
+      <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:8px 14px; font-size:15px;">
+        Cobblestone sections
+      </span>
+
+      <span style="border:1.3px solid var(--accent-border); border-radius:999px; padding:8px 14px; font-size:15px;">
+        No accessible entrance
+      </span>
+
+    </div>
 
   </div>
 
 </div>
-      </div>
 
       <!-- PROTOTYPE & TESTING -->
       <div class="section" id="prototype">
