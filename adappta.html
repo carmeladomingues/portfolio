@@ -212,6 +212,96 @@
     .learning-text { font-size: 18px; font-weight: 300; line-height: 1.7; }
     .learning-text strong { font-weight: 500; }
 
+   /* ── NEXT PROJECT ── */
+    .next-project {
+  padding: 140px var(--margin) 40px;
+}
+
+.next-project-card {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+
+  border: 1px solid rgba(232,165,152,0.35);
+  border-radius: 36px;
+
+  padding: 34px;
+}
+
+.next-project-img {
+  width: 430px;
+  height: 250px;
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  flex-shrink: 0;
+
+  background: #f5f1ef;
+}
+
+.next-project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.next-project-info {
+  flex: 1;
+}
+
+.next-project-title {
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1.08;
+
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.next-project-desc {
+  font-size: 22px;
+  line-height: 1.5;
+
+  max-width: 720px;
+
+  margin-bottom: 34px;
+}
+
+.next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+
+  text-decoration: none;
+  color: #1d1d1d;
+}
+
+.next-link svg {
+  width: 42px;
+  height: 42px;
+
+  transition: transform 0.2s ease;
+}
+
+.next-link span {
+  font-size: 28px;
+  font-weight: 300;
+
+  border-bottom: 1px solid #1d1d1d;
+  padding-bottom: 4px;
+
+  transition: opacity 0.2s ease;
+}
+
+.next-link:hover svg {
+  transform: translateX(4px);
+}
+
+.next-link:hover span {
+  opacity: 0.6;
+}
+
     /* ── FOOTER ── */
     footer {
       border-top: 0.5px solid rgba(29,29,29,0.5);
@@ -1002,9 +1092,48 @@
     <strong>A strong concept needs a strong identity</strong>
 The name, seal, colours, and tone helped position Adappta as confident, warm, and city-facing rather than clinical.
   </p>
+        </div>
 </div>
+</div>
+
+<!-- NEXT PROJECT -->
+<section class="next-project">
+  <section class="next-project">
+
+  <div class="next-project-card">
+
+    <div class="next-project-img">
+      <img src="Instagram-menor.png" alt="Instagram Events preview">
+    </div>
+
+    <div class="next-project-info">
+
+      <h2 class="next-project-title">
+        Your Next Event On Instagram
+      </h2>
+
+      <p class="next-project-desc">
+        This case study brings a seamless way to discover,
+        share, and plan events, making it personal,
+        interactive, and social.
+      </p>
+
+      <a class="next-link" href="instagram.html">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.7">
+          <path d="M5 12h14M13 5l7 7-7 7"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+        </svg>
+
+        <span>view case study</span>
+
+      </a>
+
+    </div>
   </div>
-</div>
+
+</section>
 
     </main>
   </div>
