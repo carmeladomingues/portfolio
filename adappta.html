@@ -247,77 +247,84 @@ nav.scrolled {
     .learning-text { font-size: 18px; font-weight: 300; line-height: 1.7; }
     .learning-text strong { font-weight: 500; }
 
-   /* ── NEXT PROJECT ── */
+/* ── NEXT PROJECT ── */
 .next-project {
-  padding: 90px var(--margin) 40px;
+  margin: 90px 0 40px;
+  padding: 0;
 }
 
 .next-project-card {
+  width: 100%;
   max-width: 956px;
   margin: 0 auto;
-
   display: flex;
   align-items: center;
-  gap: 22px;
-
+  gap: 28px;
+  padding: 30px;
   border: 1px solid #ffe8e3;
   border-radius: 40px;
-  padding: 30px;
+  background: #fff;
 }
 
 .next-project-img {
   width: 364px;
   height: 218px;
-  border-radius: 40px;
+  flex: 0 0 364px;
+  border-radius: 32px;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
 .next-project-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .next-project-info {
   flex: 1;
+  min-width: 0;
 }
 
 .next-project-title {
   font-size: 32px;
-  line-height: 1.2;
+  line-height: 1.15;
   font-weight: 400;
-  margin-bottom: 2px;
-}
-
-.next-project-title strong {
-  font-weight: 500;
+  margin-bottom: 12px;
 }
 
 .next-project-desc {
   font-size: 20px;
-  line-height: 1.35;
-  margin-bottom: 27px;
+  line-height: 1.4;
+  font-weight: 300;
+  margin-bottom: 20px;
 }
 
 .next-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
+  width: fit-content;
   font-size: 20px;
+  font-weight: 400;
   color: #000;
   text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 .next-link svg {
-  display: none;
+  width: 22px;
+  height: 22px;
+  display: block;
+  transition: transform 0.2s ease;
 }
 
-.next-link span {
-  border-bottom: none;
-  padding-bottom: 0;
-  font-size: 20px;
+.next-link:hover {
+  opacity: 0.55;
+}
+
+.next-link:hover svg {
+  transform: translateX(4px);
 }
 
     /* ── FOOTER ── */
@@ -1142,45 +1149,27 @@ The name, seal, colours, and tone helped position Adappta as confident, warm, an
 
 <!-- NEXT PROJECT -->
 <section class="next-project">
-  <section class="next-project">
-
   <div class="next-project-card">
-
     <div class="next-project-img">
       <img src="Instagram-menor.png" alt="Instagram Events preview">
     </div>
 
     <div class="next-project-info">
-
-      <h2 class="next-project-title">
-        Your Next Event On Instagram
-      </h2>
+      <h2 class="next-project-title">Your Next Event On Instagram</h2>
 
       <p class="next-project-desc">
-        This case study brings a seamless way to discover,
-        share, and plan events, making it personal,
-        interactive, and social.
+        This case study brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.
       </p>
 
       <a class="next-link" href="instagram.html">
-
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.7">
-          <path d="M5 12h14M13 5l7 7-7 7"
-            stroke-linecap="round"
-            stroke-linejoin="round"/>
+        <span>next case study</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-
-        <span> next case study</span>
-
       </a>
-
     </div>
   </div>
-
 </section>
-
-    </main>
-  </div>
 
   <!-- FOOTER -->
    <footer>
