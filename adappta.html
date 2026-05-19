@@ -336,43 +336,40 @@ nav.scrolled {
 }
 
     /* ── FOOTER ── */
-   footer {
-  margin-top: 40px;
-  padding: 32px 120px;
-  border-top: 0.5px solid rgba(29,29,29,0.12);
+footer {
+  border-top: 0.5px solid rgba(29,29,29,0.08);
+  margin-top: 120px;
+  padding: 28px var(--margin);
 }
 
-.footer-line {
+.footer-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-.footer-line p {
-  font-size: 12px;
-  letter-spacing: 0.18em;
+.footer-copy {
+  font-size: 13px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: #1d1d1d;
 }
 
-.footer-links {
+.footer-icons {
   display: flex;
-  gap: 24px;
+  align-items: center;
+  gap: 26px;
 }
 
-.footer-links a {
-  color: #1d1d1d;
+.footer-icons a {
+  color: var(--text);
   display: flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.2s ease;
 }
 
-.footer-links a:hover {
+.footer-icons a:hover {
   opacity: 0.5;
-}
-
-.footer-links svg {
-  width: 24px;
-  height: 24px;
 }
 
     /* ── BACK TO TOP ── */
@@ -1179,33 +1176,34 @@ The name, seal, colours, and tone helped position Adappta as confident, warm, an
 </section>
 
   <!-- FOOTER -->
-   <footer>
-  <div class="footer-line">
-    <p>© all rights reserved to carmela domingues</p>
+<footer>
+  <div class="footer-inner">
 
-    <div class="footer-links">
-  <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-      <circle cx="4" cy="4" r="2"/>
-    </svg>
-  </a>
+    <div class="footer-copy">
+      © ALL RIGHTS RESERVED TO CARMELA DOMINGUES
+    </div>
 
-  <a href="mailto:carmeladomingues@outlook.com" aria-label="Email">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-    </svg>
-  </a>
-</div>
+    <div class="footer-icons">
+
+      <a href="YOUR LINKEDIN" target="_blank" aria-label="LinkedIn">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4.98 3.5C4.98 4.60457 4.08457 5.5 2.98 5.5C1.87543 5.5 0.98 4.60457 0.98 3.5C0.98 2.39543 1.87543 1.5 2.98 1.5C4.08457 1.5 4.98 2.39543 4.98 3.5ZM5 8H1V24H5V8ZM8 8H12V10.2H12.1C12.7 9.1 14.2 7.9 16.4 7.9C21 7.9 22 10.9 22 15V24H18V16.2C18 14.3 18 11.9 15.4 11.9C12.8 11.9 12.4 13.9 12.4 16V24H8V8Z"/>
+        </svg>
+      </a>
+
+      <a href="mailto:YOUR EMAIL" aria-label="Email">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2 4H22V20H2V4ZM20 8.236L12 13.236L4 8.236V18H20V8.236ZM4.618 6L12 10.618L19.382 6H4.618Z"/>
+        </svg>
+      </a>
+
+    </div>
+
+  </div>
 </footer>
 
-  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
-      <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-
   <script>
+    
     // Back to top
     const backToTop = document.querySelector('.back-to-top');
     const footer = document.querySelector('footer');
