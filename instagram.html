@@ -203,16 +203,59 @@
     .insight-col-text { font-weight: 300; line-height: 1.6; }
 
     /* Hypothesis cards */
-    .hyp-row { display: flex; gap: 60px; align-items: center; margin-top: 24px; }
-    .hyp-intro { font-size: 18px; font-weight: 300; width: 204px; }
-    .hyp-cards { display: flex; gap: 60px; }
-    .hyp-card {
-      background: var(--card-bg); border-radius: 20px;
-      box-shadow: 4px 0px 10px 2px rgba(0,0,0,0.1);
-      padding: 35px 21px; width: 228px; height: 208px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hyp-card p { font-size: 18px; font-weight: 300; line-height: 1.6; width: 177px; }
+   /* Hypothesis */
+.hyp-row {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.hyp-intro {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 220px;
+}
+
+.hyp-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid rgba(29,29,29,0.12);
+}
+
+.hyp-card {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  height: auto;
+  padding: 28px 0;
+
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 28px;
+  align-items: start;
+
+  border-bottom: 1px solid rgba(29,29,29,0.12);
+}
+
+.hyp-number {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--text-light);
+}
+
+.hyp-card p {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.45;
+  max-width: 620px;
+}
 
     /* Persona */
     .persona-quote {
@@ -491,16 +534,22 @@ footer {
         <p class="sec-label">Hypothesis</p>
         <p class="sec-title">Proof of concept</p>
         <div class="hyp-row">
-          <p class="hyp-intro">From the research, two hypotheses emerged:</p>
-          <div class="hyp-cards">
-            <div class="hyp-card">
-              <p>Consolidating event information into a single platform would increase community engagement.</p>
-            </div>
-            <div class="hyp-card">
-              <p>Integrating interaction tools into event platforms would help attendees connect and reduce feelings of isolation.</p>
-            </div>
-          </div>
-        </div>
+  <p class="hyp-intro">From the research, two hypotheses emerged:</p>
+  <div class="hyp-cards">
+    <div class="hyp-card">
+      <span class="hyp-number">01</span>
+      <p>
+        Consolidating event information into a single platform would increase community engagement.
+      </p>
+    </div>
+    <div class="hyp-card">
+      <span class="hyp-number">02</span>
+      <p>
+        Integrating interaction tools into event platforms would help attendees connect and reduce feelings of isolation.
+      </p>
+    </div>
+  </div>
+</div>
         <p class="sec-text" style="margin-top:24px">To validate these hypotheses, I interviewed a small group of friends who are heavy Instagram users. Most expressed nostalgia for Facebook's event features and said they find it tedious to search for party accounts just to see what's happening on the weekends. I also used Instagram Stories' Questions feature to gather broader feedback from my followers, asking whether they missed having an events feature on the platform. The responses confirmed there was a real appetite for it.</p>
       </div>
 
