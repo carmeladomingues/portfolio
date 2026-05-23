@@ -7,7 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
-  <style>
+    <style>
+    @font-face {
+      font-family: 'Aveburg';
+      src: url('Aveburg-Grande-Demo.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -17,6 +24,8 @@
       --text-light: rgba(79,78,78,0.67);
       --bg: #ffffff;
       --font: 'DM Sans', sans-serif;
+      --font-display: 'Aveburg', serif;
+      --color-text: #1d1d1d;
       --margin: 120px;
       --orange: #FF6633;
     }
