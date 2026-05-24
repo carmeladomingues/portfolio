@@ -98,17 +98,19 @@
     /* ── SIDEBAR ── */
     .sidebar { width: 220px; flex-shrink: 0; }
 
-    .sidebar-menu {
-      position: sticky;
-      top: 100px;
-      width: 220px;
-      background: rgba(245,245,245,0.4);
-      border-radius: 20px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+   .sidebar-menu {
+  position: sticky;
+  top: 100px;
+  width: 220px;
+  background: rgba(245,245,245,0.4);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: auto;
+  overflow: visible;
+}
 
     .sidebar-item {
       font-size: 14px; font-weight: 400; color: #999;
@@ -1270,7 +1272,7 @@ footer {
           <p class="subproject-title">Games</p>
           <span class="subproject-type">Social media</span>
         </div>
-        <div class="img-grid-3">
+        <div class="img-grid-3 img-grid-contain">
           <div class="img-placeholder">
             <img src="g1.avif" alt="Games" />
           </div>
