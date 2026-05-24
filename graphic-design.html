@@ -453,7 +453,7 @@
     .back-to-top.visible { opacity: 1; pointer-events: all; }
     .back-to-top:hover { background: var(--text); }
     .back-to-top:hover svg path { stroke: white; }
-    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+    .back-to-top svg { width: 20px; height: 20px; }
   </style>
 </head>
 <body>
@@ -1037,8 +1037,23 @@
 
   // Back to top
   const btn = document.getElementById('backToTop');
+  const footer = document.querySelector('footer');
+
   window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 600);
+    const scrollY = window.scrollY;
+
+    btn.classList.toggle('visible', scrollY > 600);
+
+    if (scrollY > 600) {
+      const footerTop = footer.getBoundingClientRect().top;
+      const windowH = window.innerHeight;
+
+      if (footerTop < windowH) {
+        btn.style.bottom = (windowH - footerTop + 16) + 'px';
+      } else {
+        btn.style.bottom = '32px';
+      }
+    }
   });
 </script>
 
