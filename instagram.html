@@ -426,26 +426,22 @@
     /* Benchmarking */
     .benchmark-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 28px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px 32px;
+      margin-top: 32px;
     }
 
     .bench-item {
-      border: 1.3px solid var(--accent-border);
-      border-radius: 20px;
-      padding: 18px;
-      background: #fff;
       display: flex;
-      flex-direction: column;
-      gap: 14px;
+      align-items: center;
+      gap: 18px;
     }
 
     .bench-img {
       width: 118px;
       height: 242px;
-      margin: 0 auto;
-      border-radius: 14px;
+      flex: 0 0 118px;
+      border-radius: 18px;
       background: #d9d9d9;
       overflow: hidden;
     }
@@ -459,16 +455,22 @@
     }
 
     .bench-info {
+      flex: 1;
+      min-width: 0;
+      border: 1.3px solid var(--accent-border);
+      border-radius: 20px;
+      padding: 20px;
+      background: #fff;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .bench-name {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 500;
       line-height: 1.2;
-      text-align: center;
+      margin-bottom: 2px;
     }
 
     .bench-card {
@@ -795,6 +797,7 @@
         <p class="sec-text">Before diving into design, I played detective and looked at what competitors were already doing, especially since most users I interviewed mentioned Facebook with nostalgia.</p>
         <p class="sec-text">I analyzed the mobile version of four competitors to gather insights and shape the feature.</p>
 
+        <div class="benchmark-grid">
         <div class="bench-item">
           <div class="bench-img">
             <img src="https://www.figma.com/api/mcp/asset/1ada01b2-e4dc-4018-bfda-f51cc3949ea6" alt="Ingresse" />
@@ -816,6 +819,7 @@
           </div>
         </div>
 
+        <div class="benchmark-grid">
         <div class="bench-item">
           <div class="bench-img">
             <img src="https://www.figma.com/api/mcp/asset/ee49cf04-b84d-470d-be55-1c238be45438" alt="Sympla" />
@@ -837,6 +841,7 @@
           </div>
         </div>
 
+        <div class="benchmark-grid">
         <div class="bench-item">
           <div class="bench-img">
             <img src="https://www.figma.com/api/mcp/asset/fa8a284f-ee8e-4a34-a5fd-b5d439011b94" alt="Baladapp" />
@@ -852,6 +857,7 @@
           </div>
         </div>
 
+        <div class="benchmark-grid">
         <div class="bench-item">
           <div class="bench-img">
             <img src="https://www.figma.com/api/mcp/asset/360b776b-025b-4b6d-8246-dba3c5d15eb2" alt="Facebook" />
@@ -866,6 +872,7 @@
             </div>
           </div>
         </div>
+       </div>
 
         <!-- Userflow -->
         <p class="sec-title" style="margin-top:50px">Userflow</p>
