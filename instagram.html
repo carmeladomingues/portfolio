@@ -374,16 +374,54 @@
 
     .persona-section-text { font-size: 15px; font-weight: 300; line-height: 1.6; }
 
-    /* Goals grid */
-    .goals-grid { display: flex; gap: 22px; margin-top: 24px; }
-    .goals-col { display: flex; flex-direction: column; gap: 15px; width: 282px; }
-    .goal-card {
-      background: var(--accent); border-radius: 20px;
-      padding: 25px; display: flex; gap: 10px; align-items: center;
+      /* Goals grid */
+    .creation-highlight {
+      background: var(--accent);
+      border-radius: 20px;
+      padding: 30px 29px;
+      margin: 24px 0;
     }
-    .goal-num { font-size: 36px; font-weight: 700; flex-shrink: 0; }
-    .goal-text { font-size: 18px; font-weight: 300; line-height: 1.6; }
-    .goal-text strong { font-weight: 400; }
+
+    .creation-highlight p {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .creation-highlight strong { font-weight: 500; }
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .goal-card {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 16px;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .goal-icon {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .goal-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .goal-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--text-light);
+    }
 
     /* Benchmarking */
     .bench-item { display: flex; gap: 15px; align-items: center; margin-bottom: 32px; }
@@ -648,39 +686,48 @@
       <!-- CREATION PROCESS -->
       <div class="section" id="creation">
         <p class="sec-label">Creation Process</p>
-        <p class="sec-title">Goals in mind</p>
-        <p class="sec-text">With Luana's needs in mind, it was time to start building.</p>
+        <p class="sec-title">Designing events as a native Instagram experience</p>
+        <p class="sec-text">With Luana's needs in mind, the goal was to shape an events feature that felt familiar, social, and easy to use inside Instagram's existing behavior.</p>
+
+        <div class="creation-highlight">
+          <p><strong>The concept is simple:</strong> make event discovery feel as natural as browsing stories or posts, while giving users better ways to find, save, share, and plan events with friends.</p>
+        </div>
 
         <div class="goals-grid">
-          <div class="goals-col">
-            <div class="goal-card">
-              <p class="goal-num">1.</p>
-              <p class="goal-text"><strong>Make it super easy to find all kinds of local events:</strong> whether you're into art, music, sports, or just want to party all night long.</p>
-            </div>
-            <div class="goal-card">
-              <p class="goal-num">4.</p>
-              <p class="goal-text"><strong>Keep everyone in the loop</strong> about upcoming events and important updates with personalized notifications, no more missing events!</p>
-            </div>
+          <div class="goal-card">
+            <p class="goal-icon">🔎</p>
+            <p class="goal-title">Easy Discovery</p>
+            <p class="goal-text">Help users find local events without jumping between different platforms, profiles, and external websites.</p>
           </div>
-          <div class="goals-col">
-            <div class="goal-card">
-              <p class="goal-num">2.</p>
-              <p class="goal-text"><strong>Personalize the experience</strong> so users can filter events like a pro, choosing what they want based on location, event type, and date, because nobody wants to stumble into a boring lecture on a Saturday night!</p>
-            </div>
-            <div class="goal-card">
-              <p class="goal-num">5.</p>
-              <p class="goal-text"><strong>Make planning social activities</strong> by allowing users to save events, share them with friends, and maybe even coordinate who brings the snacks!</p>
-            </div>
+
+          <div class="goal-card">
+            <p class="goal-icon">🎛️</p>
+            <p class="goal-title">Personalized Filters</p>
+            <p class="goal-text">Let users filter events by location, date, type, and interests so recommendations feel more relevant.</p>
           </div>
-          <div class="goals-col">
-            <div class="goal-card">
-              <p class="goal-num">3.</p>
-              <p class="goal-text"><strong>Boost the social vibes</strong> by letting users RSVP to events, chat with fellow mates, and share their epic experiences, let's make some memories!</p>
-            </div>
-            <div class="goal-card">
-              <p class="goal-num">6.</p>
-              <p class="goal-text"><strong>Create an Instagram feature</strong> that's as easy to use ensuring users have a fun time navigating and interacting without getting lost in confusion!</p>
-            </div>
+
+          <div class="goal-card">
+            <p class="goal-icon">👥</p>
+            <p class="goal-title">Social Planning</p>
+            <p class="goal-text">Allow users to see who is interested, share events with friends, and coordinate plans more naturally.</p>
+          </div>
+
+          <div class="goal-card">
+            <p class="goal-icon">🔔</p>
+            <p class="goal-title">Timely Updates</p>
+            <p class="goal-text">Keep users informed about saved events, changes, and reminders so they do not miss opportunities.</p>
+          </div>
+
+          <div class="goal-card">
+            <p class="goal-icon">📌</p>
+            <p class="goal-title">Save and Organize</p>
+            <p class="goal-text">Give users a simple way to save events and return to them when they are ready to decide.</p>
+          </div>
+
+          <div class="goal-card">
+            <p class="goal-icon">📱</p>
+            <p class="goal-title">Native Experience</p>
+            <p class="goal-text">Design the feature so it feels like part of Instagram, not a separate product inside the app.</p>
           </div>
         </div>
 
