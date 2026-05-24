@@ -277,31 +277,46 @@
    IMAGE MODIFIERS
 ───────────────────────────── */
 
-/* Use when the image must fill the rounded frame */
-.img-grid-contain .img-placeholder,
-.img-grid-4-fill .img-placeholder {
+/* Use when the whole image must appear inside a rounded frame */
+.img-grid-contain .img-placeholder {
   aspect-ratio: 3/4;
   background: #f3f3f3;
   border-radius: 16px;
   overflow: hidden;
 }
 
-.img-grid-contain .img-placeholder img,
-.img-grid-4-fill .img-placeholder img {
+.img-grid-contain .img-placeholder img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
-  padding: 0;
+  padding: 8px;
 }
 
-/* 4-column fill grid */
-.img-grid-4-fill {
+/* 4-column grid for full-image cards */
+.img-grid-4-fit {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
   margin-top: 16px;
   align-items: start;
+}
+
+.img-grid-4-fit .img-placeholder {
+  aspect-ratio: auto;
+  background: transparent;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.img-grid-4-fit .img-placeholder img {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 16px;
+  padding: 0;
 }
 
 /* Use for print images that should appear outside a card/frame */
@@ -661,7 +676,7 @@ footer {
           <p class="subproject-title">Internship Programme Rebranding</p>
           <span class="subproject-type">Brand identity</span>
         </div>
-       <div class="img-grid-4-fill">
+       <div class="img-grid-4-fit">
   <div class="img-placeholder">
     <img src="ip-1.avif" alt="Internship Programme" />
   </div>
@@ -728,7 +743,7 @@ footer {
           <p class="subproject-title">We're Hiring!</p>
           <span class="subproject-type">Social media · Campaign</span>
         </div>
-      <div class="img-grid-4-fill">
+      <div class="img-grid-4-fit">
   <div class="img-placeholder">
     <img src="wh-1.avif" alt="We're Hiring" />
   </div>
@@ -753,7 +768,7 @@ footer {
           <p class="subproject-title">End of Year Retrospective</p>
           <span class="subproject-type">Social media · Event</span>
         </div>
-        <div class="img-grid-4-fill">
+        <div class="img-grid-4-fit">
   <div class="img-placeholder">
     <img src="ey-1.avif" alt="End of Year" />
   </div>
