@@ -43,18 +43,18 @@
       justify-content: space-between;
       padding: 0 var(--margin);
     }
+    
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
 
-    .logo {
-      font-family: 'Aveburg', serif;
-      font-size: 34px;
-      letter-spacing: 4px;
-      font-weight: 400;
-      background: linear-gradient(135deg, #e8a598 0%, #c9a0dc 40%, #8ec5d6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-decoration: none;
-    }
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
 
     .nav-links {
       display: flex;
@@ -699,7 +699,9 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="index.html">CD</a>
+ <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues home">
+  <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
+</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#projects">Projects</a></li>
