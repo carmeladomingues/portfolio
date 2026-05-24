@@ -307,7 +307,7 @@
   padding: 0;
 }
 
-  .img-grid-3-fit {
+.img-grid-3-fit {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
@@ -330,6 +330,31 @@
   object-position: center;
   border-radius: 16px;
   padding: 0;
+}
+
+.media-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.media-item {
+  border-radius: 16px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.media-item video,
+.media-item img {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: 16px;
 }
 
 
@@ -1199,20 +1224,25 @@ footer {
         </div>
       </div>
 
-      <!-- SUB: Games + Baguncinha Party -->
+      <!-- SUB: Baguncinha Party -->
       <div class="subproject">
         <div class="subproject-header">
-          <p class="subproject-title">Games + Baguncinha Party</p>
+          <p class="subproject-title">Baguncinha Party</p>
           <span class="subproject-type">Event materials</span>
         </div>
-        <div class="img-grid-2">
-          <div class="img-placeholder">
-            <img src="images/ufrgs-games-01.jpg" alt="Games Baguncinha" />
-          </div>
-          <div class="img-placeholder">
-            <img src="images/ufrgs-games-02.jpg" alt="Games Baguncinha" />
-          </div>
-        </div>
+       <div class="media-grid-3">
+  <div class="media-item">
+    <video src="beijo-na-boca.mp4" controls muted playsinline></video>
+  </div>
+
+  <div class="media-item">
+    <video src="laguna2.mp4" controls muted playsinline></video>
+  </div>
+
+  <div class="media-item">
+    <img src="baguncinha.avif" alt="Project image" />
+  </div>
+</div>
       </div>
 
       <!-- SUB: What if we spread good news? -->
