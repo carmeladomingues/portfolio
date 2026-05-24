@@ -240,22 +240,29 @@
       margin-top: 16px;
     }
 
-    .img-grid-4 {
+.img-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 18px;
   margin-top: 16px;
+  align-items: start;
 }
 
 .img-placeholder.print {
-  aspect-ratio: 4/3;
-  background: #f3f3f3;
+  aspect-ratio: auto;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .img-placeholder.print img {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
   object-fit: contain;
   object-position: center;
-  padding: 8px;
+  border-radius: 0;
+  padding: 0;
 }
 
     .img-grid-1 {
