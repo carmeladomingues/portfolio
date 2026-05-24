@@ -216,19 +216,62 @@
 
     .overview-text { flex: 1; display: flex; flex-direction: column; gap: 10px; }
 
-    /* Insights */
+     /* Insights */
     .insights-box {
-      background: var(--accent); border-radius: 20px;
-      padding: 20px 20px 20px 15px;
-      margin-top: 24px;
+      margin-top: 32px;
     }
 
-    .insights-title { font-size: 36px; font-weight: 500; margin-bottom: 36px; }
+    .insights-title {
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
 
-    .insights-cols { display: flex; gap: 43px; justify-content: center; }
-    .insight-col { font-size: 18px; text-align: left; display: flex; flex-direction: column; width: 259px; }
-    .insight-col-title { font-weight: 500; margin-bottom: 8px; }
-    .insight-col-text { font-weight: 300; line-height: 1.6; }
+    .insights-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .insight-col {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 20px;
+      padding: 24px;
+      background: #fff;
+    }
+
+    .insight-col-title {
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .insight-col-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--text-light);
+    }
+
+    .why-highlight {
+      background: var(--accent);
+      border-radius: 20px;
+      padding: 30px 29px;
+      margin: 28px 0 32px;
+    }
+
+    .why-highlight p {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .why-highlight strong {
+      font-weight: 500;
+    }
 
 /* Hypothesis */
 .hyp-row {
@@ -496,39 +539,42 @@
         </div>
       </div>
 
-      <!-- WHY INSTAGRAM -->
+        <!-- WHY INSTAGRAM -->
       <div class="section" id="why">
-        <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:40px;">
-          <div style="width:424px; flex-shrink:0;">
-            <p class="sec-label">Why Instagram?</p>
-            <p class="sec-title">Research</p>
-            <p class="sec-text">To back up my idea, I did some desk research. One stat stood out: in a 2023 survey with 1,033 Brazilian respondents, 64% already use social networks for online research, with Gen Z leading the shift away from traditional search engines. If people are already living on Instagram, why not find their events there too?</p>
-          </div>
-          <div style="flex:1;">
-            <div class="chart-wrap">
-              <canvas id="genChart"></canvas>
-            </div>
-            <p style="font-size:10px; color:#bbb; margin-top:8px;">
-              <a href="https://revistacasaejardim.globo.com/Casa-e-Jardim/Bem-Estar/noticia/2019/11/estudo-aponta-que-frequentar-festas-e-shows-aumenta-expectativa-de-vida.html" target="_blank" style="color:#bbb; text-decoration:underline;">Fonte: Revista Casa e Jardim</a>
-            </p>
-          </div>
+        <p class="sec-label">Why Instagram?</p>
+        <p class="sec-title">Research</p>
+        <p class="sec-text">To back up my idea, I did some desk research. One stat stood out: in a 2023 survey with 1,033 Brazilian respondents, 64% already use social networks for online research, with Gen Z leading the shift away from traditional search engines.</p>
+
+        <div class="why-highlight">
+          <p><strong>If people are already living on Instagram, why not find their events there too?</strong> The research pointed to a clear opportunity: event discovery could become more natural if it lived inside a platform people already use daily.</p>
         </div>
+
+        <div class="chart-wrap">
+          <canvas id="genChart"></canvas>
+        </div>
+
+        <p style="font-size:10px; color:#bbb; margin-top:8px;">
+          <a href="https://revistacasaejardim.globo.com/Casa-e-Jardim/Bem-Estar/noticia/2019/11/estudo-aponta-que-frequentar-festas-e-shows-aumenta-expectativa-de-vida.html" target="_blank" style="color:#bbb; text-decoration:underline;">Fonte: Revista Casa e Jardim</a>
+        </p>
 
         <!-- Insights -->
         <div class="insights-box">
-          <p class="insights-title">Insights</p>
+          <p class="insights-title">Key insights</p>
+
           <div class="insights-cols">
             <div class="insight-col">
-              <p class="insight-col-title">Fragmentation of Information:</p>
-              <p class="insight-col-text">Demonstrates how event information is scattered across different sources, making it difficult to find relevant events.</p>
+              <p class="insight-col-title">Fragmented information</p>
+              <p class="insight-col-text">Event information is scattered across different sources, making it harder for users to quickly understand what is happening around them.</p>
             </div>
+
             <div class="insight-col">
-              <p class="insight-col-title">Lack of Personalization:</p>
-              <p class="insight-col-text">Illustrates how the lack of personalization in event searches overwhelms users with events that don't align with their interests.</p>
+              <p class="insight-col-title">Generic recommendations</p>
+              <p class="insight-col-text">Without personalization, users are overwhelmed by events that do not match their interests, location, or social circles.</p>
             </div>
+
             <div class="insight-col">
-              <p class="insight-col-title">Limitations in Interaction:</p>
-              <p class="insight-col-text">An example of how the absence of a dedicated platform for interaction during events results in missed opportunities to make new connections and expand one's social network.</p>
+              <p class="insight-col-title">Limited interaction</p>
+              <p class="insight-col-text">The absence of a dedicated social layer around events creates missed opportunities to plan with friends and meet new people.</p>
             </div>
           </div>
         </div>
