@@ -26,6 +26,8 @@
       --card-bg: rgba(242,240,237,0.29);
       --font: 'DM Sans', sans-serif;
       --aveburg: 'Aveburg', serif;
+      --font-display: 'Aveburg', serif;
+      --color-text: #1d1d1d;
       --margin: 120px;
       --sidebar-w: 180px;
       --content-left: calc(var(--margin) + var(--sidebar-w) + 60px);
@@ -33,7 +35,8 @@
 
     html { scroll-behavior: smooth; scroll-padding-top: 64px; }
 
-    body { font-family: var(--font); background: var(--bg); color: var(--text); }
+    body { font-family: var(--font-display);
+color: var(--color-text); }
 
      /* ── NAV ── */
       nav {
@@ -86,7 +89,7 @@
     .nav-links a.active { opacity: 0.4; }
 
     /* ── HERO ── */
-    .hero { padding: 120px var(--margin) 0; }
+    .hero { padding: 56px var(--margin) 0; }
 
     .case-tag {
       font-size: 12px; font-weight: 400; color: #888;
