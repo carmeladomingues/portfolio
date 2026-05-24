@@ -114,7 +114,6 @@
       min-height: 420px;
     }
 
-    /* story column */
     .story-col {
       padding: 40px var(--margin) 40px var(--margin);
       display: flex;
@@ -136,7 +135,6 @@
       font-weight: 500;
     }
 
-    /* experience column */
     .exp-col {
       padding: 40px var(--margin) 0 48px;
       display: flex;
@@ -257,19 +255,10 @@
       color: #fff;
     }
 
-    .cv-btn svg {
-      width: 14px;
-      height: 14px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
     /* ── SKILLS ── */
     .skills {
-      background: var(--color-bg-secondary);
+      background: var(--color-accent-light);
+      border-top: 0.5px solid var(--color-border);
       border-bottom: 0.5px solid var(--color-border);
       padding: 48px var(--margin);
     }
@@ -289,20 +278,17 @@
       margin-bottom: 32px;
     }
 
-    .skills-grid {
+    .skills-card {
+      background: var(--color-bg);
+      border: 0.5px solid rgba(201,106,74,0.15);
+      border-radius: 16px;
+      padding: 32px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 32px;
     }
 
-    .skill-card {
-      background: var(--color-bg);
-      border: 0.5px solid var(--color-border);
-      border-radius: 16px;
-      padding: 24px;
-    }
-
-    .skill-card-label {
+    .skill-col-label {
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -310,7 +296,7 @@
       margin-bottom: 8px;
     }
 
-    .skill-card-title {
+    .skill-col-title {
       font-size: 14px;
       font-weight: 500;
       line-height: 1.35;
@@ -338,19 +324,27 @@
       border-bottom: 0.5px solid var(--color-border);
     }
 
+    .photos-intro {
+      font-size: 15px;
+      color: var(--color-muted);
+      max-width: 640px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
     .collage-a {
       display: grid;
       gap: 6px;
-      grid-template-columns: 2fr 1.2fr 1fr 1.3fr;
-      grid-template-rows: 240px 180px;
-      margin-bottom: 6px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 280px;
     }
 
     .collage-b {
       display: grid;
       gap: 6px;
-      grid-template-columns: 1fr 1.5fr 1fr;
-      grid-template-rows: 180px;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 280px;
+      margin-top: 6px;
     }
 
     .ph {
@@ -367,7 +361,6 @@
       display: block;
     }
 
-    /* placeholder state — remove when images are added */
     .ph-placeholder {
       width: 100%;
       height: 100%;
@@ -392,22 +385,15 @@
       bottom: 10px;
       left: 10px;
       font-size: 11px;
-      color: var(--color-text);
+      color: var(--color-accent);
       background: rgba(255,255,255,0.88);
       backdrop-filter: blur(6px);
-      border: 0.5px solid rgba(201,106,74,0.2);
-      padding: 3px 9px;
+      border: 0.5px solid rgba(201,106,74,0.25);
+      padding: 3px 10px;
       border-radius: 20px;
       white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
-
-    /* collage positions */
-    .p1 { grid-column: 1; grid-row: 1 / 3; }
-    .p2 { grid-column: 2; grid-row: 1; }
-    .p3 { grid-column: 3; grid-row: 1; }
-    .p4 { grid-column: 4; grid-row: 1; }
-    .p5 { grid-column: 2 / 4; grid-row: 2; }
-    .p6 { grid-column: 4; grid-row: 2; }
 
     /* ── FOOTER ── */
     footer {
@@ -527,10 +513,10 @@
     <div class="story-grid">
 
       <div class="story-col fade-up">
-        <p>It all started on <strong>Tumblr in 2008</strong>. Weird, I know, but I promise it's going to make sense.</p>
-        <p>I was just a teenager when I fell down the rabbit hole of edits and gifs floating around the internet. Something clicked. I taught myself Photoshop from scratch — late nights, endless tutorials, a lot of trial and error. And just like that, a designer was born.</p>
-        <p>I graduated in <strong>Business at the University of Rio Grande do Sul</strong>. Not the obvious path, but it taught me to think about people, systems, and strategy — which turns out to be half of UX.</p>
-        <p>Born and raised in Brazil, that chase eventually made me pack my life into suitcases and move to <strong>Lisbon</strong> to do a Master's in Design Management at IADE. Spoiler: best idea I ever had. But I believe this is just one stop on a longer journey.</p>
+        <p>It all started on <strong>Tumblr in 2008</strong>... weird, I know, but I promise it's going to make sense.</p>
+        <p>I was just a teenager when I fell down the rabbit hole of edits and gifs around the internet. Something clicked. I taught myself Photoshop from scratch, late nights and endless YouTube tutorials. And just like that, a designer was born.</p>
+        <p>I graduated in <strong>Business at the University of Rio Grande do Sul</strong>. Not the obvious path, but it taught me to think about people, systems, and strategy, which turns out to be half of UX. My heart was always somewhere between pixels and people, so I chased it through internships and roles at companies like <strong>SAP</strong> and <strong>Telus</strong>, turning real problems into real solutions.</p>
+        <p>Born and raised in Brazil, that chase made me pack my life into suitcases and move to <strong>Lisbon</strong> to do a Master's in Design Management at <strong>IADE</strong>. Spoiler: it was the best idea I've ever had. But I believe this is just one stop on a longer journey.</p>
       </div>
 
       <div class="exp-col fade-up">
@@ -557,7 +543,7 @@
             <div class="tl-dot"></div>
             <p class="tl-year">2022 – 2025</p>
             <p class="tl-role">Graphic Designer & Social Media</p>
-            <p class="tl-where">Poatek × Telus International · Porto Alegre, BR</p>
+            <p class="tl-where">Poatek × Telus International · BR</p>
             <span class="tl-tag">full-time</span>
           </div>
 
@@ -576,21 +562,18 @@
     <!-- CV STRIP -->
     <div class="cv-strip fade-up">
       <p>Want to keep a copy? Here's everything above in a tidy PDF — same story, printer-friendly.</p>
-      <a class="cv-btn" href="cv-carmela-domingues.pdf" download>
-        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CV
-      </a>
+      <a class="cv-btn" href="cv-carmela-domingues.pdf" download>↓ Download CV</a>
     </div>
 
     <!-- SKILLS -->
     <section class="skills fade-up">
       <p class="section-eyebrow">Skills</p>
       <h2 class="section-title">What I bring to the table</h2>
-      <div class="skills-grid">
+      <div class="skills-card">
 
-        <div class="skill-card">
-          <p class="skill-card-label">Tools I live in</p>
-          <p class="skill-card-title">What I know how to do (and actually enjoy)</p>
+        <div>
+          <p class="skill-col-label">Tools I live in</p>
+          <p class="skill-col-title">What I know how to do (and actually enjoy)</p>
           <div class="pills">
             <span class="pill">Figma</span>
             <span class="pill">Photoshop</span>
@@ -600,9 +583,9 @@
           </div>
         </div>
 
-        <div class="skill-card">
-          <p class="skill-card-label">In progress</p>
-          <p class="skill-card-title">What I'm currently learning</p>
+        <div>
+          <p class="skill-col-label">In progress</p>
+          <p class="skill-col-title">What I'm currently learning</p>
           <div class="pills">
             <span class="pill">HTML</span>
             <span class="pill">CSS</span>
@@ -612,9 +595,9 @@
           </div>
         </div>
 
-        <div class="skill-card">
-          <p class="skill-card-label">Soft skills</p>
-          <p class="skill-card-title">Nobody asks, but everyone notices</p>
+        <div>
+          <p class="skill-col-label">Soft skills</p>
+          <p class="skill-col-title">Nobody asks, but everyone notices</p>
           <div class="pills">
             <span class="pill">Obsessive curiosity</span>
             <span class="pill">Certified big yapper</span>
@@ -630,66 +613,50 @@
     <section class="photos fade-up">
       <p class="section-eyebrow">Life outside the screen</p>
       <h2 class="section-title">My life outside of being a UX/UI designer</h2>
+      <p class="photos-intro">When I'm not designing, you'll find me at a new restaurant, at a concert, or reorganizing something that didn't need reorganizing. Oh, and if you're into astrology, I'm a Virgo, which basically explains everything I just said.</p>
 
-      <!-- Row A: 6 photos -->
+      <!-- Row A: 4 equal columns -->
       <div class="collage-a">
 
-        <div class="ph p1">
-          <!-- Replace with: <img src="images/about-01.jpg" alt="..." /> -->
+        <div class="ph">
+          <!-- Replace with: <img src="images/about-01.jpg" alt="description" /> -->
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
           <span class="ph-tag">Lisboa, my new home 📍</span>
         </div>
 
-        <div class="ph p2">
-          <div class="ph-placeholder">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <span class="ph-tag">add your tag here</span>
-        </div>
-
-        <div class="ph p3">
+        <div class="ph">
+          <!-- Replace with: <img src="images/about-02.jpg" alt="description" /> -->
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
           <span class="ph-tag">Mel & Lola 🐶</span>
         </div>
 
-        <div class="ph p4">
+        <div class="ph">
+          <!-- Replace with: <img src="images/about-03.jpg" alt="description" /> -->
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
-          <span class="ph-tag">add your tag here</span>
+          <span class="ph-tag">add your tag</span>
         </div>
 
-        <div class="ph p5">
+        <div class="ph">
+          <!-- Replace with: <img src="images/about-04.jpg" alt="description" /> -->
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
           <span class="ph-tag">Beyoncé Cowboy Carter Tour 🎤</span>
         </div>
 
-        <div class="ph p6">
-          <div class="ph-placeholder">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <span class="ph-tag">add your tag here</span>
-        </div>
-
       </div>
 
-      <!-- Row B: 3 photos -->
+      <!-- Row B: 5 equal columns -->
       <div class="collage-b">
 
         <div class="ph">
-          <div class="ph-placeholder">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <span class="ph-tag">add your tag here</span>
-        </div>
-
-        <div class="ph">
+          <!-- Replace with: <img src="images/about-05.jpg" alt="description" /> -->
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
@@ -697,10 +664,35 @@
         </div>
 
         <div class="ph">
+          <!-- Replace with: <img src="images/about-06.jpg" alt="description" /> -->
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
-          <span class="ph-tag">add your tag here</span>
+          <span class="ph-tag">add your tag</span>
+        </div>
+
+        <div class="ph">
+          <!-- Replace with: <img src="images/about-07.jpg" alt="description" /> -->
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">add your tag</span>
+        </div>
+
+        <div class="ph">
+          <!-- Replace with: <img src="images/about-08.jpg" alt="description" /> -->
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">add your tag</span>
+        </div>
+
+        <div class="ph">
+          <!-- Replace with: <img src="images/about-09.jpg" alt="description" /> -->
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">add your tag</span>
         </div>
 
       </div>
@@ -728,13 +720,11 @@
   </button>
 
   <script>
-    // back to top visibility
     const btn = document.querySelector('.back-top');
     window.addEventListener('scroll', () => {
       btn.classList.toggle('visible', window.scrollY > 400);
     });
 
-    // fade-up on scroll
     const faders = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
