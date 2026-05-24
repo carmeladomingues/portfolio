@@ -6,31 +6,28 @@
   <title>About Me — Carmela Domingues</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
-    @font-face {
-      font-family: 'Aveburg';
-      src: url('Aveburg-Grande-Demo.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --color-text: #1d1d1d;
-      --color-text-light: #4f4e4e;
+      --color-muted: #6b6b6b;
+      --color-border: rgba(29,29,29,0.12);
+      --color-border-strong: #1d1d1d;
       --color-bg: #ffffff;
-      --color-border: #1d1d1d;
-      --font-display: 'Aveburg', serif;
-      --font-body: 'DM Sans', sans-serif;
-      --margin: 120px;
+      --color-bg-secondary: #f7f6f4;
+      --color-accent: #C96A4A;
+      --color-accent-light: #faf0ec;
+      --font: 'DM Sans', sans-serif;
+      --margin: 80px;
+      --max: 1280px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-body);
+      font-family: var(--font);
       background: var(--color-bg);
       color: var(--color-text);
       overflow-x: hidden;
@@ -41,222 +38,467 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      height: 80px;
-      background: transparent;
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 var(--margin);
-      transition: background 0.3s ease, backdrop-filter 0.3s ease;
-    }
-
-    nav.scrolled {
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
-      border-bottom: 0.5px solid rgba(29,29,29,0.08);
+      border-bottom: 0.5px solid var(--color-border);
     }
 
     .logo {
-      font-family: var(--font-display);
-      font-size: 40px;
-      letter-spacing: 4px;
-      background: linear-gradient(135deg, #e8a598 0%, #c9a0dc 40%, #8ec5d6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      color: var(--color-text);
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 52px;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 20px;
+      font-size: 14px;
       font-weight: 400;
-      color: var(--color-text);
+      color: var(--color-muted);
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover { opacity: 0.4; }
-    .nav-links a.active { opacity: 0.4; }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--color-text); }
 
-    /* ── ABOUT CONTENT ── */
-    #about {
-      padding: 160px var(--margin) 120px;
+    /* ── PAGE WRAPPER ── */
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-top: 72px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 56px var(--margin) 44px;
+      border-bottom: 0.5px solid var(--color-border);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 52px;
+      font-weight: 500;
+      line-height: 1.06;
+      letter-spacing: -2px;
+      max-width: 700px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* ── STORY + EXPERIENCE GRID ── */
+    .story-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0 80px;
-      align-items: start;
+      min-height: 420px;
     }
 
-    /* LEFT COLUMN */
-    .about-left {
-      position: sticky;
-      top: 100px;
-    }
-
-    .about-title {
-      font-family: 'Aveburg', serif;
-      font-weight: 400;
-      font-size: 72px;
-      line-height: 1.1;
-      color: var(--color-text);
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .about-title.visible { opacity: 1; transform: translateY(0); }
-
-    .about-text {
+    /* story column */
+    .story-col {
+      padding: 40px var(--margin) 40px var(--margin);
       display: flex;
       flex-direction: column;
-      gap: 28px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s 0.2s ease, transform 0.8s 0.2s ease;
+      justify-content: center;
     }
 
-    .about-text.visible { opacity: 1; transform: translateY(0); }
+    .story-col p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-muted);
+      margin-bottom: 14px;
+    }
 
-    .about-text p {
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.7;
+    .story-col p:last-child { margin-bottom: 0; }
+
+    .story-col p strong {
       color: var(--color-text);
+      font-weight: 500;
     }
 
-    /* RIGHT COLUMN — photo grid */
-    .about-right {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      padding-top: 32px;
+    /* experience column */
+    .exp-col {
+      padding: 40px var(--margin) 0 48px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .photo-card {
+    .exp-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 28px;
+    }
+
+    .timeline {
       position: relative;
-      border-radius: 16px;
-      overflow: visible;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      padding-left: 20px;
+      flex: 1;
     }
 
-    .photo-card.visible { opacity: 1; transform: translateY(0); }
-    .photo-card:nth-child(2) { transition-delay: 0.08s; }
-    .photo-card:nth-child(3) { transition-delay: 0.04s; }
-    .photo-card:nth-child(4) { transition-delay: 0.12s; }
-    .photo-card:nth-child(5) { transition-delay: 0.06s; }
-    .photo-card:nth-child(6) { transition-delay: 0.14s; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 6px;
+      bottom: 6px;
+      width: 0.5px;
+      background: rgba(201,106,74,0.2);
+    }
 
-    .photo-card img,
-    .photo-placeholder {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+    .tl-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .tl-item:last-child { margin-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: -20px;
+      top: 5px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-bg);
+      border: 1.5px solid var(--color-accent);
+    }
+
+    .tl-item.current .tl-dot {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+
+    .tl-year {
+      font-size: 11px;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+
+    .tl-role {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .tl-where {
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+
+    .tl-tag {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 0.5px solid rgba(201,106,74,0.3);
+      color: var(--color-accent);
+      background: var(--color-accent-light);
+    }
+
+    /* ── CV STRIP ── */
+    .cv-strip {
+      padding: 16px var(--margin) 32px var(--margin);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 24px;
+    }
+
+    .cv-strip p {
+      font-size: 13px;
+      color: var(--color-muted);
+      line-height: 1.5;
+    }
+
+    .cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border: 1px solid var(--color-accent);
+      border-radius: 40px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-accent);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .cv-btn:hover {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .cv-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── SKILLS ── */
+    .skills {
+      background: var(--color-bg-secondary);
+      border-bottom: 0.5px solid var(--color-border);
+      padding: 48px var(--margin);
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      margin-bottom: 32px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--color-bg);
+      border: 0.5px solid var(--color-border);
       border-radius: 16px;
+      padding: 24px;
+    }
+
+    .skill-card-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-muted);
+      margin-bottom: 8px;
+    }
+
+    .skill-card-title {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 0.5px solid rgba(201,106,74,0.25);
+      color: var(--color-accent);
+      background: var(--color-accent-light);
+    }
+
+    /* ── PHOTOS ── */
+    .photos {
+      padding: 48px var(--margin);
+      border-bottom: 0.5px solid var(--color-border);
+    }
+
+    .collage-a {
+      display: grid;
+      gap: 6px;
+      grid-template-columns: 2fr 1.2fr 1fr 1.3fr;
+      grid-template-rows: 240px 180px;
+      margin-bottom: 6px;
+    }
+
+    .collage-b {
+      display: grid;
+      gap: 6px;
+      grid-template-columns: 1fr 1.5fr 1fr;
+      grid-template-rows: 180px;
+    }
+
+    .ph {
+      background: var(--color-bg-secondary);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ph img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      background: #d9d9d9;
       display: block;
     }
 
-    .photo-label {
+    /* placeholder state — remove when images are added */
+    .ph-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ph-placeholder svg {
+      width: 28px;
+      height: 28px;
+      opacity: 0.18;
+      stroke: var(--color-muted);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ph-tag {
       position: absolute;
-      bottom: -10px;
-      right: -10px;
-      background: white;
-      border: 0.5px solid rgba(29,29,29,0.15);
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 12px;
-      font-weight: 400;
+      bottom: 10px;
+      left: 10px;
+      font-size: 11px;
       color: var(--color-text);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(6px);
+      border: 0.5px solid rgba(201,106,74,0.2);
+      padding: 3px 9px;
+      border-radius: 20px;
       white-space: nowrap;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    /* Large photo spans full width */
-    .photo-card.wide {
-      grid-column: 1 / -1;
-    }
-
-    .photo-card.wide img,
-    .photo-card.wide .photo-placeholder {
-      aspect-ratio: 16 / 9;
-    }
+    /* collage positions */
+    .p1 { grid-column: 1; grid-row: 1 / 3; }
+    .p2 { grid-column: 2; grid-row: 1; }
+    .p3 { grid-column: 3; grid-row: 1; }
+    .p4 { grid-column: 4; grid-row: 1; }
+    .p5 { grid-column: 2 / 4; grid-row: 2; }
+    .p6 { grid-column: 4; grid-row: 2; }
 
     /* ── FOOTER ── */
     footer {
-      position: relative;
-      z-index: 1;
-      border-top: 0.5px solid rgba(29,29,29,0.5);
-      padding: 16px 50px 12px;
+      padding: 24px var(--margin);
+      border-top: 0.5px solid var(--color-border);
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 4px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
-      width: 100%;
     }
 
-    .footer-left h3 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 16px;
-      margin-bottom: 4px;
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      color: var(--color-text);
+      text-decoration: none;
     }
 
-    .footer-left p { font-size: 13px; color: var(--color-text); }
+    .footer-icons {
+      display: flex;
+      gap: 20px;
+    }
 
-    .footer-icons { display: flex; gap: 12px; align-items: center; }
-    .footer-icons a { color: var(--color-text); transition: opacity 0.2s; display: flex; }
-    .footer-icons a:hover { opacity: 0.5; }
-    .footer-icons svg { width: 32px; height: 32px; }
+    .footer-icons a {
+      color: var(--color-text);
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      display: flex;
+    }
+
+    .footer-icons a:hover { opacity: 1; }
+
+    .footer-icons svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
     .footer-copy {
-      font-family: var(--font-display);
-      font-size: 10px;
-      color: var(--color-text);
+      font-size: 12px;
+      color: var(--color-muted);
     }
 
     /* ── BACK TO TOP ── */
-    .back-to-top {
+    .back-top {
       position: fixed;
       bottom: 32px;
       right: 32px;
       z-index: 200;
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: transparent;
-      border: 1.2px solid var(--color-border);
+      border: 0.5px solid var(--color-border);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+      transition: opacity 0.3s, background 0.2s;
     }
 
-    .back-to-top.visible { opacity: 1; pointer-events: all; }
-    .back-to-top:hover { background: var(--color-text); border-color: var(--color-text); }
-    .back-to-top:hover svg path { stroke: white; }
-    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+    .back-top.visible { opacity: 1; pointer-events: all; }
+    .back-top:hover { background: var(--color-text); }
+    .back-top:hover svg { stroke: #fff; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .back-top svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--color-text);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transform: rotate(180deg);
+    }
+
+    /* ── FADE-IN ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -269,127 +511,235 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#projects">Projects</a></li>
       <li><a href="about.html" class="active">About Me</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- ABOUT -->
-  <section id="about">
+  <div class="page">
 
-    <!-- LEFT -->
-    <div class="about-left">
-      <h1 class="about-title">The full story about my ux/ui design journey</h1>
-      <div class="about-text">
-        <p>It all started on Tumblr in 2008… weird, I know, but I promise it's going to make sense.</p>
-        <p>I was just a teenager when I fell down the rabbit hole of edits and gifs around the internet. Something clicked. I taught myself Photoshop from scratch, late nights and endless YouTube tutorials. And just like that, a designer was born.</p>
-        <p>I graduated in Business at the University of Rio Grande do Sul. Not the obvious path, but it taught me to think about people, systems, and strategy, which turns out to be half of UX. My heart was always somewhere between pixels and people, so I chased it through internships and roles at companies like SAP and Telus, turning real problems into real solutions. Born and raised in Brazil, that chase made me pack my life into suitcases and move to Lisbon to do a Master's in Design Management at IADE. Spoiler: it was the best idea I've ever had. But I believe this is just one stop on a longer journey.</p>
-        <p>Figma, Photoshop, and Illustrator are where I live. I could spend hours bringing wireframes to life, the graphic designer in me never really went away. Sometimes I get brave and venture into front-end code, which always ends with a deep appreciation for developers (seriously, praise them). My favorite tool, honestly, is curiosity.</p>
-        <p>When I'm not designing, you'll find me at a new restaurant, at a concert, or reorganizing something that didn't need reorganizing. Oh, and if you're into astrology, I'm a Virgo, which basically explains everything I just said.</p>
+    <!-- HERO -->
+    <section class="hero">
+      <p class="hero-eyebrow">About me</p>
+      <h1 class="hero-title">The full story about my <em>ux/ui design journey</em></h1>
+    </section>
+
+    <!-- STORY + EXPERIENCE -->
+    <div class="story-grid">
+
+      <div class="story-col fade-up">
+        <p>It all started on <strong>Tumblr in 2008</strong>. Weird, I know, but I promise it's going to make sense.</p>
+        <p>I was just a teenager when I fell down the rabbit hole of edits and gifs floating around the internet. Something clicked. I taught myself Photoshop from scratch — late nights, endless tutorials, a lot of trial and error. And just like that, a designer was born.</p>
+        <p>I graduated in <strong>Business at the University of Rio Grande do Sul</strong>. Not the obvious path, but it taught me to think about people, systems, and strategy — which turns out to be half of UX.</p>
+        <p>Born and raised in Brazil, that chase eventually made me pack my life into suitcases and move to <strong>Lisbon</strong> to do a Master's in Design Management at IADE. Spoiler: best idea I ever had. But I believe this is just one stop on a longer journey.</p>
+      </div>
+
+      <div class="exp-col fade-up">
+        <p class="exp-label">Experience</p>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-year">2020 – 2021</p>
+            <p class="tl-role">Rotation Program Intern</p>
+            <p class="tl-where">SAP Labs · São Leopoldo, BR</p>
+            <span class="tl-tag">internship</span>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-year">2021 – 2022</p>
+            <p class="tl-role">Junior Art Director</p>
+            <p class="tl-where">Cadastra · Porto Alegre, BR</p>
+            <span class="tl-tag">full-time</span>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-year">2022 – 2025</p>
+            <p class="tl-role">Graphic Designer & Social Media</p>
+            <p class="tl-where">Poatek × Telus International · Porto Alegre, BR</p>
+            <span class="tl-tag">full-time</span>
+          </div>
+
+          <div class="tl-item current">
+            <div class="tl-dot"></div>
+            <p class="tl-year">2024 – now</p>
+            <p class="tl-role">MSc Design Management</p>
+            <p class="tl-where">IADE · Lisboa, PT</p>
+            <span class="tl-tag">current</span>
+          </div>
+
+        </div>
       </div>
     </div>
 
-    <!-- RIGHT — photos -->
-    <div class="about-right">
-
-      <div class="photo-card">
-        <div class="photo-placeholder"></div>
-        <span class="photo-label">Me being a drama queen with my dad</span>
-      </div>
-
-      <div class="photo-card">
-        <div class="photo-placeholder"></div>
-        <span class="photo-label">Graduated yay!</span>
-      </div>
-
-      <div class="photo-card">
-        <div class="photo-placeholder"></div>
-        <span class="photo-label">Cowboy Carter Tour</span>
-      </div>
-
-      <div class="photo-card">
-        <div class="photo-placeholder"></div>
-        <span class="photo-label">Fav city in the whole world</span>
-      </div>
-
-      <div class="photo-card">
-        <div class="photo-placeholder"></div>
-        <span class="photo-label">Mel and Lola CEOs of barking</span>
-      </div>
-
-      <div class="photo-card">
-        <div class="photo-placeholder"></div>
-        <span class="photo-label">Home</span>
-      </div>
-
-      <div class="photo-card wide">
-        <div class="photo-placeholder"></div>
-        <span class="photo-label">Ladies That UX Lisbon</span>
-      </div>
-
+    <!-- CV STRIP -->
+    <div class="cv-strip fade-up">
+      <p>Want to keep a copy? Here's everything above in a tidy PDF — same story, printer-friendly.</p>
+      <a class="cv-btn" href="cv-carmela-domingues.pdf" download>
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV
+      </a>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-left">
-        <h3>Let's connect!</h3>
-        <p>Always happy to chat about design over a virtual cup of coffee.</p>
+    <!-- SKILLS -->
+    <section class="skills fade-up">
+      <p class="section-eyebrow">Skills</p>
+      <h2 class="section-title">What I bring to the table</h2>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <p class="skill-card-label">Tools I live in</p>
+          <p class="skill-card-title">What I know how to do (and actually enjoy)</p>
+          <div class="pills">
+            <span class="pill">Figma</span>
+            <span class="pill">Photoshop</span>
+            <span class="pill">Illustrator</span>
+            <span class="pill">Miro</span>
+            <span class="pill">FigJam</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <p class="skill-card-label">In progress</p>
+          <p class="skill-card-title">What I'm currently learning</p>
+          <div class="pills">
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">React</span>
+            <span class="pill">Front-end basics</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <p class="skill-card-label">Soft skills</p>
+          <p class="skill-card-title">Nobody asks, but everyone notices</p>
+          <div class="pills">
+            <span class="pill">Obsessive curiosity</span>
+            <span class="pill">Certified big yapper</span>
+            <span class="pill">Fluent in making people laugh</span>
+            <span class="pill">Believes design is a team sport</span>
+          </div>
+        </div>
+
       </div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section class="photos fade-up">
+      <p class="section-eyebrow">Life outside the screen</p>
+      <h2 class="section-title">My life outside of being a UX/UI designer</h2>
+
+      <!-- Row A: 6 photos -->
+      <div class="collage-a">
+
+        <div class="ph p1">
+          <!-- Replace with: <img src="images/about-01.jpg" alt="..." /> -->
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">Lisboa, my new home 📍</span>
+        </div>
+
+        <div class="ph p2">
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">add your tag here</span>
+        </div>
+
+        <div class="ph p3">
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">Mel & Lola 🐶</span>
+        </div>
+
+        <div class="ph p4">
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">add your tag here</span>
+        </div>
+
+        <div class="ph p5">
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">Beyoncé Cowboy Carter Tour 🎤</span>
+        </div>
+
+        <div class="ph p6">
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">add your tag here</span>
+        </div>
+
+      </div>
+
+      <!-- Row B: 3 photos -->
+      <div class="collage-b">
+
+        <div class="ph">
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">add your tag here</span>
+        </div>
+
+        <div class="ph">
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">BR → PT 🇧🇷🇵🇹</span>
+        </div>
+
+        <div class="ph">
+          <div class="ph-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="ph-tag">add your tag here</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <a class="footer-logo" href="index.html">CD</a>
       <div class="footer-icons">
-        <a href="#" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
+        <a href="https://www.linkedin.com/in/carmela-domingues/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="mailto:carmela@email.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
+        <a href="mailto:carmela.domingues@email.com" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
       </div>
-    </div>
-    <p class="footer-copy">© 2025 Carmela Domingues</p>
-  </footer>
+      <p class="footer-copy">© 2025 Carmela Domingues</p>
+    </footer>
+
+  </div><!-- /page -->
 
   <!-- BACK TO TOP -->
-  <button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
-      <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+  <button class="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
   </button>
 
   <script>
-    const nav = document.querySelector('nav');
-    const backToTop = document.querySelector('.back-to-top');
-    const footer = document.querySelector('footer');
-
+    // back to top visibility
+    const btn = document.querySelector('.back-top');
     window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      nav.classList.toggle('scrolled', scrollY > 50);
-
-      if (scrollY > 400) {
-        backToTop.classList.add('visible');
-        const footerTop = footer.getBoundingClientRect().top;
-        if (footerTop < window.innerHeight) {
-          backToTop.style.bottom = (window.innerHeight - footerTop + 16) + 'px';
-        } else {
-          backToTop.style.bottom = '32px';
-        }
-      } else {
-        backToTop.classList.remove('visible');
-      }
+      btn.classList.toggle('visible', window.scrollY > 400);
     });
 
-    // Scroll reveal
+    // fade-up on scroll
+    const faders = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.about-title, .about-text, .photo-card').forEach(el => observer.observe(el));
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    faders.forEach(el => observer.observe(el));
   </script>
 
 </body>
