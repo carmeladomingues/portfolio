@@ -279,42 +279,57 @@
 }
 
     /* Persona */
-    .persona-quote {
-      border: 1px solid var(--accent-border); border-radius: 40px;
-      padding: 24px 32px; display: flex; align-items: center;
-      margin-bottom: 26px;
-    }
-    .persona-quote-text { font-size: 18px; font-weight: 300; line-height: 1.6; width: 537px; }
-    .persona-avatar {
-      width: 144px; height: 144px; border-radius: 50%;
-      background: #d9d9d9; overflow: hidden; flex-shrink: 0; margin-left: -10px;
-    }
-    .persona-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    /* Persona cards */
+    .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
 
-    .persona-cards { display: flex; gap: 26px; }
     .persona-card {
-      border: 1px solid var(--accent-border); border-radius: 40px;
-      padding: 24px 32px; flex: 1;
+      border: 1.3px solid var(--accent-border);
+      border-radius: 24px;
+      padding: 32px;
+      padding-top: 48px;
+      position: relative;
     }
-    .persona-card-title { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
-    .persona-card ul { font-size: 18px; font-weight: 300; line-height: 1.7; padding-left: 20px; }
 
-    .persona-pains {
-      border: 1px solid var(--accent-border); border-radius: 40px;
-      padding: 24px 32px; width: 380px; margin-top: 26px;
+    .persona-avatar {
+      position: absolute;
+      top: -36px;
+      left: 32px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 1.3px var(--accent-border);
+      background: var(--accent);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .persona-why {
-      background: var(--accent); border-radius: 40px;
-      padding: 24px 32px; width: 380px;
-    }
-    .persona-pains-title, .persona-why-title { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
-    .persona-pains ul, .persona-why ul { font-size: 18px; font-weight: 300; line-height: 1.7; padding-left: 20px; }
 
-    .persona-side-note {
-      font-size: 16px; font-weight: 300; color: #b6b6b6;
-      width: 204px; text-align: right; line-height: 1.5;
-      margin-left: auto; margin-top: 16px;
+    .persona-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .persona-name { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+    .persona-role { font-size: 15px; font-weight: 300; color: var(--text-light); margin-bottom: 20px; }
+
+    .persona-quote {
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 300;
+      color: #E4405F;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
+
+    .persona-section-title {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-light);
+      margin-bottom: 6px;
+      margin-top: 16px;
+    }
+
+    .persona-section-text { font-size: 15px; font-weight: 300; line-height: 1.6; }
 
     /* Goals grid */
     .goals-grid { display: flex; gap: 22px; margin-top: 24px; }
@@ -541,63 +556,47 @@
         <p class="sec-text" style="margin-top:24px">To validate these hypotheses, I interviewed a small group of friends who are heavy Instagram users. Most expressed nostalgia for Facebook's event features and said they find it tedious to search for party accounts just to see what's happening on the weekends. I also used Instagram Stories' Questions feature to gather broader feedback from my followers, asking whether they missed having an events feature on the platform. The responses confirmed there was a real appetite for it.</p>
       </div>
 
-      <!-- PERSONA -->
+           <!-- PERSONA -->
       <div class="section" id="persona">
         <p class="sec-label">Persona</p>
-        <p class="sec-title">Luana Silva, 24 | Graphic Designer | SP, Brazil</p>
+        <p class="sec-title">A social explorer who wants events to feel easier to find</p>
+        <p class="sec-text">To better understand the target users, I created a persona that captured their goals, interests, and pain points, keeping their needs at the center of every design decision.</p>
 
-        <div class="persona-quote">
-          <p class="persona-quote-text">Luana is a young, creative professional who works as a graphic designer in a trendy agency. She's a heavy social media user and loves exploring the vibrant cultural scene of her city and is always on the lookout for the latest parties, art exhibitions, and live music events.</p>
-          <div class="persona-avatar">
-            <img src="https://www.figma.com/api/mcp/asset/91a28c77-f6b9-4bce-8337-282d460f9d25" alt="Luana" />
-          </div>
-        </div>
-
-        <div class="persona-cards">
+        <div class="persona-grid">
           <div class="persona-card">
-            <p class="persona-card-title">Interests</p>
-            <ul>
-              <li>Going to parties, music concerts, and art exhibitions.</li>
-              <li>Discovering unique experiences in the city.</li>
-              <li>Engaging with friends.</li>
-            </ul>
+            <div class="persona-avatar">
+              <img src="https://www.figma.com/api/mcp/asset/91a28c77-f6b9-4bce-8337-282d460f9d25" alt="Luana" />
+            </div>
+
+            <p class="persona-name">Luana Silva</p>
+            <p class="persona-role">24 years old · Graphic Designer · Sao Paulo, Brazil</p>
+            <p class="persona-quote">"I love discovering new places and events, but I usually find out about them too late or through scattered accounts."</p>
+
+            <p class="persona-section-title">Context</p>
+            <p class="persona-section-text">Luana is a young creative professional who works as a graphic designer in a trendy agency. She is a heavy social media user and loves exploring the cultural scene of her city.</p>
+
+            <p class="persona-section-title">Interests</p>
+            <p class="persona-section-text">Going to parties, music concerts, and art exhibitions. Discovering unique experiences in the city and engaging with friends.</p>
+
+            <p class="persona-section-title">Pain</p>
+            <p class="persona-section-text">Event information is fragmented across multiple platforms, recommendations feel generic, and she often finds out about events too late.</p>
           </div>
+
           <div class="persona-card">
-            <p class="persona-card-title">Goals</p>
-            <ul>
-              <li>Discover local events without having to search multiple platforms.</li>
-              <li>Stay connected with friends and the cultural scene in one place.</li>
-            </ul>
+            <p class="persona-name">Feature fit</p>
+            <p class="persona-role">Instagram Events · Discovery and planning</p>
+            <p class="persona-quote">"If events were already inside Instagram, I wouldn't need to search through random profiles just to know what is happening."</p>
+
+            <p class="persona-section-title">Goals</p>
+            <p class="persona-section-text">Discover local events without searching across multiple platforms and stay connected with friends and the cultural scene in one place.</p>
+
+            <p class="persona-section-title">Need</p>
+            <p class="persona-section-text">A familiar place where events are easy to browse, save, share, and filter by interests, location, date, and social connections.</p>
+
+            <p class="persona-section-title">Why it helps</p>
+            <p class="persona-section-text">She is already on Instagram, recommendations can be based on who she follows, and she can see which friends are interested or going.</p>
           </div>
         </div>
-
-        <div style="display:flex; gap:26px; margin-top:26px; align-items:flex-start;">
-          <div class="persona-pains">
-            <p class="persona-pains-title">Pains</p>
-            <ul>
-              <li>Fragmented Information: struggles to track events across multiple platforms.</li>
-              <li>Boring Recommendations: gets generic suggestions that don't match her taste.</li>
-              <li>Missed Events: finds out about things too late.</li>
-            </ul>
-          </div>
-
-          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding-top:60px;">
-            <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" style="transform:rotate(90deg)">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <div class="persona-why">
-            <p class="persona-why-title">Why the feature would help her?</p>
-            <ul>
-              <li>She's already on Instagram, no new app needed.</li>
-              <li>Event recommendations based on who she follows.</li>
-              <li>She can see which friends are going.</li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="persona-side-note">To better understand the target users, I created a persona that captured their goals, interests, and pain points, keeping their needs at the center of every design decision.</p>
       </div>
 
       <!-- CREATION PROCESS -->
