@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphic Design — Carmela Domingues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Aveburg';
+      src: url('Aveburg-Grande-Demo.otf') format('opentype');
+      font-weight: 400;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #1d1d1d;
+      --text-light: rgba(79,78,78,0.67);
+      --bg: #ffffff;
+      --font: 'DM Sans', sans-serif;
+      --aveburg: 'Aveburg', serif;
+      --margin: 120px;
+      --accent-border: rgba(29,29,29,0.15);
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 80px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(29,29,29,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--margin);
+    }
+
+    .logo {
+      font-family: 'Aveburg', serif;
+      font-size: 34px;
+      letter-spacing: 4px;
+      font-weight: 400;
+      background: linear-gradient(135deg, #e8a598 0%, #c9a0dc 40%, #8ec5d6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 52px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.4; }
+    .nav-links a.active { opacity: 0.4; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 56px var(--margin) 0;
+    }
+
+    .case-tags { display: flex; gap: 10px; margin-bottom: 16px; }
+    .case-tag {
+      font-size: 12px; font-weight: 400; color: #888;
+      border: 1px solid #ccc; border-radius: 30px; padding: 3px 14px;
+    }
+
+    .hero-title { font-size: 40px; font-weight: 400; line-height: 1.1; margin-bottom: 8px; }
+    .hero-sub { font-size: 16px; font-weight: 300; color: #555; margin-bottom: 30px; }
+
+    /* ── BODY LAYOUT ── */
+    .body-wrap {
+      display: flex;
+      flex-direction: row;
+      gap: 60px;
+      padding: 60px var(--margin) 120px;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { width: 220px; flex-shrink: 0; }
+
+    .sidebar-menu {
+      position: sticky;
+      top: 100px;
+      width: 220px;
+      background: rgba(245,245,245,0.4);
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-item {
+      font-size: 14px; font-weight: 400; color: #999;
+      text-decoration: none; display: block;
+      transition: color 0.2s; line-height: 1.4;
+    }
+
+    .sidebar-item:hover { color: var(--text); }
+    .sidebar-item.active { color: var(--text); font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { flex: 1; min-width: 0; }
+
+    .sec-label { font-size: 20px; font-weight: 300; color: var(--text-light); margin-bottom: 2px; }
+    .sec-title { font-size: 36px; font-weight: 400; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
+    .sec-text { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
+
+    .section { margin-bottom: 100px; scroll-margin-top: 80px; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      width: 100%;
+      height: 0.5px;
+      background: rgba(29,29,29,0.12);
+      margin-bottom: 80px;
+    }
+
+    /* ── COMPANY HEADER ── */
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+
+    .company-left { flex: 1; }
+
+    .company-name {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .company-meta {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+
+    .company-desc {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text);
+      max-width: 560px;
+    }
+
+    /* ── SPECS BLOCK (pills) ── */
+    .specs-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+      min-width: 220px;
+      max-width: 260px;
+    }
+
+    .spec-row { display: flex; flex-direction: column; gap: 6px; }
+
+    .spec-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .spec-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .spec-pill {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text);
+      border: 1px solid var(--accent-border);
+      border-radius: 30px;
+      padding: 4px 12px;
+      white-space: nowrap;
+    }
+
+    /* ── SUB-PROJECT ── */
+    .subproject { margin-bottom: 56px; }
+
+    .subproject-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .subproject-title {
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .subproject-type {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-light);
+      border: 1px solid var(--accent-border);
+      border-radius: 20px;
+      padding: 3px 11px;
+    }
+
+    /* ── IMAGE GRID ── */
+    .img-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .img-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .img-grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .img-grid-2-1 {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .img-placeholder {
+      background: #e8e8e8;
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .img-placeholder.tall { aspect-ratio: 3/4; }
+    .img-placeholder.wide { aspect-ratio: 16/9; }
+    .img-placeholder.square { aspect-ratio: 1/1; }
+
+    .img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* ── BRAND IDENTITY BLOCK ── */
+    .brand-block {
+      background: #f7f7f7;
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    .brand-section-title {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+
+    .brand-colors { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .brand-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(29,29,29,0.08);
+    }
+
+    .swatch-label {
+      font-size: 10px;
+      font-weight: 300;
+      text-align: center;
+      color: var(--text-light);
+      max-width: 50px;
+      line-height: 1.3;
+    }
+
+    .brand-typography { display: flex; flex-direction: column; gap: 10px; }
+
+    .type-sample {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .type-name {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--text-light);
+    }
+
+    .type-display {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .brand-elements {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .brand-element-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project { margin: 90px 0 40px; padding: 0; }
+
+    .next-project-card {
+      width: 100%;
+      max-width: 956px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 30px;
+      border: 1px solid #ffe8e3;
+      border-radius: 40px;
+      background: #fff;
+    }
+
+    .next-project-img {
+      width: 364px;
+      height: 218px;
+      flex: 0 0 364px;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #e8e8e8;
+    }
+
+    .next-project-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .next-project-info { flex: 1; min-width: 0; }
+
+    .next-project-title {
+      font-size: 32px;
+      line-height: 1.15;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .next-project-desc {
+      font-size: 20px;
+      line-height: 1.4;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .next-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 400;
+      color: #000;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .next-link svg { width: 22px; height: 22px; display: block; transition: transform 0.2s ease; }
+    .next-link:hover { opacity: 0.55; }
+    .next-link:hover svg { transform: translateX(4px); }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 40px;
+      padding: 32px 120px;
+      border-top: 0.5px solid rgba(29,29,29,0.12);
+    }
+
+    .footer-line { display: flex; justify-content: space-between; align-items: center; }
+
+    .footer-line p {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #1d1d1d;
+    }
+
+    .footer-links { display: flex; gap: 24px; }
+
+    .footer-links a {
+      color: #1d1d1d;
+      display: flex;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-links a:hover { opacity: 0.5; }
+    .footer-links svg { width: 24px; height: 24px; }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed; bottom: 32px; right: 32px; z-index: 200;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: transparent; border: 1.2px solid var(--text);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, background 0.2s;
+    }
+
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--text); }
+    .back-to-top:hover svg path { stroke: white; }
+    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">CD</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="about.html">About Me</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="case-tags">
+    <span class="case-tag">GRAPHIC DESIGN</span>
+    <span class="case-tag">BRANDING</span>
+    <span class="case-tag">VISUAL COMMUNICATION</span>
+  </div>
+  <h1 class="hero-title">Graphic Design Work</h1>
+  <p class="hero-sub">A selection of graphic design work across tech companies and student associations — from rebranding campaigns to event materials and social media.</p>
+</div>
+
+<!-- BODY -->
+<div class="body-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <nav class="sidebar-menu">
+      <a href="#poatek" class="sidebar-item active">Poatek · Telus Digital</a>
+      <a href="#sap" class="sidebar-item">SAP Labs Latin America</a>
+      <a href="#aaeaufrgs" class="sidebar-item">Sports Association UFRGS</a>
+    </nav>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- ────────────────────────────────────────── -->
+    <!-- POATEK -->
+    <!-- ────────────────────────────────────────── -->
+    <div class="section" id="poatek">
+
+      <div class="company-header">
+        <div class="company-left">
+          <p class="company-name">Poatek · Telus Digital</p>
+          <p class="company-meta">Graphic Designer &nbsp;·&nbsp; 2021–2023</p>
+          <p class="company-desc">Two years of graphic design work at an IT consultancy, spanning internal campaigns, employer branding, event materials, and full rebranding projects for internship programmes and company events.</p>
+        </div>
+
+        <div class="specs-block">
+          <div class="spec-row">
+            <p class="spec-label">Tools</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Photoshop</span>
+              <span class="spec-pill">Illustrator</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <p class="spec-label">Deliverables</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Social media</span>
+              <span class="spec-pill">Event materials</span>
+              <span class="spec-pill">Brand identity</span>
+              <span class="spec-pill">Campaigns</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <p class="spec-label">Scope</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Employer branding</span>
+              <span class="spec-pill">Internal comms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: MIT & Harvard Fair -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">MIT &amp; Harvard Fair</p>
+          <span class="subproject-type">Social media · Print</span>
+        </div>
+        <div class="img-grid-3">
+          <div class="img-placeholder">
+            <img src="images/poatek-mit-01.jpg" alt="MIT Harvard Fair" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/poatek-mit-02.jpg" alt="MIT Harvard Fair" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/poatek-mit-03.jpg" alt="MIT Harvard Fair" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: Internship Programme Rebranding -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">Internship Programme Rebranding</p>
+          <span class="subproject-type">Brand identity</span>
+        </div>
+        <div class="img-grid-2">
+          <div class="img-placeholder">
+            <img src="images/poatek-internship-01.jpg" alt="Internship Programme" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/poatek-internship-02.jpg" alt="Internship Programme" />
+          </div>
+        </div>
+
+        <!-- BRAND IDENTITY BLOCK -->
+        <div class="brand-block">
+          <div>
+            <p class="brand-section-title">Colour palette</p>
+            <div class="brand-colors">
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#3BB273;"></div>
+                <p class="swatch-label">#3BB273</p>
+              </div>
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#1d1d1d;"></div>
+                <p class="swatch-label">#1D1D1D</p>
+              </div>
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#ffffff; border:1px solid #ccc;"></div>
+                <p class="swatch-label">#FFFFFF</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="brand-section-title">Typography</p>
+            <div class="brand-typography">
+              <div class="type-sample">
+                <p class="type-name">Primary</p>
+                <p class="type-display" style="font-weight:700;">Bold Condensed</p>
+              </div>
+              <div class="type-sample">
+                <p class="type-name">Secondary</p>
+                <p class="type-display" style="font-weight:300;">Light Sans</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="brand-section-title">Visual elements</p>
+            <div class="brand-elements">
+              <p class="brand-element-text">Bold typographic headlines as the main design element</p>
+              <p class="brand-element-text">Green accent used to highlight key information</p>
+              <p class="brand-element-text">Clean, high-contrast layouts for digital and print</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: We're Hiring! -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">We're Hiring!</p>
+          <span class="subproject-type">Social media · Campaign</span>
+        </div>
+        <div class="img-grid-3">
+          <div class="img-placeholder">
+            <img src="images/poatek-hiring-01.jpg" alt="We're Hiring" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/poatek-hiring-02.jpg" alt="We're Hiring" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/poatek-hiring-03.jpg" alt="We're Hiring" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: End of Year Retrospective -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">End of Year Retrospective</p>
+          <span class="subproject-type">Social media · Event</span>
+        </div>
+        <div class="img-grid-2">
+          <div class="img-placeholder wide">
+            <img src="images/poatek-eoy-01.jpg" alt="End of Year" />
+          </div>
+          <div class="img-placeholder wide">
+            <img src="images/poatek-eoy-02.jpg" alt="End of Year" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: Summer Internship Rebranding -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">Summer Internship Rebranding</p>
+          <span class="subproject-type">Brand identity</span>
+        </div>
+        <div class="img-grid-2">
+          <div class="img-placeholder">
+            <img src="images/poatek-summer-01.jpg" alt="Summer Internship" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/poatek-summer-02.jpg" alt="Summer Internship" />
+          </div>
+        </div>
+
+        <!-- BRAND IDENTITY BLOCK -->
+        <div class="brand-block">
+          <div>
+            <p class="brand-section-title">Colour palette</p>
+            <div class="brand-colors">
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#0A2240;"></div>
+                <p class="swatch-label">#0A2240</p>
+              </div>
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#00B2D6;"></div>
+                <p class="swatch-label">#00B2D6</p>
+              </div>
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#ffffff; border:1px solid #ccc;"></div>
+                <p class="swatch-label">#FFFFFF</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="brand-section-title">Typography</p>
+            <div class="brand-typography">
+              <div class="type-sample">
+                <p class="type-name">Primary</p>
+                <p class="type-display" style="font-weight:700; color:#0A2240;">Bold Display</p>
+              </div>
+              <div class="type-sample">
+                <p class="type-name">Secondary</p>
+                <p class="type-display" style="font-weight:300;">Light Sans</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="brand-section-title">Visual elements</p>
+            <div class="brand-elements">
+              <p class="brand-element-text">Navy and teal colour system creating a fresh summer feel</p>
+              <p class="brand-element-text">Geometric arrows as a recurring directional motif</p>
+              <p class="brand-element-text">Dynamic diagonal compositions across all formats</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: Poatek Experience Logo & Brand -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">Poatek Experience — Logo &amp; Brand</p>
+          <span class="subproject-type">Brand identity · Logo design</span>
+        </div>
+        <div class="img-grid-2-1">
+          <div class="img-placeholder">
+            <img src="images/poatek-exp-01.jpg" alt="Poatek Experience" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/poatek-exp-02.jpg" alt="Poatek Experience" />
+          </div>
+        </div>
+
+        <!-- BRAND IDENTITY BLOCK -->
+        <div class="brand-block">
+          <div>
+            <p class="brand-section-title">Colour palette</p>
+            <div class="brand-colors">
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#00B4D8;"></div>
+                <p class="swatch-label">#00B4D8</p>
+              </div>
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#ffffff; border:1px solid #ccc;"></div>
+                <p class="swatch-label">#FFFFFF</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="brand-section-title">Typography</p>
+            <div class="brand-typography">
+              <div class="type-sample">
+                <p class="type-name">Primary</p>
+                <p class="type-display" style="font-weight:700; letter-spacing:0.05em;">CAPS BOLD</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="brand-section-title">Visual elements</p>
+            <div class="brand-elements">
+              <p class="brand-element-text">Teal as the sole accent — bold and distinctive</p>
+              <p class="brand-element-text">All-caps logotype for maximum presence</p>
+              <p class="brand-element-text">Minimal, confident layout built for events</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- END POATEK -->
+
+    <div class="section-divider"></div>
+
+    <!-- ────────────────────────────────────────── -->
+    <!-- SAP -->
+    <!-- ────────────────────────────────────────── -->
+    <div class="section" id="sap">
+
+      <div class="company-header">
+        <div class="company-left">
+          <p class="company-name">SAP Labs Latin America</p>
+          <p class="company-meta">Marketing &amp; Communications &nbsp;·&nbsp; 2020</p>
+          <p class="company-desc">Graphic design work for internal events and institutional anniversaries at one of the largest tech companies in Latin America — including a logo for the 14-year anniversary and social communications for the Rotation Programme.</p>
+        </div>
+
+        <div class="specs-block">
+          <div class="spec-row">
+            <p class="spec-label">Tools</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Photoshop</span>
+              <span class="spec-pill">Illustrator</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <p class="spec-label">Deliverables</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Logo design</span>
+              <span class="spec-pill">Event materials</span>
+              <span class="spec-pill">Social media</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <p class="spec-label">Scope</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Institutional comms</span>
+              <span class="spec-pill">Internal events</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: Anniversary Logo 14 Years -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">Anniversary Logo — 14 Years</p>
+          <span class="subproject-type">Logo design · Brand identity</span>
+        </div>
+        <div class="img-grid-2">
+          <div class="img-placeholder">
+            <img src="images/sap-anniversary-01.jpg" alt="SAP 14 Years" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/sap-anniversary-02.jpg" alt="SAP 14 Years" />
+          </div>
+        </div>
+
+        <!-- BRAND IDENTITY BLOCK -->
+        <div class="brand-block">
+          <div>
+            <p class="brand-section-title">Colour palette</p>
+            <div class="brand-colors">
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#1d1d1d;"></div>
+                <p class="swatch-label">#1D1D1D</p>
+              </div>
+              <div class="brand-swatch">
+                <div class="swatch-circle" style="background:#F4B942;"></div>
+                <p class="swatch-label">#F4B942</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="brand-section-title">Typography</p>
+            <div class="brand-typography">
+              <div class="type-sample">
+                <p class="type-name">Primary</p>
+                <p class="type-display" style="font-weight:700;">Bold Modern</p>
+              </div>
+              <div class="type-sample">
+                <p class="type-name">Secondary</p>
+                <p class="type-display" style="font-weight:300;">Light Serif</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="brand-section-title">Visual elements</p>
+            <div class="brand-elements">
+              <p class="brand-element-text">The "14" numeral as the central design element</p>
+              <p class="brand-element-text">Black and gold — a combination that signals prestige and milestone</p>
+              <p class="brand-element-text">Clean geometric forms with editorial feel</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: Rotation Programme Intern Happy Hour -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">Rotation Programme Intern Happy Hour</p>
+          <span class="subproject-type">Social media · Event</span>
+        </div>
+        <div class="img-grid-3">
+          <div class="img-placeholder">
+            <img src="images/sap-happyhour-01.jpg" alt="SAP Happy Hour" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/sap-happyhour-02.jpg" alt="SAP Happy Hour" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/sap-happyhour-03.jpg" alt="SAP Happy Hour" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- END SAP -->
+
+    <div class="section-divider"></div>
+
+    <!-- ────────────────────────────────────────── -->
+    <!-- AAEAUFRGS -->
+    <!-- ────────────────────────────────────────── -->
+    <div class="section" id="aaeaufrgs">
+
+      <div class="company-header">
+        <div class="company-left">
+          <p class="company-name">Sports Association UFRGS · Business School</p>
+          <p class="company-meta">Volunteer &nbsp;·&nbsp; 2019–2020</p>
+          <p class="company-desc">Volunteer graphic design for the sports association of Porto Alegre's Federal University Business School — creating campaigns for social causes, party events, and a "good news" editorial series.</p>
+        </div>
+
+        <div class="specs-block">
+          <div class="spec-row">
+            <p class="spec-label">Tools</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Photoshop</span>
+              <span class="spec-pill">Illustrator</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <p class="spec-label">Deliverables</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Social campaigns</span>
+              <span class="spec-pill">Event materials</span>
+              <span class="spec-pill">Editorial</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <p class="spec-label">Scope</p>
+            <div class="spec-pills">
+              <span class="spec-pill">Student comms</span>
+              <span class="spec-pill">Social causes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: Yellow September -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">Yellow September</p>
+          <span class="subproject-type">Social campaign · Awareness</span>
+        </div>
+        <div class="img-grid-3">
+          <div class="img-placeholder">
+            <img src="images/ufrgs-yellow-01.jpg" alt="Yellow September" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/ufrgs-yellow-02.jpg" alt="Yellow September" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/ufrgs-yellow-03.jpg" alt="Yellow September" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: Games + Baguncinha Party -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">Games + Baguncinha Party</p>
+          <span class="subproject-type">Event materials</span>
+        </div>
+        <div class="img-grid-2">
+          <div class="img-placeholder">
+            <img src="images/ufrgs-games-01.jpg" alt="Games Baguncinha" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/ufrgs-games-02.jpg" alt="Games Baguncinha" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: What if we spread good news? -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">What if we spread good news?</p>
+          <span class="subproject-type">Editorial series · Social media</span>
+        </div>
+        <div class="img-grid-3">
+          <div class="img-placeholder">
+            <img src="images/ufrgs-goodnews-01.jpg" alt="Good News" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/ufrgs-goodnews-02.jpg" alt="Good News" />
+          </div>
+          <div class="img-placeholder">
+            <img src="images/ufrgs-goodnews-03.jpg" alt="Good News" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- END AAEAUFRGS -->
+
+    <!-- NEXT PROJECT -->
+    <div class="next-project">
+      <div class="next-project-card">
+        <div class="next-project-img">
+          <img src="Banneraddapta.png" alt="Adappta project" />
+        </div>
+        <div class="next-project-info">
+          <p class="next-project-title">Adappta — Mobility-First Navigation App</p>
+          <p class="next-project-desc">A mobile navigation app for people with reduced mobility, from research to full brand identity and high-fidelity prototype.</p>
+          <a class="next-link" href="adappta.html">
+            Next case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-line">
+    <p>© 2025 Carmela Domingues</p>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/carmela-domingues/" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="mailto:carmela.domingues@email.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script>
+  // Sidebar active on scroll
+  const sections = document.querySelectorAll('.section[id]');
+  const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sidebarItems.forEach(item => item.classList.remove('active'));
+        const active = document.querySelector(`.sidebar-item[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Back to top
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 600);
+  });
+</script>
+
+</body>
+</html>
