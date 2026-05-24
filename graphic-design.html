@@ -240,6 +240,24 @@
       margin-top: 16px;
     }
 
+    .img-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.img-placeholder.print {
+  aspect-ratio: 4/3;
+  background: #f3f3f3;
+}
+
+.img-placeholder.print img {
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+}
+
     .img-grid-1 {
       display: grid;
       grid-template-columns: 1fr;
@@ -581,24 +599,45 @@ footer {
         </div>
       </div>
 
-      <!-- SUB: MIT & Harvard Fair -->
-      <div class="subproject">
-        <div class="subproject-header">
-          <p class="subproject-title">MIT &amp; Harvard Fair</p>
-          <span class="subproject-type">Social media · Print</span>
-        </div>
-        <div class="img-grid-3 img-grid-contain">
-  <div class="img-placeholder">
-    <img src="mit-1.avif" alt="MIT Harvard Fair" />
+   <!-- SUB: MIT & Harvard Fair -->
+<div class="subproject">
+  <div class="subproject-header">
+    <p class="subproject-title">MIT &amp; Harvard Fair</p>
+    <span class="subproject-type">Social media</span>
   </div>
-  <div class="img-placeholder">
-    <img src="mit-2.avif" alt="MIT Harvard Fair" />
+
+  <div class="img-grid-3 img-grid-contain">
+    <div class="img-placeholder">
+      <img src="mit-1.avif" alt="MIT Harvard Fair" />
+    </div>
+    <div class="img-placeholder">
+      <img src="mit-2.avif" alt="MIT Harvard Fair" />
+    </div>
+    <div class="img-placeholder">
+      <img src="mit-3.avif" alt="MIT Harvard Fair" />
+    </div>
   </div>
-  <div class="img-placeholder">
-    <img src="mit-3.avif" alt="MIT Harvard Fair" />
+
+  <div class="subproject-header" style="margin-top:32px;">
+    <p class="subproject-title">Print Materials</p>
+    <span class="subproject-type">Print</span>
+  </div>
+
+  <div class="img-grid-4">
+    <div class="img-placeholder print">
+      <img src="mit-print-1.avif" alt="MIT Harvard Fair print material" />
+    </div>
+    <div class="img-placeholder print">
+     <img src="mit-print-2.avif" alt="MIT Harvard Fair print material" />
+    </div>
+    <div class="img-placeholder print">
+    <img src="mit-print-3.avif" alt="MIT Harvard Fair print material" />
+    </div>
+    <div class="img-placeholder print">
+     <img src="mit-print-4.avif" alt="MIT Harvard Fair print material" />
+    </div>
   </div>
 </div>
-      </div>
 
       <!-- SUB: Internship Programme Rebranding -->
       <div class="subproject">
