@@ -423,20 +423,76 @@
       color: var(--text-light);
     }
 
-    /* Benchmarking */
-    .bench-item { display: flex; gap: 15px; align-items: center; margin-bottom: 32px; }
-    .bench-img { width: 178px; height: 365px; flex-shrink: 0; border-radius: 8px; background: #d9d9d9; overflow: hidden; }
-    .bench-img img { width: 100%; height: 100%; object-fit: cover; }
-    .bench-info { flex: 1; display: flex; flex-direction: column; gap: 15px; }
-    .bench-name { font-size: 20px; font-weight: 400; }
-    .bench-card {
-      background: var(--card-bg); border-radius: 20px;
-      box-shadow: 4px 0px 10px 0px rgba(0,0,0,0.15);
-      padding: 25px 12px;
+      /* Benchmarking */
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
     }
-    .bench-card-row { display: flex; gap: 10px; align-items: flex-start; }
-    .bench-emoji { font-size: 20px; flex-shrink: 0; }
-    .bench-card-text { font-size: 16px; font-weight: 300; line-height: 1.6; }
+
+    .bench-item {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 20px;
+      padding: 16px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .bench-img {
+      width: 100%;
+      height: 190px;
+      border-radius: 14px;
+      background: #d9d9d9;
+      overflow: hidden;
+    }
+
+    .bench-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .bench-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bench-name {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .bench-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: none;
+    }
+
+    .bench-card-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .bench-emoji {
+      font-size: 15px;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    .bench-card-text {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.45;
+      color: var(--text-light);
+    }
 
     /* Userflow */
     .flow-img { width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
