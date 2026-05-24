@@ -264,6 +264,17 @@
       overflow: hidden;
     }
 
+.img-grid-contain .img-placeholder {
+  aspect-ratio: 3/4;
+  background: #f3f3f3;
+}
+
+.img-grid-contain .img-placeholder img {
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+}
+
     .img-placeholder.tall { aspect-ratio: 3/4; }
     .img-placeholder.wide { aspect-ratio: 16/9; }
     .img-placeholder.square { aspect-ratio: 1/1; }
@@ -576,17 +587,17 @@ footer {
           <p class="subproject-title">MIT &amp; Harvard Fair</p>
           <span class="subproject-type">Social media · Print</span>
         </div>
-        <div class="img-grid-3">
-          <div class="img-placeholder">
-            <img src="mit-1.avif" alt="MIT Harvard Fair" />
-          </div>
-          <div class="img-placeholder">
-            <img src="mit-2.avif" alt="MIT Harvard Fair" />
-          </div>
-          <div class="img-placeholder">
-            <img src="mit-3.avif" alt="MIT Harvard Fair" />
-          </div>
-        </div>
+        <div class="img-grid-3 img-grid-contain">
+  <div class="img-placeholder">
+    <img src="mit-1.avif" alt="MIT Harvard Fair" />
+  </div>
+  <div class="img-placeholder">
+    <img src="mit-2.avif" alt="MIT Harvard Fair" />
+  </div>
+  <div class="img-placeholder">
+    <img src="mit-3.avif" alt="MIT Harvard Fair" />
+  </div>
+</div>
       </div>
 
       <!-- SUB: Internship Programme Rebranding -->
