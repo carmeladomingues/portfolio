@@ -225,22 +225,76 @@
       padding: 3px 11px;
     }
 
-    /* ── IMAGE GRID ── */
-    .img-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
-    }
+/* ─────────────────────────────
+   IMAGE GRIDS
+───────────────────────────── */
 
-    .img-grid-3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
-    }
+.img-grid-1,
+.img-grid-2,
+.img-grid-3,
+.img-grid-4,
+.img-grid-2-1 {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
 
-.img-grid-4 {
+.img-grid-1 { grid-template-columns: 1fr; }
+.img-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.img-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.img-grid-4 { grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: start; }
+.img-grid-2-1 { grid-template-columns: 1.4fr 1fr; }
+
+
+/* ─────────────────────────────
+   IMAGE BASE
+───────────────────────────── */
+
+.img-placeholder {
+  background: #e8e8e8;
+  border-radius: 16px;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.img-placeholder.tall { aspect-ratio: 3/4; }
+.img-placeholder.wide { aspect-ratio: 16/9; }
+.img-placeholder.square { aspect-ratio: 1/1; }
+
+
+/* ─────────────────────────────
+   IMAGE MODIFIERS
+───────────────────────────── */
+
+/* Use when the whole image must appear inside a rounded frame */
+.img-grid-contain .img-placeholder,
+.img-grid-4-contain .img-placeholder {
+  aspect-ratio: 3/4;
+  background: #f3f3f3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.img-grid-contain .img-placeholder img,
+.img-grid-4-contain .img-placeholder img {
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+}
+
+/* 4-column contain grid */
+.img-grid-4-contain {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
@@ -248,6 +302,7 @@
   align-items: start;
 }
 
+/* Use for print images that should appear outside a card/frame */
 .img-placeholder.print {
   aspect-ratio: auto;
   background: transparent;
@@ -264,53 +319,6 @@
   border-radius: 0;
   padding: 0;
 }
-
-    .img-grid-1 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .img-grid-2-1 {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .img-placeholder {
-      background: #e8e8e8;
-      border-radius: 16px;
-      aspect-ratio: 4/3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-.img-grid-contain .img-placeholder {
-  aspect-ratio: 3/4;
-  background: #f3f3f3;
-}
-
-.img-grid-contain .img-placeholder img {
-  object-fit: contain;
-  object-position: center;
-  padding: 8px;
-}
-
-    .img-placeholder.tall { aspect-ratio: 3/4; }
-    .img-placeholder.wide { aspect-ratio: 16/9; }
-    .img-placeholder.square { aspect-ratio: 1/1; }
-
-    .img-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 16px;
-      display: block;
-    }
 
     /* ── BRAND IDENTITY BLOCK ── */
     .brand-block {
@@ -611,6 +619,7 @@ footer {
   <div class="subproject-header">
     <p class="subproject-title">MIT &amp; Harvard Fair</p>
     <span class="subproject-type">Social media</span>
+    <span class="subproject-type">Swags</span>
   </div>
 
   <div class="img-grid-3 img-grid-contain">
@@ -626,7 +635,6 @@ footer {
   </div>
 
   <div class="subproject-header" style="margin-top:32px;">
-    <p class="subproject-title">Print Materials</p>
     <span class="subproject-type">Print</span>
   </div>
 
@@ -646,20 +654,29 @@ footer {
   </div>
 </div>
 
-      <!-- SUB: Internship Programme Rebranding -->
+      <!-- SUB: Internship Program Rebranding -->
       <div class="subproject">
         <div class="subproject-header">
           <p class="subproject-title">Internship Programme Rebranding</p>
           <span class="subproject-type">Brand identity</span>
         </div>
-        <div class="img-grid-2">
-          <div class="img-placeholder">
-            <img src="images/poatek-internship-01.jpg" alt="Internship Programme" />
-          </div>
-          <div class="img-placeholder">
-            <img src="images/poatek-internship-02.jpg" alt="Internship Programme" />
-          </div>
-        </div>
+       <div class="img-grid-4-contain">
+  <div class="img-placeholder">
+    <img src="ip-1.avif" alt="Internship Programme" />
+  </div>
+
+  <div class="img-placeholder">
+    <img src="ip-4.avif" alt="Internship Programme" />
+  </div>
+
+  <div class="img-placeholder">
+  <img src="ip-3.avif" alt="Internship Programme" />
+  </div>
+
+  <div class="img-placeholder">
+  <img src="ip-4.avif" alt="Internship Programme" />
+  </div>
+</div>
 
         <!-- BRAND IDENTITY BLOCK -->
         <div class="brand-block">
