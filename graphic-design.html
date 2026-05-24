@@ -257,6 +257,56 @@
   grid-template-columns: 1fr;
 }
 
+  .img-grid-logo-fit {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 16px;
+}
+
+.img-grid-logo-fit .img-placeholder {
+  width: min(100%, 360px);
+  margin: 0 auto;
+  aspect-ratio: auto;
+  background: transparent;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.img-grid-logo-fit .img-placeholder img {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 16px;
+  padding: 0;
+}
+
+.img-grid-2-fit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.img-grid-2-fit .img-placeholder {
+  aspect-ratio: auto;
+  background: transparent;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.img-grid-2-fit .img-placeholder img {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 16px;
+  padding: 0;
+}
+
 
 /* ─────────────────────────────
    IMAGE BASE
@@ -944,7 +994,7 @@ footer {
       <div class="company-header">
         <div class="company-left">
           <p class="company-name">SAP Labs Latin America</p>
-          <p class="company-meta">Rotation Program Intern &nbsp;·&nbsp; 2020</p>
+          <p class="company-meta">Rotation Program Intern &nbsp;·&nbsp; 2020–2021</p>
           <p class="company-desc">Graphic design work for internal events and institutional anniversaries at one of the largest tech companies in Latin America, including a logo for the 14-year anniversary and social communications for the Rotation Programme.</p>
         </div>
 
@@ -980,7 +1030,7 @@ footer {
           <p class="subproject-title">Anniversary Logo — 14 Years</p>
           <span class="subproject-type">Logo design · Brand identity</span>
         </div>
-       <div class="img-grid-single-fit">
+       <div class="img-grid-logo-fit">
   <div class="img-placeholder">
     <img src="logo-sap.avif" alt="Logo SAP" />
   </div>
@@ -1033,12 +1083,33 @@ footer {
         </div>
         <div class="img-grid-2-fit">
           <div class="img-placeholder">
-            <img src="sap-rp-1" alt="SAP Happy Hour" />
+            <img src="sap-rp-1.avif" alt="SAP Happy Hour" />
           </div>
           <div class="img-placeholder">
-            <img src="sap-rp-2" alt="SAP Happy Hour" />
+            <img src="sap-rp-2.avif" alt="SAP Happy Hour" />
           </div>
         </div>
+      </div>
+
+        <!-- SUB: Social Project @lifeatsap -->
+      <div class="subproject">
+        <div class="subproject-header">
+          <p class="subproject-title">Social Project @lifeatsap</p>
+          <span class="subproject-type">Social media</span>
+        </div>
+      <div class="img-grid-3-fit">
+  <div class="img-placeholder">
+    <img src="sp-1.avif" alt="SAP project image" />
+  </div>
+
+  <div class="img-placeholder">
+    <img src="sp-2.avif" alt="SAP project image" />
+  </div>
+
+  <div class="img-placeholder">
+    <img src="sp-3.avif" alt="SAP project image" />
+  </div>
+</div>
       </div>
 
     </div>
