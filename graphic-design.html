@@ -277,9 +277,9 @@
    IMAGE MODIFIERS
 ───────────────────────────── */
 
-/* Use when the whole image must appear inside a rounded frame */
+/* Use when the image must fill the rounded frame */
 .img-grid-contain .img-placeholder,
-.img-grid-4-contain .img-placeholder {
+.img-grid-4-fill .img-placeholder {
   aspect-ratio: 3/4;
   background: #f3f3f3;
   border-radius: 16px;
@@ -287,14 +287,16 @@
 }
 
 .img-grid-contain .img-placeholder img,
-.img-grid-4-contain .img-placeholder img {
-  object-fit: contain;
+.img-grid-4-fill .img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
-  padding: 8px;
+  padding: 0;
 }
 
-/* 4-column contain grid */
-.img-grid-4-contain {
+/* 4-column fill grid */
+.img-grid-4-fill {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
@@ -618,8 +620,7 @@ footer {
 <div class="subproject">
   <div class="subproject-header">
     <p class="subproject-title">MIT &amp; Harvard Fair</p>
-    <span class="subproject-type">Social media</span>
-    <span class="subproject-type">Swags</span>
+    <span class="subproject-type">Social media · Swags</span>
   </div>
 
   <div class="img-grid-3 img-grid-contain">
@@ -660,7 +661,7 @@ footer {
           <p class="subproject-title">Internship Programme Rebranding</p>
           <span class="subproject-type">Brand identity</span>
         </div>
-       <div class="img-grid-4-contain">
+       <div class="img-grid-4-fill">
   <div class="img-placeholder">
     <img src="ip-1.avif" alt="Internship Programme" />
   </div>
@@ -727,17 +728,23 @@ footer {
           <p class="subproject-title">We're Hiring!</p>
           <span class="subproject-type">Social media · Campaign</span>
         </div>
-        <div class="img-grid-3">
-          <div class="img-placeholder">
-            <img src="images/poatek-hiring-01.jpg" alt="We're Hiring" />
-          </div>
-          <div class="img-placeholder">
-            <img src="images/poatek-hiring-02.jpg" alt="We're Hiring" />
-          </div>
-          <div class="img-placeholder">
-            <img src="images/poatek-hiring-03.jpg" alt="We're Hiring" />
-          </div>
-        </div>
+      <div class="img-grid-4-fill">
+  <div class="img-placeholder">
+    <img src="wh-1.avif" alt="We're Hiring" />
+  </div>
+
+  <div class="img-placeholder">
+    <img src="wh-2.avif" alt="We're Hiring" />
+  </div>
+
+  <div class="img-placeholder">
+    <img src="wh-3.avif" alt="We're Hiring" />
+  </div>
+
+  <div class="img-placeholder">
+   <img src="wh-4.avif" alt="We're Hiring" />
+  </div>
+</div>
       </div>
 
       <!-- SUB: End of Year Retrospective -->
@@ -746,14 +753,23 @@ footer {
           <p class="subproject-title">End of Year Retrospective</p>
           <span class="subproject-type">Social media · Event</span>
         </div>
-        <div class="img-grid-2">
-          <div class="img-placeholder wide">
-            <img src="images/poatek-eoy-01.jpg" alt="End of Year" />
-          </div>
-          <div class="img-placeholder wide">
-            <img src="images/poatek-eoy-02.jpg" alt="End of Year" />
-          </div>
-        </div>
+        <div class="img-grid-4-fill">
+  <div class="img-placeholder">
+    <img src="ey-1.avif" alt="End of Year" />
+  </div>
+
+  <div class="img-placeholder">
+    <img src="ey-2.avif" alt="End of Year" />
+  </div>
+
+  <div class="img-placeholder">
+    <img src="ey-3.avif" alt="End of Year" />
+  </div>
+
+  <div class="img-placeholder">
+   <img src="ey-4.avif" alt="End of Year" />
+  </div>
+</div>
       </div>
 
       <!-- SUB: Summer Internship Rebranding -->
