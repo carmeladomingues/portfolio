@@ -307,6 +307,31 @@
   padding: 0;
 }
 
+  .img-grid-3-fit {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.img-grid-3-fit .img-placeholder {
+  aspect-ratio: auto;
+  background: transparent;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.img-grid-3-fit .img-placeholder img {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 16px;
+  padding: 0;
+}
+
 
 /* ─────────────────────────────
    IMAGE BASE
@@ -1097,7 +1122,7 @@ footer {
           <p class="subproject-title">Social Project @lifeatsap</p>
           <span class="subproject-type">Social media</span>
         </div>
-      <div class="img-grid-3-fit">
+     <div class="img-grid-3-fit">
   <div class="img-placeholder">
     <img src="sp-1.avif" alt="SAP project image" />
   </div>
