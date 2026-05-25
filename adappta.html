@@ -183,7 +183,13 @@ nav.scrolled {
     .research-text { font-size: 18px; font-weight: 300; line-height: 1.6; }
 
     /* Persona cards */
-    .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+    .persona-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 56px;
+  margin-bottom: 24px;
+}
     .persona-card {
       border: 1.3px solid var(--accent-border);
       border-radius: 24px; padding: 32px;
@@ -205,7 +211,13 @@ nav.scrolled {
       align-items: center;
       justify-content: center;
     }
-    .persona-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .persona-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
+  display: block;
+}
     .persona-name { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
     .persona-role { font-size: 15px; font-weight: 300; color: var(--text-light); margin-bottom: 20px; }
     .persona-quote {
@@ -601,8 +613,8 @@ footer {
             <p class="persona-section-text">Inaccessible public spaces and unreliable accessibility information often block his desire to explore new places.</p>
             <p class="persona-section-title">Need</p>
             <p class="persona-section-text">Regular contact with other people with reduced mobility, spaces with proper ramps, adapted restrooms, and accessible parking.</p>
-          </div>
-        </div>
+               </div>
+      </div>
 
       <!-- PROBLEM -->
       <div class="section" id="problem">
