@@ -292,11 +292,12 @@ nav.scrolled {
     }
 
     /* ── SKILLS ── */
-    .skills {
+      .skills {
       background: var(--color-accent-light);
       border-top: 0.5px solid var(--color-border);
       border-bottom: 0.5px solid var(--color-border);
-      padding: 48px var(--margin);
+      margin-top: 80px;
+      padding: 64px var(--margin) 72px;
     }
 
       .section-eyebrow {
@@ -317,13 +318,17 @@ nav.scrolled {
     }
 
     .skills-card {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .skills-card > div {
       background: var(--color-bg);
       border: 0.5px solid rgba(201,106,74,0.15);
       border-radius: 16px;
       padding: 32px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      min-height: 190px;
     }
 
     .skill-col-label {
@@ -714,19 +719,19 @@ nav.scrolled {
         </div>
 
         <div class="ph">
-          <!-- Replace with: <img src="images/about-08.jpg" alt="description" /> -->
+          <img src="me6.jpeg" alt="tiramisu" />
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
-          <span class="ph-tag">add your tag</span>
+          <span class="ph-tag">I believe in tiramisu supremacy</span>
         </div>
 
         <div class="ph">
-          <!-- Replace with: <img src="images/about-09.jpg" alt="description" /> -->
+         <img src="me7.jpeg" alt="matcha" />
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
-          <span class="ph-tag">add your tag</span>
+          <span class="ph-tag">Powered by matcha and coffee</span>
         </div>
 
       </div>
