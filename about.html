@@ -317,11 +317,12 @@ nav.scrolled {
       margin-bottom: 16px;
     }
 
-    .skills-card {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+  .skills-card {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 360px));
+  justify-content: center;
+  gap: 24px;
+}
 
     .skills-card > div {
       background: var(--color-bg);
