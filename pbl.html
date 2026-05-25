@@ -34,9 +34,9 @@
     body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
 
     /* ── NAV ── */
-      nav {
+    nav {
       position: sticky;
-      top: 0; left: 0; right: 0;
+      top: 0;
       z-index: 100;
       height: 80px;
       background: rgba(255,255,255,0.92);
@@ -46,25 +46,19 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 var(--margin);
-      transition: background 0.3s ease, backdrop-filter 0.3s ease;
     }
+    
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
 
-    nav.scrolled {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 0.5px solid rgba(29,29,29,0.08);
-    }
-
-    .logo {
-      font-family: var(--font-display);
-      font-size: 34px;
-      letter-spacing: 4px;
-      background: linear-gradient(135deg, #e8a598 0%, #c9a0dc 40%, #8ec5d6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-decoration: none;
-    }
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
 
     .nav-links {
       display: flex;
@@ -75,7 +69,7 @@
     .nav-links a {
       font-size: 16px;
       font-weight: 400;
-      color: var(--color-text);
+      color: var(--text);
       text-decoration: none;
       transition: opacity 0.2s;
     }
@@ -402,15 +396,17 @@
 <body>
 
 <!-- NAV -->
-  <nav>
-    <a class="logo" href="#">CD</a>
-    <ul class="nav-links">
-      <li><a href="index.html" id="nav-home">Home</a></li>
-      <li><a href="index.html#projects" id="nav-projects">Projects</a></li>
-      <li><a href="about.html">About Me</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+ <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues home">
+  <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
+</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="about.html">About Me</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
 <!-- HERO -->
 <div class="hero">
@@ -1147,6 +1143,30 @@
         </div>
       </div>
     </div>
+
+    <!-- NEXT PROJECT -->
+<section class="next-project">
+  <div class="next-project-card">
+    <div class="next-project-img">
+      <img src="adappta-nextproject.jpg" alt="Adappta">
+    </div>
+
+    <div class="next-project-info">
+      <h2 class="next-project-title">Adappta: Mobility-First Navigation App</h2>
+
+      <p class="next-project-desc">
+        An accessible navigation app designed to help people with reduced mobility move through the city with more confidence, using accessible routes, real-time warnings, and community-verified data.
+      </p>
+
+      <a class="next-link" href="adappta.html">
+        <span>next case study</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
 
   </main>
 </div>
