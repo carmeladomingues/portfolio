@@ -105,7 +105,7 @@ nav.scrolled {
 
     /* ── HERO ── */
     .hero {
-      padding: 120px var(--margin) 0;
+      padding: 80px var(--margin) 0;
       border-bottom: none;
     }
 
@@ -543,8 +543,7 @@ nav.scrolled {
 
     <!-- HERO -->
     <section class="hero">
-      <p class="hero-eyebrow">About me</p>
-      <h1 class="hero-title">The full story about my <em>ux/ui design journey</em></h1>
+      <h1 class="hero-title">The full story about my <br><em>ux/ui design journey</em></h1>
     </section>
 
     <!-- STORY + EXPERIENCE -->
@@ -767,8 +766,17 @@ nav.scrolled {
 
   <script>
     const btn = document.querySelector('.back-top');
+    const footer = document.querySelector('footer');
+
     window.addEventListener('scroll', () => {
       btn.classList.toggle('visible', window.scrollY > 400);
+
+      const footerTop = footer.getBoundingClientRect().top;
+      if (footerTop < window.innerHeight) {
+        btn.style.bottom = (window.innerHeight - footerTop + 16) + 'px';
+      } else {
+        btn.style.bottom = '32px';
+      }
     });
 
     const faders = document.querySelectorAll('.fade-up');
