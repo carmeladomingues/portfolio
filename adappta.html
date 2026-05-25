@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adappta — Carmela Domingues</title>
+  <link rel="icon" type="image/png" href="logo.portfolio.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
@@ -182,11 +183,41 @@ nav.scrolled {
     .research-text { font-size: 18px; font-weight: 300; line-height: 1.6; }
 
     /* Persona cards */
-    .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
     .persona-card {
       border: 1.3px solid var(--accent-border);
       border-radius: 24px; padding: 32px;
+      padding-top: 48px;
+      position: relative;
     }
+    .persona-avatar {
+      position: absolute;
+      top: -36px;
+      left: 32px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 1.3px var(--accent-border);
+      background: var(--accent);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .persona-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .persona-name { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+    .persona-role { font-size: 15px; font-weight: 300; color: var(--text-light); margin-bottom: 20px; }
+    .persona-quote {
+      font-size: 15px; font-style: italic; font-weight: 300;
+      color: var(--purple); margin-bottom: 20px; line-height: 1.6;
+    }
+    .persona-section-title {
+      font-size: 13px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--text-light);
+      margin-bottom: 6px; margin-top: 16px;
+    }
+    .persona-section-text { font-size: 15px; font-weight: 300; line-height: 1.6; }
 
     .persona-name { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
     .persona-role { font-size: 15px; font-weight: 300; color: var(--text-light); margin-bottom: 20px; }
@@ -536,26 +567,42 @@ footer {
       </div>
 
       <!-- PERSONA -->
-      <div class="section" id="persona">
-        <p class="sec-label">Persona</p>
+      <div class="section" id="personas">
+        <p class="sec-label">Personaz</p>
         <p class="sec-title">Getting to know the people Adappta was designed for</p>
         <p class="sec-text">Two personas were developed to represent the range of people Adappta was designed for — different ages, different life contexts, but the same daily struggle with an inaccessible city.</p>
 
-<div style="display:flex; flex-direction:column; gap:80px; margin-top:40px; margin-bottom:100px; align-items:center;">
+        <div class="persona-grid">
+          <div class="persona-card">
+            <div class="persona-avatar">
+              <img src="madalena.jpg" alt="Madalena" />
+            </div>
+            <p class="persona-name">Madalena</p>
+            <p class="persona-role">32 years old · Lawyer · Alges</p>
+            <p class="persona-quote">"Despite this being my reality since birth, I still get frustrated by certain attitudes and misunderstandings from others."</p>
+            <p class="persona-section-title">Context</p>
+            <p class="persona-section-text">Works at a law firm on a hybrid schedule and has built an independent, active life, but the city constantly puts that independence to the test.</p>
+            <p class="persona-section-title">Pain</p>
+            <p class="persona-section-text">Struggles with limited accessible dining options, unreliable accessibility information, and a lack of support networks at work.</p>
+            <p class="persona-section-title">Need</p>
+            <p class="persona-section-text">Accessible local recommendations, parking near work, and reliable information that lets her live independently without extra worry.</p>
+          </div>
 
-  <img 
-    src="madalenapersona.png" 
-    alt="Madalena persona" 
-    style="width:85%; border-radius:20px;"
-  >
-
-  <img 
-    src="miguelpersona.png" 
-    alt="Miguel persona" 
-    style="width:85%; border-radius:20px;"
-  >
-
-</div>
+          <div class="persona-card">
+            <div class="persona-avatar">
+              <img src="miguel.jpg" alt="Miguel" />
+            </div>
+            <p class="persona-name">Miguel</p>
+            <p class="persona-role">45 years old · Project Manager · Benfica, Lisbon</p>
+            <p class="persona-quote">"Life goes on, and today I'm deeply grateful for the independence I built. It lets me live, be present, and stay close to those I love."</p>
+            <p class="persona-section-title">Context</p>
+            <p class="persona-section-text">Became a wheelchair user at 28 after a workplace accident. He retrained, works in project management, drives an adapted vehicle, and stays active and social.</p>
+            <p class="persona-section-title">Pain</p>
+            <p class="persona-section-text">Inaccessible public spaces and unreliable accessibility information often block his desire to explore new places.</p>
+            <p class="persona-section-title">Need</p>
+            <p class="persona-section-text">Regular contact with other people with reduced mobility, spaces with proper ramps, adapted restrooms, and accessible parking.</p>
+          </div>
+        </div>
 
       <!-- PROBLEM -->
       <div class="section" id="problem">
