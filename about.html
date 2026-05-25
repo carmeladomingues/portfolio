@@ -161,7 +161,7 @@ nav.scrolled {
     }
 
     .exp-col {
-      padding: 40px var(--margin) 0 48px;
+      padding: 40px var(--margin) 0 60px;
       display: flex;
       flex-direction: column;
     }
@@ -192,7 +192,7 @@ nav.scrolled {
 
     .tl-item {
       position: relative;
-      margin-bottom: 28px;
+      margin-bottom: 34px;
     }
 
     .tl-item:last-child { margin-bottom: 0; }
@@ -220,15 +220,15 @@ nav.scrolled {
       margin-bottom: 2px;
     }
 
-    .tl-role {
-      font-size: 14px;
+      .tl-role {
+      font-size: 16px;
       font-weight: 500;
-      line-height: 1.3;
-      margin-bottom: 2px;
+      line-height: 1.35;
+      margin-bottom: 3px;
     }
 
     .tl-where {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--color-muted);
     }
 
@@ -244,39 +244,51 @@ nav.scrolled {
     }
 
     /* ── CV STRIP ── */
-    .cv-strip {
-      padding: 16px var(--margin) 32px var(--margin);
+      .cv-strip {
+      margin-top: 34px;
+      padding-left: 20px;
       display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 24px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 16px;
+      max-width: 420px;
     }
 
     .cv-strip p {
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 300;
       color: var(--color-muted);
       line-height: 1.5;
+      max-width: 250px;
     }
 
-    .cv-btn {
+     .cv-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border: 1px solid var(--color-accent);
-      border-radius: 40px;
+      justify-content: center;
+      gap: 10px;
+      width: 50px;
+      height: 50px;
+      border: 1.2px solid var(--color-border-strong);
+      border-radius: 50%;
       font-family: var(--font);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--color-accent);
+      font-size: 0;
+      font-weight: 400;
+      color: var(--color-text);
       text-decoration: none;
       white-space: nowrap;
       flex-shrink: 0;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .cv-btn::before {
+      content: "↓";
+      font-size: 20px;
+      line-height: 1;
     }
 
     .cv-btn:hover {
-      background: var(--color-accent);
+      background: var(--color-text);
       color: #fff;
     }
 
@@ -581,11 +593,16 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- CV STRIP -->
-    <div class="cv-strip fade-up">
-      <p>Want to keep a copy? Here's everything above in a tidy PDF — same story, printer-friendly.</p>
-      <a class="cv-btn" href="cv-carmela-domingues.pdf" download>↓ Download CV</a>
+      </div>
+
+        <div class="cv-strip">
+          <p>Want to know more? A little more about the path that brought me here.</p>
+          <a class="cv-btn" href="cv-carmela-domingues.pdf" download aria-label="Download CV">Download full CV</a>
+        </div>
+      </div>
     </div>
+
+    <!-- SKILLS -->
 
     <!-- SKILLS -->
     <section class="skills fade-up">
