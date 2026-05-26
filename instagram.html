@@ -542,12 +542,12 @@ nav.scrolled {
        /* Video placeholder */
 .video-ph {
   width: 100%;
-  min-height: 640px;
-  margin: 32px 0 96px;
-  padding: 48px;
-  border-radius: 24px;
+  max-width: 520px;
+  height: 560px;
+  margin: 32px auto 96px;
+  padding: 28px;
+  border-radius: 28px;
   background: #FFE8E3;
-  border: 1px dashed #FF6633;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -555,13 +555,13 @@ nav.scrolled {
 
 .video-ph video {
   width: auto;
-  height: 560px;
+  height: 500px;
   max-width: 100%;
   display: block;
   object-fit: contain;
-  border-radius: 28px;
+  border-radius: 24px;
   background: #000;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
     /* Learnings */
@@ -1045,7 +1045,7 @@ nav.scrolled {
         <p class="sec-title" style="margin-top:48px">High fidelity</p>
         <p class="sec-text">For the UI, I wanted it to feel as close to Instagram as possible, so I downloaded the font, icons, and used screenshots from my own account as reference. Once that was done, I decided to go a step further and build a full prototype, the brief didn't ask for one, but I'm a Virgo, so here we are. And since I'm a huge fan of The Office, I used the characters as the faces and names throughout the events. Obviously.</p>
 
-        <div class="hifi-block">
+          <div class="hifi-block" style="margin-bottom:96px;">
           <div class="hifi-row">
             <div class="screen-with-caption">
               <img src="hifi1.jpg" alt="Hifi 1" style="width:215px; border-radius:8px; box-shadow:4px 0px 10px 2px rgba(0,0,0,0.05);" />
