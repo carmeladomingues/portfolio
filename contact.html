@@ -322,138 +322,105 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-  :root {
-    --margin: 24px;
-  }
+/* MOBILE */
+.mobile-menu-toggle {
+  display: none;
+}
 
-  html {
-    scroll-padding-top: 72px;
-  }
-
+@media (max-width: 768px) {
   nav {
-    height: auto;
-    min-height: 72px;
-    padding: 18px var(--margin);
-    align-items: flex-start;
-    gap: 20px;
+    height: 76px;
+    min-height: 76px;
+    padding: 18px 24px;
+    align-items: center;
   }
 
-  .logo img {
-    height: 36px;
+  .mobile-menu-toggle {
+    display: block;
+    border: 1px solid var(--color-border);
+    background: rgba(255,255,255,0.72);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    padding: 12px 16px;
+    border-radius: 999px;
+    cursor: pointer;
   }
 
   .nav-links {
-    gap: 18px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 24px;
+    right: 24px;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 14px;
+    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(29,29,29,0.12);
+    backdrop-filter: blur(14px);
+  }
+
+  nav.menu-open .nav-links {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
   }
 
   .nav-links a {
-    font-size: 13px;
+    display: block;
+    width: 100%;
+    padding: 16px 10px;
+    font-size: 18px;
   }
 
   main {
-    min-height: auto;
-    padding: 140px var(--margin) 72px;
-    justify-content: flex-start;
-  }
-
-  .contact-content {
-    max-width: 100%;
-  }
-
-  .contact-eyebrow {
-    font-size: 14px;
-    margin-bottom: 16px;
-  }
-
-  .contact-title {
-    font-size: clamp(42px, 12vw, 58px);
-    line-height: 1.08;
-    margin-bottom: 28px;
-  }
-
-  .contact-title br {
-    display: none;
-  }
-
-  .contact-sub {
-    font-size: 16px;
-    line-height: 1.55;
-    max-width: 100%;
-    margin-bottom: 36px;
-  }
-
-  .contact-available {
-    font-size: 14px;
-    margin-bottom: 32px;
-  }
-
-  .contact-ctas {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .cta-divider {
-    display: none;
-  }
-
-  .contact-btn-label {
-    font-size: 17px;
-  }
-
-  .contact-btn-circle {
-    width: 46px;
-    height: 46px;
+    padding-top: 128px;
   }
 
   footer {
-    margin-top: 0;
-    padding: 28px var(--margin);
+    padding: 32px 24px;
   }
 
   .footer-line {
-    flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 22px;
   }
 
-  .footer-line p {
-    font-size: 10px;
-    line-height: 1.5;
+  .footer-links {
+    gap: 22px;
   }
 
-  .back-to-top {
-    right: 20px;
-    bottom: 20px;
-    width: 46px;
-    height: 46px;
+  .footer-links a {
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .footer-links svg {
+    display: none;
+  }
+
+  .footer-link-linkedin::after {
+    content: "LinkedIn";
+  }
+
+  .footer-link-email::after {
+    content: "Email";
   }
 }
 
 @media (max-width: 420px) {
-  :root {
-    --margin: 20px;
-  }
-
   nav {
-    flex-direction: column;
-  }
-
-  .nav-links {
-    justify-content: flex-start;
-    gap: 14px 18px;
+    flex-direction: row;
   }
 
   main {
-    padding-top: 156px;
-  }
-
-  .contact-title {
-    font-size: 40px;
+    padding-top: 124px;
   }
 }
   </style>
@@ -462,16 +429,21 @@
 
   <!-- NAV -->
   <nav>
-    <a class="logo" href="index.html" aria-label="Carmela Domingues home">
-      <img src="logo.portfolio.png" alt="Carmela Domingues" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#projects">Projects</a></li>
-      <li><a href="about.html">About Me</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-  </nav>
+  <a class="logo" href="index.html" aria-label="Carmela Domingues home">
+    <img src="logo.portfolio.png" alt="Carmela Domingues" />
+  </a>
+
+  <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    MENU
+  </button>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="about.html">About Me</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
 
   <!-- BLOB BACKGROUND (same as index hero) -->
   <div class="contact-blob">
@@ -530,15 +502,15 @@
   <div class="footer-line">
     <p>© all rights reserved to carmela domingues</p>
 
-    <div class="footer-links">
-  <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
+   <div class="footer-links">
+  <a class="footer-link-linkedin" href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
       <circle cx="4" cy="4" r="2"/>
     </svg>
   </a>
 
-  <a href="mailto:carmeladomingues@outlook.com" aria-label="Email">
+  <a class="footer-link-email" href="mailto:carmeladomingues@outlook.com" aria-label="Email">
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
     </svg>
@@ -557,6 +529,13 @@
     const nav = document.querySelector('nav');
     const backToTop = document.querySelector('.back-to-top');
     const footer = document.querySelector('footer');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+
+mobileMenuToggle.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('menu-open');
+  mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+  mobileMenuToggle.textContent = isOpen ? 'CLOSE' : 'MENU';
+});
 
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 50);
