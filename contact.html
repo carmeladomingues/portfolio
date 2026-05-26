@@ -322,80 +322,118 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-/* MOBILE FIX - contact page */
+/* FINAL MOBILE OVERRIDE */
 @media (max-width: 768px) {
-  body {
-    width: 100%;
-    overflow-x: hidden;
-  }
-
   nav {
-    height: 72px;
-    min-height: 72px;
-    padding: 16px 24px;
+    height: 76px !important;
+    min-height: 76px !important;
+    padding: 16px 24px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-direction: row !important;
   }
 
   .logo img {
-    height: 34px;
+    height: 34px !important;
+  }
+
+  .mobile-menu-toggle {
+    display: block !important;
+    border: 1px solid #1d1d1d;
+    background: rgba(255,255,255,0.85);
+    color: #1d1d1d;
+    font-family: var(--font-body);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    padding: 10px 14px;
+    border-radius: 999px;
+  }
+
+  .nav-links {
+    display: none !important;
+    position: absolute;
+    top: 76px;
+    left: 24px;
+    right: 24px;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 10px 0;
+    background: rgba(255,255,255,0.97);
+    border: 1px solid rgba(29,29,29,0.12);
+    backdrop-filter: blur(14px);
+  }
+
+  nav.menu-open .nav-links {
+    display: flex !important;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 16px 18px;
+    font-size: 18px !important;
   }
 
   main {
-    width: 100%;
-    min-height: auto;
-    padding: 128px 24px 64px;
-    overflow-x: hidden;
-  }
-
-  .contact-content {
-    width: 100%;
-    max-width: 100%;
+    padding: 120px 24px 64px !important;
   }
 
   .contact-title {
-    font-size: 42px;
-    line-height: 1.08;
-    margin-bottom: 28px;
-    max-width: 100%;
-    text-align: left;
+    font-size: 40px !important;
+    line-height: 1.12 !important;
+    margin-bottom: 28px !important;
+    text-align: left !important;
   }
 
   .contact-title br {
-    display: none;
+    display: none !important;
   }
 
   .contact-sub {
-    font-size: 17px;
-    line-height: 1.55;
-    max-width: 100%;
-  }
-
-  .contact-ctas {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .cta-divider {
-    display: none;
-  }
-}
-
-@media (max-width: 420px) {
-  main {
-    padding: 118px 22px 56px;
-  }
-
-  .contact-title {
-    font-size: 36px;
-    line-height: 1.12;
-  }
-
-  .contact-sub {
-    font-size: 16px;
+    font-size: 16px !important;
+    line-height: 1.55 !important;
   }
 
   .contact-btn-label {
-    font-size: 18px;
+    font-size: 18px !important;
+  }
+
+  footer {
+    padding: 30px 24px !important;
+  }
+
+  .footer-line {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+
+  .footer-line p {
+    font-size: 10px !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .footer-links {
+    gap: 20px !important;
+  }
+
+  .footer-links svg {
+    display: none !important;
+  }
+
+  .footer-links a {
+    font-size: 14px !important;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .footer-links a:first-child::after {
+    content: "LinkedIn";
+  }
+
+  .footer-links a:last-child::after {
+    content: "Email";
   }
 }
   </style>
