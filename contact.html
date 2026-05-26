@@ -322,105 +322,80 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-/* MOBILE */
-.mobile-menu-toggle {
-  display: none;
-}
-
+/* MOBILE FIX - contact page */
 @media (max-width: 768px) {
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   nav {
-    height: 76px;
-    min-height: 76px;
-    padding: 18px 24px;
-    align-items: center;
+    height: 72px;
+    min-height: 72px;
+    padding: 16px 24px;
   }
 
-  .mobile-menu-toggle {
-    display: block;
-    border: 1px solid var(--color-border);
-    background: rgba(255,255,255,0.72);
-    color: var(--color-text);
-    font-family: var(--font-body);
-    font-size: 13px;
-    letter-spacing: 0.14em;
-    padding: 12px 16px;
-    border-radius: 999px;
-    cursor: pointer;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 24px;
-    right: 24px;
-    display: none;
-    flex-direction: column;
-    gap: 0;
-    padding: 14px;
-    background: rgba(255,255,255,0.96);
-    border: 1px solid rgba(29,29,29,0.12);
-    backdrop-filter: blur(14px);
-  }
-
-  nav.menu-open .nav-links {
-    display: flex;
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
-
-  .nav-links a {
-    display: block;
-    width: 100%;
-    padding: 16px 10px;
-    font-size: 18px;
+  .logo img {
+    height: 34px;
   }
 
   main {
-    padding-top: 128px;
+    width: 100%;
+    min-height: auto;
+    padding: 128px 24px 64px;
+    overflow-x: hidden;
   }
 
-  footer {
-    padding: 32px 24px;
+  .contact-content {
+    width: 100%;
+    max-width: 100%;
   }
 
-  .footer-line {
-    align-items: flex-start;
-    gap: 22px;
+  .contact-title {
+    font-size: 42px;
+    line-height: 1.08;
+    margin-bottom: 28px;
+    max-width: 100%;
+    text-align: left;
   }
 
-  .footer-links {
-    gap: 22px;
-  }
-
-  .footer-links a {
-    font-size: 14px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-
-  .footer-links svg {
+  .contact-title br {
     display: none;
   }
 
-  .footer-link-linkedin::after {
-    content: "LinkedIn";
+  .contact-sub {
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 100%;
   }
 
-  .footer-link-email::after {
-    content: "Email";
+  .contact-ctas {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .cta-divider {
+    display: none;
   }
 }
 
 @media (max-width: 420px) {
-  nav {
-    flex-direction: row;
+  main {
+    padding: 118px 22px 56px;
   }
 
-  main {
-    padding-top: 124px;
+  .contact-title {
+    font-size: 36px;
+    line-height: 1.12;
+  }
+
+  .contact-sub {
+    font-size: 16px;
+  }
+
+  .contact-btn-label {
+    font-size: 18px;
   }
 }
   </style>
