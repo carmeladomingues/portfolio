@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Carmela Domingues</title>
+  <link rel="icon" type="image/png" href="logo.portfolio.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Aveburg';
+      src: url('Aveburg-Grande-Demo.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-text: #1d1d1d;
+      --color-text-light: #4f4e4e;
+      --color-bg: #ffffff;
+      --color-border: #1d1d1d;
+      --color-accent: #C96A4A;
+      --color-accent-light: #faf0ec;
+      --font-display: 'Aveburg', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --margin: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 80px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--margin);
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(29,29,29,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 52px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.4; }
+    .nav-links a.active { opacity: 0.4; }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px var(--margin) 0;
+      min-height: 100vh;
+    }
+
+    /* ── HERO BLOB (same as index) ── */
+    .contact-blob {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .contact-blob img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    /* ── EYEBROW ── */
+    .contact-eyebrow {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-text-light);
+      letter-spacing: 0.48px;
+      margin-bottom: 20px;
+    }
+
+    /* ── TITLE ── */
+    .contact-title {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 83px;
+      line-height: 1.15;
+      color: var(--color-text);
+      margin-bottom: 32px;
+    }
+
+    .contact-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* ── SUBTITLE ── */
+    .contact-sub {
+      font-size: 20px;
+      font-weight: 200;
+      color: #2c2c2c;
+      letter-spacing: 0.48px;
+      line-height: 1.5;
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    /* ── AVAILABLE BADGE ── */
+    .contact-available {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--color-text-light);
+      margin-bottom: 40px;
+    }
+
+    .available-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4caf76;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA BUTTONS ── */
+    .contact-ctas {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    /* Primary button — matches the index "PROJECTS" button style */
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+
+    .contact-btn-circle {
+      width: 50px;
+      height: 50px;
+      border: 1.2px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .contact-btn:hover .contact-btn-circle {
+      background: var(--color-text);
+    }
+
+    .contact-btn:hover .contact-btn-circle svg path {
+      stroke: white;
+    }
+
+    .contact-btn-circle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .contact-btn-label {
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 0.48px;
+      border-bottom: 1px solid var(--color-text);
+      padding-bottom: 2px;
+    }
+
+    /* Divider between buttons */
+    .cta-divider {
+      font-size: 16px;
+      color: var(--color-text-light);
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 28px var(--margin);
+      border-top: 0.5px solid rgba(29,29,29,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .footer-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .footer-line p {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-text-light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--color-text);
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      display: flex;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-links svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 200;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.2px solid var(--color-border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, background 0.2s ease;
+    }
+
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--color-text); }
+    .back-to-top:hover svg path { stroke: white; }
+    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="index.html" aria-label="Carmela Domingues home">
+      <img src="logo.portfolio.png" alt="Carmela Domingues" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- BLOB BACKGROUND (same as index hero) -->
+  <div class="contact-blob">
+    <img src="bg6.png" alt="" />
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    <div class="contact-content">
+
+      <p class="contact-eyebrow">Contact</p>
+
+      <h1 class="contact-title">
+        Available, caffeinated,<br>
+        <em>and ready to design.</em>
+      </h1>
+
+      <p class="contact-sub">
+        Whether it's a project, a job, or just a good reason to talk — I'm usually one message away. Unless I'm at a concert. But I'll reply after.
+      </p>
+
+      <div class="contact-available">
+        <span class="available-dot"></span>
+        Available for new opportunities
+      </div>
+
+      <div class="contact-ctas">
+
+        <a class="contact-btn" href="mailto:carmeladomingues@outlook.com">
+          <div class="contact-btn-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="contact-btn-label">EMAIL ME</span>
+        </a>
+
+        <span class="cta-divider">or</span>
+
+        <a class="contact-btn" href="https://www.linkedin.com/in/carmeladomingues/" target="_blank">
+          <div class="contact-btn-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="2" y="9" width="4" height="12" rx="0.5"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <span class="contact-btn-label">LINKEDIN</span>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-line">
+      <p>© all rights reserved to carmela domingues</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="mailto:carmeladomingues@outlook.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+    const nav = document.querySelector('nav');
+    const backToTop = document.querySelector('.back-to-top');
+    const footer = document.querySelector('footer');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+
+      if (window.scrollY > 400) {
+        backToTop.classList.add('visible');
+        const footerTop = footer.getBoundingClientRect().top;
+        const windowH = window.innerHeight;
+        backToTop.style.bottom = footerTop < windowH ? (windowH - footerTop + 16) + 'px' : '32px';
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+  </script>
+
+</body>
+</html>
