@@ -235,50 +235,62 @@
       font-weight: 300;
     }
 
-    /* ── FOOTER ── */
-    footer {
+        /* ── FOOTER BLOB ── */
+    .footer-blob-section {
       position: relative;
-      z-index: 1;
-      padding: 28px var(--margin);
-      border-top: 0.5px solid rgba(29,29,29,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: auto;
+      height: 200px;
+      overflow: hidden;
+      pointer-events: none;
     }
 
-    .footer-line {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
+    .footer-blob-section img {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 531px;
+      height: 773px;
+      object-fit: cover;
     }
 
-    .footer-line p {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--color-text-light);
-    }
+    /* ── FOOTER ── */
+ footer {
+  margin-top: 40px;
+  padding: 32px 120px;
+  border-top: 0.5px solid rgba(29,29,29,0.12);
+}
 
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+.footer-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .footer-links a {
-      color: var(--color-text);
-      opacity: 0.5;
-      transition: opacity 0.2s;
-      display: flex;
-    }
+.footer-line p {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1d1d1d;
+}
 
-    .footer-links a:hover { opacity: 1; }
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
 
-    .footer-links svg {
-      width: 24px;
-      height: 24px;
-    }
+.footer-links a {
+  color: #1d1d1d;
+  display: flex;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+  opacity: 0.5;
+}
+
+.footer-links svg {
+  width: 24px;
+  height: 24px;
+}
 
     /* ── BACK TO TOP ── */
     .back-to-top {
@@ -382,23 +394,24 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-line">
-      <p>© all rights reserved to carmela domingues</p>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-        </a>
-        <a href="mailto:carmeladomingues@outlook.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </footer>
+  <div class="footer-line">
+    <p>© all rights reserved to carmela domingues</p>
+
+    <div class="footer-links">
+  <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  </a>
+
+  <a href="mailto:carmeladomingues@outlook.com" aria-label="Email">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+    </svg>
+  </a>
+</div>
+</footer>
 
   <!-- BACK TO TOP -->
   <button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
