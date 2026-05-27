@@ -1063,6 +1063,67 @@ footer {
     outline-offset: 3px;
   }
 }
+
+    /* DESKTOP SIDEBAR RESTORE */
+@media (min-width: 769px) {
+  .section-menu-toggle {
+    display: none !important;
+  }
+
+  .sidebar {
+    width: 220px !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  .sidebar-menu {
+    position: fixed !important;
+    top: 100px !important;
+    width: 220px !important;
+    left: auto;
+    background: rgba(245,245,245,0.4) !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .sidebar-item {
+    min-height: auto !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #999 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    text-decoration: none !important;
+    white-space: normal !important;
+  }
+
+  .sidebar-item:hover {
+    color: var(--text) !important;
+  }
+
+  .sidebar-item.active {
+    color: var(--text) !important;
+    font-weight: 500 !important;
+  }
+}
   </style>
 </head>
 <body>
