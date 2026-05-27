@@ -990,6 +990,79 @@ footer {
     outline-offset: 4px;
   }
 }
+
+    /* MOBILE CASE SECTION NAV */
+@media (max-width: 768px) {
+  .section-menu-toggle {
+    display: none !important;
+  }
+
+  .sidebar {
+    display: block !important;
+    width: 100% !important;
+    position: sticky !important;
+    top: 76px;
+    z-index: 90;
+    margin: 0 0 28px !important;
+    padding: 10px 0 12px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(29,29,29,0.08);
+  }
+
+  .sidebar-menu {
+    position: static !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    padding: 0 24px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .sidebar-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar-item {
+    min-height: 44px;
+    flex: 0 0 auto;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 16px !important;
+    border-radius: 999px;
+    background: #f4f1ef;
+    color: #3b3633 !important;
+    font-size: 14px !important;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .sidebar-item.active {
+    background: #3b3633;
+    color: #ffffff !important;
+    font-weight: 500;
+  }
+
+  .sidebar-item:focus-visible {
+    outline: 3px solid rgba(107,72,200,0.38);
+    outline-offset: 3px;
+  }
+}
   </style>
 </head>
 <body>
@@ -1050,12 +1123,8 @@ footer {
   <div class="body-wrap">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
-  <button class="section-menu-toggle" type="button" aria-label="Open section menu" aria-expanded="false">
-    SECTIONS
-  </button>
-
-  <nav class="sidebar-menu">
+    <aside class="sidebar" aria-label="Case study sections">
+  <nav class="sidebar-menu" aria-label="Case study sections">
       <nav class="sidebar-menu">
         <a href="#overview" class="sidebar-item active">Project Overview</a>
         <a href="#research" class="sidebar-item">Research</a>
@@ -1856,16 +1925,6 @@ if (mobileMenuToggle && mainNav) {
     mobileMenuToggle.textContent = isOpen ? 'CLOSE' : 'MENU';
   });
 }
-
-const sectionMenu = document.querySelector('.sidebar');
-const sectionMenuToggle = document.querySelector('.section-menu-toggle');
-
-if (sectionMenu && sectionMenuToggle) {
-  sectionMenuToggle.addEventListener('click', () => {
-    const isOpen = sectionMenu.classList.toggle('section-open');
-    sectionMenuToggle.setAttribute('aria-expanded', isOpen);
-    sectionMenuToggle.textContent = isOpen ? 'CLOSE SECTIONS' : 'SECTIONS';
-  });
 
   document.querySelectorAll('.sidebar-item').forEach(item => {
     item.addEventListener('click', () => {
