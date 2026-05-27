@@ -1005,8 +1005,7 @@ footer {
 
     <!-- SIDEBAR -->
     <aside class="sidebar" aria-label="Case study sections">
-  <nav class="sidebar-menu" aria-label="Case study sections">
-      <nav class="sidebar-menu">
+      <nav class="sidebar-menu" aria-label="Case study sections">
         <a href="#overview" class="sidebar-item active">Project Overview</a>
         <a href="#research" class="sidebar-item">Research</a>
         <a href="#personas" class="sidebar-item">Personas</a>
@@ -1797,24 +1796,24 @@ The name, seal, colours, and tone helped position Adappta as confident, warm, an
     const footer = document.querySelector('footer');
 
     const mainNav = document.querySelector('body > nav');
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 
-if (mobileMenuToggle && mainNav) {
-  mobileMenuToggle.addEventListener('click', () => {
-    const isOpen = mainNav.classList.toggle('menu-open');
-    mobileMenuToggle.setAttribute('aria-expanded', isOpen);
-    mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-  });
-}
+    if (mobileMenuToggle && mainNav) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isOpen = mainNav.classList.toggle('menu-open');
+        mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+        mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      });
+    }
 
-  document.querySelectorAll('.sidebar-item').forEach(item => {
-    item.addEventListener('click', () => {
-      sectionMenu.classList.remove('section-open');
-      sectionMenuToggle.setAttribute('aria-expanded', 'false');
-      sectionMenuToggle.textContent = 'SECTIONS';
+    document.querySelectorAll('.nav-links a').forEach(item => {
+      item.addEventListener('click', () => {
+        if (!mainNav || !mobileMenuToggle) return;
+        mainNav.classList.remove('menu-open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+      });
     });
-  });
-}
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
