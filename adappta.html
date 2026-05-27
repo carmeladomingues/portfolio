@@ -801,6 +801,80 @@ footer {
     transition: none !important;
   }
 }
+
+    /* MOBILE HORIZONTAL SCROLL FIX - ADAPPTA */
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .hero,
+  .banner,
+  .body-wrap,
+  .content,
+  .section,
+  .next-project,
+  footer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .content {
+    overflow: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .section div[style*="display:flex"] {
+    max-width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+
+  .section div[style*="display:grid"] {
+    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .section div[style*="width:441px"],
+  .section div[style*="width:340px"],
+  .section div[style*="width:644px"],
+  .section img[style*="width:75%"],
+  .section img[style*="width:100%"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #research div[style*="gap:9px"] {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  #research span[style*="white-space:nowrap"] {
+    white-space: normal !important;
+    width: 100% !important;
+    display: block !important;
+    line-height: 1.35 !important;
+  }
+
+  #strategy div[style*="height:652px"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #identity div[style*="width:150px"] {
+    max-width: 150px !important;
+  }
+}
   </style>
 </head>
 <body>
