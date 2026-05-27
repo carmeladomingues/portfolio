@@ -425,6 +425,382 @@ footer {
     .back-to-top:hover { background: var(--text); }
     .back-to-top:hover svg path { stroke: white; }
     .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+
+    /* MOBILE RESPONSIVE - ADAPPTA */
+.mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --margin: 24px;
+  }
+
+  html {
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  nav {
+    height: 76px;
+    min-height: 76px;
+    padding: 16px 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    transform: translateY(5px);
+  }
+
+  .logo img,
+  .logo-img {
+    height: 34px;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    min-height: 48px;
+    min-width: 104px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    border: 1px solid #3b3633;
+    background: #3b3633;
+    color: #fff;
+    font-family: var(--font);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 86px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    list-style: none;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.97);
+    border: 1px solid rgba(29,29,29,0.08);
+    box-shadow: 0 18px 44px rgba(29,29,29,0.12);
+    backdrop-filter: blur(16px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.98);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.28s ease, visibility 0.22s ease;
+  }
+
+  nav.menu-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    max-height: 280px;
+  }
+
+  .nav-links a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    border-radius: 18px;
+    font-size: 17px;
+    line-height: 1.2;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(29,29,29,0.06);
+    opacity: 1;
+  }
+
+  .mobile-menu-toggle:focus-visible,
+  .nav-links a:focus-visible,
+  .next-link:focus-visible,
+  .footer-links a:focus-visible {
+    outline: 3px solid rgba(107,72,200,0.38);
+    outline-offset: 4px;
+  }
+
+  .hero {
+    padding: 40px 24px 0;
+  }
+
+  .case-tags {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .case-tag {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  .hero-title {
+    font-size: 34px;
+    line-height: 1.08;
+    margin-bottom: 12px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 28px;
+  }
+
+  .info-card {
+    border-radius: 28px;
+    padding: 22px;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+
+  .info-label {
+    font-size: 13px;
+  }
+
+  .info-value {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .banner {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .body-wrap {
+    display: block;
+    padding: 42px 24px 24px;
+  }
+
+  .sidebar,
+  .sidebar-menu,
+  .back-to-top {
+    display: none !important;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .section {
+    margin-bottom: 56px;
+    scroll-margin-top: 96px;
+  }
+
+  .sec-label {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .sec-title {
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+
+  .sec-text,
+  .research-text,
+  .testing-text,
+  .learning-text {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .overview-card,
+  .stats-row,
+  .persona-grid,
+  .swot-grid,
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .persona-grid {
+    margin-top: 48px;
+    margin-bottom: 64px;
+  }
+
+  .persona-card,
+  .question-item,
+  .swot-card,
+  .feature-card,
+  .hifi-block {
+    border-radius: 22px;
+    padding: 22px;
+  }
+
+  .persona-card {
+    padding-top: 48px;
+  }
+
+  .screens-row {
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x proximity;
+  }
+
+  .screen-item {
+    width: 170px;
+    scroll-snap-align: start;
+  }
+
+  .screen-img {
+    width: 170px;
+    height: 366px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  [style*="width:441px"],
+  [style*="width:340px"],
+  [style*="width:644px"],
+  [style*="width:75%"] {
+    width: 100% !important;
+  }
+
+  [style*="display:flex"] {
+    max-width: 100%;
+  }
+
+  [style*="grid-template-columns:1.4fr 1fr"],
+  [style*="grid-template-columns:1.8fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [style*="height:652px"] {
+    height: 420px !important;
+    overflow-x: auto !important;
+    border-radius: 20px;
+    border: 1px solid rgba(29,29,29,0.08);
+  }
+
+  .next-project {
+    margin: 64px 0 0;
+  }
+
+  .next-project-card {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 18px;
+    border-radius: 28px;
+  }
+
+  .next-project-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    flex: none;
+    border-radius: 22px;
+  }
+
+  .next-project-title {
+    font-size: 22px;
+  }
+
+  .next-project-desc {
+    font-size: 15px;
+  }
+
+  .next-link {
+    min-height: 44px;
+    align-items: center;
+  }
+
+  footer {
+    margin-top: 0;
+    padding: 34px 24px 36px;
+  }
+
+  .footer-line {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 22px;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 34px;
+    width: 100%;
+  }
+
+  .footer-links svg {
+    display: none;
+  }
+
+  .footer-links a {
+    color: #1d1d1d;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+  }
+
+  .footer-link-linkedin::after {
+    content: "LinkedIn";
+  }
+
+  .footer-link-email::after {
+    content: "Email";
+  }
+
+  .footer-line p {
+    max-width: 280px;
+    font-size: 9px;
+    line-height: 1.6;
+    letter-spacing: 0.16em;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 31px;
+  }
+
+  .sec-title {
+    font-size: 25px;
+  }
+
+  .body-wrap,
+  .hero {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links {
+    transition: none !important;
+  }
+}
   </style>
 </head>
 <body>
@@ -432,8 +808,13 @@ footer {
 <!-- NAV -->
 <nav>
   <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues home">
-  <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
-</a>
+    <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
+  </a>
+
+  <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    MENU
+  </button>
+
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#projects">Projects</a></li>
@@ -1240,17 +1621,17 @@ The name, seal, colours, and tone helped position Adappta as confident, warm, an
   <!-- FOOTER -->
 <footer>
   <div class="footer-line">
-    <p>© all rights reserved to carmela domingues</p>
+    <p>© 2026 Carmela Domingues. All rights reserved.</p>
 
     <div class="footer-links">
-      <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
+      <a class="footer-link-linkedin" href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
           <circle cx="4" cy="4" r="2"/>
         </svg>
       </a>
 
-      <a href="mailto:carmeladomingues@outlook.com" aria-label="Email">
+      <a class="footer-link-email" href="mailto:carmeladomingues@outlook.com" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
         </svg>
