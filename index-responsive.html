@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carmela Domingues — UX/UI Designer</title>
+  <link rel="icon" type="image/png" href="https://carmeladomingues.github.io/portfolio/logo.portfolio.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Aveburg';
+      src: url('https://carmeladomingues.github.io/portfolio/Aveburg-Grande-Demo.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-text: #1d1d1d;
+      --color-text-light: #4f4e4e;
+      --color-bg: #ffffff;
+      --color-border: #1d1d1d;
+      --font-display: 'Aveburg', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --margin: 20px;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+      font-size: 16px;
+    }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ── NAV ── */
+    nav#main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 80px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--margin);
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    nav#main-nav.scrolled,
+    nav#main-nav.menu-open {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(29,29,29,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    /* Desktop nav links — hidden on mobile */
+    .nav-links {
+      display: none;
+      gap: 52px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: opacity 0.2s;
+      padding: 4px 0;
+    }
+
+    .nav-links a:hover { opacity: 0.4; }
+    .nav-links a.active { opacity: 0.4; }
+
+    /* ── HAMBURGER BUTTON ── */
+    .hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      color: var(--color-text);
+      padding: 0;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .hamburger:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ── MOBILE NAV MENU ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(29,29,29,0.12);
+      z-index: 99;
+      flex-direction: column;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--color-text);
+      text-decoration: none;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      border-bottom: 0.5px solid rgba(29,29,29,0.06);
+      transition: opacity 0.2s;
+    }
+
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover { opacity: 0.5; }
+
+    .mobile-nav a:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: -2px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero-blob {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-blob img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 100px;
+      left: var(--margin);
+      right: var(--margin);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: clamp(2rem, 9vw, 83px);
+      line-height: 1.15;
+      color: var(--color-text);
+    }
+
+    .hero-title strong {
+      font-family: 'Aveburg', serif;
+      font-weight: 400;
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 20px);
+      font-weight: 200;
+      color: #2c2c2c;
+      letter-spacing: 0.48px;
+      line-height: 1.5;
+    }
+
+    .hero-sub b { font-weight: 400; }
+
+    /* suppress the <br> on small screens so the subtitle wraps naturally */
+    .hero-sub br { display: none; }
+
+    .projects-btn {
+      position: absolute;
+      bottom: 48px;
+      right: var(--margin);
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-text);
+      animation: fadeUp 0.9s 0.3s ease both;
+      min-height: 44px;
+    }
+
+    .projects-btn-circle {
+      width: 50px;
+      height: 50px;
+      border: 1.2px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .projects-btn:hover .projects-btn-circle { background: var(--color-text); }
+    .projects-btn:hover .projects-btn-circle svg path { stroke: white; }
+    .projects-btn-circle svg { width: 20px; height: 20px; }
+
+    .projects-btn-label {
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.64px;
+      border-bottom: 1px solid var(--color-text);
+      padding-bottom: 2px;
+    }
+
+    /* ── PROJECTS SECTION ── */
+    #projects {
+      padding: 56px var(--margin) 72px;
+    }
+
+    /* ── FEATURED PROJECT ── */
+    .project-featured {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: stretch;
+      border: 1px solid rgba(232,165,152,0.28);
+      border-radius: 24px;
+      padding: 16px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .project-featured.visible { opacity: 1; transform: translateY(0); }
+
+    .project-featured .project-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .project-featured .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-featured .project-info { flex: 1; }
+    .project-featured .project-tags { margin-bottom: 14px; }
+
+    .project-featured .project-title {
+      font-size: clamp(1.2rem, 4vw, 30px);
+      font-weight: 400;
+      margin-bottom: 12px;
+      margin-top: 0;
+    }
+
+    .project-featured .project-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* ── PROJECTS GRID ── */
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .projects-row {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .project-card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(232,165,152,0.28);
+      border-radius: 24px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card:nth-child(2) { transition-delay: 0.12s; }
+
+    .project-card .project-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #d9d9d9;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .project-card .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .project-card .project-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    /* ── SHARED TAG / TITLE / DESC / LINK ── */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-text-light);
+      border: 1.3px solid var(--color-border);
+      border-radius: 30px;
+      padding: 4px 12px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .project-title {
+      font-weight: 500;
+      font-size: clamp(1.05rem, 3.5vw, 24px);
+      color: var(--color-text);
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .view-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-text);
+      min-height: 44px;
+      margin-top: auto;
+    }
+
+    .view-link:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .view-link-circle {
+      width: 44px;
+      height: 44px;
+      border: 1.2px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .view-link:hover .view-link-circle { background: var(--color-text); }
+    .view-link:hover .view-link-circle svg path { stroke: white; }
+
+    .view-link-circle svg {
+      width: 16px;
+      height: 16px;
+      transform: rotate(-90deg);
+    }
+
+    .view-link-text {
+      font-size: 16px;
+      font-weight: 300;
+      border-bottom: 0.5px solid var(--color-text);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .view-link:hover .view-link-text { opacity: 0.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 40px;
+      padding: 24px var(--margin);
+      border-top: 0.5px solid rgba(29,29,29,0.12);
+    }
+
+    .footer-line {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .footer-line p {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #1d1d1d;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-links a {
+      color: #1d1d1d;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 4px;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-links a:hover { opacity: 0.5; }
+
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .footer-links svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .footer-link-label {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 200;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.2px solid var(--color-border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--color-text); border-color: var(--color-text); }
+    .back-to-top:hover svg path { stroke: white; }
+    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════════
+       TABLET — 768px+
+    ══════════════════════════════════════════ */
+    @media (min-width: 768px) {
+      :root { --margin: 60px; }
+
+      /* Hide hamburger, show desktop links */
+      .hamburger { display: none; }
+      .mobile-nav { display: none !important; }
+      .nav-links { display: flex; }
+
+      #hero { min-height: 700px; }
+
+      .hero-content {
+        top: 140px;
+        right: auto;
+        gap: 28px;
+      }
+
+      .hero-sub br { display: inline; }
+
+      .projects-btn {
+        bottom: 70px;
+        gap: 16px;
+      }
+
+      .projects-btn-label { font-size: 22px; }
+
+      #projects { padding: 80px var(--margin) 100px; }
+
+      /* Featured: side-by-side */
+      .project-featured {
+        flex-direction: row;
+        gap: 36px;
+        border-radius: 36px;
+        padding: 22px;
+        align-items: center;
+      }
+
+      .project-featured .project-img {
+        width: 44%;
+        aspect-ratio: auto;
+        height: 280px;
+        border-radius: 20px;
+        flex-shrink: 0;
+      }
+
+      /* Grid: two columns */
+      .projects-grid {
+        gap: 72px;
+        margin-top: 60px;
+      }
+
+      .projects-row {
+        flex-direction: row;
+        gap: 32px;
+        align-items: stretch;
+      }
+
+      .project-card {
+        flex: 1;
+        flex-direction: row;
+        border-radius: 36px;
+        overflow: visible;
+        padding: 20px;
+        gap: 0;
+      }
+
+      .project-card .project-img {
+        width: 42%;
+        aspect-ratio: auto;
+        min-height: 200px;
+        align-self: stretch;
+        border-radius: 20px;
+        flex-shrink: 0;
+        margin-right: 20px;
+      }
+
+      .project-card .project-content { padding: 4px 0; }
+
+      .tag {
+        font-size: 13px;
+        height: 32px;
+        padding: 4px 16px;
+      }
+
+      /* Footer: single row */
+      .footer-line {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+      }
+
+      .footer-links {
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .footer-links a { min-height: unset; padding: 0; }
+      .footer-link-label { display: none; }
+    }
+
+    /* ══════════════════════════════════════════
+       DESKTOP — 1024px+
+    ══════════════════════════════════════════ */
+    @media (min-width: 1024px) {
+      :root { --margin: 120px; }
+
+      .hero-content { gap: 32px; }
+      .hero-title { font-size: 83px; }
+      .hero-sub { font-size: 20px; }
+      .projects-btn { bottom: 90px; }
+      .projects-btn-label { font-size: 25px; }
+
+      #projects { padding: 80px var(--margin) 120px; }
+
+      .project-featured { gap: 60px; }
+
+      .project-featured .project-img {
+        width: 100%;
+        max-width: 460px;
+        height: 320px;
+        border-radius: 24px;
+      }
+
+      .project-featured .project-title { font-size: 30px; }
+
+      .project-featured .project-desc { font-size: 19px; }
+
+      .projects-grid { gap: 120px; margin-top: 90px; }
+
+      .projects-row {
+        justify-content: center;
+        gap: 64px;
+      }
+
+      .project-card {
+        flex: 0 1 calc((100% - 64px) / 2);
+        gap: 32px;
+        padding: 24px;
+      }
+
+      .project-card .project-img {
+        width: 44%;
+        min-width: 230px;
+        min-height: 250px;
+        border-radius: 24px;
+        margin-right: 0;
+      }
+
+      .tag {
+        font-size: 15px;
+        height: 34px;
+        padding: 4px 20px;
+      }
+
+      .project-title { font-size: 24px; }
+      .view-link-text { font-size: 18px; }
+
+      footer { padding: 32px 120px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MAIN NAV -->
+<nav id="main-nav" aria-label="Main navigation">
+  <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues — home">
+    <img src="https://carmeladomingues.github.io/portfolio/logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
+  </a>
+
+  <!-- Desktop links -->
+  <ul class="nav-links">
+    <li><a href="index.html" id="nav-home">Home</a></li>
+    <li><a href="index.html#projects" id="nav-projects">Projects</a></li>
+    <li><a href="about.html">About Me</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <!-- Hamburger (mobile only) -->
+  <button
+    class="hamburger"
+    id="hamburger-btn"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+  >☰</button>
+</nav>
+
+<!-- MOBILE DROPDOWN MENU -->
+<nav
+  class="mobile-nav"
+  id="mobile-menu"
+  aria-label="Mobile navigation"
+  aria-hidden="true"
+>
+  <a href="index.html">Home</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="about.html">About Me</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob">
+    <img
+      src="https://carmeladomingues.github.io/portfolio/bg6.png"
+      alt=""
+      role="presentation"
+    />
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      every journey <br>
+      starts with a step, <br>
+      this is mine in
+      <strong>ux/ui design</strong>
+    </h1>
+    <p class="hero-sub">
+      Hello there! I'm Carmela, <b>a Lisbon-based UX/UI Designer</b> diving<br>
+      into front-end development and interactive product experiences.
+    </p>
+  </div>
+  <a class="projects-btn" href="#projects" aria-label="Scroll to Projects section">
+    <div class="projects-btn-circle" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="projects-btn-label">PROJECTS</span>
+  </a>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+
+  <!-- Featured -->
+  <div class="project-featured">
+    <div class="project-img">
+      <img
+        src="https://carmeladomingues.github.io/portfolio/Adappta-home.jpg"
+        alt="Adappta app screens showing accessible navigation routes through Lisbon for people with reduced mobility"
+      />
+    </div>
+    <div class="project-info">
+      <div class="project-tags">
+        <span class="tag">END-TO-END APP</span>
+        <span class="tag">UX/UI DESIGN</span>
+      </div>
+      <h2 class="project-title">Adappta: Mobility-First Navigation App</h2>
+      <p class="project-desc">An accessible navigation app designed to help people with reduced mobility move through the city with more confidence, using accessible routes, real-time warnings, and community-verified data.</p>
+      <a class="view-link" href="adappta.html">
+        <div class="view-link-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+            <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="view-link-text">view case study</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="projects-grid">
+
+    <div class="projects-row">
+      <!-- Instagram -->
+      <div class="project-card">
+        <div class="project-img">
+          <img
+            src="https://carmeladomingues.github.io/portfolio/Instagram-menor.jpg"
+            alt="Instagram event feature concept — screens showing event discovery, sharing, and planning"
+          />
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="tag">ADD A FEATURE</span>
+            <span class="tag">UX/UI DESIGN</span>
+          </div>
+          <h2 class="project-title">Your next event on Instagram</h2>
+          <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
+          <a class="view-link" href="instagram.html">
+            <div class="view-link-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="view-link-text">view study case</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Moodify -->
+      <div class="project-card">
+        <div class="project-img">
+          <img
+            src="https://carmeladomingues.github.io/portfolio/Moodify.jpg"
+            alt="Moodify app screens showing team dynamics dashboard with gamification — points, quests, and real-time tracking"
+          />
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="tag">END-TO-END APP</span>
+            <span class="tag">UX/UI DESIGN</span>
+          </div>
+          <h2 class="project-title">Team dynamics reimagined</h2>
+          <p class="project-desc">A mobile app that turns team dynamics management into motivating experiences with points, quests, and real-time tracking.</p>
+          <a class="view-link" href="pbl.html">
+            <div class="view-link-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="view-link-text">view study case</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-row">
+      <!-- Graphic Design -->
+      <div class="project-card">
+        <div class="project-img">
+          <img
+            src="https://carmeladomingues.github.io/portfolio/graphic-design.jpg"
+            alt="Graphic design work samples — social media graphics, branding, and event materials for tech companies and volunteer organisations"
+          />
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="tag">BRANDING</span>
+            <span class="tag">VISUAL COMMUNICATION</span>
+          </div>
+          <h2 class="project-title">Graphic Design</h2>
+          <p class="project-desc">A collection of graphic design work across tech companies and volunteering, from social media to branding and event materials.</p>
+          <a class="view-link" href="graphic-design.html">
+            <div class="view-link-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="view-link-text">view projects</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Thesis -->
+      <div class="project-card">
+        <div class="project-img">
+          <img
+            src="https://carmeladomingues.github.io/portfolio/thesis.png"
+            alt="Master's thesis visual work on using social design to raise awareness about domestic violence in Portugal"
+          />
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="tag">SOCIAL DESIGN</span>
+            <span class="tag">SERVICE DESIGN</span>
+          </div>
+          <h2 class="project-title">Master's thesis</h2>
+          <p class="project-desc">How can social design help to bring awareness on domestic violence cases in Portugal?</p>
+          <a class="view-link" href="#">
+            <div class="view-link-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="view-link-text">coming soon</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-line">
+    <p>© all rights reserved to carmela domingues</p>
+    <div class="footer-links">
+      <a
+        href="https://www.linkedin.com/in/carmeladomingues/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn profile (opens in new tab)"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        <span class="footer-link-label">LinkedIn</span>
+      </a>
+      <a href="mailto:carmeladomingues@outlook.com" aria-label="Send email to carmeladomingues@outlook.com">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <span class="footer-link-label">Email</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+    <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script>
+  const mainNav      = document.getElementById('main-nav');
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu   = document.getElementById('mobile-menu');
+  const backToTop    = document.querySelector('.back-to-top');
+  const navHome      = document.getElementById('nav-home');
+  const navProjects  = document.getElementById('nav-projects');
+  const projectsSec  = document.getElementById('projects');
+  const footer       = document.querySelector('footer');
+
+  // ── Scroll effects ──
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    mainNav.classList.toggle('scrolled', scrollY > 50);
+
+    if (scrollY > 400) {
+      backToTop.classList.add('visible');
+      const footerTop = footer.getBoundingClientRect().top;
+      const winH = window.innerHeight;
+      backToTop.style.bottom = footerTop < winH
+        ? (winH - footerTop + 16) + 'px'
+        : '32px';
+    } else {
+      backToTop.classList.remove('visible');
+    }
+
+    const inProjects = scrollY >= projectsSec.offsetTop - 100;
+    navHome.classList.toggle('active', !inProjects);
+    navProjects.classList.toggle('active', inProjects);
+  });
+
+  navHome.classList.add('active');
+
+  // ── Intersection observer for card animations ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.project-featured, .project-card').forEach(el => observer.observe(el));
+
+  // ── Hamburger menu ──
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    hamburgerBtn.setAttribute('aria-label', 'Close navigation menu');
+    hamburgerBtn.textContent = '✕';
+    mainNav.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-label', 'Open navigation menu');
+    hamburgerBtn.textContent = '☰';
+    mainNav.classList.remove('menu-open');
+  }
+
+  hamburgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  // Close when a mobile link is tapped
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+  // Close when clicking outside the menu
+  document.addEventListener('click', (e) => {
+    if (mobileMenu.classList.contains('open')
+        && !mobileMenu.contains(e.target)
+        && !hamburgerBtn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      closeMenu();
+      hamburgerBtn.focus();
+    }
+  });
+</script>
+
+</body>
+</html>
