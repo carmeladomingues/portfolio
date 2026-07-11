@@ -501,7 +501,1187 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-  </style>
+  
+/* ── HOME REFINEMENT ── */
+.mobile-menu-toggle { display: none; }
+
+#hero { min-height: 760px; }
+
+.hero-content {
+  top: 150px;
+  max-width: 980px;
+}
+
+.hero-title {
+  font-size: clamp(64px, 6.5vw, 88px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.hero-title strong { margin-top: 4px; }
+
+.hero-sub {
+  max-width: 760px;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.projects-heading {
+  max-width: 820px;
+  margin-bottom: 56px;
+}
+
+.projects-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.projects-heading h2 {
+  font-size: 42px;
+  line-height: 1.14;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  margin-bottom: 18px;
+}
+
+.projects-heading > p:last-child {
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--color-text-light);
+}
+
+.project-featured,
+.project-card {
+  background: #fff;
+  border-color: rgba(29,29,29,0.10);
+  box-shadow: 0 8px 30px rgba(29,29,29,0.04);
+}
+
+.project-featured {
+  transition: box-shadow .25s ease, opacity .7s ease;
+}
+
+.project-featured:hover {
+  box-shadow: 0 16px 42px rgba(29,29,29,0.08);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 42px rgba(29,29,29,0.08);
+}
+
+.project-card {
+  transition: opacity .7s ease, transform .7s ease, box-shadow .25s ease;
+}
+
+.project-featured .project-img,
+.project-card .project-img { background: #f1f1f1; }
+
+.project-card .project-title,
+.project-featured .project-title { letter-spacing: -0.015em; }
+
+.tag {
+  border-color: rgba(29,29,29,0.22);
+  color: rgba(29,29,29,0.68);
+}
+
+@media (max-width: 1100px) {
+  :root { --margin: 64px; }
+
+  .project-featured { gap: 40px; }
+
+  .projects-row { gap: 36px; }
+
+  .project-card {
+    flex-basis: calc((100% - 36px) / 2);
+    flex-direction: column;
+  }
+
+  .project-card .project-img {
+    width: 100%;
+    min-width: 0;
+    height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root { --margin: 24px; }
+
+  html { scroll-padding-top: 76px; }
+
+  nav {
+    height: 76px;
+    padding: 0 24px;
+  }
+
+  .logo img { height: 34px; }
+
+  .mobile-menu-toggle {
+    display: block;
+    border: 1px solid #1d1d1d;
+    border-radius: 999px;
+    background: #1d1d1d;
+    color: #fff;
+    padding: 10px 18px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: .12em;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 86px;
+    left: 24px;
+    right: 24px;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 24px;
+    background: rgba(255,255,255,.97);
+    border: 1px solid rgba(29,29,29,.08);
+    box-shadow: 0 18px 44px rgba(29,29,29,.12);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+  }
+
+  nav.menu-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    min-height: 48px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(29,29,29,.06);
+    opacity: 1;
+  }
+
+  #hero {
+    height: auto;
+    min-height: 780px;
+  }
+
+  .hero-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 150px 24px 160px;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(46px, 13vw, 62px);
+    line-height: 1.05;
+  }
+
+  .hero-sub { font-size: 17px; }
+
+  .hero-sub br { display: none; }
+
+  .projects-btn {
+    right: 24px;
+    bottom: 70px;
+  }
+
+  .projects-btn-label { font-size: 18px; }
+
+  #projects { padding: 72px 24px 88px; }
+
+  .projects-heading { margin-bottom: 38px; }
+
+  .projects-heading h2 { font-size: 32px; }
+
+  .project-featured {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 26px;
+    border-radius: 28px;
+    padding: 18px;
+  }
+
+  .project-featured .project-img {
+    max-width: none;
+    height: 260px;
+  }
+
+  .project-featured .project-info { padding: 0 4px 6px; }
+
+  .projects-grid {
+    gap: 28px;
+    margin-top: 28px;
+  }
+
+  .projects-row {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .project-card {
+    width: 100%;
+    flex-basis: auto;
+    border-radius: 28px;
+    padding: 18px;
+  }
+
+  .project-card .project-img {
+    height: 240px;
+    min-height: 0;
+  }
+
+  .project-card .project-tags,
+  .project-featured .project-tags { flex-wrap: wrap; }
+
+  footer { padding: 28px 24px; }
+
+  .footer-line {
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .footer-line p {
+    max-width: 220px;
+    line-height: 1.6;
+  }
+}
+
+
+/* ── FINAL HOME DIRECTION: original hero copy rhythm ── */
+
+/* Text rhythm inspired by the Contact page while preserving the home composition. */
+.hero-content {
+  top: 50%;
+  transform: translateY(-50%);
+  gap: 28px;
+  max-width: 900px;
+}
+
+.hero-title {
+  max-width: 880px;
+  font-size: clamp(66px, 6.5vw, 88px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.hero-title strong {
+  margin-top: 5px;
+}
+
+.hero-sub {
+  max-width: 700px;
+  margin-top: 2px;
+}
+
+/* Keep the selected-work section editorial but visually quieter. */
+.projects-heading {
+  margin-bottom: 48px;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    top: auto;
+    transform: none;
+    padding-top: 148px;
+  }
+
+  .hero-title {
+    font-size: clamp(47px, 13vw, 62px);
+  }
+}
+
+
+/* ── FINAL LEAD-DESIGNER PASS ── */
+
+/* Hero: restore the original upper-left balance */
+.hero-content {
+  position: absolute;
+  top: 132px;
+  left: var(--margin);
+  transform: none;
+  gap: 30px;
+  max-width: 920px;
+}
+
+.hero-title {
+  max-width: 900px;
+  font-size: clamp(66px, 6.35vw, 86px);
+  line-height: 1.07;
+  letter-spacing: -0.04em;
+}
+
+.hero-title strong {
+  margin-top: 6px;
+}
+
+.hero-sub {
+  margin-top: 4px;
+  max-width: 720px;
+  font-size: 19px;
+  line-height: 1.58;
+}
+
+/* Navbar refinement */
+nav {
+  padding-top: 2px;
+}
+
+nav.scrolled {
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(16px);
+}
+
+/* Project section rhythm */
+#projects {
+  padding-top: 92px;
+}
+
+.projects-heading {
+  max-width: 760px;
+  margin-bottom: 52px;
+}
+
+.projects-heading h2 {
+  font-size: 40px;
+  line-height: 1.16;
+}
+
+.project-featured,
+.project-card {
+  border-color: rgba(29,29,29,0.09);
+  box-shadow: 0 10px 32px rgba(29,29,29,0.045);
+}
+
+.project-featured:hover,
+.project-card:hover {
+  box-shadow: 0 18px 48px rgba(29,29,29,0.09);
+}
+
+.project-featured .project-img,
+.project-card .project-img {
+  transition: transform .35s ease;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.018);
+}
+
+.project-featured .project-img img,
+.project-card .project-img img {
+  transition: transform .35s ease;
+}
+
+/* Cleaner footer */
+footer {
+  margin-top: 56px;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .hero-content {
+    top: 130px;
+  }
+
+  .hero-title {
+    font-size: clamp(58px, 7vw, 76px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #hero {
+    min-height: 760px;
+  }
+
+  .hero-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    padding: 138px 24px 150px;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(46px, 13vw, 60px);
+    line-height: 1.04;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .projects-heading h2 {
+    font-size: 31px;
+  }
+}
+
+
+/* ── HERO + PROJECTS CONTINUOUS GRADIENT REFINEMENT ── */
+
+body {
+  position: relative;
+  background: #ffffff;
+}
+
+/* Better balance: title and subtitle separated, but no dead space below */
+.hero-content {
+  top: 112px;
+  max-width: 930px;
+  gap: 38px;
+}
+
+.hero-title {
+  font-size: clamp(64px, 6.2vw, 84px);
+  line-height: 1.055;
+  max-width: 900px;
+}
+
+.hero-sub {
+  margin-top: 0;
+  max-width: 760px;
+  font-size: 19px;
+  line-height: 1.62;
+}
+
+.projects-btn {
+  bottom: 46px;
+}
+
+/* Selected Work becomes a bridge between hero and cards */
+#projects {
+  position: relative;
+  padding-top: 48px;
+}
+
+.projects-heading {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.projects-heading h2 {
+  font-size: 38px;
+  margin-bottom: 14px;
+}
+
+.projects-heading > p:last-child {
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* Clicking Projects lands with the full Adaptta card visible under the nav */
+#featured-project {
+  scroll-margin-top: 96px;
+}
+
+/* Slightly more compact featured card so it fits comfortably in one viewport */
+.project-featured {
+  gap: 48px;
+  padding: 20px;
+}
+
+.project-featured .project-img {
+  height: 290px;
+  max-width: 440px;
+}
+
+.project-featured .project-title {
+  font-size: 29px;
+  margin-bottom: 12px;
+}
+
+.project-featured .project-desc {
+  font-size: 18px;
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+/* Keep the remaining projects visually separated after the featured card */
+.projects-grid {
+  margin-top: 76px;
+}
+
+@media (max-width: 1100px) {
+  #hero {
+    height: auto;
+    min-height: 760px;
+  }
+
+  .hero-content {
+    top: 122px;
+  }
+
+  .project-featured .project-img {
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero {
+    min-height: 720px;
+  }
+
+  .hero-content {
+    padding-top: 126px;
+    padding-bottom: 130px;
+    gap: 30px;
+  }
+
+  .hero-title {
+    font-size: clamp(45px, 12.7vw, 59px);
+  }
+
+  .projects-btn {
+    bottom: 42px;
+  }
+
+  #projects {
+    padding-top: 34px;
+  }
+
+  .projects-heading {
+    margin-bottom: 28px;
+  }
+
+  .projects-heading h2 {
+    font-size: 30px;
+  }
+
+  .project-featured .project-img {
+    height: 245px;
+  }
+
+  #featured-project {
+    scroll-margin-top: 86px;
+  }
+}
+
+
+/* ── FINAL CORRECTION: dark horizontal gradient + direct project landing ── */
+
+/* Keep hero text readable on the darker background */
+.hero-title,
+.hero-sub,
+.projects-btn,
+.projects-btn-label {
+  color: #ffffff;
+}
+
+.projects-btn-circle {
+  border-color: rgba(255,255,255,0.86);
+}
+
+.projects-btn-circle svg {
+  stroke: #ffffff;
+}
+
+.projects-btn:hover .projects-btn-circle {
+  background: #ffffff;
+}
+
+.projects-btn:hover .projects-btn-circle svg path {
+  stroke: #111111;
+}
+
+.projects-btn-label {
+  border-bottom-color: rgba(255,255,255,0.9);
+}
+
+/* Nav stays readable before scrolling */
+body > nav:not(.scrolled) .nav-links a {
+  color: #ffffff;
+}
+
+body > nav:not(.scrolled) .logo img {
+  filter: brightness(0) invert(1);
+}
+
+/* The projects area starts on white; gradient ends before the cards */
+#projects {
+  padding-top: 54px;
+}
+
+/* Keep Selected Work above the card, but hide it from the click landing viewport */
+#featured-project {
+  scroll-margin-top: 104px;
+}
+
+/* Compact the intro so the featured card sits closer */
+.projects-heading {
+  margin-bottom: 26px;
+}
+
+.projects-heading h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.projects-heading > p:last-child {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* Ensure clicking Projects lands directly on the full Adaptta card */
+html {
+  scroll-padding-top: 0;
+}
+
+@media (max-width: 768px) {
+  #featured-project {
+    scroll-margin-top: 86px;
+  }
+
+  body > nav:not(.scrolled) .mobile-menu-toggle {
+    background: #ffffff;
+    color: #111111;
+    border-color: #ffffff;
+  }
+}
+
+
+/* ── FINAL HERO BEHAVIOUR ── */
+
+/* The entrance banner occupies the full viewport by itself */
+#hero {
+  height: 100vh;
+  min-height: 760px;
+  max-height: none;
+}
+
+/* Keep all hero content comfortably inside the viewport */
+.hero-content {
+  top: 118px;
+}
+
+.projects-btn {
+  bottom: 44px;
+}
+
+/* The projects section starts only after the hero ends */
+#projects {
+  padding-top: 72px;
+  scroll-margin-top: 0;
+}
+
+/* Clicking Projects reveals the section heading and the Adaptta card together */
+.projects-heading {
+  margin-bottom: 32px;
+}
+
+/* Undo the direct-card landing behaviour */
+#featured-project {
+  scroll-margin-top: 0;
+}
+
+@media (max-width: 1100px) {
+  #hero {
+    height: 100vh;
+    min-height: 760px;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero {
+    height: 100svh;
+    min-height: 700px;
+  }
+
+  .hero-content {
+    padding-top: 124px;
+    padding-bottom: 138px;
+  }
+
+  .projects-btn {
+    bottom: 38px;
+  }
+
+  #projects {
+    padding-top: 54px;
+  }
+}
+
+
+/* ── FINAL SMOOTH GRADIENT + PROJECTS LANDING ── */
+
+/* Clicking Projects lands at the section intro, not directly on the card */
+html {
+  scroll-padding-top: 0;
+}
+
+#projects {
+  scroll-margin-top: 0;
+}
+
+/* Keep the intro and Adaptta visible together */
+.projects-heading {
+  margin-bottom: 30px;
+}
+
+.projects-heading h2 {
+  font-size: 36px;
+  line-height: 1.16;
+  margin-bottom: 12px;
+}
+
+.projects-heading > p:last-child {
+  font-size: 16px;
+  line-height: 1.58;
+  max-width: 840px;
+}
+
+.project-featured {
+  margin-top: 0;
+}
+
+/* Make the first viewport after the click fit the heading + card more comfortably */
+.project-featured .project-img {
+  height: 270px;
+}
+
+.project-featured .project-desc {
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 768px) {
+  .projects-heading h2 {
+    font-size: 30px;
+  }
+
+  .project-featured .project-img {
+    height: 235px;
+  }
+}
+
+
+/* ── CLEAN CONTINUOUS TRANSITION FIX ── */
+
+/* Projects stays transparent at the top so the body gradient can continue through it */
+#projects {
+  padding-top: 64px;
+  scroll-margin-top: 0;
+}
+
+/* Keep the landing composition compact enough to show heading + Adaptta */
+.projects-heading {
+  margin-bottom: 28px;
+}
+
+.projects-heading h2 {
+  font-size: 36px;
+  line-height: 1.14;
+  margin-bottom: 10px;
+}
+
+.projects-heading > p:last-child {
+  max-width: 860px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.project-featured {
+  margin-top: 0;
+}
+
+/* The click target remains the section intro */
+html {
+  scroll-padding-top: 0;
+}
+
+#projects {
+  scroll-margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  #projects {
+    padding-top: 50px;
+  }
+}
+
+
+/* ── SIMPLE, CLEAN PROJECTS TRANSITION ── */
+
+/* Short, smooth fade between the dark hero and white content */
+#projects {
+  position: relative;
+  padding-top: 0;
+}
+
+/* First projects viewport: heading + full Adaptta only */
+.projects-first-screen {
+  min-height: calc(100vh - 80px);
+  padding-top: 68px;
+  padding-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.projects-heading {
+  margin-bottom: 30px;
+}
+
+.projects-heading h2 {
+  font-size: 36px;
+  line-height: 1.14;
+  margin-bottom: 10px;
+}
+
+.projects-heading > p:last-child {
+  max-width: 860px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* Keep Adaptta compact enough to fit with the intro, but not tiny */
+.project-featured {
+  margin-top: 0;
+  gap: 48px;
+  padding: 20px;
+}
+
+.project-featured .project-img {
+  height: 285px;
+  max-width: 440px;
+}
+
+.project-featured .project-desc {
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+/* Other projects start only after the first screen */
+.projects-grid {
+  margin-top: 0;
+  padding-top: 72px;
+  background: #ffffff;
+}
+
+/* The section anchor lands at the intro, not the card */
+#projects {
+  scroll-margin-top: 0;
+}
+
+html {
+  scroll-padding-top: 0;
+}
+
+@media (max-width: 768px) {
+  .projects-first-screen {
+    min-height: calc(100svh - 76px);
+    padding-top: 50px;
+    padding-bottom: 40px;
+  }
+
+  .projects-heading h2 {
+    font-size: 30px;
+  }
+
+  .project-featured .project-img {
+    height: 235px;
+  }
+
+  .projects-grid {
+    padding-top: 48px;
+  }
+}
+
+/* ── FINAL FIX v2: dark → purple → pastel lavender/baby blue → white, no gray band ── */
+
+/* #hero and .hero-blob no longer paint their own background — body::before is the
+   single gradient field behind the hero and the top of Selected Work. */
+#hero {
+  isolation: isolate;
+  background: transparent;
+}
+
+.hero-blob {
+  display: none;
+}
+
+/* One gradient element carries the entire fade. Nothing else fights it. */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -2;
+  pointer-events: none;
+  height: calc(100vh + 560px);
+  background:
+    radial-gradient(ellipse 70% 62% at 12% 10%, rgba(124, 77, 196, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 76% 66% at 90% 6%, rgba(93, 146, 224, 0.42) 0%, transparent 62%),
+    linear-gradient(
+      180deg,
+      #180f2a 0%,
+      #241a45 16%,
+      #3d2d68 30%,
+      #6c5aa0 46%,
+      #9c9cd0 60%,
+      #cdd3ec 74%,
+      #f0eff9 88%,
+      #ffffff 100%
+    );
+}
+
+@media (max-width: 1100px), (max-width: 768px) {
+  body::before {
+    height: calc(100vh + 460px);
+    background:
+      radial-gradient(ellipse 92% 55% at 18% 8%, rgba(124, 77, 196, 0.5) 0%, transparent 58%),
+      radial-gradient(ellipse 95% 58% at 85% 10%, rgba(93, 146, 224, 0.4) 0%, transparent 60%),
+      linear-gradient(
+        180deg,
+        #180f2a 0%,
+        #241a45 18%,
+        #3d2d68 32%,
+        #6c5aa0 48%,
+        #9c9cd0 62%,
+        #cdd3ec 76%,
+        #f0eff9 89%,
+        #ffffff 100%
+      );
+  }
+}
+
+/* The projects section stays transparent so body::before can fade all the way to
+   white on its own — no second background fighting it at the hero/projects seam. */
+#projects {
+  background: transparent;
+}
+
+/* ── FINAL: Projects landing shows heading + intro + Adappta only,
+   everything else reveals on scroll ── */
+
+/* Land below the sticky nav so "SELECTED WORK" isn't clipped */
+#projects {
+  scroll-margin-top: 96px;
+}
+
+/* Adappta (the featured project) is part of the landing view: visible immediately */
+.project-featured {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Every other project card waits for the user to actually scroll to it */
+.project-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tighten the gap between the last project row and the footer */
+#projects {
+  padding-bottom: 48px;
+}
+
+footer {
+  margin-top: 16px;
+}
+
+/* ── FINAL: hero title breathes more, no overflow ── */
+.hero-content {
+  top: 104px;
+  transform: none;
+  gap: 36px;
+  max-width: 960px;
+}
+
+.hero-title {
+  font-size: clamp(58px, 6vw, 82px);
+  line-height: 1.16;
+  max-width: 900px;
+}
+
+.hero-sub {
+  margin-top: 6px;
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    top: auto;
+    transform: none;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 12vw, 58px);
+    line-height: 1.14;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+}
+
+/* ── FINAL: soft blurred pastel mesh gradient, replacing the dark hero ── */
+
+body::before {
+  height: calc(100vh + 480px);
+  background:
+    radial-gradient(ellipse 62% 55% at 10% 12%, rgba(255, 176, 138, 0.75) 0%, transparent 62%),
+    radial-gradient(ellipse 58% 52% at 38% 4%, rgba(255, 140, 168, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 62% at 68% 22%, rgba(178, 126, 224, 0.55) 0%, transparent 64%),
+    radial-gradient(ellipse 62% 58% at 92% 10%, rgba(150, 178, 236, 0.5) 0%, transparent 62%),
+    radial-gradient(ellipse 66% 60% at 30% 46%, rgba(196, 168, 232, 0.42) 0%, transparent 66%),
+    linear-gradient(
+      180deg,
+      #f3d9c9 0%,
+      #eec9d6 20%,
+      #d9c3e6 40%,
+      #cfd0ef 58%,
+      #e9e6f6 76%,
+      #f9f8fc 90%,
+      #ffffff 100%
+    );
+}
+
+@media (max-width: 1100px), (max-width: 768px) {
+  body::before {
+    height: calc(100vh + 420px);
+    background:
+      radial-gradient(ellipse 90% 46% at 14% 8%, rgba(255, 176, 138, 0.7) 0%, transparent 60%),
+      radial-gradient(ellipse 92% 42% at 60% 4%, rgba(255, 140, 168, 0.5) 0%, transparent 58%),
+      radial-gradient(ellipse 94% 50% at 88% 16%, rgba(178, 126, 224, 0.5) 0%, transparent 62%),
+      radial-gradient(ellipse 90% 48% at 40% 40%, rgba(196, 168, 232, 0.4) 0%, transparent 64%),
+      linear-gradient(
+        180deg,
+        #f3d9c9 0%,
+        #eec9d6 22%,
+        #d9c3e6 42%,
+        #cfd0ef 60%,
+        #e9e6f6 78%,
+        #f9f8fc 91%,
+        #ffffff 100%
+      );
+  }
+}
+
+/* Light background now, so hero text and nav need dark ink instead of white */
+.hero-title,
+.hero-sub,
+.projects-btn,
+.projects-btn-label {
+  color: #221c2e;
+}
+
+.projects-btn-circle {
+  border-color: rgba(34, 28, 46, 0.5);
+}
+
+.projects-btn-circle svg {
+  stroke: #221c2e;
+}
+
+.projects-btn:hover .projects-btn-circle {
+  background: #221c2e;
+}
+
+.projects-btn:hover .projects-btn-circle svg path {
+  stroke: #ffffff;
+}
+
+.projects-btn-label {
+  border-bottom-color: rgba(34, 28, 46, 0.55);
+}
+
+body > nav:not(.scrolled) .nav-links a {
+  color: #221c2e;
+}
+
+body > nav:not(.scrolled) .logo img {
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  body > nav:not(.scrolled) .mobile-menu-toggle {
+    background: #221c2e;
+    color: #ffffff;
+    border-color: #221c2e;
+  }
+}
+
+/* ── FINAL: raise the Projects button, let hero text take up more room ── */
+.projects-btn {
+  bottom: 100px;
+}
+
+.hero-content {
+  max-width: 1100px;
+  gap: 40px;
+}
+
+.hero-title {
+  font-size: clamp(64px, 6.8vw, 94px);
+  line-height: 1.14;
+  max-width: 1040px;
+}
+
+.hero-sub {
+  font-size: 21px;
+  line-height: 1.6;
+  max-width: 820px;
+}
+
+@media (max-width: 768px) {
+  .projects-btn {
+    bottom: 70px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 12vw, 60px);
+    line-height: 1.14;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+  }
+}
+
+/* ── FINAL: open up letter-spacing, unify the "ux/ui design" font as italic ── */
+.hero-title {
+  letter-spacing: 0.3px;
+}
+
+.hero-title strong {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+</style>
 </head>
 <body>
 
@@ -510,16 +1690,21 @@
  <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues home">
   <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
 </a>
+
+  <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    MENU
+  </button>
+
   <ul class="nav-links">
    <li><a href="index.html" id="nav-home">Home</a></li>
-<li><a href="index.html#projects" id="nav-projects">Projects</a></li>
+<li><a href="#projects" id="nav-projects">Projects</a></li>
     <li><a href="about.html">About Me</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
   <section id="hero">
-    <div class="hero-blob"><img src="bg6.png" alt="" /></div>
+    <div class="hero-blob" aria-hidden="true"></div>
     <div class="hero-content">
       <h1 class="hero-title">
         every journey <br>
@@ -543,10 +1728,16 @@
   </section>
 
   <section id="projects">
+  <div class="projects-first-screen">
+  <div class="projects-heading">
+    <p class="projects-eyebrow">SELECTED WORK</p>
+    <h2>Projects shaped by research, systems thinking, and care.</h2>
+    <p>From accessible mobility to early-stage domestic violence support, each project explores how design can make complex experiences clearer and more human.</p>
+  </div>
 
-  <div class="project-featured">
+  <div class="project-featured" id="featured-project">
   <div class="project-img">
-    <img src="Adappta-home.jpg" alt="Adappta accessible navigation app" />
+    <img src="Adappta-home.webp" alt="Adappta accessible navigation app" />
   </div>
   <div class="project-info">
     <div class="project-tags">
@@ -555,7 +1746,7 @@
     </div>
     <h2 class="project-title">Adappta: Mobility-First Navigation App</h2>
     <p class="project-desc">An accessible navigation app designed to help people with reduced mobility move through the city with more confidence, using accessible routes, real-time warnings, and community-verified data.</p>
-    <a class="view-link" href="adappta.html">
+    <a class="view-link" href="adappta.html" target="_blank" rel="noopener">
       <div class="view-link-circle">
         <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
           <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -566,12 +1757,36 @@
   </div>
 </div>
 
+
 <div class="projects-grid">
 
   <div class="projects-row">
     <div class="project-card">
       <div class="project-img">
-        <img src="Instagram-menor.jpg" alt="Add a feature" />
+        <img src="thesis.webp" alt="Master's thesis" />
+      </div>
+
+      <div class="project-content">
+        <div class="project-tags">
+          <span class="tag">SOCIAL DESIGN</span>
+          <span class="tag">SERVICE DESIGN</span>
+        </div>
+        <h2 class="project-title">Designing for Early Recognition</h2>
+        <p class="project-desc">A service design and AI system exploring how support can reach women before they identify domestic violence.</p>
+        <a class="view-link" href="thesis.html" target="_blank" rel="noopener">
+          <div class="view-link-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+              <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="view-link-text">view case study</span>
+               </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">
+        <img src="Instagram-menor.webp" alt="Add a feature" />
       </div>
 
       <div class="project-content">
@@ -581,20 +1796,22 @@
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
-        <a class="view-link" href="instagram.html">
+        <a class="view-link" href="instagram.html" target="_blank" rel="noopener">
           <div class="view-link-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
               <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <span class="view-link-text">view study case</span>
+          <span class="view-link-text">view case study</span>
         </a>
       </div>
     </div>
+  </div>
 
+  <div class="projects-row">
     <div class="project-card">
       <div class="project-img">
-        <img src="Moodify.jpg" alt="Moodify" />
+        <img src="Moodify.webp" alt="Moodify" />
       </div>
 
       <div class="project-content">
@@ -604,22 +1821,20 @@
         </div>
         <h2 class="project-title">Team dynamics reimagined</h2>
         <p class="project-desc">A mobile app that turns team dynamics management into motivating experiences with points, quests, and real-time tracking.</p>
-        <a class="view-link" href="pbl.html">
+        <a class="view-link" href="pbl.html" target="_blank" rel="noopener">
           <div class="view-link-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
               <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <span class="view-link-text">view study case</span>
+          <span class="view-link-text">view case study</span>
         </a>
       </div>
     </div>
-  </div>
 
-  <div class="projects-row">
     <div class="project-card">
       <div class="project-img">
-        <img src="graphic-design.jpg" alt="Graphic Design" />
+        <img src="graphic-design.webp" alt="Graphic Design" />
       </div>
 
       <div class="project-content">
@@ -629,7 +1844,7 @@
         </div>
         <h2 class="project-title">Graphic Design</h2>
         <p class="project-desc">A collection of graphic design work across tech companies and volunteering, from social media to branding and event materials.</p>
-        <a class="view-link" href="graphic-design.html">
+        <a class="view-link" href="graphic-design.html" target="_blank" rel="noopener">
           <div class="view-link-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
               <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -639,29 +1854,6 @@
         </a>
       </div>
     </div>
-
-    <div class="project-card">
-      <div class="project-img">
-        <img src="thesis.png" alt="Master's thesis" />
-      </div>
-
-      <div class="project-content">
-        <div class="project-tags">
-          <span class="tag">SOCIAL DESIGN</span>
-          <span class="tag">SERVICE DESIGN</span>
-        </div>
-        <h2 class="project-title">Master's thesis</h2>
-        <p class="project-desc">How can social design help to bring awareness on domestic violence cases in Portugal?</p>
-        <a class="view-link" href="#">
-          <div class="view-link-circle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
-              <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="view-link-text">coming soon</span>
-               </a>
-      </div>
-    </div>
   </div>
 
 </div>
@@ -669,7 +1861,7 @@
 
   <footer>
   <div class="footer-line">
-    <p>© all rights reserved to carmela domingues</p>
+    <p>© 2026 Carmela Domingues. All rights reserved.</p>
 
     <div class="footer-links">
   <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
@@ -727,6 +1919,25 @@
     });
 
     navHome.classList.add('active');
+
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('menu-open');
+        mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileMenuToggle.textContent = isOpen ? 'CLOSE' : 'MENU';
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('menu-open');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          mobileMenuToggle.textContent = 'MENU';
+        });
+      });
+    }
+
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
