@@ -2533,6 +2533,100 @@ body{background:#fff}
     padding-left: 18px !important;
   }
 }
+
+/* High-fidelity image cards and grouped lightbox navigation. */
+.hifi-gallery-item,
+.lightbox-open.hifi-gallery-item {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden;
+  background: transparent !important;
+  cursor: zoom-in;
+}
+
+.hifi-gallery-item img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  border-radius: 24px;
+  background: transparent;
+}
+
+.hifi-image-fallback:not([hidden]) {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  border: 1.5px dashed #BBADE2;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fff 0%, #F0ECFA 100%);
+  color: #6259E8;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.lightbox-dialog-nav {
+  position: fixed;
+  top: 50%;
+  z-index: 3;
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid rgba(255,255,255,.9);
+  border-radius: 50%;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-size: 38px;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.lightbox-dialog-nav:not([hidden]) {
+  display: flex;
+}
+
+.lightbox-dialog-nav[hidden] {
+  display: none !important;
+}
+
+.lightbox-dialog-prev {
+  left: 24px;
+}
+
+.lightbox-dialog-next {
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .hifi-gallery-item img,
+  .hifi-image-fallback:not([hidden]) {
+    border-radius: 20px;
+  }
+
+  .lightbox-dialog-nav {
+    width: 44px;
+    height: 44px;
+    font-size: 32px;
+  }
+
+  .lightbox-dialog-prev {
+    left: 8px;
+  }
+
+  .lightbox-dialog-next {
+    right: 8px;
+  }
+}
 </style>
 <script data-no-js-fix="true">document.documentElement.classList.remove('no-js');</script><script>
 document.documentElement.classList.add('js-motion-ready');
@@ -3162,21 +3256,18 @@ document.addEventListener('DOMContentLoaded', () => {
 <p>Search, recent locations, place details, and verified accessibility information help users understand whether a destination is suitable before starting a journey.</p>
 </div>
 <div class="adaptta-screen-grid three">
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>01</span>
-<strong>Search / Home</strong>
-<small>Replace with: adappta-hifi-search.png</small>
-</div>
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>02</span>
-<strong>Recent Searches</strong>
-<small>Replace with: adappta-hifi-recent.png</small>
-</div>
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>03</span>
-<strong>Place Details</strong>
-<small>Replace with: adappta-hifi-place.png</small>
-</div>
+<button aria-label="Expand Search and Home screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="search-discover" type="button">
+<img alt="Adappta Search and Home screen" src="adaptta-hifi-search.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adaptta-hifi-search.png</span>
+</button>
+<button aria-label="Expand Recent Searches screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="search-discover" type="button">
+<img alt="Adappta Recent Searches screen" src="adaptta-hifi-recent.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adaptta-hifi-recent.png</span>
+</button>
+<button aria-label="Expand Place Details screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="search-discover" type="button">
+<img alt="Adappta Place Details screen" src="adaptta-hifi-place.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adaptta-hifi-place.png</span>
+</button>
 </div>
 </section>
 <section class="adaptta-hifi-group reverse">
@@ -3186,21 +3277,18 @@ document.addEventListener('DOMContentLoaded', () => {
 <p>Routes are compared through accessibility scores, expected effort, terrain conditions, and public transport alternatives designed around mobility needs.</p>
 </div>
 <div class="adaptta-screen-grid three">
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>04</span>
-<strong>Route Evaluation</strong>
-<small>Replace with: adappta-hifi-route-1.png</small>
-</div>
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>05</span>
-<strong>Route Comparison</strong>
-<small>Replace with: adappta-hifi-route-2.png</small>
-</div>
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>06</span>
-<strong>Public Transport</strong>
-<small>Replace with: adappta-hifi-transport.png</small>
-</div>
+<button aria-label="Expand Route Evaluation screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="compare-routes" type="button">
+<img alt="Adappta Route Evaluation screen" src="adaptta-hifi-route-1.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adaptta-hifi-route-1.png</span>
+</button>
+<button aria-label="Expand Route Comparison screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="compare-routes" type="button">
+<img alt="Adappta Route Comparison screen" src="adaptta-hifi-route-2.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adaptta-hifi-route-2.png</span>
+</button>
+<button aria-label="Expand Public Transport screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="compare-routes" type="button">
+<img alt="Adappta Public Transport screen" src="adaptta-hifi-transport.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adaptta-hifi-transport.png</span>
+</button>
 </div>
 </section>
 <section class="adaptta-hifi-group">
@@ -3210,21 +3298,18 @@ document.addEventListener('DOMContentLoaded', () => {
 <p>Live alerts and community reports keep routes reliable when elevators fail, ramps become blocked, or streets and stations temporarily become inaccessible.</p>
 </div>
 <div class="adaptta-screen-grid three">
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>07</span>
-<strong>Warnings List</strong>
-<small>Replace with: adappta-hifi-warnings-list.png</small>
-</div>
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>08</span>
-<strong>Warnings Map</strong>
-<small>Replace with: adappta-hifi-warnings-map.png</small>
-</div>
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>09</span>
-<strong>Live Alert</strong>
-<small>Replace with: adappta-hifi-alert.png</small>
-</div>
+<button aria-label="Expand Warnings List screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="warnings-community" type="button">
+<img alt="Adappta Warnings List screen" src="adaptta-hifi-warnings-list.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adappta-hifi-warnings-list.png</span>
+</button>
+<button aria-label="Expand Warnings Map screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="warnings-community" type="button">
+<img alt="Adappta Warnings Map screen" src="adaptta-hifi-warnings-map.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adappta-hifi-warnings-map.png</span>
+</button>
+<button aria-label="Expand Live Alert screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="warnings-community" type="button">
+<img alt="Adappta Live Alert screen" src="adaptta-hifi-alert.png" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adappta-hifi-alert.png</span>
+</button>
 </div>
 </section>
 <section class="adaptta-hifi-group reverse">
@@ -3234,22 +3319,14 @@ document.addEventListener('DOMContentLoaded', () => {
 <p>Ada provides contextual guidance, while the user profile stores mobility preferences, saved places, route history, and community contributions.</p>
 </div>
 <div class="adaptta-screen-grid two">
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>10</span>
-<strong>Ada Assistant</strong>
-<div class="adaptta-screen-placeholder">
-  <img
-    src="adaptta-hifi-ada.webp"
-    alt="Adappta — Ada Assistant"
-    style="width:100%; height:100%; object-fit:cover; display:block;"
-  />
-</div>
-</div>
-<div aria-hidden="false" class="adaptta-screen-placeholder">
-<span>11</span>
-<strong>User Profile</strong>
-<small>Replace with: adappta-hifi-profile.webp</small>
-</div>
+<button aria-label="Expand Ada Assistant screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="ada-personalisation" type="button">
+<img alt="Adappta Ada Assistant screen" src="adappta-hifi-ada.webp" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adappta-hifi-ada.webp</span>
+</button>
+<button aria-label="Expand User Profile screen" class="adaptta-screen-placeholder lightbox-open hifi-gallery-item" data-gallery="ada-personalisation" type="button">
+<img alt="Adappta User Profile screen" src="adappta-hifi-profile.webp" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"/>
+<span class="hifi-image-fallback" hidden>adappta-hifi-profile.webp</span>
+</button>
 </div>
 </section>
 </div>
@@ -3442,7 +3519,9 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 <dialog aria-label="Expanded image" class="lightbox-dialog" id="lightboxDialog">
 <button aria-label="Close expanded image" class="lightbox-dialog-close" type="button">×</button>
+<button aria-label="Previous image" class="lightbox-dialog-nav lightbox-dialog-prev" type="button" hidden>‹</button>
 <img alt="" id="lightboxDialogImg" src=""/>
+<button aria-label="Next image" class="lightbox-dialog-nav lightbox-dialog-next" type="button" hidden>›</button>
 </dialog>
 <!-- FOOTER -->
 <footer>
@@ -3669,28 +3748,59 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script>
-// Lightbox: same mechanism as pbl.html's desk-research-lightbox (native
-// <dialog>, showModal()/close(), ::backdrop). One shared dialog here
-// instead of one per image, since several images use it on this page.
+// Shared lightbox with grouped navigation for the high-fidelity screens.
 (function () {
   const dialog = document.getElementById('lightboxDialog');
   const dialogImg = document.getElementById('lightboxDialogImg');
   const closeBtn = dialog ? dialog.querySelector('.lightbox-dialog-close') : null;
-  if (!dialog || !dialogImg || !closeBtn) return;
+  const prevBtn = dialog ? dialog.querySelector('.lightbox-dialog-prev') : null;
+  const nextBtn = dialog ? dialog.querySelector('.lightbox-dialog-next') : null;
+  const triggers = Array.from(document.querySelectorAll('.lightbox-open'));
+  let activeGallery = [];
+  let activeIndex = 0;
 
-  document.querySelectorAll('.lightbox-open').forEach((trigger) => {
+  if (!dialog || !dialogImg || !closeBtn || !prevBtn || !nextBtn) return;
+
+  function showTrigger(trigger) {
     const img = trigger.querySelector('img');
     if (!img) return;
+
+    dialogImg.src = img.getAttribute('src') || img.currentSrc || img.src;
+    dialogImg.alt = img.alt || '';
+    prevBtn.hidden = activeGallery.length < 2;
+    nextBtn.hidden = activeGallery.length < 2;
+  }
+
+  function move(direction) {
+    if (activeGallery.length < 2) return;
+    activeIndex = (activeIndex + direction + activeGallery.length) % activeGallery.length;
+    showTrigger(activeGallery[activeIndex]);
+  }
+
+  triggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {
-      dialogImg.src = img.currentSrc || img.src;
-      dialogImg.alt = img.alt || '';
+      const galleryName = trigger.dataset.gallery;
+      activeGallery = galleryName
+        ? triggers.filter(item => item.dataset.gallery === galleryName)
+        : [trigger];
+      activeIndex = Math.max(0, activeGallery.indexOf(trigger));
+      showTrigger(trigger);
       dialog.showModal();
     });
   });
 
   closeBtn.addEventListener('click', () => dialog.close());
+  prevBtn.addEventListener('click', () => move(-1));
+  nextBtn.addEventListener('click', () => move(1));
+
   dialog.addEventListener('click', (event) => {
     if (event.target === dialog) dialog.close();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!dialog.open) return;
+    if (event.key === 'ArrowLeft') move(-1);
+    if (event.key === 'ArrowRight') move(1);
   });
 })();
 </script></body>
