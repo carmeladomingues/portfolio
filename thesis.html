@@ -1,0 +1,2797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Designing for Early Recognition — Carmela Domingues</title>
+  <link rel="icon" type="image/png" href="logo.portfolio.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Aveburg';
+      src: url('Aveburg-Grande-Demo.otf') format('opentype');
+      font-weight: 400;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #E9EFE7;
+      --accent-border: #A9C3A0;
+      --text: #1d1d1d;
+      --text-light: rgba(79,78,78,0.67);
+      --bg: #ffffff;
+      --font: 'DM Sans', sans-serif;
+      --aveburg: 'Aveburg', serif;
+      --margin: 120px;
+      --purple: #4F6F52;
+      --yellow: #F5C842;
+      --blue: #4A90D9;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 80px;
+
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid rgba(29,29,29,0.08);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 var(--margin);
+
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+nav.scrolled {
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid rgba(29,29,29,0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 52px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover { opacity: 0.4; }
+.nav-links a.active { opacity: 0.4; }
+
+    /* ── HERO ── */
+    .hero {
+  padding: 56px var(--margin) 0;
+}
+
+    .case-tags { display: flex; gap: 10px; margin-bottom: 16px; }
+    .case-tag { font-size: 12px; font-weight: 400; color: #888; border: 1px solid #ccc; border-radius: 30px; padding: 3px 14px; }
+
+    .hero-title { font-size: 40px; font-weight: 400; line-height: 1.1; margin-bottom: 8px; }
+    .hero-sub { font-size: 16px; font-weight: 300; color: #555; margin-bottom: 30px; max-width: 720px; }
+
+    .info-card {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 40px; padding: 20px 37px;
+      display: flex; gap: 60px; align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    .info-block { display: flex; flex-direction: column; gap: 4px; }
+    .info-label { font-size: 15px; font-weight: 600; letter-spacing: 0.05em; }
+    .info-value { font-size: 15px; font-weight: 300; line-height: 1.5; max-width: 400px; }
+
+    /* ── BANNER ── */
+    .banner { width: 100%; height: 600px; overflow: hidden; background: var(--accent); display: flex; align-items: center; justify-content: center; }
+    .banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .banner-placeholder { font-size: 18px; font-weight: 300; color: var(--text-light); }
+
+    /* ── BODY LAYOUT ── */
+  .body-wrap {
+  display: flex; flex-direction: row; gap: 60px;
+  padding: 60px var(--margin) 32px;
+}
+
+    /* ── SIDEBAR ── */
+    .sidebar { width: 220px; flex-shrink: 0; }
+
+    .sidebar-menu {
+      position: fixed; top: 100px; width: 220px;
+      background: rgba(245,245,245,0.4);
+      border-radius: 20px; padding: 20px;
+      display: flex; flex-direction: column; gap: 20px;
+      visibility: hidden; opacity: 0;
+      transition: opacity 0.3s ease;
+      height: auto; overflow: visible;
+    }
+
+    .sidebar-item {
+      font-size: 14px; font-weight: 400; color: #999;
+      text-decoration: none; display: block;
+      transition: color 0.2s; line-height: 1.4;
+    }
+
+    .sidebar-item:hover { color: var(--text); }
+    .sidebar-item.active { color: var(--text); font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content { flex: 1; min-width: 0; }
+
+    .sec-label { font-size: 20px; font-weight: 300; color: var(--text-light); margin-bottom: 2px; }
+    .sec-title { font-size: 36px; font-weight: 400; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
+    .sec-text { font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
+
+    .section { margin-bottom: 80px; scroll-margin-top: 56px; }
+
+    /* Overview card */
+    .overview-card {
+      background: var(--accent);
+      border-radius: 24px; padding: 40px;
+      display: flex; gap: 40px; align-items: flex-start;
+      margin-top: 24px;
+    }
+
+    /* Stats */
+    .stats-row { display: flex; gap: 40px; margin: 32px 0; flex-wrap: wrap; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; }
+    .stat-donut { position: relative; width: 100px; height: 100px; margin-bottom: 12px; }
+    .stat-label { font-size: 14px; font-weight: 300; color: var(--text); text-align: center; max-width: 150px; line-height: 1.5; }
+
+    /* Research list */
+    .research-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .research-item { display: flex; gap: 12px; align-items: flex-start; }
+    .research-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: 8px; }
+    .research-text { font-size: 18px; font-weight: 300; line-height: 1.6; }
+
+    /* Density chart (benchmark phase concentration) */
+    .density-chart { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .density-row { display: flex; align-items: center; gap: 16px; }
+    .density-label { width: 76px; flex-shrink: 0; font-size: 14px; font-weight: 600; line-height: 1.3; }
+    .density-sub { font-size: 11px; font-weight: 300; color: var(--text-light); }
+    .density-track { flex: 1; height: 14px; background: #f0f0f0; border-radius: 8px; overflow: hidden; }
+    .density-fill { height: 100%; border-radius: 8px; }
+    .density-tag { width: 56px; flex-shrink: 0; font-size: 11px; font-weight: 600; text-align: center; border-radius: 20px; padding: 4px 0; }
+    .density-tag.low { background: #f0f0f0; color: #888; }
+    .density-tag.med { background: #e4ede1; color: #4F6F52; }
+    .density-tag.high { background: #4F6F52; color: #fff; }
+    .density-examples { flex: 1.4; font-size: 12px; font-weight: 300; color: var(--text-light); }
+
+    /* Interactive DV type selector */
+    .dv-selector { margin-top: 32px; }
+    .dv-type-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .dv-pill { border: 1px solid #ddd; border-radius: 20px; padding: 8px 16px; font-size: 12px; font-weight: 500; cursor: pointer; background: #fff; color: var(--text); font-family: var(--font); transition: background 0.15s, color 0.15s, border-color 0.15s; }
+    .dv-pill:hover { border-color: var(--purple); }
+    .dv-pill.active { background: #1d1d1d; color: #fff; border-color: #1d1d1d; }
+    .dv-phase-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 22px; }
+    .dv-phase-card { background: var(--accent); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .dv-phase-tag { font-size: 11px; font-weight: 700; color: var(--purple); letter-spacing: 0.03em; }
+    .dv-phase-text { font-size: 12px; font-weight: 300; line-height: 1.5; }
+
+    /* Detail card pattern (journey / transition / blueprint selectors) */
+    .jd-card { background: #fff; border: 1.3px solid var(--accent-border); border-radius: 20px; padding: 28px 32px; margin-top: 20px; }
+    .jd-stage-header { font-size: 19px; font-weight: 600; margin-bottom: 2px; }
+    .jd-stage-phase { font-size: 12px; font-weight: 500; color: var(--text-light); margin-bottom: 18px; }
+    .jd-row { display: flex; gap: 20px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
+    .jd-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .jd-row:first-of-type { padding-top: 0; }
+    .jd-row-label { width: 130px; flex-shrink: 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--purple); padding-top: 2px; }
+    .jd-row-value { flex: 1; font-size: 14px; font-weight: 300; line-height: 1.6; }
+    .jd-quote { font-style: italic; }
+    .jd-emotion-bar { display: flex; align-items: center; gap: 12px; }
+    .jd-emotion-track { flex: 1; max-width: 220px; height: 10px; background: #f0f0f0; border-radius: 6px; overflow: hidden; }
+    .jd-emotion-fill { height: 100%; border-radius: 6px; }
+    .jd-emotion-label { font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .jd-muted { color: #9999a6; }
+
+    /* Sub-headings within a section (e.g. 5.1.1, 5.4.1) */
+    .mini-title { font-size: 17px; font-weight: 600; color: var(--purple); margin: 32px 0 8px; }
+
+    /* Typology cards */
+    .typology-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+    .typology-card { background: #fafafa; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+    .typology-name { font-size: 16px; font-weight: 600; }
+    .typology-text { font-size: 13px; font-weight: 300; line-height: 1.6; color: var(--text); }
+    .typology-stat { font-size: 13px; font-weight: 600; color: var(--purple); background: var(--accent); border-radius: 10px; padding: 8px 12px; margin-top: 4px; }
+
+    /* Persona mini chips */
+    .persona-mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+    .persona-mini { background: #fafafa; border-radius: 14px; padding: 16px 18px; }
+    .persona-mini.active { border: 1.3px solid var(--accent-border); background: var(--accent); }
+    .persona-mini-name { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+    .persona-mini-role { font-size: 11px; font-weight: 500; color: var(--purple); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 8px; }
+    .persona-mini-text { font-size: 12px; font-weight: 300; line-height: 1.6; color: var(--text); }
+
+    /* Compare grid (Cross-AI synthesis) */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    .compare-box { border-radius: 16px; padding: 20px 24px; }
+    .compare-box.good { background: var(--accent); }
+    .compare-box.bad { background: #fdeee0; }
+    .compare-box.neutral { background: #f2f2f2; }
+    .compare-box.neutral .compare-title { color: #777; }
+    .compare-title { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+    .compare-box.good .compare-title { color: #4F6F52; }
+    .compare-box.bad .compare-title { color: #92500f; }
+    .compare-list { display: flex; flex-direction: column; gap: 8px; }
+    .compare-list li { font-size: 13px; font-weight: 300; line-height: 1.5; list-style: none; padding-left: 16px; position: relative; }
+    .compare-list li::before { content: "•"; position: absolute; left: 0; }
+
+    /* AI tool rows (benchmark visual) */
+    .ai-tool-list { display: flex; flex-direction: column; margin-top: 20px; }
+    .ai-tool-row { display: flex; align-items: center; gap: 16px; padding: 13px 0; border-bottom: 1px solid #f0f0f0; }
+    .ai-tool-row:last-child { border-bottom: none; }
+    .ai-tool-name { width: 130px; flex-shrink: 0; font-size: 13px; font-weight: 600; line-height: 1.3; }
+    .ai-tool-phasebar { display: flex; gap: 4px; width: 110px; flex-shrink: 0; }
+    .ai-tool-phase-seg { flex: 1; height: 8px; border-radius: 5px; background: #ededed; }
+    .ai-tool-phase-seg.on { background: var(--purple); }
+    .ai-tool-privacy { width: 96px; flex-shrink: 0; font-size: 10px; font-weight: 600; text-align: center; border-radius: 14px; padding: 5px 6px; background: #f0f0f0; color: #666; }
+    .ai-tool-note { flex: 1; font-size: 12px; font-weight: 300; color: var(--text-light); line-height: 1.5; }
+
+    /* Compact requirements list */
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .req-card { background: #fafafa; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+    .req-card-text { font-size: 13px; font-weight: 500; line-height: 1.4; }
+    .req-card-origin { align-self: flex-start; font-size: 10px; font-weight: 600; color: var(--purple); background: var(--accent); border-radius: 12px; padding: 4px 10px; white-space: nowrap; }
+
+    /* UX/UI flowchart (User Flow) */
+    .ux-node { padding: 10px 14px; border-radius: 10px; font-size: 10.5px; text-align: center; line-height: 1.35; }
+    .ux-node.entry { background: #ececea; border: 1.3px solid #999; font-weight: 600; }
+    .ux-node.process { background: #fff; border: 1.3px solid #ccc; }
+    .ux-node.signal { background: #fdf1cf; border: 1.3px solid #e8a830; }
+    .ux-node.support { background: #f0edff; border: 1.3px solid #8273c7; font-weight: 500; }
+    .ux-node.terminal { background: #fafafa; border: 1.3px dashed #ccc; color: #888; font-size: 10px; }
+
+    /* Horizontal UX flow (matches reference flowchart) */
+    .ux-h-wrap { overflow-x: auto; margin-top: 28px; padding-bottom: 12px; }
+    .ux-h-flow { display: flex; align-items: center; gap: 6px; width: max-content; }
+    .ux-h-flow .ux-node { width: 138px; flex-shrink: 0; }
+    .ux-arrow-h { color: #c5c5c5; font-size: 13px; flex-shrink: 0; }
+    .ux-entry-grid { display: grid; grid-template-columns: 116px repeat(3, 138px); column-gap: 6px; row-gap: 30px; align-items: center; flex-shrink: 0; }
+    .ux-entry-grid .ux-node { width: auto; }
+    .ux-decision-col { display: flex; flex-direction: column; align-items: center; gap: 10px; flex-shrink: 0; }
+    .ux-decision { position: relative; width: 150px; height: 88px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ux-decision::before { content: ""; position: absolute; inset: 6px; background: #fdf1cf; border: 1.3px solid #e8a830; transform: rotate(45deg); border-radius: 6px; }
+    .ux-decision span { position: relative; z-index: 1; font-size: 10px; font-weight: 600; text-align: center; padding: 0 26px; }
+    .ux-branch-down { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+    .ux-branch-down .ux-node { width: 138px; }
+
+    /* Design criteria checklist (visually distinct from driver cards) */
+    .criteria-list { display: flex; flex-direction: column; margin-top: 20px; border-top: 1px solid #eee; }
+    .criteria-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #eee; align-items: flex-start; }
+    .criteria-num { width: 26px; height: 26px; border-radius: 50%; background: #1d1d1d; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .criteria-body { flex: 1; }
+    .criteria-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .criteria-text { font-size: 13px; font-weight: 300; line-height: 1.6; color: var(--text-light); }
+
+    /* Principle cards (System Overview, visually distinct from feature/criteria) */
+    .principle-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 20px; }
+    .principle-card { background: var(--accent); border-radius: 16px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .principle-num { width: 30px; height: 30px; border-radius: 50%; background: #fff; color: var(--purple); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .principle-body { flex: 1; }
+    .principle-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .principle-text { font-size: 12.5px; font-weight: 300; line-height: 1.6; color: var(--text); }
+
+    /* Numbered citations */
+    .cite-ref { color: var(--purple); font-weight: 600; font-size: 11px; vertical-align: super; }
+    .cite-list { margin-top: 20px; padding-top: 14px; border-top: 1px solid #eee; display: flex; flex-direction: column; gap: 5px; }
+    .cite-list p { font-size: 11.5px; font-weight: 300; color: var(--text-light); line-height: 1.6; }
+    .cite-list .cite-num { font-weight: 600; color: var(--text); margin-right: 4px; }
+
+    /* Service blueprint diagram */
+    .bp-diagram { margin-top: 24px; overflow-x: auto; padding-bottom: 8px; }
+    .bp-inner { min-width: 880px; }
+    .bp-row { display: flex; align-items: stretch; gap: 10px; margin-bottom: 5px; }
+    .bp-row-label { width: 92px; flex-shrink: 0; display: flex; align-items: center; font-size: 10px; font-weight: 700; color: var(--purple); text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.25; }
+    .bp-cells { display: flex; align-items: stretch; flex: 1; }
+    .bp-cell { flex: 1; background: #fff; border-radius: 8px; padding: 8px 10px; font-size: 10.5px; font-weight: 300; line-height: 1.4; }
+    .bp-cell.head { text-align: center; font-weight: 700; font-size: 13px; color: #337dc7; background: transparent; padding: 2px; align-self: center; }
+    .bp-cell.touch { background: #ececea; font-weight: 500; text-align: center; }
+    .bp-cell.front { background: #dbebf7; }
+    .bp-cell.back, .bp-cell.support { background: #d1f0eb; }
+    .bp-arrow { width: 16px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #a9c0d8; font-size: 13px; }
+    .bp-arrow.hidden { visibility: hidden; }
+    .bp-vrow { margin-bottom: 2px; }
+    .bp-vrow .bp-cell { text-align: center; background: transparent; color: #a9c0d8; font-size: 12px; padding: 0; }
+    .bp-line { text-align: center; font-size: 9.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-light); padding: 3px 0; border-top: 1px dashed #ddd; border-bottom: 1px dashed #ddd; margin: 2px 0 6px; }
+    .bp-line.solid { border-top: 1.3px solid #333; border-bottom: none; padding-top: 6px; }
+
+    /* Persona card */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+      align-items: stretch;
+    }
+    .persona-card {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 24px; padding: 32px;
+      position: relative;
+      display: flex; flex-direction: column;
+    }
+    .persona-card.has-avatar { padding-top: 48px; }
+    .persona-avatar {
+      position: absolute;
+      top: -36px;
+      left: 32px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 1.3px var(--accent-border);
+      background: var(--accent);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .persona-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .persona-name { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+    .persona-role { font-size: 15px; font-weight: 300; color: var(--text-light); margin-bottom: 20px; }
+    .persona-quote {
+      font-size: 15px; font-style: italic; font-weight: 300;
+      color: var(--purple); margin-bottom: 20px; line-height: 1.6;
+    }
+    .persona-section-title {
+      font-size: 13px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--text-light);
+      margin-bottom: 6px; margin-top: 16px;
+    }
+    .persona-section-text { font-size: 15px; font-weight: 300; line-height: 1.6; }
+
+    /* Phase strip (P0-P4) */
+    .phase-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+      margin-bottom: 24px;
+    }
+    .phase-card {
+      background: var(--accent);
+      border-radius: 18px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .phase-tag { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--purple); }
+    .phase-name { font-size: 15px; font-weight: 500; line-height: 1.3; }
+    .phase-desc { font-size: 13px; font-weight: 300; line-height: 1.5; color: var(--text); }
+
+    .insight-block {
+      background: #fff;
+      border: 1.3px solid var(--accent-border);
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin-top: 24px;
+    }
+    .insight-block p { font-size: 17px; font-weight: 300; line-height: 1.7; }
+    .insight-block strong { font-weight: 500; }
+
+    /* Full P0-P4 table */
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 32px;
+      border: 1px solid #eee;
+      border-radius: 16px;
+    }
+    .dv-table { border-collapse: collapse; width: 100%; min-width: 980px; }
+    .dv-table th, .dv-table td {
+      text-align: left; vertical-align: top;
+      padding: 12px 14px; font-size: 13px; font-weight: 300; line-height: 1.45;
+      border-bottom: 1px solid #eee; border-right: 1px solid #f2f2f2;
+    }
+    .dv-table th {
+      background: var(--accent); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.03em; position: sticky; top: 0;
+    }
+    .dv-table td:first-child, .dv-table th:first-child {
+      font-weight: 500; background: #fafafa; position: sticky; left: 0;
+      min-width: 190px; font-size: 13px;
+    }
+    .dv-table th:first-child { background: var(--accent); z-index: 2; }
+    .dv-table tr:last-child td { border-bottom: none; }
+    .table-caption { font-size: 13px; font-weight: 300; color: var(--text-light); margin-top: 10px; }
+
+    /* Diagram images (screens only) */
+    .diagram-block { margin-top: 32px; }
+    .diagram-img { width: 100%; border-radius: 16px; border: 1px solid #eee; display: block; }
+    .diagram-caption { font-size: 13px; font-weight: 300; color: var(--text-light); margin-top: 10px; }
+
+    /* Coded architecture diagram */
+    .arch-diagram { display: flex; flex-direction: column; margin-top: 24px; }
+    .arch-layer { border-radius: 12px; padding: 12px 16px; margin-bottom: 4px; }
+    .arch-layer.visible { background: var(--accent); border-left: 3px solid var(--purple); }
+    .arch-layer.internal { background: #f4f4f4; border-left: 3px solid #b8b8b8; }
+    .arch-layer-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 4px; }
+    .arch-layer-title { font-size: 13px; font-weight: 600; }
+    .arch-layer-meta { font-size: 10px; font-weight: 300; color: var(--text-light); }
+    .arch-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+    .arch-chip { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 5px 10px; font-size: 11px; font-weight: 500; color: var(--text); }
+    .arch-arrow { display: flex; justify-content: center; margin: 0; color: var(--purple); font-size: 12px; line-height: 1; }
+    .arch-principle { background: #fff; border: 1.3px solid var(--accent-border); color: var(--text); border-radius: 10px; padding: 10px 16px; font-size: 11px; font-weight: 300; margin-top: 4px; line-height: 1.5; }
+    .arch-principle strong { font-weight: 600; }
+
+    /* Flow lanes (user flow) */
+    .flow-entry { background: #f5f5f5; border-radius: 14px; padding: 16px 20px; font-size: 14px; font-weight: 400; text-align: center; max-width: 320px; margin: 0 auto 20px; }
+    .flow-lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .flow-lane { display: flex; flex-direction: column; gap: 6px; }
+    .flow-lane-label { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--purple); margin-bottom: 6px; text-transform: uppercase; }
+    .flow-step { background: var(--accent); border-radius: 12px; padding: 12px 16px; font-size: 13px; font-weight: 300; line-height: 1.5; }
+    .flow-arrow-down { text-align: center; color: #bbb; font-size: 14px; margin: 2px 0; }
+    .flow-merge { background: #1d1d1d; color: #fff; border-radius: 14px; padding: 18px 22px; margin-top: 14px; font-size: 13px; font-weight: 300; line-height: 1.6; }
+    .flow-merge strong { font-weight: 600; }
+    .flow-decision { background: #fff; border: 1.3px dashed var(--accent-border); border-radius: 14px; padding: 16px 22px; margin-top: 14px; font-size: 13px; font-weight: 400; text-align: center; }
+
+    /* Wireframe phone (mid-fidelity example) */
+    .wireframe-phone { background: #fbfbfb; border: 1px solid #e2e2e2; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .wireframe-label { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-light); margin-bottom: 2px; }
+    .wireframe-bubble { border-radius: 10px; padding: 10px 12px; font-size: 12px; font-weight: 300; line-height: 1.5; }
+    .wireframe-bubble.user { background: #ececec; align-self: flex-end; max-width: 85%; }
+    .wireframe-bubble.bot { background: #fff; border: 1px solid #e2e2e2; }
+    .wireframe-card { background: #fff; border: 1px solid #e2e2e2; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+    .wireframe-card-title { font-size: 12px; font-weight: 600; }
+    .wireframe-card-text { font-size: 12px; font-weight: 300; line-height: 1.5; color: var(--text-light); }
+    .wireframe-chip { background: #f2f2f2; border-radius: 8px; padding: 8px 10px; font-size: 11px; font-weight: 400; }
+    .wireframe-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+    .wireframe-btn { border: 1px solid #d8d8d8; border-radius: 20px; padding: 6px 12px; font-size: 11px; font-weight: 500; color: var(--text); }
+    .wireframe-btn.primary { background: #1d1d1d; color: #fff; border-color: #1d1d1d; }
+
+    /* Screens gallery */
+    .screens-gallery { display: flex; gap: 20px; margin-top: 24px; overflow-x: auto; padding-bottom: 12px; }
+    .screen-card { flex-shrink: 0; width: 260px; }
+    .screen-card img { width: 100%; border-radius: 14px; border: 1px solid #eee; box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+    .screen-card p { font-size: 13px; font-weight: 300; color: var(--text-light); margin-top: 10px; text-align: center; }
+
+    /* Platform-grouped high-fidelity gallery */
+    .platform-group { margin-top: 32px; }
+    .platform-group:first-of-type { margin-top: 20px; }
+    .platform-group-title { font-size: 14px; font-weight: 600; color: var(--purple); margin-bottom: 4px; }
+    .platform-group-sub { font-size: 12px; font-weight: 300; color: var(--text-light); margin-bottom: 4px; }
+
+    /* Persona profile */
+    .persona-profile { display: flex; gap: 32px; margin-top: 24px; align-items: flex-start; }
+    .persona-photo-card { width: 280px; flex-shrink: 0; background: #f2f2f2; border-radius: 24px; padding: 36px 24px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+    .persona-photo { width: 170px; height: 170px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 1.3px var(--accent-border); background: var(--accent); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .persona-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 24%; display: block; }
+    .persona-photo-name { font-size: 19px; font-weight: 600; text-align: center; }
+    .persona-photo-meta { font-size: 13px; font-weight: 300; color: var(--text-light); text-align: center; margin-top: -10px; }
+    .persona-photo-quote { background: var(--purple); color: #fff; border-radius: 18px; padding: 16px 18px; font-size: 13px; font-style: italic; font-weight: 300; line-height: 1.6; text-align: center; }
+    .persona-facts { width: 100%; display: flex; flex-direction: column; gap: 12px; font-size: 13px; margin-top: auto; padding-top: 20px; border-top: 1px solid #eee; }
+    .persona-fact-row { display: flex; justify-content: space-between; gap: 8px; }
+    .persona-fact-label { font-weight: 500; }
+    .persona-fact-value { font-weight: 300; color: var(--text-light); }
+    .persona-phase-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-light); margin-top: 6px; }
+    .persona-phase-bar { display: flex; gap: 6px; margin-top: 6px; }
+    .persona-phase-seg { flex: 1; height: 8px; border-radius: 6px; background: #ddd; }
+    .persona-phase-seg.active { background: var(--purple); }
+
+    .persona-data { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+    .persona-tag { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; background: var(--accent); border-radius: 20px; padding: 7px 16px; font-size: 13px; font-weight: 600; color: var(--purple); }
+    .persona-data-card { background: #fafafa; border-radius: 16px; padding: 18px 22px; }
+    .persona-data-card h4 { font-size: 15px; font-weight: 600; color: var(--purple); margin-bottom: 8px; }
+    .persona-data-card ul { padding-left: 18px; margin: 0; }
+    .persona-data-card li { font-size: 14px; font-weight: 300; line-height: 1.6; margin-bottom: 4px; }
+    .persona-data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* Layered user journey */
+    .journey-layered { display: flex; flex-direction: column; gap: 6px; margin-top: 32px; }
+    .journey-row { display: flex; gap: 16px; border-radius: 16px; padding: 18px 20px; align-items: flex-start; }
+    .journey-row-label { width: 100px; flex-shrink: 0; font-weight: 700; font-size: 14px; padding-top: 10px; }
+    .journey-row.light { background: var(--accent); }
+    .journey-row.dark { background: #1d1d1d; color: #fff; }
+    .journey-row.dark .journey-row-label { color: #fff; }
+    .journey-cells { display: flex; gap: 10px; flex: 1; min-width: 0; overflow-x: auto; padding-bottom: 4px; }
+    .journey-cell { flex: 1; min-width: 150px; background: #fff; border-radius: 10px; padding: 12px 14px; font-size: 12px; font-weight: 300; line-height: 1.5; }
+    .journey-row.dark .journey-cell { background: rgba(255,255,255,0.08); color: #e8e6f5; }
+    .journey-cell.stage-head { font-weight: 700; font-size: 13px; text-align: center; display: flex; align-items: center; justify-content: center; }
+    .journey-cell-quote { font-style: italic; }
+    .journey-bar-track { height: 12px; border-radius: 6px; background: rgba(255,255,255,0.12); overflow: hidden; margin-bottom: 8px; }
+    .journey-bar-fill { height: 100%; border-radius: 6px; }
+    .journey-cell-emotion { font-weight: 600; font-size: 13px; }
+
+    /* Journey stepper */
+    .journey-strip {
+      display: flex;
+      gap: 8px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .journey-step {
+      flex: 1;
+      min-width: 110px;
+      text-align: center;
+      padding: 14px 10px;
+      border-radius: 14px;
+      background: #f5f5f5;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.4;
+      position: relative;
+    }
+    .journey-step.break {
+      background: var(--accent);
+      border: 1.3px solid var(--accent-border);
+      font-weight: 500;
+    }
+    .journey-num { display: block; font-size: 11px; color: var(--text-light); margin-bottom: 4px; }
+
+    /* Features (design principles) */
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 24px; }
+    .feature-card { border: 1.3px solid var(--accent-border); border-radius: 16px; padding: 24px; }
+    .feature-icon { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; color: var(--purple); margin-bottom: 10px; }
+    .feature-title { font-size: 17px; font-weight: 500; margin-bottom: 8px; }
+    .feature-text { font-size: 15px; font-weight: 300; line-height: 1.6; color: var(--text-light); }
+
+    /* Layers list */
+    .layers-list { display: flex; flex-direction: column; gap: 0; margin-top: 24px; border-top: 1px solid #eee; }
+    .layer-item { display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid #eee; align-items: baseline; }
+    .layer-num { font-size: 14px; font-weight: 500; color: var(--purple); width: 24px; flex-shrink: 0; }
+    .layer-name { font-size: 16px; font-weight: 500; width: 260px; flex-shrink: 0; }
+    .layer-desc { font-size: 15px; font-weight: 300; line-height: 1.6; color: var(--text); }
+
+    /* Testing results */
+    .testing-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .testing-item { display: flex; gap: 12px; align-items: flex-start; }
+    .testing-check { color: var(--purple); font-size: 18px; flex-shrink: 0; }
+    .testing-text { font-size: 18px; font-weight: 300; line-height: 1.6; }
+
+    .quant-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 24px 0; }
+    .quant-item { background: var(--accent); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+    .quant-number { font-size: 28px; font-weight: 600; color: var(--purple); line-height: 1; }
+    .quant-label { font-size: 12.5px; font-weight: 400; color: var(--text); line-height: 1.45; }
+
+    /* Learnings */
+    .learnings-list { display: flex; flex-direction: column; gap: 24px; margin-top: 24px; }
+    .learning-item { display: flex; gap: 16px; }
+    .learning-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: 10px; }
+    .learning-text { font-size: 18px; font-weight: 300; line-height: 1.7; }
+    .learning-text strong { font-weight: 500; }
+
+/* ── NEXT PROJECT ── */
+.next-project {
+  margin: 130px 0 0;
+  padding: 0;
+}
+
+.next-project-card {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 22px;
+  border: 1px solid #FFCCD9;
+  border-radius: 32px;
+  background: #fff;
+}
+
+.next-project-img {
+  width: 280px;
+  height: 168px;
+  flex: 0 0 280px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.next-project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.next-project-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.next-project-title {
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.next-project-desc {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+
+.next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.next-link svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.next-link:hover {
+  opacity: 0.55;
+}
+
+.next-link:hover svg {
+  transform: translateX(4px);
+}
+
+    /* ── FOOTER ── */
+footer {
+  margin-top: 16px;
+  padding: 32px 120px;
+  border-top: 0.5px solid rgba(29,29,29,0.12);
+}
+
+.footer-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-line p {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1d1d1d;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: #1d1d1d;
+  display: flex;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+  opacity: 0.5;
+}
+
+.footer-links svg {
+  width: 24px;
+  height: 24px;
+}
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed; bottom: 32px; right: 32px; z-index: 200;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: transparent; border: 1.2px solid var(--text);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, background 0.2s;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--text); }
+    .back-to-top:hover svg path { stroke: white; }
+    .back-to-top svg { width: 20px; height: 20px; transform: rotate(180deg); }
+
+
+    /* ── COLLAPSIBLE RESEARCH PROCESS ── */
+    .research-disclosure {
+      margin: 24px 0 72px;
+    }
+
+    .research-disclosure-card {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 24px;
+      padding: 28px 32px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdfb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .research-disclosure-copy {
+      max-width: 680px;
+    }
+
+    .research-disclosure-kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .research-disclosure-title {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .research-disclosure-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-light);
+    }
+
+    .research-toggle {
+      flex-shrink: 0;
+      border: 1px solid #1d1d1d;
+      background: #1d1d1d;
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .research-toggle:hover {
+      transform: translateY(-1px);
+      opacity: 0.8;
+    }
+
+    .research-toggle svg {
+      width: 17px;
+      height: 17px;
+      transition: transform 0.25s ease;
+    }
+
+    .research-toggle[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+
+    .research-process {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows 0.45s ease, opacity 0.3s ease;
+    }
+
+    .research-process.is-open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .research-process-inner {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .research-process.is-open .research-process-inner {
+      overflow: visible;
+    }
+
+    /* MOBILE RESPONSIVE */
+.mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --margin: 24px;
+  }
+
+  html {
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  nav {
+    height: 76px;
+    min-height: 76px;
+    padding: 16px 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    transform: translateY(5px);
+  }
+
+  .logo img {
+    height: 34px;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    min-height: 48px;
+    min-width: 104px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    border: 1px solid #3b3633;
+    background: #3b3633;
+    color: #fff;
+    font-family: var(--font);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 86px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    list-style: none;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.97);
+    border: 1px solid rgba(29,29,29,0.08);
+    box-shadow: 0 18px 44px rgba(29,29,29,0.12);
+    backdrop-filter: blur(16px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.98);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.28s ease, visibility 0.22s ease;
+  }
+
+  nav.menu-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    max-height: 280px;
+  }
+
+  .nav-links a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    border-radius: 18px;
+    font-size: 17px;
+    line-height: 1.2;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(29,29,29,0.06);
+    opacity: 1;
+  }
+
+  .hero {
+    padding: 40px 24px 0;
+  }
+
+  .case-tags {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .case-tag {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .info-card {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .banner { height: 260px; }
+
+  .body-wrap {
+    flex-direction: column;
+    padding: 40px 24px 32px;
+    gap: 24px;
+  }
+
+  .sidebar, .sidebar-menu { display: none; }
+
+  .sec-title { font-size: 26px; }
+  .sec-text { font-size: 16px; }
+
+  .persona-grid, .features-grid { grid-template-columns: 1fr; }
+  .phase-strip { grid-template-columns: 1fr 1fr; }
+  .journey-strip { flex-direction: column; }
+  .layer-item { flex-direction: column; gap: 6px; }
+  .layer-name { width: auto; }
+
+  .persona-profile { flex-direction: column; }
+  .persona-photo-card { width: 100%; }
+  .persona-data-grid { grid-template-columns: 1fr; }
+  .journey-row { flex-direction: column; }
+  .journey-row-label { width: auto; padding-top: 0; }
+  .journey-cells { width: 100%; }
+  .journey-cell { min-width: 200px; }
+  .flow-lanes { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column; }
+  .arch-chips { gap: 6px; }
+  .dv-table { min-width: 760px; }
+  .dv-phase-cards { grid-template-columns: 1fr 1fr; }
+  .principle-grid { grid-template-columns: 1fr; }
+  .req-grid { grid-template-columns: 1fr; }
+  .bp-inner { min-width: 820px; }
+  .typology-grid, .persona-mini-grid, .compare-grid { grid-template-columns: 1fr; }
+  .ai-tool-row { flex-wrap: wrap; }
+  .ai-tool-name { width: 100%; }
+  .ai-tool-phasebar { width: 100px; }
+
+  .next-project-card { flex-direction: column; }
+  .next-project-img { width: 100%; height: 180px; flex: none; }
+
+  footer { padding: 24px; }
+
+  .research-disclosure-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+
+  .research-disclosure-title {
+    font-size: 21px;
+  }
+
+  .research-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
+  
+
+    /* Key outcomes */
+    .outcomes-section { margin: 0 0 56px; }
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .outcome-card {
+      border: 1.3px solid var(--accent-border);
+      border-radius: 20px;
+      padding: 22px;
+      background: #fff;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .outcome-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(29,29,29,.06);
+    }
+    .outcome-number {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .outcome-title {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 7px;
+    }
+    .outcome-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 900px) {
+      .outcomes-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .outcomes-section { margin-bottom: 40px; }
+    }
+
+
+/* =========================================================
+   EDITORIAL POLISH CONCEPT — visual-only exploration
+   ========================================================= */
+:root{
+  --editorial-bg:#f7f7f3;
+  --editorial-ink:#171917;
+  --editorial-muted:#6f736f;
+  --editorial-green:#49674c;
+  --editorial-line:rgba(73,103,76,.22);
+}
+body{background:var(--editorial-bg);color:var(--editorial-ink);}
+nav{background:rgba(247,247,243,.88);border-bottom:1px solid rgba(23,25,23,.07);}
+nav.scrolled{background:rgba(247,247,243,.96);}
+.hero{padding-top:84px;padding-bottom:56px;}
+.hero-title{font-size:clamp(46px,5.4vw,76px);line-height:.98;letter-spacing:-.045em;max-width:1050px;margin-bottom:24px;}
+.hero-sub{font-size:20px;line-height:1.55;max-width:760px;color:var(--editorial-muted);margin-bottom:48px;}
+.case-tags{margin-bottom:28px;}
+.case-tag{border:0;background:#e8eee5;color:var(--editorial-green);font-weight:600;letter-spacing:.07em;padding:7px 14px;}
+.info-card{border:0;border-top:1px solid var(--editorial-line);border-bottom:1px solid var(--editorial-line);border-radius:0;padding:28px 0;gap:72px;margin-bottom:0;}
+.info-label{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--editorial-green);}
+.info-value{font-size:14px;color:#343834;}
+.banner{width:calc(100% - 80px);margin:0 auto;height:min(68vw,720px);border-radius:36px;background:linear-gradient(135deg,#dfe8dc 0%,#eef1e9 48%,#d9e4d5 100%);}
+.banner-placeholder{text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--editorial-green);}
+.body-wrap{padding-top:110px;gap:72px;}
+.sidebar{width:190px}.sidebar-menu{width:190px;background:transparent;padding:8px 0;border-radius:0;border-left:1px solid var(--editorial-line);gap:0;}
+.sidebar-item{padding:9px 0 9px 18px;font-size:12px;letter-spacing:.02em;}
+.content{max-width:1080px;margin:0 auto;}
+.section{margin-bottom:150px;}
+.sec-label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--editorial-green);margin-bottom:18px;}
+.sec-title{font-size:clamp(38px,4vw,58px);line-height:1.04;letter-spacing:-.038em;max-width:880px;margin-bottom:28px;}
+.sec-text{font-size:19px;line-height:1.72;max-width:820px;color:#2d312d;margin-bottom:20px;}
+.overview-card{background:transparent;border-left:3px solid var(--editorial-green);border-radius:0;padding:8px 0 8px 32px;margin-top:44px;max-width:880px;}
+.overview-card p{font-size:22px!important;line-height:1.58!important;letter-spacing:-.012em;}
+.outcomes-section{margin:30px 0 110px;}
+.outcomes-grid{grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px;}
+.outcome-card{border:0;background:#fff;border-radius:24px;padding:28px;min-height:220px;box-shadow:0 14px 34px rgba(31,42,31,.045);}
+.outcome-card:hover{transform:translateY(-5px);box-shadow:0 22px 46px rgba(31,42,31,.08);}
+.outcome-number{background:transparent;width:auto;height:auto;border-radius:0;font-size:11px;letter-spacing:.14em;color:var(--editorial-green);justify-content:flex-start;margin-bottom:34px;}
+.outcome-title{font-size:21px!important;letter-spacing:-.02em;line-height:1.18;}
+.outcome-text{font-size:14px!important;color:var(--editorial-muted);}
+.research-disclosure{margin:0 0 150px;}
+.research-disclosure-card{border:0!important;background:#1b1e1b!important;color:#fff;border-radius:32px!important;padding:52px 56px!important;box-shadow:0 24px 70px rgba(10,15,10,.13);}
+.research-disclosure-kicker{color:#b8d0b3!important;}
+.research-disclosure-title{font-size:38px!important;letter-spacing:-.035em;max-width:650px;}
+.research-disclosure-text{color:rgba(255,255,255,.62)!important;max-width:720px;}
+.research-toggle{background:#fff!important;color:#171917!important;border:0!important;box-shadow:none!important;}
+.research-toggle:hover{transform:translateY(-2px);}
+.research-process{margin-bottom:120px;}
+.research-process.is-open{border-bottom:1px solid var(--editorial-line);}
+.phase-card,.principle-card,.quant-item{border:0;box-shadow:none;}
+.phase-card{background:#e9eee6;border-radius:22px;padding:24px 20px;}
+.insight-block{border:0;border-radius:0;background:transparent;border-top:1px solid var(--editorial-line);border-bottom:1px solid var(--editorial-line);padding:36px 0;margin-top:48px;}
+.insight-block p{font-size:24px;line-height:1.55;letter-spacing:-.015em;max-width:900px;}
+.typology-card,.persona-mini,.req-card{background:#fff;border-radius:20px;box-shadow:0 10px 30px rgba(31,42,31,.035);}
+.persona-card,.feature-card,.jd-card{background:#fff;border:0;box-shadow:0 18px 45px rgba(31,42,31,.055);}
+.principle-card{background:#e7eee4;padding:24px;border-radius:20px;}
+.arch-diagram{background:#fff;border-radius:28px;padding:30px;box-shadow:0 18px 50px rgba(31,42,31,.05);}
+.arch-layer{padding:16px 18px;border-radius:14px;}
+.bp-diagram,.ux-h-wrap,.table-wrap{background:#fff;border-radius:24px;padding:24px;box-shadow:0 16px 45px rgba(31,42,31,.045);}
+.platform-group{margin-top:54px;}
+.screens-gallery{gap:28px;padding:12px 4px 24px;}
+.screen-card{width:290px;}
+.screen-card img{border:0;border-radius:24px;box-shadow:0 18px 45px rgba(0,0,0,.11);}
+.editorial-break{margin:0 0 150px;padding:92px 72px;border-radius:34px;background:#dfe8dc;position:relative;overflow:hidden;}
+.editorial-break::after{content:'';position:absolute;width:340px;height:340px;border-radius:50%;right:-90px;top:-150px;border:1px solid rgba(73,103,76,.25);box-shadow:0 0 0 50px rgba(73,103,76,.05),0 0 0 100px rgba(73,103,76,.035);}
+.editorial-break-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:var(--editorial-green);margin-bottom:24px;}
+.editorial-break h2{font-size:clamp(44px,5vw,72px);line-height:1.02;letter-spacing:-.045em;max-width:850px;font-weight:400;position:relative;z-index:1;}
+.editorial-break p{font-size:18px;color:#596359;margin-top:28px;max-width:680px;line-height:1.65;position:relative;z-index:1;}
+.chapter-rule{display:flex;align-items:center;gap:16px;margin-bottom:24px;color:var(--editorial-green);font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;}
+.chapter-rule::before{content:'';width:42px;height:1px;background:var(--editorial-green);}
+#proposal>.sec-label,#validation>.sec-label,#reflection>.sec-label{display:none;}
+.next-project-card{border:0;box-shadow:0 18px 50px rgba(31,42,31,.07);background:#fff;}
+footer{background:#fff;margin-top:80px;}
+@media(max-width:1000px){.outcomes-grid{grid-template-columns:1fr 1fr}.editorial-break{padding:64px 40px}.banner{width:calc(100% - 40px)}}
+@media(max-width:768px){.hero{padding-top:54px}.hero-title{font-size:43px}.hero-sub{font-size:17px}.banner{width:calc(100% - 32px);border-radius:24px}.body-wrap{padding-top:72px}.content{max-width:none}.section{margin-bottom:100px}.sec-title{font-size:38px}.sec-text{font-size:17px}.outcomes-grid{grid-template-columns:1fr}.research-disclosure-card{padding:34px 28px!important}.research-disclosure-title{font-size:30px!important}.editorial-break{margin-bottom:100px;padding:48px 28px;border-radius:26px}.editorial-break h2{font-size:40px}.info-card{gap:22px}.overview-card p{font-size:19px!important}}
+
+
+/* ── REFINEMENT: keep the visual language aligned with the existing portfolio ── */
+body {
+  background: #ffffff;
+}
+
+/* Restore the rounded portfolio-style project information card */
+.info-card {
+  border: 1.3px solid var(--accent-border);
+  border-radius: 40px;
+  padding: 20px 37px;
+  gap: 60px;
+  margin-bottom: 48px;
+  background: #ffffff;
+}
+
+/* Restore the floating rounded sidebar used across the portfolio */
+.sidebar {
+  width: 220px;
+}
+
+.sidebar-menu {
+  width: 220px;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(29,29,29,0.07);
+  border-left: 1px solid rgba(29,29,29,0.07);
+  border-radius: 20px;
+  padding: 20px;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(29,29,29,0.08);
+  backdrop-filter: blur(12px);
+}
+
+.sidebar-item {
+  padding: 0;
+  border-radius: 0;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+  background: transparent;
+}
+
+/* Smaller editorial transitions: accent moments, not full-screen statements */
+.editorial-break {
+  margin: 0 0 104px;
+  padding: 58px 56px;
+  min-height: 0;
+  border-radius: 28px;
+  background: #eef3ec;
+  border: 1px solid rgba(79,111,82,0.18);
+}
+
+.editorial-break::after {
+  width: 230px;
+  height: 230px;
+  right: -62px;
+  top: -105px;
+  box-shadow:
+    0 0 0 34px rgba(73,103,76,.035),
+    0 0 0 68px rgba(73,103,76,.022);
+}
+
+.editorial-break-kicker {
+  margin-bottom: 18px;
+}
+
+.editorial-break h2 {
+  font-size: clamp(34px, 3.7vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  max-width: 920px;
+}
+
+.editorial-break p {
+  font-size: 17px;
+  margin-top: 20px;
+  max-width: 720px;
+}
+
+/* The validation transition should stay especially neutral and light */
+#validation + .editorial-break,
+.editorial-break[aria-label="Validation transition"] {
+  background: #f5f7f3 !important;
+}
+
+/* Keep the editorial polish subtle rather than changing the whole portfolio */
+.banner {
+  border-radius: 0;
+}
+
+@media (max-width: 1000px) {
+  .editorial-break {
+    padding: 48px 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    border-radius: 24px;
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .editorial-break {
+    margin-bottom: 84px;
+    padding: 40px 28px;
+    border-radius: 24px;
+  }
+
+  .editorial-break h2 {
+    font-size: 34px;
+  }
+}
+
+
+/* ── FINAL REFINEMENT: full-bleed hero + lighter green surfaces ── */
+:root {
+  --accent: #F4F7F2;
+  --accent-border: #B8CCB2;
+}
+
+/* Match the Instagram case study: hero visual breaks out of the content container */
+.banner {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-radius: 0;
+  background: linear-gradient(
+    135deg,
+    #F1F5EF 0%,
+    #FAFBF9 52%,
+    #EEF4EB 100%
+  );
+}
+
+/* Softer editorial transition blocks */
+.editorial-break {
+  background: #F7F9F6;
+  border-color: rgba(79,111,82,0.12);
+}
+
+.editorial-break::after {
+  border-color: rgba(79,111,82,0.14);
+  box-shadow:
+    0 0 0 34px rgba(79,111,82,0.018),
+    0 0 0 68px rgba(79,111,82,0.012);
+}
+
+/* Keep cards light and consistent */
+.overview-card,
+.principle-card,
+.quant-item,
+.dv-phase-card,
+.phase-card {
+  background: #F4F7F2;
+}
+
+@media (max-width: 1000px) {
+  .banner {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    border-radius: 0;
+  }
+}
+
+
+/* ---- Smooth section reveal ---- */
+.reveal,
+section,
+.case-section,
+.content-section{
+    opacity:0;
+    transform:translateY(18px);
+    transition:
+        opacity .65s ease,
+        transform .65s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.visible,
+section.visible,
+.case-section.visible,
+.content-section.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues home">
+    <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
+  </a>
+
+  <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="about.html">About Me</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="case-tags">
+      <span class="case-tag">SERVICE DESIGN</span>
+      <span class="case-tag">UX RESEARCH</span>
+      <span class="case-tag">AI</span>
+    </div>
+    <h1 class="hero-title">Designing for Early Recognition and Support in Domestic Violence</h1>
+    <p class="hero-sub">A master's thesis exploring how service design and AI can reach women experiencing domestic violence before they identify themselves as victims, not after.</p>
+
+    <div class="info-card">
+      <div class="info-block">
+        <p class="info-label">ROLE</p>
+        <p class="info-value">Design Researcher, MSc Thesis</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">SCOPE</p>
+        <p class="info-value">Service design research, personas, journey mapping, prototyping, usability testing</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">SUPERVISION</p>
+        <p class="info-value">Dr. Hande Ayanoglu and Dr. Davide Antonio Gambera</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">TIMEFRAME</p>
+        <p class="info-value">2025 – 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <p class="banner-placeholder">Hero visual · final mockup composition</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Thesis sections">
+      <nav class="sidebar-menu" aria-label="Thesis sections">
+        <a href="#overview" class="sidebar-item active">Overview</a>
+        <a href="#problem" class="sidebar-item">The Problem</a>
+        <a href="#framework" class="sidebar-item">The Framework</a>
+        <a href="#research" class="sidebar-item">Research</a>
+        <a href="#process" class="sidebar-item">The Process</a>
+        <a href="#proposal" class="sidebar-item">Design Proposal</a>
+        <a href="#validation" class="sidebar-item">Prototype & Validation</a>
+        <a href="#reflection" class="sidebar-item">Reflection</a>
+      </nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- OVERVIEW -->
+      <div class="section" id="overview">
+        <p class="sec-label">Project Overview</p>
+        <p class="sec-title">Recognition doesn't happen in a single moment</p>
+        <p class="sec-text">Most support systems for domestic violence are built for women who have already named their situation as abusive. This thesis starts earlier, while she's still confused, still doubting, still telling herself it's probably nothing. Using a service design approach, it develops a phase-based framework (P0 to P4) mapping how abusive dynamics unfold over time, then translates it into a consent-based system proposal, embedded in the platforms women already use, and tests it with real participants through mid- and high-fidelity prototypes.</p>
+        <div class="overview-card">
+          <p style="font-size:18px; font-weight:300; line-height:1.7;">This is not a diagnostic tool and it doesn't replace existing services like APAV or Linha 144. It's an early-stage layer of interpretation, designed to lead women toward the support that already exists, at the moment they're ready for it rather than the moment a system decides they should be.</p>
+        </div>
+      </div>
+
+
+      <section class="outcomes-section" aria-labelledby="keyOutcomesTitle">
+        <p class="sec-label">At a glance</p>
+        <h2 class="sec-title" id="keyOutcomesTitle">Key Outcomes</h2>
+        <p class="sec-text">The project translated research into a complete service system for early recognition and support.</p>
+
+        <div class="outcomes-grid">
+          <article class="outcome-card">
+            <span class="outcome-number">01</span>
+            <h3 class="outcome-title">P0–P4 framework</h3>
+            <p class="outcome-text">Developed a phase-based framework mapping recognition before, during, and after domestic violence.</p>
+          </article>
+          <article class="outcome-card">
+            <span class="outcome-number">02</span>
+            <h3 class="outcome-title">38 initiatives benchmarked</h3>
+            <p class="outcome-text">Analysed domestic violence services across Portugal and international contexts to identify early-stage gaps.</p>
+          </article>
+          <article class="outcome-card">
+            <span class="outcome-number">03</span>
+            <h3 class="outcome-title">7 AI tools analysed</h3>
+            <p class="outcome-text">Compared AI-powered support tools by phase coverage, privacy, tone, and personalisation.</p>
+          </article>
+          <article class="outcome-card">
+            <span class="outcome-number">04</span>
+            <h3 class="outcome-title">Consent-based ecosystem</h3>
+            <p class="outcome-text">Designed an embedded support system across platforms such as Google, TikTok, ChatGPT, and Reddit.</p>
+          </article>
+          <article class="outcome-card">
+            <span class="outcome-number">05</span>
+            <h3 class="outcome-title">Validated with 8 participants</h3>
+            <p class="outcome-text">Tested trust, usefulness, privacy, and likelihood of adoption through remote think-aloud sessions.</p>
+          </article>
+          <article class="outcome-card">
+            <span class="outcome-number">06</span>
+            <h3 class="outcome-title">End-to-end service design</h3>
+            <p class="outcome-text">Produced personas, journeys, architecture, blueprint, user flow, and platform-specific prototypes.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-disclosure" aria-labelledby="researchDisclosureTitle">
+        <div class="research-disclosure-card">
+          <div class="research-disclosure-copy">
+            <p class="research-disclosure-kicker">Deep dive</p>
+            <h2 class="research-disclosure-title" id="researchDisclosureTitle">Want to see how the research shaped the final system?</h2>
+            <p class="research-disclosure-text">Explore the full process, including the problem framing, P0–P4 framework, benchmark analysis, personas, user journey, AI landscape, and design criteria.</p>
+          </div>
+          <button class="research-toggle" type="button" aria-expanded="false" aria-controls="researchProcess">
+            <span>View the complete research process</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <div class="research-process" id="researchProcess" aria-hidden="true">
+        <div class="research-process-inner">
+      <!-- THE PROBLEM -->
+      <div class="section" id="problem">
+        <p class="sec-label">The Problem</p>
+        <p class="sec-title">Support exists. It just starts too late.</p>
+        <p class="sec-text">Domestic violence rarely starts as a single identifiable act. It builds gradually, disguised as care or jealousy, and recognising it is a slow, non-linear process shaped by attachment, self-blame, and fear of judgement. Existing support, from helplines to shelters to campaigns, is almost entirely built for women who already know what's happening and are ready to act. Those still questioning, still explaining it away, are rarely reached by anything.</p>
+        <div class="insight-block">
+          <p>The research question driving this thesis: <strong>how can support systems be designed to reach women experiencing domestic violence before they identify as victims?</strong></p>
+        </div>
+      </div>
+
+      <!-- FRAMEWORK -->
+      <div class="section" id="framework">
+        <p class="sec-label">The Framework</p>
+        <p class="sec-title">Mapping abuse across five phases, not one moment</p>
+        <p class="sec-text">To understand how recognition actually unfolds, this research developed a phase-based framework (P0 to P4), mapping eleven types of abuse across five experiential phases. Movement isn't linear, someone can stay in one phase for years, move back and forth, or experience more than one at once.</p>
+
+        <div class="phase-strip">
+          <div class="phase-card">
+            <span class="phase-tag">P0</span>
+            <p class="phase-name">Early warning / normalisation</p>
+            <p class="phase-desc">Subtle behaviours reframed as care or love. Easy to miss, easy to explain away.</p>
+          </div>
+          <div class="phase-card">
+            <span class="phase-tag">P1</span>
+            <p class="phase-name">Pattern building / coercive control onset</p>
+            <p class="phase-desc">Behaviours repeat and tighten into a pattern, still without a name.</p>
+          </div>
+          <div class="phase-card">
+            <span class="phase-tag">P2</span>
+            <p class="phase-name">Acute episodes / escalation</p>
+            <p class="phase-desc">Explicit incidents that are harder to minimise or deny.</p>
+          </div>
+          <div class="phase-card">
+            <span class="phase-tag">P3</span>
+            <p class="phase-name">Separation and post-separation abuse</p>
+            <p class="phase-desc">Risk continues, and sometimes intensifies, after leaving.</p>
+          </div>
+          <div class="phase-card">
+            <span class="phase-tag">P4</span>
+            <p class="phase-name">Recovery and long-term impact</p>
+            <p class="phase-desc">Rebuilding autonomy, trust, and a sense of self over time.</p>
+          </div>
+        </div>
+
+        <div class="insight-block">
+          <p>The key finding here: <strong>P0 and P1 are defined less by explicit acts of violence and more by an internal process of interpretation.</strong> Women in these phases aren't in denial, they're doing exactly what anyone would do with ambiguous, emotionally loaded information: trying to make it make sense.</p>
+        </div>
+
+        <p class="sec-text" style="margin-top:40px;">The full framework maps how each of the eleven abuse types plays out differently in each phase. Pick a type to see how it moves across P0 to P4.</p>
+
+        <div class="dv-selector">
+          <div class="dv-type-pills" id="dvTypePills"></div>
+          <div class="dv-phase-cards" id="dvPhaseCards"></div>
+        </div>
+        <p class="table-caption">Types of domestic violence mapped across the P0–P4 framework (source: author).</p>
+      </div>
+
+      <!-- RESEARCH -->
+      <div class="section" id="research">
+        <p class="sec-label">Research</p>
+        <p class="sec-title">Benchmarking what already exists</p>
+        <p class="sec-text">The research benchmarked 38 domestic violence support initiatives across Portugal and international contexts, from helplines and shelters to awareness campaigns and mobile apps. The goal was to understand where the P0 to P4 framework was already being addressed and where it wasn't.</p>
+
+        <div class="quant-row">
+          <div class="quant-item">
+            <span class="quant-number">38</span>
+            <span class="quant-label">domestic violence initiatives analysed, Portugal and global</span>
+          </div>
+          <div class="quant-item">
+            <span class="quant-number">81.6%</span>
+            <span class="quant-label">operate in digital or hybrid formats, only 13.2% purely physical</span>
+          </div>
+        </div>
+
+        <p class="sec-text" style="margin-top:8px;">Mapped against the P0–P4 framework, support is not evenly spread. It concentrates heavily around crisis and clusters again around recovery, leaving the earliest, most ambiguous stages almost untouched.</p>
+
+        <div class="density-chart">
+          <div class="density-row">
+            <span class="density-label">P0<br><span class="density-sub">Doubt</span></span>
+            <div class="density-track"><div class="density-fill" style="width:14%; background:#c9d9c4;"></div></div>
+            <span class="density-tag low">Low</span>
+            <span class="density-examples">Almost no dedicated initiatives</span>
+          </div>
+          <div class="density-row">
+            <span class="density-label">P1<br><span class="density-sub">Recognition</span></span>
+            <div class="density-track"><div class="density-fill" style="width:34%; background:#a9c3a0;"></div></div>
+            <span class="density-tag low">Low</span>
+            <span class="density-examples">Love Is Respect · Chayn · SPARC · Are You OK</span>
+          </div>
+          <div class="density-row">
+            <span class="density-label">P2<br><span class="density-sub">Crisis</span></span>
+            <div class="density-track"><div class="density-fill" style="width:100%; background:#4F6F52;"></div></div>
+            <span class="density-tag high">High</span>
+            <span class="density-examples">APAV · Linha 144 · 1800RESPECT · RAINN · SafeYOU</span>
+          </div>
+          <div class="density-row">
+            <span class="density-label">P3<br><span class="density-sub">Separation</span></span>
+            <div class="density-track"><div class="density-fill" style="width:72%; background:#6d8f68;"></div></div>
+            <span class="density-tag med">Medium</span>
+            <span class="density-examples">RNAVVD · Refuge · Family Justice Centre · SafeYOU</span>
+          </div>
+          <div class="density-row">
+            <span class="density-label">P4<br><span class="density-sub">Recovery</span></span>
+            <div class="density-track"><div class="density-fill" style="width:55%; background:#89a682;"></div></div>
+            <span class="density-tag med">Medium</span>
+            <span class="density-examples">APAV · Women's Aid · FreeFrom · Transform Harm</span>
+          </div>
+        </div>
+        <p class="table-caption">Relative concentration of the 38 benchmarked initiatives across the P0–P4 framework (illustrative, based on the qualitative functional analysis).</p>
+      </div>
+
+      <!-- THE PROCESS -->
+      <div class="section" id="process">
+        <p class="sec-label">The Process</p>
+        <p class="sec-title">From gap to person</p>
+        <p class="sec-text">The benchmarking showed existing support mostly targets women who already identify as victims, women in P0 and P1 get comparatively little help with recognition. This chapter asks who these women are, translating that structural gap into a human-centred case for the design proposal that follows.</p>
+
+        <p class="sec-title" style="margin-top:48px;">User Research & Abuse Typology</p>
+        <p class="sec-text">Three abuse typologies became the design lens that turns the benchmarking's structural gaps into concrete profiles: emotional, technology-facilitated, and financial abuse. All three appear early in abusive dynamics and are harder to detect than physical violence, which was deliberately left out, non-physical abuse is consistently the hardest to identify and name early on.</p>
+
+        <div class="typology-grid">
+          <div class="typology-card">
+            <p class="typology-name">Emotional abuse</p>
+            <p class="typology-text">Among the most common forms of violence against women in intimate partnerships across Europe. Often subtle and slow to build.<span class="cite-ref">[1]</span></p>
+          </div>
+          <div class="typology-card">
+            <p class="typology-name">Technology-facilitated abuse</p>
+            <p class="typology-text">Flagged as an emerging concern across Europe, particularly for younger women. A 2024 Portuguese study found a 72% victimisation rate for tech-facilitated sexual violence.<span class="cite-ref">[2]</span></p>
+          </div>
+          <div class="typology-card">
+            <p class="typology-name">Financial abuse</p>
+            <p class="typology-text">An overlooked dimension of domestic violence. Particularly relevant in long-term relationships, where control becomes normalised.<span class="cite-ref">[1]</span></p>
+          </div>
+        </div>
+        <div class="cite-list">
+          <p><span class="cite-num">[1]</span>European Union Agency for Fundamental Rights (FRA), European Institute for Gender Equality (EIGE), & Eurostat. (2024). <em>EU gender-based violence survey: Key results. Experiences of women in the EU-27.</em> Publications Office of the European Union.</p>
+          <p><span class="cite-num">[2]</span>Machado, B., de Faria, P. L., Araújo, I., & Caridade, S. (2024). Cyber Interpersonal Violence: Adolescent Perspectives and Digital Practices. <em>International Journal of Environmental Research and Public Health, 21</em>(7), 832.</p>
+        </div>
+
+        <p class="sec-title" style="margin-top:48px;">Personas</p>
+
+        <p class="sec-text">Three personas came out of these typologies, all in phases P0 or P1, none identifying yet as victims.</p>
+
+        <div class="persona-mini-grid">
+          <div class="persona-mini">
+            <p class="persona-mini-name">Mariana Alves</p>
+            <p class="persona-mini-role">Emotional abuse</p>
+            <p class="persona-mini-text">Normalises her partner's behaviour and questions her own reactions rather than his.</p>
+          </div>
+          <div class="persona-mini active">
+            <p class="persona-mini-name">Sofia Cardoso</p>
+            <p class="persona-mini-role">Tech-facilitated abuse</p>
+            <p class="persona-mini-text">Digitally literate, yet unable to see how location sharing became surveillance. Leads the journey below.</p>
+          </div>
+          <div class="persona-mini">
+            <p class="persona-mini-name">Beatriz Ferreira</p>
+            <p class="persona-mini-role">Financial abuse</p>
+            <p class="persona-mini-text">Long-term relationship where financial dependence normalises control over time.</p>
+          </div>
+        </div>
+
+        <p class="sec-text" style="margin-top:20px;">Sofia was chosen to lead the journey because technology-facilitated abuse is a fast-growing, contemporary form of domestic violence. Her profile offers a particularly useful lens, the same digital platforms that may enable the abuse may also enable recognition and help-seeking, if designed with care.</p>
+
+        <div class="persona-grid" style="margin-top:56px;">
+          <div class="persona-card has-avatar">
+            <div class="persona-avatar">
+              <img src="sofia.jpg" alt="Sofia Cardoso" />
+            </div>
+            <p class="persona-name">Sofia Cardoso, 22</p>
+            <p class="persona-role">Master's student · Porto · Tech abuse · P0/P1</p>
+            <p class="persona-quote">"He asked me to share my location so he'd always know I was safe. I thought it was sweet. Now he messages me every time I'm somewhere he didn't expect."</p>
+
+            <p class="persona-section-title">Bio</p>
+            <p class="persona-section-text">Sofia is a second-year design student who is active on social media and considers herself tech-savvy. She met Diogo at a university event eight months ago and describes him as attentive and caring. He asked her to share her location so he would always know she was safe and she thought it was sweet. Now he messages her every time she is somewhere he did not expect, checks her phone regularly, and gets upset when she posts photos without telling him first. Sofia has started filtering what she shares online and with friends, telling herself this is what love looks like.</p>
+
+            <div class="persona-facts">
+              <div class="persona-fact-row">
+                <span class="persona-fact-label">In a relationship for</span>
+                <span class="persona-fact-value">8 months</span>
+              </div>
+              <div class="persona-fact-row">
+                <span class="persona-fact-label">Lives with partner</span>
+                <span class="persona-fact-value">No</span>
+              </div>
+            </div>
+            <p class="persona-section-title" style="margin-bottom:10px; margin-top:20px;">Phase</p>
+            <div class="persona-phase-bar">
+              <div class="persona-phase-seg active"></div>
+              <div class="persona-phase-seg active"></div>
+              <div class="persona-phase-seg"></div>
+              <div class="persona-phase-seg"></div>
+              <div class="persona-phase-seg"></div>
+            </div>
+          </div>
+
+          <div class="persona-card">
+            <p class="persona-section-title" style="margin-top:0;">Needs</p>
+            <p class="persona-section-text">Information about what healthy digital boundaries look like, a private and discreet space to question what she is experiencing, reassurance that wanting privacy is not a sign of dishonesty, and recognition that tech control is a form of abuse, not care.</p>
+
+            <p class="persona-section-title">Goals</p>
+            <p class="persona-section-text">Feel free to use her phone and social media without anxiety, understand whether her partner's behaviour is normal, reconnect with friends without feeling monitored, and make sense of her situation without worrying her parents.</p>
+
+            <p class="persona-section-title">Frustrations</p>
+            <p class="persona-section-text">Tech abuse is rarely represented in domestic violence resources. She normalises digital control because "everyone shares passwords" and feels guilty for questioning someone who "just wants to be close." Her friends think Diogo is caring and would not understand.</p>
+
+            <p class="persona-section-title">Pain Points</p>
+            <p class="persona-section-text">She is aware her partner may see her searches. Existing apps require download, leaving a visible trace. Support platforms feel designed for older women in crisis, and the line between care and control feels genuinely blurry to her.</p>
+          </div>
+        </div>
+
+        <div class="insight-block" style="margin-top:24px;">
+          <p>What the three personas share matters more than what sets them apart: <strong>the real challenge isn't the presence of abuse, it's the transition from uncertainty to awareness, and from awareness to action.</strong> None of them is actively seeking support, even while their wellbeing is visibly affected.</p>
+        </div>
+
+        <p class="sec-title" style="margin-top:48px;">User Journey</p>
+        <p class="sec-text">Sofia's journey layers four dimensions on top of each stage: what she's doing, what she's thinking, how she's feeling, and the pain points and design gaps that keep her stuck. Pick a stage to see it up close. Emotional intensity climbs steadily from unease to shame, right up to the point the system needs to intervene.</p>
+
+        <div class="dv-selector">
+          <div class="dv-type-pills" id="journeyPills"></div>
+          <div id="journeyDetail"></div>
+        </div>
+        <p class="table-caption">User journey, layered view (source: author).</p>
+
+        <p class="sec-title" style="margin-top:56px;">Benchmark of AI-Powered Tools</p>
+        <p class="sec-text">Seven AI-powered domestic violence tools were analysed alongside the 38 traditional initiatives, from standalone chatbots to clinical AI and institutional bots. Most embed into platforms already in everyday use. Tone is consistently warm, but personalisation stays low almost everywhere, and phase coverage is the sharpest gap: only Aimee and AinoAid explicitly reach P0.</p>
+
+        <div class="ai-tool-list">
+          <div class="ai-tool-row">
+            <span class="ai-tool-name">Sophia (Spring ACT)</span>
+            <div class="ai-tool-phasebar"><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div></div>
+            <span class="ai-tool-privacy">No digital trace</span>
+            <span class="ai-tool-note">Warm, companion-like · first DV-specific chatbot globally, 85+ languages</span>
+          </div>
+          <div class="ai-tool-row">
+            <span class="ai-tool-name">Hope Chat</span>
+            <div class="ai-tool-phasebar"><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg"></div></div>
+            <span class="ai-tool-privacy">Moderate</span>
+            <span class="ai-tool-note">Empathetic, non-judgmental · trained on 1,200+ validated DV articles</span>
+          </div>
+          <div class="ai-tool-row">
+            <span class="ai-tool-name">Aimee</span>
+            <div class="ai-tool-phasebar"><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg"></div></div>
+            <span class="ai-tool-privacy">Moderate</span>
+            <span class="ai-tool-note">Conversational, accessible · one of two tools that explicitly target P0</span>
+          </div>
+          <div class="ai-tool-row">
+            <span class="ai-tool-name">rAInbow / Bo</span>
+            <div class="ai-tool-phasebar"><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg"></div></div>
+            <span class="ai-tool-privacy">Moderate</span>
+            <span class="ai-tool-note">Friendly, narrative-driven · storytelling format, 1M+ conversations recorded</span>
+          </div>
+          <div class="ai-tool-row">
+            <span class="ai-tool-name">AinoAid™</span>
+            <div class="ai-tool-phasebar"><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg"></div></div>
+            <span class="ai-tool-privacy">High, GDPR</span>
+            <span class="ai-tool-note">Calm, autonomy-centred · only tool with documented trauma-informed design</span>
+          </div>
+          <div class="ai-tool-row">
+            <span class="ai-tool-name">AIRS</span>
+            <div class="ai-tool-phasebar"><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg"></div></div>
+            <span class="ai-tool-privacy">Very high, clinical</span>
+            <span class="ai-tool-note">Clinical, neutral tone · hospital-only, detects IPV risk years before disclosure</span>
+          </div>
+          <div class="ai-tool-row">
+            <span class="ai-tool-name">Chatbot APAV</span>
+            <div class="ai-tool-phasebar"><div class="ai-tool-phase-seg"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg on"></div><div class="ai-tool-phase-seg"></div></div>
+            <span class="ai-tool-privacy">APAV-exclusive</span>
+            <span class="ai-tool-note">Supportive, institutional · Portuguese-language, data stays with APAV</span>
+          </div>
+        </div>
+        <p class="table-caption">P0–P4 phase coverage per AI tool, from the structural, functional, and design analysis (source: author).</p>
+
+        <p class="sec-text" style="margin-top:32px;">Comparing these tools against the traditional services from the earlier benchmark shows real gains in access, and the same structural blind spot around interpretation.</p>
+
+        <div class="compare-grid">
+          <div class="compare-box good">
+            <p class="compare-title">What AI improves</p>
+            <ul class="compare-list">
+              <li>Available continuously, without the geographic or time constraints of traditional services</li>
+              <li>Embedded in everyday platforms, reducing visibility and risk on a shared or monitored device</li>
+              <li>Tools like Sophia minimise or eliminate digital traces entirely</li>
+            </ul>
+          </div>
+          <div class="compare-box bad">
+            <p class="compare-title">What AI still misses</p>
+            <ul class="compare-list">
+              <li>Almost every tool assumes the user already recognises her situation as abusive</li>
+              <li>Even early-stage tools like Aimee and AinoAid offer generic support, not interpretation</li>
+              <li>None meaningfully adapt language or pathway to the specific form of abuse described</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="sec-text" style="margin-top:32px;">Put together, the AI tools repeat the same pattern found in the traditional benchmark, in a newer format:</p>
+
+        <div class="research-list">
+          <div class="research-item">
+            <span class="research-dot"></span>
+            <p class="research-text"><strong>Gap 1, early-stage recognition failure.</strong> Almost every service analysed assumes the user already knows she's experiencing abuse. Only two of the seven AI tools reviewed, Aimee and AinoAid, explicitly target P0, the phase where intervention has the greatest potential to prevent escalation.</p>
+          </div>
+          <div class="research-item">
+            <span class="research-dot"></span>
+            <p class="research-text"><strong>Gap 2, lack of personalised interpretation.</strong> Even the tools that engage early-stage users respond generically. None differentiate between forms of abuse, despite each requiring a different vocabulary and entry point for recognition.</p>
+          </div>
+          <div class="research-item">
+            <span class="research-dot"></span>
+            <p class="research-text"><strong>Gap 3, a fragmented ecosystem.</strong> No tool follows a woman continuously across the full P0–P4 journey. Every intervention is a disconnected, one-off touchpoint, and only one of the seven tools (Sophia) even allows her to save or document what she's experiencing.</p>
+          </div>
+        </div>
+
+        <p class="sec-text" style="margin-top:24px;">These three gaps became the brief for the design proposal.</p>
+
+        <p class="sec-title" style="margin-top:56px;">Design Drivers & Criteria</p>
+        <p class="sec-text">Four recurring gaps became the drivers behind the proposal, each paired with the concrete rule it translates into.</p>
+
+        <div class="criteria-list">
+          <div class="criteria-item">
+            <span class="criteria-num">01</span>
+            <div class="criteria-body">
+              <p class="criteria-title">Early intervention → No forced disclosure</p>
+              <p class="criteria-text">Support clusters around crisis and recovery, almost nothing exists for P0/P1 doubt. She tells her story in her own words, no account or formal disclosure required.</p>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <span class="criteria-num">02</span>
+            <div class="criteria-body">
+              <p class="criteria-title">Emotional interpretation → Reflection before referral</p>
+              <p class="criteria-text">Access to information isn't the barrier, making sense of it is. Crisis resources stay available but aren't pushed on first contact.</p>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <span class="criteria-num">03</span>
+            <div class="criteria-body">
+              <p class="criteria-title">Continuity → Pause and return</p>
+              <p class="criteria-text">Every existing service is a disconnected, one-off touchpoint. She can leave for weeks and come back in context.</p>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <span class="criteria-num">04</span>
+            <div class="criteria-body">
+              <p class="criteria-title">Personalisation → Type-aware language</p>
+              <p class="criteria-text">Most tools respond generically regardless of abuse type. Vocabulary and examples adapt to what she actually describes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+        </div>
+      </div>
+
+      <section class="editorial-break" aria-label="Design transition">
+        
+        <h2>The system does not wait for a woman to call herself a victim.</h2>
+        <p>It creates a private, gradual path from uncertainty to understanding, and from understanding to support.</p>
+      </section>
+
+      <!-- Design Proposal -->
+      <div class="section" id="proposal">
+        <div class="chapter-rule">Chapter 01 · The proposal</div>
+        <p class="sec-label">Design Proposal</p>
+        <p class="sec-title">From gap to intervention</p>
+        <p class="sec-text">The benchmarking and the AI tools analysis point to the same problem: the moment of greatest need, when a woman is still uncertain whether what she's experiencing is abuse, is the least supported point across the entire landscape. Three gaps drive that: early-stage recognition failure (P0–P1), lack of personalised interpretation, and no continuity across phases.</p>
+        <p class="sec-text">Recent research shows the pieces already exist separately, language models that detect intimate partner violence patterns in social media discourse<span class="cite-ref">[1]</span>, that classify survivors' information needs from online posts<span class="cite-ref">[2]</span>, and trauma-informed models that identify emotional register and help-seeking intent<span class="cite-ref">[3]</span>. What doesn't yet exist is a system that applies this capacity before formal help-seeking begins, consent-based rather than built for detection. That's the contribution this proposal offers.</p>
+        <div class="cite-list">
+          <p><span class="cite-num">[1]</span>Al-Garadi, M. A., Kim, S., Guo, Y., Warren, E., Yang, Y.-C., Lakamana, S., & Sarker, A. (2022). Natural language model for automatic identification of intimate partner violence reports from Twitter. <em>Array, 15</em>, 100217.</p>
+          <p><span class="cite-num">[2]</span>Guan, S., Hui, V., Stiglic, G., Constantino, R. E., Lee, Y. J., & Wong, A. K. C. (2025). Classifying the information needs of survivors of domestic violence in online health communities using large language models. <em>Journal of Medical Internet Research, 27</em>, e65397.</p>
+          <p><span class="cite-num">[3]</span>Research conducted at Virginia Tech (2025), trauma-informed AI model for emotional register and help-seeking intent.</p>
+        </div>
+
+        <p class="sec-title" style="margin-top:48px;">System Overview</p>
+        <p class="sec-text">The proposal is a phase-aware support system embedded in platforms women already use, Google, TikTok, ChatGPT, Reddit, not a dedicated app to find and download. Built on four principles:</p>
+
+
+        <div class="principle-grid">
+          <div class="principle-card">
+            <span class="principle-num">01</span>
+            <div class="principle-body">
+              <p class="principle-title">Embedded support</p>
+              <p class="principle-text">No new platform to seek out. The system meets her inside the environments she's already in, reducing risk on shared or monitored devices.</p>
+            </div>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">02</span>
+            <div class="principle-body">
+              <p class="principle-title">Consent-based interaction</p>
+              <p class="principle-text">No passive tracking, no hidden intervention. Every step, from a first response to a private note, is initiated by her.</p>
+            </div>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">03</span>
+            <div class="principle-body">
+              <p class="principle-title">Early-stage interpretation</p>
+              <p class="principle-text">Built for someone who hasn't named her experience yet, not for someone already searching for help.</p>
+            </div>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">04</span>
+            <div class="principle-body">
+              <p class="principle-title">Continuity across P0 to P4</p>
+              <p class="principle-text">She can pause for weeks and come back without losing context, instead of restarting with a new, disconnected tool each time.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="sec-text" style="margin-top:40px;">These principles are carried by a five-layer architecture, from an invisible platform integration and phase estimation layer, to the conversational layer she actually experiences, to a progressive support layer that only introduces documentation tools and institutional resources like APAV, Linha 144, and RNAVVD once she's ready. Each layer has its own input, output, and moment where it matters most, pick one to see how it actually works.</p>
+
+        <div class="dv-selector">
+          <div class="dv-type-pills" id="layerPills"></div>
+          <div id="layerDetail"></div>
+        </div>
+
+        <div class="insight-block" style="margin-top:20px;">
+          <p><strong>Ethical boundaries, across all five layers:</strong> the system never diagnoses, confirms a detection, or labels the user as a victim, and it doesn't run any surveillance logic beyond what's needed to adapt its response, no identifiable data is retained once a session ends. These are a condition of the design, not an optional safeguard.</p>
+        </div>
+
+        <p class="sec-text" style="margin-top:32px;">And here's the architecture of the system, how those five layers actually connect end to end:</p>
+
+        <div class="arch-diagram">
+          <div class="arch-layer visible">
+            <div class="arch-layer-head">
+              <span class="arch-layer-title">Platform Integration Layer</span>
+              <span class="arch-layer-meta">Entry point. Captures natural digital behaviour without asking her to seek anything out.</span>
+            </div>
+            <div class="arch-chips">
+              <span class="arch-chip">Google</span>
+              <span class="arch-chip">TikTok</span>
+              <span class="arch-chip">ChatGPT</span>
+              <span class="arch-chip">Claude</span>
+              <span class="arch-chip">Reddit</span>
+              <span class="arch-chip">iPhone Shortcut + Face ID</span>
+            </div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-layer internal">
+            <div class="arch-layer-head">
+              <span class="arch-layer-title">Behavioural Signal Layer</span>
+              <span class="arch-layer-meta">Detects recurring patterns in language, never the content itself. Invisible to her.</span>
+            </div>
+            <div class="arch-chips">
+              <span class="arch-chip">Recurrence</span>
+              <span class="arch-chip">Language register</span>
+              <span class="arch-chip">Timing patterns</span>
+              <span class="arch-chip">Topic progression</span>
+            </div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-layer visible">
+            <div class="arch-layer-head">
+              <span class="arch-layer-title">Phase Estimation Layer</span>
+              <span class="arch-layer-meta">Estimates where she sits within P0 to P4. Never shown as a label or diagnosis.</span>
+            </div>
+            <div class="arch-chips">
+              <span class="arch-chip">P0 Doubt</span>
+              <span class="arch-chip">P1 Recognition</span>
+              <span class="arch-chip">P2 Crisis</span>
+              <span class="arch-chip">P3 Separation</span>
+              <span class="arch-chip">P4 Recovery</span>
+            </div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-layer internal">
+            <div class="arch-layer-head">
+              <span class="arch-layer-title">Large Language Model Conversational Layer</span>
+              <span class="arch-layer-meta">The only layer she experiences directly. Adapts tone and content to her phase.</span>
+            </div>
+            <div class="arch-chips">
+              <span class="arch-chip">Prompt engineering</span>
+              <span class="arch-chip">Safety rules</span>
+              <span class="arch-chip">Knowledge base (DV)</span>
+              <span class="arch-chip">Phase adaptation</span>
+            </div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-layer visible">
+            <div class="arch-layer-head">
+              <span class="arch-layer-title">Progressive Contextual Support Layer</span>
+              <span class="arch-layer-meta">Introduced only from P2 onwards, once trust is built through sustained engagement.</span>
+            </div>
+            <div class="arch-chips">
+              <span class="arch-chip">iPhone Shortcut + Face ID</span>
+              <span class="arch-chip">Evidence Timeline</span>
+              <span class="arch-chip">PDF Export for legal use</span>
+              <span class="arch-chip">APAV · Linha 144 · RNAVVD</span>
+              <span class="arch-chip">Recovery Resources</span>
+            </div>
+          </div>
+          <div class="arch-principle">
+            <strong>Consent-based design principle.</strong> Every step requires an action the user has chosen to take. The system never classifies, diagnoses, or intervenes without her consent. The user can exit at any time.
+          </div>
+        </div>
+        <p class="table-caption">Service architecture, how the system supports the user across phases (source: author).</p>
+
+        <p class="sec-title" style="margin-top:48px;">Design Decisions</p>
+        <p class="sec-text">Two decisions worth flagging beyond the principles above.</p>
+
+        <div class="typology-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="typology-card">
+            <p class="typology-name">AI ethics & model choice</p>
+            <p class="typology-text">No purpose-built model trained on survivor data, that raises consent and bias concerns. Existing LLMs configured through prompt engineering and a curated knowledge base (RAG), transparent and auditable.</p>
+          </div>
+          <div class="typology-card">
+            <p class="typology-name">Phase-based adaptation</p>
+            <p class="typology-text">The P0–P4 framework isn't just descriptive, it's the mechanism that changes system behaviour. In P0 it reflects without naming abuse. In P1 it gently introduces documentation, only once patterns recur.</p>
+          </div>
+        </div>
+
+        <p class="sec-title" style="margin-top:48px;">Transition Journey</p>
+        <p class="sec-text">Where the layered user journey shows what Sofia thinks and feels, the transition journey shows how the architecture actually responds to her, stage by stage, from silence to intervention.</p>
+
+        <div class="dv-selector">
+          <div class="dv-type-pills" id="transitionPills"></div>
+          <div id="transitionDetail"></div>
+        </div>
+        <p class="table-caption">AI layer (LLM + Behavioural Signal API) runs invisibly across all phases, never visible to the user, consent-based at every step (source: author).</p>
+
+        <p class="sec-title" style="margin-top:48px;">Service Blueprint</p>
+        <p class="sec-text">The blueprint reads the system across five phases and four layers: what Sofia does, what she sees on the frontstage, what runs invisibly backstage, and the infrastructure that supports it all.</p>
+
+        <div class="bp-diagram">
+          <div class="bp-inner">
+
+            <div class="bp-row">
+              <span class="bp-row-label"></span>
+              <div class="bp-cells">
+                <div class="bp-cell head">P0 Doubt</div>
+                <span class="bp-arrow hidden">→</span>
+                <div class="bp-cell head">P1 Recognition</div>
+                <span class="bp-arrow hidden">→</span>
+                <div class="bp-cell head">P2 Crisis</div>
+                <span class="bp-arrow hidden">→</span>
+                <div class="bp-cell head">P3 Separation</div>
+                <span class="bp-arrow hidden">→</span>
+                <div class="bp-cell head">P4 Recovery</div>
+              </div>
+            </div>
+
+            <div class="bp-row">
+              <span class="bp-row-label">Touchpoint</span>
+              <div class="bp-cells">
+                <div class="bp-cell touch">ChatGPT · Google · TikTok · Reddit</div>
+                <span class="bp-arrow hidden">→</span>
+                <div class="bp-cell touch">+ Optional iPhone Shortcut</div>
+                <span class="bp-arrow hidden">→</span>
+                <div class="bp-cell touch">+ Smart recommendations</div>
+                <span class="bp-arrow hidden">→</span>
+                <div class="bp-cell touch">iPhone Shortcut · APAV · Linha 144 · RNAVVD</div>
+                <span class="bp-arrow hidden">→</span>
+                <div class="bp-cell touch">Recovery · Mental health · Community</div>
+              </div>
+            </div>
+
+            <div class="bp-row">
+              <span class="bp-row-label">User Journey</span>
+              <div class="bp-cells">
+                <div class="bp-cell front">Searches something vague. Doesn't identify as a victim.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell front">Returns to the platform. Recognises recurring patterns.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell front">Chooses a next step at her own pace.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell front">Contacts APAV, Linha 144, or RNAVVD.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell front">Rebuilds autonomy and community connections.</div>
+              </div>
+            </div>
+
+            <div class="bp-row bp-vrow">
+              <span class="bp-row-label"></span>
+              <div class="bp-cells">
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div>
+              </div>
+            </div>
+
+            <p class="bp-line">— Line of interaction —</p>
+
+            <div class="bp-row">
+              <span class="bp-row-label">Frontstage</span>
+              <div class="bp-cells">
+                <div class="bp-cell front">Humanised support card. No labels, no diagnosis.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell front">Reflection content adapts. Shortcut suggested if relevant.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell front">Smart Curator recommends relevant support options.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell front">Tailored resources or PDF export, user-controlled.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell front">Recovery resources surfaced per her chosen pathway.</div>
+              </div>
+            </div>
+
+            <div class="bp-row bp-vrow">
+              <span class="bp-row-label"></span>
+              <div class="bp-cells">
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div>
+              </div>
+            </div>
+
+            <p class="bp-line solid">— Line of visibility —</p>
+
+            <div class="bp-row">
+              <span class="bp-row-label">Backstage</span>
+              <div class="bp-cells">
+                <div class="bp-cell back">API detects recurring patterns. Phase Estimator classifies as P0.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell back">2nd+ session detected. Abuse type mapped.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell back">Escalation detected. Curated directory queried.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell back">Timeline generation and PDF export enabled.</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell back">Engagement monitored. No automatic actions.</div>
+              </div>
+            </div>
+
+            <div class="bp-row bp-vrow">
+              <span class="bp-row-label"></span>
+              <div class="bp-cells">
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div><span class="bp-arrow hidden">→</span>
+                <div class="bp-cell">↓</div>
+              </div>
+            </div>
+
+            <p class="bp-line">— Line of internal interaction —</p>
+
+            <div class="bp-row">
+              <span class="bp-row-label">Support</span>
+              <div class="bp-cells">
+                <div class="bp-cell support">LLM API · prompt engineering · safety rules · knowledge base</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell support">iOS Shortcuts API · Notes storage · Phase Estimator</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell support">Smart Curator algorithm · Portuguese support directory</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell support">Local storage · PDF generator · APAV / Linha 144 / RNAVVD</div>
+                <span class="bp-arrow">→</span>
+                <div class="bp-cell support">Recovery directory · mental health · financial autonomy</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <p class="table-caption">Service blueprint (source: author).</p>
+
+        <p class="sec-text" style="margin-top:32px;">Three constraints sit inside this blueprint by design. The Phase Estimator never surfaces as a label or diagnosis. Institutional resources only appear from P2 onwards. And every move to the next layer of support depends on an action she chooses, never an automatic trigger.</p>
+
+        <p class="sec-title" style="margin-top:48px;">User Flow</p>
+        <p class="sec-text">The user flow translates the blueprint into an actual sequence of decisions, from a first search across four entry points to structured support. It's a loop, she can disengage anytime and come back weeks later in context. Scroll sideways to follow it end to end.</p>
+
+        <div class="ux-h-wrap">
+          <div class="ux-h-flow">
+
+            <div class="ux-entry-grid">
+              <div class="ux-node entry" style="grid-row:2; grid-column:1;">Everyday digital behaviours across platforms, not a chatbot-only journey</div>
+              <div class="ux-node entry" style="grid-row:1; grid-column:2;">Conversation entry<br>ChatGPT / Claude</div>
+              <div class="ux-node process" style="grid-row:1; grid-column:3;">User asks a vague question without naming domestic violence</div>
+              <div class="ux-node process" style="grid-row:1; grid-column:4;">LLM response normalises + gently explores</div>
+              <div class="ux-node entry" style="grid-row:3; grid-column:2;">Search / content entry<br>Google · TikTok · Reddit</div>
+              <div class="ux-node process" style="grid-row:3; grid-column:3;">User searches, watches, saves, reads, posts, comments, or returns to similar content</div>
+              <div class="ux-node signal" style="grid-row:3; grid-column:4;">Behavioural signal layer, recurring signals</div>
+            </div>
+
+            <span class="ux-arrow-h">→</span>
+            <div class="ux-node signal">Behavioural signal layer, recurring behavioural + linguistic signals</div>
+            <span class="ux-arrow-h">→</span>
+            <div class="ux-node support">Discreet platform-native support card, safe entry point only, no ChatGPT handoff: explore privately · save privately · shortcut · not now</div>
+            <span class="ux-arrow-h">→</span>
+
+            <div class="ux-decision-col">
+              <div class="ux-decision"><span>User consent to enter the Invisible Ecosystem?</span></div>
+              <div class="ux-branch-down">
+                <div class="ux-node terminal">Original platform remains only an entry point</div>
+                <div class="ux-node terminal">Disengages / not now, flow pauses, no reminders</div>
+              </div>
+            </div>
+
+            <span class="ux-arrow-h">Yes →</span>
+            <div class="ux-node support">Invisible Ecosystem, private support space where the journey happens</div>
+            <span class="ux-arrow-h">→</span>
+            <div class="ux-node process">Private reflection conversation or platform-native support inside the ecosystem</div>
+            <span class="ux-arrow-h">→</span>
+            <div class="ux-node support">Progressive Support Options, private, paced, optional, pause anytime</div>
+            <span class="ux-arrow-h">→</span>
+
+            <div class="ux-decision-col">
+              <div class="ux-decision"><span>User-authorised private logging or action?</span></div>
+              <div class="ux-branch-down">
+                <div class="ux-node terminal">No private log, support continues without saving evidence</div>
+              </div>
+            </div>
+
+            <span class="ux-arrow-h">Yes →</span>
+            <div class="ux-node process">Private Logging / iPhone Shortcut, created only after consent</div>
+            <span class="ux-arrow-h">→</span>
+            <div class="ux-node process">Evidence Timeline, private, editable, portable</div>
+            <span class="ux-arrow-h">→</span>
+            <div class="ux-node signal">Smart Curator: matches phase + abuse type + location + engagement</div>
+            <span class="ux-arrow-h">→</span>
+            <div class="ux-node support">Recommendations: APAV · Linha 144 · RNAVVD · recovery · legal / financial · emergency support</div>
+            <span class="ux-arrow-h">→</span>
+            <div class="ux-node entry">She chooses support, or returns later when she's ready</div>
+
+          </div>
+        </div>
+        <p class="table-caption">User flow, from first search to structured support (source: author).</p>
+
+        <p class="sec-title" style="margin-top:48px;">Design Requirements</p>
+        <p class="sec-text">The blueprint, transition journey, and user flow point to a consistent set of requirements, each traceable back to a specific piece of research.</p>
+
+        <div class="req-grid">
+          <div class="req-card"><span class="req-card-text">Support users before they identify as victims</span><span class="req-card-origin">Gap Analysis</span></div>
+          <div class="req-card"><span class="req-card-text">Provide support during P0–P1 phases</span><span class="req-card-origin">Phase Framework</span></div>
+          <div class="req-card"><span class="req-card-text">Operate within existing digital environments</span><span class="req-card-origin">Journey, AI Benchmark</span></div>
+          <div class="req-card"><span class="req-card-text">Maintain user autonomy and consent</span><span class="req-card-origin">Trauma-Informed Design</span></div>
+          <div class="req-card"><span class="req-card-text">Offer personalised guidance by abuse type</span><span class="req-card-origin">Personas</span></div>
+          <div class="req-card"><span class="req-card-text">Support longitudinal, non-linear engagement</span><span class="req-card-origin">AI Benchmark, Journey</span></div>
+          <div class="req-card"><span class="req-card-text">Ensure privacy and low visibility</span><span class="req-card-origin">Personas, Literature</span></div>
+          <div class="req-card"><span class="req-card-text">Connect users to Portuguese services</span><span class="req-card-origin">Portuguese Context</span></div>
+          <div class="req-card"><span class="req-card-text">Facilitate evidence documentation</span><span class="req-card-origin">AI Benchmark</span></div>
+          <div class="req-card"><span class="req-card-text">Avoid diagnostic or classifying language</span><span class="req-card-origin">Design Principles</span></div>
+        </div>
+        <p class="table-caption">Design requirements and their research origin (source: author).</p>
+
+        <p class="sec-text" style="margin-top:24px;">A mid-fidelity prototype was chosen to test against these requirements, whether the concept, interaction flow, and tone actually held up for participants, not to test technical implementation.</p>
+      </div>
+
+      <section class="editorial-break" aria-label="Validation transition" style="background:#ece8df;">
+        
+        <h2>A sensitive concept only matters if people understand it, trust it, and would actually use it.</h2>
+      </section>
+
+      <!-- PROTOTYPE & VALIDATION -->
+      <div class="section" id="validation">
+        <div class="chapter-rule">Chapter 02 · Validation</div>
+        <p class="sec-label">Prototype & Validation</p>
+        <p class="sec-title">Testing the idea with real people</p>
+        <p class="sec-text">The prototype wasn't tested for technical performance. It was tested against five objectives: could participants understand the concept without it being explained, did they trust the privacy of the private logging, did the tone feel credible, did the specific features feel useful, and would they actually use or recommend it.</p>
+
+        <div class="quant-row">
+          <div class="quant-item">
+            <span class="quant-number">8</span>
+            <span class="quant-label">participants, ages 26–32 (M = 29), Brazil · Portugal · France · Germany</span>
+          </div>
+          <div class="quant-item">
+            <span class="quant-number">6/8</span>
+            <span class="quant-label">completed the post-session questionnaire for quantitative analysis</span>
+          </div>
+        </div>
+        <p class="sec-text" style="margin-top:4px;">Remote think-aloud sessions, 31 May – 3 June 2026. Each participant explored the mid-fidelity prototype via Figma against a background scenario describing a confusing relationship, without ever being told the study was about domestic violence in advance.</p>
+
+        <p class="sec-title" style="margin-top:40px;">Mid-Fidelity Prototype</p>
+        <p class="sec-text">Chosen deliberately over high-fidelity, the objective was to test the service concept and interaction logic, not visual polish. The ChatGPT / Claude conversation path, shown below, is one of four platform-specific flows tested.</p>
+
+        <div class="flow-lanes" style="grid-template-columns: 1fr 1fr 1fr; display:grid;">
+          <div class="wireframe-phone">
+            <p class="wireframe-label">1 · Question response</p>
+            <div class="wireframe-bubble user">Is it normal for my boyfriend to always know where I am?</div>
+            <div class="wireframe-bubble bot">It can feel unsettling when someone seems to know where you are all the time. It's okay to notice how it makes you feel and whether you have space to choose what you share.</div>
+            <div class="wireframe-bubble bot">Would it help to talk through what usually happens when he checks?</div>
+            <div class="wireframe-buttons">
+              <span class="wireframe-btn primary">Keep talking</span>
+              <span class="wireframe-btn">Not now</span>
+            </div>
+          </div>
+          <div class="wireframe-phone">
+            <p class="wireframe-label">2 · Reflection</p>
+            <div class="wireframe-card">
+              <p class="wireframe-card-title">Reflection</p>
+              <div class="wireframe-chip">Does he ask before checking?</div>
+              <div class="wireframe-chip">Can you say no without consequences?</div>
+              <div class="wireframe-chip">Do you feel calmer or more watched afterward?</div>
+            </div>
+            <div class="wireframe-buttons">
+              <span class="wireframe-btn primary">Continue conversation</span>
+              <span class="wireframe-btn">Return later</span>
+            </div>
+          </div>
+          <div class="wireframe-phone">
+            <p class="wireframe-label">3 · Optional actions</p>
+            <div class="wireframe-card">
+              <p class="wireframe-card-title">Optional support exploration</p>
+              <p class="wireframe-card-text">If this keeps coming up, I can help you think through options privately. There is no rush.</p>
+              <div class="wireframe-buttons">
+                <span class="wireframe-btn primary">Keep talking</span>
+                <span class="wireframe-btn">Find support</span>
+              </div>
+            </div>
+            <div class="wireframe-card">
+              <p class="wireframe-card-title">Optional Shortcut suggestion</p>
+              <p class="wireframe-card-text">Only if she wants documentation after talking and reflecting.</p>
+              <span class="wireframe-btn primary">Save privately</span>
+            </div>
+          </div>
+        </div>
+        <p class="table-caption">Mid-fidelity prototype, ChatGPT / Claude conversation path (source: author, redrawn for web).</p>
+
+        <p class="sec-title" style="margin-top:40px;">Findings: Quantitative</p>
+        <div class="quant-row">
+          <div class="quant-item">
+            <span class="quant-number">4.50</span>
+            <span class="quant-label">relevance to a real-life situation, out of 5</span>
+          </div>
+          <div class="quant-item">
+            <span class="quant-number">4.33</span>
+            <span class="quant-label">overall experience, ease of understanding, likelihood to use</span>
+          </div>
+          <div class="quant-item">
+            <span class="quant-number">4.00</span>
+            <span class="quant-label">comfort with the system's pattern-detection approach</span>
+          </div>
+          <div class="quant-item">
+            <span class="quant-number">6/6</span>
+            <span class="quant-label">valued not needing to download an app, and support within platforms already in use</span>
+          </div>
+        </div>
+        <p class="sec-text" style="margin-top:8px;">Asked where they'd actually seek help, participants most often named a therapist (5/6), then Google, an AI assistant, TikTok, and friends or family (4/6 each), reinforcing the case for meeting them inside platforms they already use. Only two concerns came up: data collection and AI pattern-detection, one participant each.</p>
+
+        <p class="sec-title" style="margin-top:40px;">Findings: Qualitative</p>
+        <p class="sec-text">Thematic analysis across all eight sessions surfaced five recurring themes.</p>
+
+        <div class="testing-list">
+          <div class="testing-item">
+            <span class="testing-check">＋</span>
+            <p class="testing-text"><strong>Non-intrusive presence.</strong> Participants wanted intervention only after a pattern recurs, not immediately, gradual felt more appropriate than direct warnings.</p>
+          </div>
+          <div class="testing-item">
+            <span class="testing-check">＋</span>
+            <p class="testing-text"><strong>Conversational tone.</strong> Google read as more impersonal; TikTok and Reddit felt more relatable, reinforcing the case for platform-specific tone rather than one script everywhere.</p>
+          </div>
+          <div class="testing-item">
+            <span class="testing-check">＋</span>
+            <p class="testing-text"><strong>Privacy.</strong> The most raised concern overall, tied to shared devices and partner surveillance. The Face ID-protected shortcut was seen as valuable.</p>
+          </div>
+          <div class="testing-item">
+            <span class="testing-check">＋</span>
+            <p class="testing-text"><strong>Progressive support.</strong> Participants agreed introducing institutional resources too early risks disengagement. The AI's role read as a guide, not a diagnostic tool.</p>
+          </div>
+          <div class="testing-item">
+            <span class="testing-check">＋</span>
+            <p class="testing-text"><strong>Opportunities for refinement.</strong> Clearer terminology, more visible controls, and sharper differentiation between platform pathways.</p>
+          </div>
+        </div>
+
+        <p class="sec-text" style="margin-top:24px;">Support needs to be embedded into spaces people already use, delivered incrementally, and built around autonomy and privacy. These findings shaped the high-fidelity prototype below.</p>
+
+        <p class="sec-title" style="margin-top:40px;">High-Fidelity Prototype</p>
+        <p class="sec-text">Four platform-specific pathways, each with its own visual identity and tone. All four converge on the same two screens once she chooses to act, so those only need to exist once. Upload each exported screen from Figma with the filename shown below and it'll drop straight into place.</p>
+
+        <div class="platform-group">
+          <p class="platform-group-title">ChatGPT / Claude, conversation path</p>
+          <div class="screens-gallery">
+            <div class="screen-card"><img src="hifi-chatgpt-1.png" alt="ChatGPT, first question" /><p>1 · First question</p></div>
+            <div class="screen-card"><img src="hifi-chatgpt-2.png" alt="ChatGPT, reflection conversation" /><p>2 · Reflection conversation</p></div>
+            <div class="screen-card"><img src="hifi-chatgpt-3.png" alt="ChatGPT, optional actions" /><p>3 · Optional actions</p></div>
+          </div>
+        </div>
+
+        <div class="platform-group">
+          <p class="platform-group-title">Google, information-seeking path</p>
+          <div class="screens-gallery">
+            <div class="screen-card"><img src="hifi-google-1.png" alt="Google, search with support card" /><p>1 · Search with support card</p></div>
+            <div class="screen-card"><img src="hifi-google-2.png" alt="Google, educational content" /><p>2 · Educational content</p></div>
+            <div class="screen-card"><img src="hifi-google-3.png" alt="Google, updated support card" /><p>3 · Updated support card</p></div>
+          </div>
+        </div>
+
+        <div class="platform-group">
+          <p class="platform-group-title">TikTok, awareness + content path</p>
+          <div class="screens-gallery">
+            <div class="screen-card"><img src="hifi-tiktok-1.png" alt="TikTok, awareness content" /><p>1 · Awareness content</p></div>
+            <div class="screen-card"><img src="hifi-tiktok-2.png" alt="TikTok, signs to notice" /><p>2 · Signs to notice</p></div>
+            <div class="screen-card"><img src="hifi-tiktok-3.png" alt="TikTok, updated support card" /><p>3 · Updated support card</p></div>
+          </div>
+        </div>
+
+        <div class="platform-group">
+          <p class="platform-group-title">Reddit, peer reflection path</p>
+          <div class="screens-gallery">
+            <div class="screen-card"><img src="hifi-reddit-1.png" alt="Reddit, story reflection" /><p>1 · Story reflection</p></div>
+            <div class="screen-card"><img src="hifi-reddit-2.png" alt="Reddit, similar stories" /><p>2 · Similar stories</p></div>
+            <div class="screen-card"><img src="hifi-reddit-3.png" alt="Reddit, updated support card" /><p>3 · Updated support card</p></div>
+          </div>
+        </div>
+
+        <div class="flow-merge" style="margin-top:32px;">
+          ChatGPT · Google · TikTok · Reddit, all four paths converge here once she chooses to act.
+        </div>
+
+        <div class="platform-group" style="margin-top:20px;">
+          <p class="platform-group-title">Shared across every entry point</p>
+          <div class="screens-gallery">
+            <div class="screen-card"><img src="hifi-shared-shortcuts.png" alt="Shared, iPhone native shortcuts" /><p>Shortcuts, iPhone native</p></div>
+            <div class="screen-card"><img src="hifi-shared-recommendations.png" alt="Shared, support recommendations" /><p>Support recommendations</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REFLECTION -->
+      <div class="section" id="reflection">
+        <div class="chapter-rule">Chapter 03 · Reflection</div>
+        <p class="sec-label">Limitations & Reflection</p>
+        <p class="sec-title">What this doesn't answer yet</p>
+        <p class="sec-text">The system was evaluated through a prototype, not a working product, so feedback reflects perceptions of the concept rather than sustained real-world engagement, on a small, exploratory sample. Technical implementation remains open too: language models can already detect patterns in survivor discourse, but governance, transparency, and accountability still need real answers before this could responsibly go live.</p>
+        <p class="sec-text" style="margin-top:16px;">Participants also pointed past the four platforms tested here, toward everyday services like food delivery or banking apps, environments that could reach women who aren't actively searching for help at all. That, and real partnerships with domestic violence organisations, is where this would need to go next.</p>
+
+        <div style="display:grid; grid-template-columns:0.95fr 1.05fr; gap:40px; margin-top:56px;">
+
+          <div>
+            <p class="sec-title" style="margin-top:0;">What this project left me with</p>
+            <p class="sec-text">This thesis pushed me to design for a moment most systems overlook, the one before someone has language for what's happening to them. Good design doesn't wait for people to arrive fully formed with a clear problem, it meets them earlier, in the mess of figuring things out.</p>
+            <p class="sec-text" style="margin-top:24px;">Beyond the framework and the prototype, it changed how I think about care as a design material, not a tone applied at the end, but a structural decision made at every layer.</p>
+          </div>
+
+          <div>
+            <img src="thesis-reflection-banner.png" alt="Thesis mockups" style="width:115%; border-radius:24px; margin-left:-32px; margin-top:48px;" />
+          </div>
+
+        </div>
+
+        <div style="margin-top:56px;">
+          <p class="sec-title" style="font-size:24px;">A few key lessons stayed:</p>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px;">
+            <div style="border:1.3px solid var(--accent-border); border-radius:20px; padding:24px;">
+              <p style="font-size:18px; line-height:1.6;"><strong>Awareness is a process, not a moment.</strong> Designing for gradual recognition instead of a single "aha" changed how I thought about onboarding, tone, and pacing.</p>
+            </div>
+            <div style="border:1.3px solid var(--accent-border); border-radius:20px; padding:24px;">
+              <p style="font-size:18px; line-height:1.6;"><strong>Consent has to be structural.</strong> It can't be a toggle. It has to shape every layer of the system, from architecture down to a single line of copy.</p>
+            </div>
+            <div style="border:1.3px solid var(--accent-border); border-radius:20px; padding:24px;">
+              <p style="font-size:18px; line-height:1.6;"><strong>Sensitive research demands restraint.</strong> Every interview, every prototype decision, every word choice had to be weighed against the risk of causing harm rather than support.</p>
+            </div>
+            <div style="border:1.3px solid var(--accent-border); border-radius:20px; padding:24px;">
+              <p style="font-size:18px; line-height:1.6;"><strong>A concept is only as strong as its edges.</strong> Deciding what the system explicitly isn't, a diagnosis, a substitute for APAV, mattered as much as defining what it is.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEXT PROJECT -->
+      <section class="next-project">
+        <div class="next-project-card">
+          <div class="next-project-img">
+            <img src="Banneraddapta.png" alt="Adappta preview">
+          </div>
+
+          <div class="next-project-info">
+            <h2 class="next-project-title">Adappta: Mobility-First Navigation App</h2>
+
+            <p class="next-project-desc">A mobile navigation app that helps people with reduced mobility move through the city independently.</p>
+
+            <a class="next-link" href="adappta.html">
+              <span>next case study</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-line">
+      <p>© 2026 Carmela Domingues. All rights reserved.</p>
+
+      <div class="footer-links">
+        <a class="footer-link-linkedin" href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+
+        <a class="footer-link-email" href="mailto:carmeladomingues@outlook.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+
+    // Back to top
+    const backToTop = document.querySelector('.back-to-top');
+    const footer = document.querySelector('footer');
+
+    const mainNav = document.querySelector('body > nav');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+
+    if (mobileMenuToggle && mainNav) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isOpen = mainNav.classList.toggle('menu-open');
+        mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+        mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      });
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(item => {
+      item.addEventListener('click', () => {
+        if (!mainNav || !mobileMenuToggle) return;
+        mainNav.classList.remove('menu-open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 400) {
+        backToTop.classList.add('visible');
+        const footerTop = footer.getBoundingClientRect().top;
+        backToTop.style.bottom = footerTop < window.innerHeight ? (window.innerHeight - footerTop + 16) + 'px' : '32px';
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Sidebar position fix
+    function fixSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      const menu = document.querySelector('.sidebar-menu');
+      if (sidebar && menu) {
+        const rect = sidebar.getBoundingClientRect();
+        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+        menu.style.left = (rect.left + scrollX) + 'px';
+        menu.style.visibility = 'visible';
+      }
+    }
+
+    function handleSidebarVisibility() {
+      const menu = document.querySelector('.sidebar-menu');
+      const bodyWrap = document.querySelector('.body-wrap');
+      if (!menu || !bodyWrap) return;
+      const bodyTop = bodyWrap.getBoundingClientRect().top;
+      menu.style.opacity = bodyTop <= 100 ? '1' : '0';
+    }
+
+    window.addEventListener('load', () => { fixSidebar(); handleSidebarVisibility(); });
+    window.addEventListener('resize', fixSidebar);
+    window.addEventListener('scroll', handleSidebarVisibility);
+    setTimeout(fixSidebar, 100);
+
+    // Sidebar active section tracking
+    const sections = Array.from(document.querySelectorAll('.section'));
+    const sidebarItems = Array.from(document.querySelectorAll('.sidebar-item'));
+
+    function setActiveSidebarItem(sectionId) {
+      if (!sectionId) return;
+      sidebarItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === `#${sectionId}`);
+      });
+    }
+
+    function getCurrentSectionId() {
+      if (!sections.length) return null;
+      const triggerLine = window.innerHeight * 0.35;
+      let currentId = sections[0].id;
+
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= triggerLine) {
+          currentId = section.id;
+        }
+      });
+
+      return currentId;
+    }
+
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setActiveSidebarItem(getCurrentSectionId());
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const targetId = item.getAttribute('href').replace('#', '');
+        setActiveSidebarItem(targetId);
+        setTimeout(() => setActiveSidebarItem(getCurrentSectionId()), 800);
+      });
+    });
+
+    window.addEventListener('load', () => setActiveSidebarItem(getCurrentSectionId()));
+
+    // DV type selector
+    const dvData = [
+      { name: "Coercive control", phases: ["Subtle rules, criticism disguised as \"care\"", "Surveillance, isolation, rigid rules, monitoring devices", "Explicit punishments, threats, escalations", "Legal abuse, financial sabotage, manipulation with children, digital harassment", "Ongoing long-term fear, persisting digital access, difficulty rebuilding autonomy"] },
+      { name: "Physical violence", phases: ["\"Playful\" pushing, blocking exits", "Frequent but hidden injuries", "Severe assaults leading to emergencies", "Attacks triggered by separation or custody disputes", "Medical trauma, long-term fear responses"] },
+      { name: "Sexual / Reproductive abuse", phases: ["Pressure for unwanted practices", "Contraceptive sabotage, coerced sex", "Sexual assault, forced pregnancy / abortion", "Threats to expose intimate information", "Reproductive health consequences, trauma"] },
+      { name: "Psychological / Emotional abuse", phases: ["Sarcasm, subtle humiliation", "Gaslighting, constant belittling", "Intense verbal attacks", "Character assassination, defamation campaigns", "Long-term identity damage"] },
+      { name: "Verbal abuse", phases: ["\"Jokes\" masking aggression", "Repetitive insults and name-calling", "Verbal intimidation, threats", "Slander and smear campaigns", "Internalised self-blame"] },
+      { name: "Social abuse", phases: ["Criticism of family / friends", "Restricting outings, sabotaging relationships", "Complete isolation, no autonomy", "Isolation maintained via fear or reputation damage", "Difficulty rebuilding social networks"] },
+      { name: "Spiritual / religious / cultural abuse", phases: ["Religious / cultural \"rules\" used for control", "Guilt, shame, moral manipulation", "Coercion justified by belief systems", "Community pressure during separation", "Long-term identity conflict"] },
+      { name: "Financial abuse", phases: ["\"I'll handle your accounts\"", "Preventing work, monitoring spending", "Debt coercion, confiscating documents", "Financial sabotage through courts", "Dependency, poverty traps"] },
+      { name: "Technology-facilitated abuse", phases: ["Demanding passwords \"out of love\"", "Surveillance apps, controlling social media", "Threats to leak nudes, doxxing, deepfakes", "Post-separation stalking, fake accounts", "Digital exclusion, long-term fear of tech"] },
+      { name: "Stalking and harassment", phases: ["\"Coincidental\" appearances", "Monitoring routines", "Persistent pursuit on/offline", "Escalation after separation", "Life reorganisation due to fear"] },
+      { name: "Threats and intimidation", phases: ["Veiled warnings", "Escalating threats", "Direct danger, death threats", "Threats via legal channels or custody", "Chronic hypervigilance"] }
+    ];
+    const dvPhaseLabels = ["P0", "P1", "P2", "P3", "P4"];
+    const dvPillsEl = document.getElementById('dvTypePills');
+    const dvCardsEl = document.getElementById('dvPhaseCards');
+
+    function renderDvType(index) {
+      if (!dvCardsEl) return;
+      const type = dvData[index];
+      dvCardsEl.innerHTML = type.phases.map((text, i) =>
+        `<div class="dv-phase-card"><span class="dv-phase-tag">${dvPhaseLabels[i]}</span><span class="dv-phase-text">${text}</span></div>`
+      ).join('');
+      Array.from(dvPillsEl.children).forEach((pill, i) => pill.classList.toggle('active', i === index));
+    }
+
+    if (dvPillsEl) {
+      dvPillsEl.innerHTML = dvData.map((type, i) =>
+        `<button class="dv-pill${i === 0 ? ' active' : ''}" type="button" data-index="${i}">${type.name}</button>`
+      ).join('');
+      Array.from(dvPillsEl.children).forEach((pill, i) => {
+        pill.addEventListener('click', () => renderDvType(i));
+      });
+      renderDvType(0);
+    }
+
+    // Shared pill renderer
+    function renderPills(container, labels, onSelect) {
+      container.innerHTML = labels.map((l, i) => `<button class="dv-pill${i === 0 ? ' active' : ''}" type="button" data-index="${i}">${l}</button>`).join('');
+      Array.from(container.children).forEach((pill, i) => {
+        pill.addEventListener('click', () => {
+          Array.from(container.children).forEach((p, j) => p.classList.toggle('active', j === i));
+          onSelect(i);
+        });
+      });
+    }
+
+    // User Journey (layered) selector
+    const journeyData = [
+      { stage: "Subtle Discomfort", phase: "P0", color: "#544794", bg: "#f0edff", quote: "\"He messaged me four times while I was in class. He just worries. That's normal, right?\"", emotion: "Uneasy", pct: 14, ec: "#ffe5ae", doing: "Receives multiple location check messages. Replies quickly to avoid conflict. Continues her day.", pain: "Tech control is framed as care by society. No language to name what she feels.", gap: "Nothing helps her name vague discomfort before it escalates." },
+      { stage: "Rationalisation", phase: "P0", color: "#544794", bg: "#f0edff", quote: "\"He does it because he loves me. I should be grateful. Other girls would want this.\"", emotion: "Guilty", pct: 28, ec: "#ffdc91", doing: "Tells herself it is love. Avoids the topic with friends. Shares her location without questioning it.", pain: "Emotional attachment makes questioning feel like betrayal. No space to reflect without involving others.", gap: "No resource reaches her during normalisation, only after crisis." },
+      { stage: "Trigger Event", phase: "P0", color: "#0f6e57", bg: "#e0faed", quote: "\"My friend said she'd never share her location with a boyfriend. Why did I think that was okay?\"", emotion: "Confused", pct: 42, ec: "#ffd57b", doing: "Hears a friend's comment. Feels something shift. Does not say anything but thinks about it all day.", pain: "Trigger moments are fleeting and easily dismissed. No one around her recognises the signs either.", gap: "The moment of doubt is fleeting, nothing is there to catch it." },
+      { stage: "Questioning", phase: "P0/P1", color: "#854f0f", bg: "#fcf7e0", quote: "\"Is what he does actually normal? Am I allowed to feel uncomfortable about this?\"", emotion: "Anxious", pct: 57, ec: "#ffbf34", doing: "Reflects quietly. Notices patterns in his behaviour she had ignored before. Says nothing.", pain: "Doubt is fragile, she has no one to talk to. She fears being seen as dramatic or ungrateful.", gap: "There is nowhere safe and private to process early questioning." },
+      { stage: "Information Seeking", phase: "P1", color: "#92500f", bg: "#fdeee0", quote: "\"Let me just search this quickly. I won't tell anyone. I just want to know.\"", emotion: "Exposed", pct: 71, ec: "#f59116", doing: "Searches \"my boyfriend tracks my location is that normal\" late at night, alone, on her phone.", pain: "Partner may see her search history. No private or discreet way to look for answers.", gap: "Search returns crisis content, not early-stage reflection tools." },
+      { stage: "Emotional Conflict", phase: "P1/P2", color: "#8c2e29", bg: "#fff2f2", quote: "\"These results are about women being beaten. That's not me. Maybe I'm overthinking.\"", emotion: "Overwhelmed", pct: 86, ec: "#f56016", doing: "Finds crisis hotlines, shelter listings, legal advice. Nothing feels relevant to her situation.", pain: "All resources assume she has already decided to leave. Heavy visuals and institutional tone push her away.", gap: "Existing services speak to victims in crisis, not women in doubt." },
+      { stage: "Withdrawal", phase: "P2", color: "#5e5e5e", bg: "#f0f0f0", quote: "\"There's nothing for someone like me. I'm probably just too sensitive.\"", emotion: "Ashamed", pct: 100, ec: "#ff4d00", doing: "Closes the tab. Deletes the search history. Goes back to her routine. The doubt fades again.", pain: "She leaves more confused than before. The system loses her at the most critical moment.", gap: "The cycle restarts, no intervention was possible at any stage." }
+    ];
+    const journeyPillsEl = document.getElementById('journeyPills');
+    const journeyDetailEl = document.getElementById('journeyDetail');
+    function renderJourney(i) {
+      const d = journeyData[i];
+      journeyDetailEl.innerHTML = `
+        <div class="jd-card">
+          <p class="jd-stage-header">${d.stage}</p>
+          <p class="jd-stage-phase" style="color:${d.color};">Phase ${d.phase}</p>
+          <div class="jd-row"><span class="jd-row-label">Thinking</span><span class="jd-row-value jd-quote">${d.quote}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Feeling</span><span class="jd-row-value"><div class="jd-emotion-bar"><div class="jd-emotion-track"><div class="jd-emotion-fill" style="width:${d.pct}%; background:${d.ec};"></div></div><span class="jd-emotion-label">${d.emotion}</span></div></span></div>
+          <div class="jd-row"><span class="jd-row-label">Doing</span><span class="jd-row-value">${d.doing}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Pain Point</span><span class="jd-row-value">${d.pain}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Design Gap</span><span class="jd-row-value">${d.gap}</span></div>
+        </div>`;
+    }
+    if (journeyPillsEl) {
+      renderPills(journeyPillsEl, journeyData.map(d => d.stage), renderJourney);
+      renderJourney(0);
+    }
+
+    // Transition Journey selector
+    const transitionData = [
+      { stage: "Subtle Discomfort", phase: "P0", color: "#544794", whatSheDoes: "Receives location check messages. Replies quickly to avoid conflict.", entry: "No system entry yet. API is waiting.", systemDoes: "No intervention, system waits.", touch: "—", moment: "She closes the tab but something stays with her.", gap: "Nothing helps her name vague discomfort before it escalates.", muted: true },
+      { stage: "Rationalisation", phase: "P0", color: "#544794", whatSheDoes: "Tells herself it is love. Avoids the topic with friends.", entry: "No system entry. She is not searching.", systemDoes: "No intervention, system waits.", touch: "—", moment: "The doubt fades. The moment passes.", gap: "No resource reaches her during normalisation, only after crisis.", muted: true },
+      { stage: "Trigger Event", phase: "P0", color: "#0f6e57", whatSheDoes: "Hears a friend's comment. Feels something shift. Thinks about it all day.", entry: "No system entry. Trigger is offline.", systemDoes: "Cannot detect offline moments.", touch: "—", moment: "No system touchpoint. The moment passes offline.", gap: "Physical touchpoints in pharmacies or clinics could bridge this gap.", muted: true },
+      { stage: "Questioning", phase: "P0/P1", color: "#854f0f", whatSheDoes: "Reflects quietly. Notices patterns she had ignored. Searches something vague.", entry: "Behavioural Signal API detects an IPV-related pattern in her search.", systemDoes: "LLM responds in-platform. No redirect. No labels. No diagnosis.", touch: "ChatGPT · Google · TikTok · Reddit", moment: "She reads the LLM response. Something feels different. She continues.", gap: "Intercept the search with a response that speaks to her doubt, not her victimhood." },
+      { stage: "Information Seeking", phase: "P1", color: "#92500f", whatSheDoes: "Continues the conversation. Comes back multiple times. Starts describing what's happening.", entry: "API detects 2nd+ session. Maps abuse type. Suggests an iPhone Shortcut.", systemDoes: "LLM guides her to set up a private space with Face ID, step by step.", touch: "ChatGPT conversation · iPhone Shortcut · Face ID", moment: "She follows the guide. A private space is created on her device.", gap: "Offer a private, frictionless way to save what she is feeling without leaving a trace." },
+      { stage: "Emotional Conflict", phase: "P1/P2", color: "#8c2e29", whatSheDoes: "Finds existing resources too extreme. Closes the tab. Keeps returning to the LLM.", entry: "API detects a mismatch between her stage and available resources.", systemDoes: "Adapts content to her exact stage. Introduces the site for the first time.", touch: "LLM conversation · Site (read mode)", moment: "She finds nothing that fits. But she keeps coming back.", gap: "Show content for her exact stage, not crisis, not readiness to leave." },
+      { stage: "Withdrawal", phase: "P2", color: "#5e5e5e", whatSheDoes: "A serious incident happens. She records it. The smart curator activates.", entry: "API detects escalation. Smart curator matches her to APAV or Linha 144.", systemDoes: "Site action mode. PDF export ready. Emergency contacts surfaced.", touch: "Site · Smart curator · Apple Watch SOS · APAV · Linha 144", moment: "She contacts an institution. The system has accompanied her to this moment.", gap: "Detect escalation early. Surface the right initiative at the right moment." }
+    ];
+    const transitionPillsEl = document.getElementById('transitionPills');
+    const transitionDetailEl = document.getElementById('transitionDetail');
+    function renderTransition(i) {
+      const d = transitionData[i];
+      const mutedClass = d.muted ? ' jd-muted' : '';
+      transitionDetailEl.innerHTML = `
+        <div class="jd-card">
+          <p class="jd-stage-header">${d.stage}</p>
+          <p class="jd-stage-phase" style="color:${d.color};">Phase ${d.phase}</p>
+          <div class="jd-row"><span class="jd-row-label">What she does</span><span class="jd-row-value">${d.whatSheDoes}</span></div>
+          <div class="jd-row"><span class="jd-row-label">System entry</span><span class="jd-row-value${mutedClass}">${d.entry}</span></div>
+          <div class="jd-row"><span class="jd-row-label">What system does</span><span class="jd-row-value${mutedClass}">${d.systemDoes}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Touchpoints</span><span class="jd-row-value">${d.touch}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Transition moment</span><span class="jd-row-value">${d.moment}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Design opportunity</span><span class="jd-row-value">${d.gap}</span></div>
+        </div>`;
+    }
+    if (transitionPillsEl) {
+      renderPills(transitionPillsEl, transitionData.map(d => d.stage), renderTransition);
+      renderTransition(0);
+    }
+
+    // Service Blueprint selector
+    const blueprintData = [
+      { phase: "P0 Doubt", touch: "ChatGPT · Google · TikTok · Reddit", journey: "Searches something vague on Google, TikTok, Reddit or ChatGPT. Does not identify as a victim. Continues normal digital behaviour.", front: "LLM or platform-native support card responds in a humanised, non-institutional way. No labels. No diagnosis. No redirection.", back: "Behavioural Signal API detects recurring patterns in natural language. Phase Estimator classifies as P0. LLM response adapted accordingly.", support: "LLM API (GPT-4, Claude, Gemini) · Prompt engineering · Safety rules · Curated knowledge base · Behavioural Signal API" },
+      { phase: "P1 Recognition", touch: "ChatGPT · Google · TikTok · Reddit · Optional iPhone Shortcut", journey: "Returns to the platform. Continues exploring content, stories or conversations. Begins recognising recurring patterns. May choose to create a private iPhone Shortcut.", front: "System recognises recurring engagement patterns. Reflection content adapts to context. Optional Shortcut suggestion appears only when relevant.", back: "API detects 2nd+ session. Phase Estimator maps abuse type. Optional Shortcut integration prepared, only surfaced if relevant.", support: "iOS Shortcuts API · iPhone Notes native storage · Session pattern recognition · Phase Estimator" },
+      { phase: "P2 Crisis", touch: "ChatGPT · Google · TikTok · Reddit · Smart recommendations · Optional iPhone Shortcut", journey: "Chooses a next step. May begin private documentation, continue conversation, or explore support options, all at her own pace.", front: "Contextual support recommendations appear based on user choice and previous interactions. Smart Curator recommends relevant support options.", back: "API detects escalation signals. Smart Curator queries the curated Portuguese support directory, matched by abuse type and location.", support: "Smart Curator algorithm · Curated Portuguese support directory" },
+      { phase: "P3 Separation", touch: "iPhone Shortcut · APAV · Linha 144 · RNAVVD", journey: "Chooses to contact APAV, Linha 144, or RNAVVD. Plans safety with professional support.", front: "Tailored support resources or PDF export for iPhone Shortcut notes, all user-controlled.", back: "If the user chooses private documentation, the system enables timeline generation and optional PDF export from locally stored notes.", support: "Local note storage · Optional PDF generator · APAV · Linha 144 · RNAVVD resources" },
+      { phase: "P4 Recovery", touch: "Recovery resources · Mental health resources · Community support", journey: "Accesses recovery-oriented resources according to her needs and chosen pathway. Rebuilds autonomy and community connections.", front: "Recovery-oriented resources surfaced according to the user's needs and chosen pathway.", back: "System surfaces recovery-oriented resources. Long-term engagement patterns monitored. No automatic actions, all responses to user choices.", support: "Recovery resource directory · Mental health resources · Financial autonomy tools · Community connections" }
+    ];
+    const blueprintPillsEl = document.getElementById('blueprintPills');
+    const blueprintDetailEl = document.getElementById('blueprintDetail');
+    function renderBlueprint(i) {
+      const d = blueprintData[i];
+      blueprintDetailEl.innerHTML = `
+        <div class="jd-card">
+          <p class="jd-stage-header">${d.phase}</p>
+          <div class="jd-row"><span class="jd-row-label">Touchpoint</span><span class="jd-row-value">${d.touch}</span></div>
+          <div class="jd-row"><span class="jd-row-label">User Journey</span><span class="jd-row-value">${d.journey}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Frontstage</span><span class="jd-row-value">${d.front}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Backstage</span><span class="jd-row-value">${d.back}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Support Processes</span><span class="jd-row-value">${d.support}</span></div>
+        </div>`;
+    }
+    if (blueprintPillsEl) {
+      renderPills(blueprintPillsEl, blueprintData.map(d => d.phase), renderBlueprint);
+      renderBlueprint(0);
+    }
+
+    // System Architecture layer detail selector
+    const layerData = [
+      { name: "Platform Integration", input: "Searches, conversations, and content engagement on Google, TikTok, ChatGPT, Claude, Reddit, and an iPhone shortcut configured with Face ID and a name she chooses herself.", output: "A signal passed to Layer 2, indicating the user is active and that her language or behaviour may be relevant to the system.", critical: "Active across all phases, most critical in P0, when she isn't seeking help and doesn't yet recognise her situation as abusive." },
+      { name: "Behavioural Signal", input: "Activity captured by Layer 1: frequency of searches on a topic, emotional register (minimisation, self-blame), timing and progression of interactions over time.", output: "A set of behavioural signals passed to Layer 3, never the content of the conversation itself.", critical: "Operates continuously P0 to P4, most significant in the P0 to P1 transition, when a single search becomes a recognisable pattern." },
+      { name: "Phase Estimation", input: "The behavioural signals received from Layer 2.", output: "An internal estimation used only to adjust Layer 4's response, never shown to her as a label or diagnosis.", critical: "Operates across all phases but remains internal and invisible throughout." },
+      { name: "LLM Conversational", input: "Her message, together with the phase estimation from Layer 3.", output: "A response adapted to her phase and situation, delivered inside the platform she's already using, no redirect.", critical: "Present across all phases, changes character and validation in P0 and P1, gradually introducing next-step options from P1 onwards." },
+      { name: "Progressive Contextual Support", input: "Her explicit decision to take a next step.", output: "iPhone shortcut for private notes, an evidence timeline, PDF export for legal use, and curated recommendations like APAV, Linha 144, RNAVVD.", critical: "Introduced from P2 onwards, once earlier interactions have built enough context for guidance that's relevant rather than generic." }
+    ];
+    const layerPillsEl = document.getElementById('layerPills');
+    const layerDetailEl = document.getElementById('layerDetail');
+    function renderLayer(i) {
+      const d = layerData[i];
+      layerDetailEl.innerHTML = `
+        <div class="jd-card">
+          <p class="jd-stage-header">${d.name} Layer</p>
+          <div class="jd-row"><span class="jd-row-label">Input</span><span class="jd-row-value">${d.input}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Output</span><span class="jd-row-value">${d.output}</span></div>
+          <div class="jd-row"><span class="jd-row-label">Matters most</span><span class="jd-row-value">${d.critical}</span></div>
+        </div>`;
+    }
+    if (layerPillsEl) {
+      renderPills(layerPillsEl, layerData.map(d => d.name), renderLayer);
+      renderLayer(0);
+    }
+
+
+    // Collapsible full research process
+    const researchToggle = document.querySelector('.research-toggle');
+    const researchProcess = document.getElementById('researchProcess');
+
+    if (researchToggle && researchProcess) {
+      researchToggle.addEventListener('click', () => {
+        const isOpen = researchProcess.classList.toggle('is-open');
+        researchToggle.setAttribute('aria-expanded', String(isOpen));
+        researchProcess.setAttribute('aria-hidden', String(!isOpen));
+
+        const label = researchToggle.querySelector('span');
+        if (label) {
+          label.textContent = isOpen ? 'Hide the complete research process' : 'View the complete research process';
+        }
+
+        if (isOpen) {
+          setTimeout(() => {
+            fixSidebar();
+            handleSidebarVisibility();
+          }, 460);
+        }
+      });
+    }
+
+  </script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".reveal, section, .case-section, .content-section");
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
+  items.forEach(el=>observer.observe(el));
+});
+</script>
+
+</body>
+</html>
