@@ -694,7 +694,463 @@ footer {
     .back-to-top:hover { background: var(--text); }
     .back-to-top:hover svg path { stroke: white; }
     .back-to-top svg { width: 20px; height: 20px; }
-  </style>
+  
+/* =========================================================
+   GRAPHIC DESIGN — FINAL PORTFOLIO SYSTEM
+   ========================================================= */
+:root{
+  /* Graphic Design palette */
+  --accent:#E59A79;
+  --accent-soft:#FFF4EE;
+  --accent-border:#F2CDBD;
+}
+
+html{scroll-padding-top:88px}
+
+.hero{
+  padding:100px var(--margin) 88px;
+  min-height:520px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:#fff;
+}
+
+.case-tags{
+  flex-wrap:wrap;
+  margin-bottom:28px;
+}
+
+.case-tag{
+  border:0;
+  background:var(--accent-soft);
+  color:#D07E5D;
+  font-weight:600;
+  letter-spacing:.07em;
+  padding:7px 14px;
+}
+
+.hero-title{
+  font-size:clamp(48px,5.7vw,82px);
+  line-height:.98;
+  letter-spacing:-.045em;
+  max-width:1180px;
+  margin-bottom:26px;
+}
+
+.hero-sub{
+  font-size:20px;
+  line-height:1.6;
+  max-width:820px;
+  color:var(--text-light);
+  margin-bottom:0;
+}
+
+.body-wrap{
+  padding-top:110px;
+  gap:72px;
+}
+
+.content{
+  max-width:1120px;
+  margin:0 auto;
+}
+
+.graphic-intro{
+  margin-bottom:120px;
+  max-width:900px;
+}
+
+.sec-label{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:18px;
+}
+
+.sec-title{
+  font-size:clamp(38px,4vw,58px);
+  line-height:1.04;
+  letter-spacing:-.038em;
+  max-width:900px;
+  margin-bottom:24px;
+}
+
+.sec-text{
+  font-size:19px;
+  line-height:1.72;
+  max-width:860px;
+  color:#2d2d32;
+}
+
+.sidebar-menu{
+  width:220px;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(29,29,29,.07);
+  border-radius:20px;
+  padding:20px;
+  gap:18px;
+  box-shadow:0 10px 30px rgba(29,29,29,.08);
+  backdrop-filter:blur(12px);
+}
+
+.section{
+  margin-bottom:130px;
+  scroll-margin-top:96px;
+}
+
+.section-divider{
+  margin-bottom:110px;
+  background:rgba(29,29,29,.08);
+}
+
+.company-header{
+  margin-bottom:44px;
+  padding:34px;
+  border-radius:28px;
+  background:#fff;
+  border:1px solid rgba(229,154,121,.14);
+  box-shadow:0 16px 42px rgba(29,29,29,.045);
+}
+
+.company-name{
+  font-size:34px;
+  letter-spacing:-.025em;
+}
+
+.company-meta{
+  color:#D07E5D;
+  font-weight:400;
+}
+
+.company-desc{
+  font-size:18px;
+  line-height:1.7;
+}
+
+.spec-pill,
+.subproject-type{
+  border-color:rgba(229,154,121,.22);
+  background:var(--accent-soft);
+  color:#D07E5D;
+}
+
+.subproject{
+  margin-bottom:82px;
+}
+
+.subproject-header{
+  margin-bottom:24px;
+}
+
+.subproject-title{
+  font-size:26px;
+  letter-spacing:-.02em;
+}
+
+.img-placeholder,
+.media-item{
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(29,29,29,.05);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.img-placeholder:hover,
+.media-item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 40px rgba(29,29,29,.10);
+}
+
+.img-placeholder img,
+.media-item img,
+.media-item video{
+  transition:transform .35s ease;
+}
+
+.img-placeholder:hover img,
+.media-item:hover img,
+.media-item:hover video{
+  transform:scale(1.025);
+}
+
+.brand-block{
+  background:linear-gradient(180deg,#FFF8F4 0%,#FFF2EC 100%);
+  border-radius:24px;
+  padding:32px;
+  border:1px solid rgba(229,154,121,.12);
+  box-shadow:0 12px 30px rgba(29,29,29,.035);
+}
+
+.brand-section-title{
+  color:#D07E5D;
+}
+
+.next-project-visible{
+  display:block!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  margin:130px 0 0!important;
+}
+
+.next-project-card{
+  width:100%;
+  max-width:760px;
+  margin:0 auto;
+  display:flex!important;
+  align-items:center;
+  gap:22px;
+  padding:22px;
+  border:1.3px solid var(--accent-border)!important;
+  border-radius:32px;
+  background:#fff;
+  box-shadow:0 18px 50px rgba(31,42,31,.07);
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+
+.next-project-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 22px 56px rgba(31,42,31,.10);
+}
+
+.next-project-card:hover .next-project-img img{
+  transform:scale(1.025);
+}
+
+.next-project-img img{
+  transition:transform .3s ease;
+}
+
+/* Motion */
+.reveal{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity .75s cubic-bezier(.2,.65,.25,1),
+             transform .75s cubic-bezier(.2,.65,.25,1);
+}
+
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.hero .case-tags,
+.hero .hero-title,
+.hero .hero-sub{
+  opacity:0;
+  transform:translateY(28px);
+  animation:graphicHeroReveal .8s cubic-bezier(.2,.65,.25,1) forwards;
+}
+
+.hero .hero-title{animation-delay:.08s}
+.hero .hero-sub{animation-delay:.16s}
+
+@keyframes graphicHeroReveal{
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Mobile menu */
+.mobile-menu-toggle{display:none}
+
+@media(max-width:1000px){
+  .company-header{
+    flex-direction:column;
+  }
+
+  .specs-block{
+    max-width:none;
+    width:100%;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+
+  .spec-row{
+    min-width:180px;
+  }
+
+  .brand-block{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:768px){
+  :root{--margin:24px}
+
+  nav{
+    height:76px;
+    padding:0 24px;
+  }
+
+  .logo img{height:34px}
+
+  .mobile-menu-toggle{
+    display:flex;
+    width:48px;
+    height:48px;
+    padding:0;
+    border:0;
+    background:transparent;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    cursor:pointer;
+  }
+
+  .mobile-menu-toggle span{
+    width:28px;
+    height:2px;
+    border-radius:999px;
+    background:#3b3633;
+    transition:transform .22s ease,opacity .22s ease;
+  }
+
+  nav.menu-open .mobile-menu-toggle span:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+  }
+
+  nav.menu-open .mobile-menu-toggle span:nth-child(2){
+    opacity:0;
+  }
+
+  nav.menu-open .mobile-menu-toggle span:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-links{
+    position:absolute;
+    top:86px;
+    left:24px;
+    right:24px;
+    flex-direction:column;
+    gap:4px;
+    padding:12px;
+    border-radius:28px;
+    background:rgba(255,255,255,.97);
+    border:1px solid rgba(29,29,29,.08);
+    box-shadow:0 18px 44px rgba(29,29,29,.12);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(-8px);
+    transition:opacity .22s ease,transform .22s ease,visibility .22s ease;
+  }
+
+  nav.menu-open .nav-links{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0);
+  }
+
+  .nav-links a{
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    padding:12px 18px;
+    border-radius:18px;
+    font-size:17px;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:54px 24px 72px;
+  }
+
+  .hero-title{
+    font-size:46px;
+  }
+
+  .hero-sub{
+    font-size:17px;
+  }
+
+  .body-wrap{
+    display:block;
+    padding:56px 24px 24px;
+  }
+
+  .sidebar{
+    display:none;
+  }
+
+  .graphic-intro,
+  .section{
+    margin-bottom:96px;
+  }
+
+  .company-header{
+    padding:26px;
+  }
+
+  .company-name{
+    font-size:28px;
+  }
+
+  .img-grid-2,
+  .img-grid-3,
+  .img-grid-4,
+  .img-grid-2-1,
+  .img-grid-4-fit,
+  .img-grid-2-fit,
+  .img-grid-3-fit,
+  .media-grid-3{
+    grid-template-columns:1fr!important;
+  }
+
+  .img-grid-4-fit .img-placeholder img,
+  .img-grid-3-fit .img-placeholder img,
+  .img-grid-2-fit .img-placeholder img,
+  .media-item video,
+  .media-item img{
+    max-height:none;
+  }
+
+  .next-project-visible{
+    margin-top:72px!important;
+  }
+
+  .next-project-card{
+    max-width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    padding:18px;
+    border-radius:28px;
+  }
+
+  .next-project-img{
+    width:100%;
+    height:auto;
+    aspect-ratio:16/10;
+    flex:none;
+  }
+
+  footer{
+    padding:30px 24px;
+  }
+
+  .footer-line{
+    align-items:flex-start;
+    gap:24px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal,
+  .hero .case-tags,
+  .hero .hero-title,
+  .hero .hero-sub{
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+    transition:none!important;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -703,6 +1159,11 @@ footer {
  <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues home">
   <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
 </a>
+
+  <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#projects">Projects</a></li>
@@ -716,9 +1177,10 @@ footer {
   <div class="case-tags">
     <span class="case-tag">BRANDING</span>
     <span class="case-tag">VISUAL COMMUNICATION</span>
+    <span class="case-tag">SOCIAL MEDIA</span>
   </div>
-  <h1 class="hero-title">Graphic Design Work</h1>
-  <p class="hero-sub">A selection of graphic design work across tech companies and student associations, from rebranding campaigns to event materials and social media.</p>
+  <h1 class="hero-title">Visual work shaped across brands, teams, and communities</h1>
+  <p class="hero-sub">A selection of graphic design work created for tech companies, internal communications, events, and student organisations — from brand identities to social campaigns and print materials.</p>
 </div>
 
 <!-- BODY -->
@@ -735,6 +1197,12 @@ footer {
 
   <!-- CONTENT -->
   <main class="content">
+
+    <section class="graphic-intro reveal">
+      <p class="sec-label">Selected work</p>
+      <h2 class="sec-title">A visual archive of the work that shaped my design foundation</h2>
+      <p class="sec-text">Before moving fully into UX/UI, I spent years designing campaigns, identities, event materials, and social content. This work taught me how to communicate clearly, build visual systems, and adapt ideas across formats.</p>
+    </section>
 
     <!-- ────────────────────────────────────────── -->
     <!-- POATEK -->
@@ -826,7 +1294,7 @@ footer {
   </div>
 
   <div class="img-placeholder">
-    <img src="ip-4.avif" alt="Internship Programme" />
+    <img src="ip-2.avif" alt="Internship Programme" />
   </div>
 
   <div class="img-placeholder">
@@ -1334,7 +1802,7 @@ footer {
     <!-- END AAEAUFRGS -->
 
    <!-- NEXT PROJECT -->
-<section class="next-project">
+<section class="next-project next-project-visible">
   <div class="next-project-card">
     <div class="next-project-img">
       <img src="adappta-nextproject.jpg" alt="Adappta">
@@ -1363,7 +1831,7 @@ footer {
   <!-- FOOTER -->
 <footer>
   <div class="footer-line">
-    <p>© all rights reserved to carmela domingues</p>
+    <p>© 2026 Carmela Domingues. All rights reserved.</p>
 
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
@@ -1426,6 +1894,56 @@ footer {
       }
     }
   });
+
+  // Mobile navigation
+  const mainNav = document.querySelector('body > nav');
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+
+  if (mobileMenuToggle && mainNav) {
+    mobileMenuToggle.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('menu-open');
+      mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+      mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('menu-open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+  }
+
+  // Smooth reveals
+  const revealTargets = [
+    ...document.querySelectorAll('.graphic-intro'),
+    ...document.querySelectorAll('.section'),
+    ...document.querySelectorAll('.company-header'),
+    ...document.querySelectorAll('.subproject'),
+    ...document.querySelectorAll('.brand-block')
+  ];
+
+  revealTargets.forEach(el => el.classList.add('reveal'));
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+  } else {
+    revealTargets.forEach(el => el.classList.add('is-visible'));
+  }
+
 </script>
 
 </body>
