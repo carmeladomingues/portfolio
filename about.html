@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="logo.portfolio.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&amp;display=swap" rel="stylesheet" />
   <style>
     @font-face {
       font-family: 'Aveburg';
@@ -15,7 +15,6 @@
       font-weight: 400;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -528,7 +527,533 @@ nav.scrolled {
       opacity: 1;
       transform: translateY(0);
     }
-  </style>
+  
+/* ABOUT — FINAL PORTFOLIO SYSTEM */
+:root{--color-accent:#C96A4A;--color-accent-light:#FAF0EC;--color-accent-border:#EDBEAE}html{scroll-padding-top:88px}.hero{min-height:560px;padding:154px var(--margin) 96px;display:flex;flex-direction:column;justify-content:center}.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent);margin-bottom:24px}.hero-title{font-size:clamp(54px,6.5vw,92px);line-height:.95;letter-spacing:-.05em;max-width:1100px;margin-bottom:32px}.hero-title em{font-family:'Aveburg',serif;font-size:.96em;letter-spacing:-.025em}.hero-intro{max-width:760px;font-size:20px;line-height:1.55;font-weight:300;color:var(--color-muted)}.story-grid{grid-template-columns:minmax(0,1fr) minmax(380px,460px);gap:96px;padding:0 var(--margin) 120px;align-items:start}.story-col{padding:0;max-width:760px;justify-content:flex-start}.story-col p{font-size:20px;line-height:1.75;margin-bottom:22px}.exp-col{width:100%;margin-top:0;padding:34px;justify-self:stretch;background:rgba(255,255,255,.96);border:1px solid rgba(29,29,29,.07);border-radius:28px;box-shadow:0 18px 48px rgba(29,29,29,.07)}.exp-label{color:var(--color-accent);font-size:12px;font-weight:600;margin-bottom:26px}.tl-item{padding:4px 0 4px 8px;border-radius:14px;transition:transform .22s ease,background .22s ease}.tl-item:hover{transform:translateX(4px);background:var(--color-accent-light)}.cv-strip{margin-top:30px;padding:22px 0 0;border-top:1px solid rgba(201,106,74,.15)}.cv-strip p{line-height:1.6}.currently{padding:0 var(--margin) 120px}.currently-heading,.achievements-heading{margin-bottom:34px}.currently-grid{display:grid;grid-template-columns:.75fr 1.3fr 1.3fr;gap:18px}.currently-item{min-height:150px;padding:26px;border-radius:22px;background:#fff;border:1px solid rgba(201,106,74,.15);box-shadow:0 14px 34px rgba(29,29,29,.04);display:flex;flex-direction:column;justify-content:space-between;transition:transform .22s ease,box-shadow .22s ease}.currently-item:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(29,29,29,.08)}.currently-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent)}.currently-item strong{font-size:18px;line-height:1.4;font-weight:400}.achievements{padding:86px var(--margin) 110px;background:#1d1d1d;color:#fff}.achievements .section-eyebrow{color:#E8AD99}.achievements .section-title{color:#fff}.achievements-intro{max-width:680px;font-size:17px;line-height:1.65;color:rgba(255,255,255,.62)}.achievements-grid{display:grid;grid-template-columns:minmax(0,760px)}.achievement-card{color:#1d1d1d;text-decoration:none;background:#fff;border-radius:28px;padding:30px;box-shadow:0 20px 54px rgba(0,0,0,.16);transition:transform .24s ease,box-shadow .24s ease}.achievement-card:hover{transform:translateY(-5px);box-shadow:0 26px 64px rgba(0,0,0,.24)}.achievement-topline{display:flex;justify-content:space-between;margin-bottom:42px}.achievement-year,.achievement-type{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}.achievement-year{color:var(--color-accent)}.achievement-type{color:#8a8a8a}.achievement-content{display:flex;align-items:center;gap:22px}.achievement-mark{width:64px;height:64px;flex:0 0 64px;border-radius:19px;background:#1d1d1d;color:#fff;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:600}.achievement-content h3{font-size:28px;line-height:1.15;margin-bottom:6px}.achievement-content p{max-width:530px;font-size:16px;line-height:1.55;color:var(--color-muted)}.achievement-footer{display:flex;justify-content:space-between;align-items:center;margin-top:34px;padding-top:20px;border-top:1px solid rgba(29,29,29,.1);font-size:15px}.achievement-footer svg{width:20px;height:20px;transition:transform .2s ease}.achievement-card:hover .achievement-footer svg{transform:translateX(4px)}.skills{margin-top:0;padding:100px var(--margin) 110px;background:var(--color-accent-light);border:0}.skills-card{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;justify-content:stretch}.skills-card>div{min-height:250px;padding:30px;border:1px solid rgba(201,106,74,.14);border-radius:24px;box-shadow:0 14px 34px rgba(29,29,29,.04);transition:transform .22s ease,box-shadow .22s ease}.skills-card>div:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(29,29,29,.08)}.skill-col-label{color:var(--color-accent);font-weight:600}.skill-col-title{font-size:17px;margin-bottom:22px}.pill{font-size:13px;padding:6px 12px}.photos{padding:100px var(--margin) 110px}.photos-intro{max-width:880px;font-size:18px;margin-bottom:18px}.collage-a{grid-template-columns:1.2fr .8fr 1fr 1fr;grid-template-rows:330px;gap:10px;margin-top:38px}.collage-b{grid-template-columns:.9fr 1.1fr 1fr .85fr 1.15fr;grid-template-rows:280px;gap:10px;margin-top:10px}.ph{border-radius:18px;box-shadow:0 10px 28px rgba(29,29,29,.05)}.ph img{transition:transform .35s ease}.ph:hover img{transform:scale(1.035)}.ph img+.ph-placeholder{display:none}.ph-tag{transform:translateY(6px);opacity:.88;transition:transform .25s ease,opacity .25s ease}.ph:hover .ph-tag{transform:translateY(0);opacity:1}.closing-cta{margin:0 var(--margin) 100px;padding:64px;border-radius:32px;background:#1d1d1d;color:#fff;overflow:hidden;position:relative}.closing-cta::after{content:"";position:absolute;width:260px;height:260px;right:-80px;top:-100px;border-radius:50%;border:1px solid rgba(255,255,255,.13);box-shadow:0 0 0 36px rgba(255,255,255,.018),0 0 0 72px rgba(255,255,255,.012)}.closing-kicker{position:relative;z-index:1;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#E8AD99;margin-bottom:20px}.closing-cta h2{position:relative;z-index:1;max-width:930px;font-size:clamp(34px,4vw,56px);line-height:1.08;letter-spacing:-.035em;font-weight:400}.closing-actions{position:relative;z-index:1;display:flex;gap:18px;margin-top:38px}.closing-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;text-decoration:none;font-size:15px;transition:transform .2s ease,opacity .2s ease}.closing-actions a:hover{transform:translateY(-2px)}.closing-primary{background:#fff;color:#1d1d1d}.closing-secondary{color:#fff;border:1px solid rgba(255,255,255,.35)}.fade-up{opacity:0;transform:translateY(34px);transition:opacity .75s cubic-bezier(.2,.65,.25,1),transform .75s cubic-bezier(.2,.65,.25,1)}.fade-up.visible{opacity:1;transform:translateY(0)}.hero>*{opacity:0;transform:translateY(28px);animation:aboutHeroReveal .8s cubic-bezier(.2,.65,.25,1) forwards}.hero-title{animation-delay:.08s}.hero-intro{animation-delay:.16s}@keyframes aboutHeroReveal{to{opacity:1;transform:translateY(0)}}.mobile-menu-toggle{display:none}@media(max-width:1040px){:root{--margin:64px}.story-grid{grid-template-columns:1fr}.exp-col{max-width:680px}.currently-grid{grid-template-columns:1fr}.skills-card{grid-template-columns:1fr}.collage-a,.collage-b{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,300px)}.collage-b{grid-template-rows:repeat(3,280px)}}@media(max-width:768px){:root{--margin:24px}nav{height:76px;padding:0 24px}.logo img{height:34px}.mobile-menu-toggle{display:flex;width:48px;height:48px;padding:0;border:0;background:transparent;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer}.mobile-menu-toggle span{width:28px;height:2px;border-radius:999px;background:#3b3633;transition:transform .22s ease,opacity .22s ease}nav.menu-open .mobile-menu-toggle span:nth-child(1){transform:translateY(8px) rotate(45deg)}nav.menu-open .mobile-menu-toggle span:nth-child(2){opacity:0}nav.menu-open .mobile-menu-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}.nav-links{position:absolute;top:86px;left:24px;right:24px;flex-direction:column;gap:4px;padding:12px;border-radius:28px;background:rgba(255,255,255,.97);border:1px solid rgba(29,29,29,.08);box-shadow:0 18px 44px rgba(29,29,29,.12);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease}nav.menu-open .nav-links{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}.nav-links a{min-height:48px;display:flex;align-items:center;padding:12px 18px;border-radius:18px;font-size:17px}.hero{min-height:auto;padding:126px 24px 72px}.hero-title{font-size:48px}.hero-intro{font-size:17px}.story-grid{padding:0 24px 84px;gap:52px}.story-col p{font-size:17px}.exp-col{padding:26px}.currently,.achievements,.skills,.photos{padding-left:24px;padding-right:24px}.achievements{padding-top:70px;padding-bottom:76px}.achievement-content{align-items:flex-start}.achievement-content h3{font-size:24px}.skills{padding-top:74px;padding-bottom:80px}.photos{padding-top:74px;padding-bottom:80px}.collage-a,.collage-b{grid-template-columns:1fr;grid-template-rows:repeat(4,320px)}.collage-b{grid-template-rows:repeat(5,320px)}.closing-cta{margin:0 24px 72px;padding:40px 28px;border-radius:26px}.closing-cta h2{font-size:34px}.closing-actions{flex-direction:column;align-items:stretch}footer{padding:30px 24px}.footer-line{align-items:flex-start;gap:24px}.footer-line p{max-width:220px;line-height:1.6}}@media(prefers-reduced-motion:reduce){.fade-up,.hero>*{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}
+
+
+/* =========================================================
+   ABOUT — PASTEL PURPLE PALETTE
+   ========================================================= */
+:root {
+  --color-accent: #8C78E8;
+  --color-accent-light: #F3F0FF;
+  --color-accent-border: #D7CFF7;
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 12% 22%, rgba(255, 184, 151, .76) 0, rgba(255, 184, 151, 0) 34%),
+    radial-gradient(circle at 38% 20%, rgba(246, 166, 208, .70) 0, rgba(246, 166, 208, 0) 34%),
+    radial-gradient(circle at 67% 28%, rgba(184, 157, 243, .82) 0, rgba(184, 157, 243, 0) 40%),
+    radial-gradient(circle at 94% 48%, rgba(164, 194, 246, .62) 0, rgba(164, 194, 246, 0) 38%),
+    linear-gradient(90deg, #FFD1BD 0%, #F6B5D6 35%, #C4B0F2 68%, #BFD4F5 100%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.02) 0%, rgba(255,255,255,.14) 100%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  color: #6553C8;
+}
+
+.hero-title,
+.hero-intro {
+  color: #241F39;
+}
+
+.hero-intro {
+  color: rgba(36,31,57,.72);
+}
+
+/* Purple accents across the page */
+.exp-label,
+.currently-label,
+.skill-col-label,
+.achievement-year {
+  color: var(--color-accent);
+}
+
+.timeline::before {
+  background: rgba(140,120,232,.22);
+}
+
+.tl-dot {
+  border-color: var(--color-accent);
+}
+
+.tl-item.current .tl-dot {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.tl-tag,
+.pill {
+  color: #6F5ED0;
+  background: var(--color-accent-light);
+  border-color: rgba(140,120,232,.28);
+}
+
+.cv-btn {
+  color: #6F5ED0;
+}
+
+.exp-col,
+.currently-item,
+.skills-card > div {
+  border-color: rgba(140,120,232,.15);
+}
+
+.cv-strip {
+  border-top-color: rgba(140,120,232,.16);
+}
+
+.achievements {
+  background: #252034;
+}
+
+.achievements .section-eyebrow,
+.closing-kicker {
+  color: #C6B9FF;
+}
+
+.achievement-card {
+  box-shadow: 0 20px 54px rgba(31,22,58,.18);
+}
+
+.achievement-mark {
+  background: #2B2440;
+}
+
+.skills {
+  background: linear-gradient(180deg, #F6F3FF 0%, #F1EDFF 100%);
+}
+
+.ph-tag {
+  color: #6F5ED0;
+  border-color: rgba(140,120,232,.28);
+}
+
+/* A softer transition from hero into the story */
+.story-grid {
+  position: relative;
+  padding-top: 96px;
+}
+
+.story-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 96px;
+  background: linear-gradient(180deg, rgba(191,212,245,.35) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background:
+      radial-gradient(circle at 18% 16%, rgba(255,184,151,.72) 0, rgba(255,184,151,0) 38%),
+      radial-gradient(circle at 70% 24%, rgba(184,157,243,.82) 0, rgba(184,157,243,0) 48%),
+      linear-gradient(135deg, #FFD1BD 0%, #F4B4D8 46%, #BCAAF0 100%);
+  }
+
+  .story-grid {
+    padding-top: 64px;
+  }
+
+  .story-grid::before {
+    height: 64px;
+  }
+}
+
+
+/* =========================================================
+   ABOUT — CLEAN WHITE HERO + COMPACT CURRENTLY CARDS
+   ========================================================= */
+
+/* Hero back to white */
+.hero {
+  background: #ffffff !important;
+}
+
+.hero::after {
+  display: none !important;
+}
+
+.hero-title,
+.hero-intro {
+  color: var(--color-text) !important;
+}
+
+.hero-eyebrow {
+  color: var(--color-accent) !important;
+}
+
+/* Remove the gradient transition below the hero */
+.story-grid {
+  padding-top: 72px !important;
+}
+
+.story-grid::before {
+  display: none !important;
+}
+
+/* More compact currently section */
+.currently {
+  padding-bottom: 104px;
+}
+
+.currently-grid {
+  grid-template-columns: .8fr 1.2fr 1.2fr;
+  gap: 16px;
+}
+
+.currently-item {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 22px 24px !important;
+  border-radius: 20px !important;
+  justify-content: flex-start !important;
+  gap: 18px !important;
+  border: 1px solid rgba(140,120,232,.15) !important;
+}
+
+.currently-label {
+  margin: 0 !important;
+  line-height: 1.2;
+}
+
+.currently-item strong {
+  margin: 0 !important;
+  line-height: 1.35;
+}
+
+/* Slightly tighter section heading spacing */
+.currently-heading {
+  margin-bottom: 26px !important;
+}
+
+@media (max-width: 1040px) {
+  .currently-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background: #ffffff !important;
+  }
+
+  .story-grid {
+    padding-top: 48px !important;
+  }
+
+  .currently-item {
+    padding: 20px !important;
+    gap: 14px !important;
+  }
+}
+
+/* =========================================================
+   ABOUT — FINAL RESPONSIVE FIT
+   Matches the Contact title system and keeps photo tags contained.
+   ========================================================= */
+.hero {
+  min-height: 0;
+  padding: 132px var(--margin) 44px;
+  justify-content: flex-start;
+}
+
+.hero-eyebrow {
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  max-width: 900px;
+  margin-bottom: 22px;
+  font-family: var(--font) !important;
+  font-size: clamp(48px, 4.8vw, 68px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.hero-title em {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font) !important;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.045em;
+}
+
+.hero-title br {
+  display: none;
+}
+
+.hero-intro {
+  max-width: 720px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.story-grid {
+  padding-top: 42px !important;
+}
+
+.ph-tag {
+  right: 10px;
+  left: 10px;
+  width: fit-content;
+  max-width: calc(100% - 20px);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+}
+
+.footer-line {
+  width: 100%;
+}
+
+.photo-carousel-track {
+  display: contents;
+}
+
+.photo-carousel-controls {
+  display: none;
+}
+
+@media (max-width: 1040px) {
+  .hero {
+    padding-top: 126px;
+    padding-bottom: 38px;
+  }
+
+  .story-grid {
+    padding-top: 36px !important;
+  }
+
+  .collage-a,
+  .collage-b {
+    grid-auto-flow: row;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    padding: 108px 24px 34px;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    margin-bottom: 20px;
+    font-size: clamp(36px, 11vw, 44px);
+    line-height: 1.06;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-title em {
+    margin-top: 7px;
+  }
+
+  .hero-intro {
+    font-size: 16px;
+  }
+
+  .story-grid {
+    padding-top: 30px !important;
+    padding-bottom: 72px;
+    gap: 42px;
+  }
+
+  .exp-col {
+    min-width: 0;
+    padding: 24px;
+  }
+
+  .currently,
+  .achievements,
+  .skills,
+  .photos {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .achievement-card {
+    min-width: 0;
+    padding: 24px;
+  }
+
+  .achievement-content {
+    flex-direction: column;
+  }
+
+  .achievement-footer {
+    gap: 16px;
+  }
+
+  .skills-card > div {
+    min-width: 0;
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .photos {
+    padding-top: 68px;
+    padding-bottom: 72px;
+  }
+
+  .photo-carousel-track {
+    display: flex;
+    gap: 14px;
+    width: calc(100% + 24px);
+    margin-top: 30px;
+    padding-right: 24px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .photo-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .collage-a,
+  .collage-b {
+    display: contents;
+    margin: 0;
+  }
+
+  .ph {
+    flex: 0 0 min(82vw, 340px);
+    height: clamp(300px, 105vw, 420px);
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .ph-tag {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    max-width: calc(100% - 24px);
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .photo-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .carousel-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .carousel-button {
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(29,29,29,.18);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--color-text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .carousel-button:disabled {
+    opacity: .32;
+    cursor: default;
+  }
+
+  .carousel-button svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .carousel-status {
+    min-width: 48px;
+    color: var(--color-muted);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-align: right;
+  }
+
+  footer {
+    margin-top: 0;
+    padding: 30px 24px;
+  }
+
+  .footer-line {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .footer-line p {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero,
+  .story-grid,
+  .currently,
+  .achievements,
+  .skills,
+  .photos {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .hero-title {
+    font-size: 35px;
+  }
+
+  .exp-col,
+  .achievement-card,
+  .skills-card > div {
+    padding: 20px;
+  }
+
+  .achievement-footer {
+    align-items: flex-start;
+    font-size: 14px;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -537,6 +1062,11 @@ nav.scrolled {
   <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues home">
   <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
 </a>
+
+  <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#projects">Projects</a></li>
@@ -549,7 +1079,9 @@ nav.scrolled {
 
     <!-- HERO -->
     <section class="hero">
-      <h1 class="hero-title">The full story about my <br><em>ux/ui design journey</em></h1>
+      <p class="hero-eyebrow">About me</p>
+      <h1 class="hero-title">The story behind my<br><em>ux/ui design journey</em></h1>
+      <p class="hero-intro">Lisbon-based designer working across UX/UI, service design, inclusive products, and visual storytelling.</p>
     </section>
 
     <!-- STORY + EXPERIENCE -->
@@ -585,17 +1117,17 @@ nav.scrolled {
           <div class="tl-item">
             <div class="tl-dot"></div>
             <p class="tl-year">2022 – 2024</p>
-            <p class="tl-role">Graphic Designer & Social Media</p>
+            <p class="tl-role">Graphic Designer &amp; Social Media</p>
             <p class="tl-where">Telus Digital · Porto Alegre, BR</p>
             <span class="tl-tag">full-time</span>
           </div>
 
           <div class="tl-item current">
             <div class="tl-dot"></div>
-            <p class="tl-year">2024 – now</p>
-            <p class="tl-role">MSc Design Management</p>
+            <p class="tl-year">2024 – 2026</p>
+            <p class="tl-role">MSc in Design Management</p>
             <p class="tl-where">IADE · Lisboa, PT</p>
-            <span class="tl-tag">current</span>
+            <span class="tl-tag">master’s degree</span>
           </div>
 
         </div>
@@ -609,47 +1141,44 @@ nav.scrolled {
       </div>
     </div>
 
+    <!-- CURRENTLY -->
+    <section class="currently fade-up" aria-labelledby="currentlyTitle">
+      <div class="currently-heading">
+        <p class="section-eyebrow">Currently</p>
+        <h2 class="section-title" id="currentlyTitle">Where the journey is now</h2>
+      </div>
+      <div class="currently-grid">
+        <div class="currently-item"><span class="currently-label">Based in</span><strong>Lisbon, Portugal</strong></div>
+        <div class="currently-item"><span class="currently-label">Focused on</span><strong>UX/UI, service design, and inclusive products</strong></div>
+        <div class="currently-item"><span class="currently-label">Learning</span><strong>Front-end development and interactive experiences</strong></div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="achievements fade-up" aria-labelledby="achievementsTitle">
+      <div class="achievements-heading">
+        <p class="section-eyebrow">Achievements</p>
+        <h2 class="section-title" id="achievementsTitle">A few milestones along the way</h2>
+        <p class="achievements-intro">Work that has already travelled beyond the classroom.</p>
+      </div>
+      <div class="achievements-grid">
+        <a class="achievement-card" href="https://ux-design-awards.com/winners/2026-2-adappta-mobility-first-navigation-app" target="_blank" rel="noopener noreferrer">
+          <div class="achievement-topline"><span class="achievement-year">2026</span><span class="achievement-type">Recognition</span></div>
+          <div class="achievement-content"><span class="achievement-mark">UX</span><div><h3>UX Design Awards</h3><p>New Talent nominee for Adappta: Mobility-First Navigation App.</p></div></div>
+          <div class="achievement-footer"><span>View official nomination</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </a>
+        <!-- Add Kyoto, Touchpoint and future achievements here after they happen. -->
+      </div>
+    </section>
+
     <!-- SKILLS -->
     <section class="skills fade-up">
       <p class="section-eyebrow">Skills</p>
       <h2 class="section-title">What I bring to the table</h2>
       <div class="skills-card">
-
-        <div>
-          <p class="skill-col-label">Tools I live in</p>
-          <p class="skill-col-title">What I know how to do (and actually enjoy)</p>
-          <div class="pills">
-            <span class="pill">Figma</span>
-            <span class="pill">Photoshop</span>
-            <span class="pill">Illustrator</span>
-            <span class="pill">Miro</span>
-            <span class="pill">FigJam</span>
-          </div>
-        </div>
-
-        <div>
-          <p class="skill-col-label">In progress</p>
-          <p class="skill-col-title">What I'm currently learning</p>
-          <div class="pills">
-            <span class="pill">HTML</span>
-            <span class="pill">CSS</span>
-            <span class="pill">JavaScript</span>
-            <span class="pill">React</span>
-            <span class="pill">Front-end basics</span>
-          </div>
-        </div>
-
-        <div>
-          <p class="skill-col-label">Soft skills</p>
-          <p class="skill-col-title">Nobody asks, but everyone notices</p>
-          <div class="pills">
-            <span class="pill">Obsessive curiosity</span>
-            <span class="pill">Certified big yapper</span>
-            <span class="pill">Fluent in making people laugh</span>
-            <span class="pill">Believes design is a team sport</span>
-          </div>
-        </div>
-
+        <div><p class="skill-col-label">Design</p><p class="skill-col-title">How I approach complex problems</p><div class="pills"><span class="pill">UX Research</span><span class="pill">Service Design</span><span class="pill">Journey Mapping</span><span class="pill">Systems Thinking</span><span class="pill">Wireframing</span><span class="pill">Prototyping</span><span class="pill">Usability Testing</span><span class="pill">Interaction Design</span></div></div>
+        <div><p class="skill-col-label">Tools</p><p class="skill-col-title">Where ideas become tangible</p><div class="pills"><span class="pill">Figma</span><span class="pill">Photoshop</span><span class="pill">Illustrator</span><span class="pill">Miro</span><span class="pill">FigJam</span><span class="pill">CapCut</span></div></div>
+        <div><p class="skill-col-label">Currently learning</p><p class="skill-col-title">Building the bridge between design and code</p><div class="pills"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">Responsive Interfaces</span><span class="pill">Git &amp; GitHub</span><span class="pill">React</span></div></div>
       </div>
     </section>
 
@@ -659,6 +1188,7 @@ nav.scrolled {
       <h2 class="section-title">My life outside of being a UX/UI designer</h2>
       <p class="photos-intro">When I'm not designing, you'll find me singing my lungs out at a concert, looking for the best tiramisu wherever I go, or having a very serious conversation about a video I saw on TikTok. I also have two dogs who run my life, a soft spot for London, and an opinion about everything, always shared over coffee. </p>
      <p class="photos-intro">Apparently I'm a Virgo, which explains why my Figma files are immaculate and the rest is nobody's business.</p>
+      <div class="photo-carousel-track" id="photoCarousel" tabindex="0" aria-label="Personal photo carousel">
       <!-- Row A: 4 equal columns -->
       <div class="collage-a">
 
@@ -671,7 +1201,7 @@ nav.scrolled {
         </div>
 
         <div class="ph">
-          <img src="me3.jpg" alt="birthday" /> -->
+          <img src="me3.jpg" alt="childhood birthday photo" />
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
@@ -704,7 +1234,7 @@ nav.scrolled {
           <div class="ph-placeholder">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </div>
-          <span class="ph-tag">Mel & Lola 🐶</span>
+          <span class="ph-tag">Mel &amp; Lola 🐶</span>
         </div>
 
         <div class="ph">
@@ -740,12 +1270,26 @@ nav.scrolled {
         </div>
 
       </div>
+
+      </div><!-- /photo-carousel-track -->
+
+      <div class="photo-carousel-controls" aria-label="Photo carousel controls">
+        <div class="carousel-buttons">
+          <button class="carousel-button carousel-prev" type="button" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="carousel-button carousel-next" type="button" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <span class="carousel-status" aria-live="polite">01 / 09</span>
+      </div>
     </section>
 
     <!-- FOOTER -->
   <footer>
   <div class="footer-line">
-    <p>© all rights reserved to carmela domingues</p>
+    <p>© 2026 Carmela Domingues. All rights reserved.</p>
 
     <div class="footer-links">
   <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
@@ -761,6 +1305,7 @@ nav.scrolled {
     </svg>
   </a>
 </div>
+</div>
 </footer>
 
   </div><!-- /page -->
@@ -771,6 +1316,24 @@ nav.scrolled {
   </button>
 
   <script>
+
+    const mainNav = document.querySelector('body > nav');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    if (mobileMenuToggle && mainNav) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isOpen = mainNav.classList.toggle('menu-open');
+        mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      });
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('menu-open');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+        });
+      });
+    }
+
     const btn = document.querySelector('.back-top');
     const footer = document.querySelector('footer');
 
@@ -790,6 +1353,47 @@ nav.scrolled {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.08 });
     faders.forEach(el => observer.observe(el));
+
+    const photoCarousel = document.querySelector('.photo-carousel-track');
+    const carouselPrev = document.querySelector('.carousel-prev');
+    const carouselNext = document.querySelector('.carousel-next');
+    const carouselStatus = document.querySelector('.carousel-status');
+
+    if (photoCarousel && carouselPrev && carouselNext && carouselStatus) {
+      const photoSlides = [...photoCarousel.querySelectorAll('.ph')];
+
+      const currentPhotoIndex = () => {
+        const carouselLeft = photoCarousel.getBoundingClientRect().left;
+        return photoSlides.reduce((closest, slide, index) => {
+          const distance = Math.abs(slide.getBoundingClientRect().left - carouselLeft);
+          return distance < closest.distance ? { index, distance } : closest;
+        }, { index: 0, distance: Infinity }).index;
+      };
+
+      const updateCarousel = () => {
+        const index = currentPhotoIndex();
+        carouselStatus.textContent = `${String(index + 1).padStart(2, '0')} / ${String(photoSlides.length).padStart(2, '0')}`;
+        carouselPrev.disabled = index === 0;
+        carouselNext.disabled = index === photoSlides.length - 1;
+      };
+
+      const goToPhoto = index => {
+        photoSlides[Math.max(0, Math.min(index, photoSlides.length - 1))]
+          .scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      };
+
+      carouselPrev.addEventListener('click', () => goToPhoto(currentPhotoIndex() - 1));
+      carouselNext.addEventListener('click', () => goToPhoto(currentPhotoIndex() + 1));
+      photoCarousel.addEventListener('scroll', updateCarousel, { passive: true });
+      photoCarousel.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          goToPhoto(currentPhotoIndex() + (event.key === 'ArrowRight' ? 1 : -1));
+        }
+      });
+      window.addEventListener('resize', updateCarousel);
+      updateCarousel();
+    }
   </script>
 
 </body>
