@@ -2214,6 +2214,19 @@ body{background:#fff}
   }
 }
 
+/* Desktop shows the complete user-flow image without horizontal navigation. */
+@media (min-width: 769px) {
+  .user-flow-scroll {
+    overflow-x: hidden;
+  }
+
+  .user-flow-scroll img {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
 @media (max-width: 768px) {
   .recognition-media {
     width: 210px;
@@ -2232,7 +2245,7 @@ body{background:#fff}
     background: #fff;
     box-shadow: 0 12px 30px rgba(31,42,31,.04);
     scrollbar-width: none;
-    touch-action: pan-x;
+    touch-action: auto;
   }
 
   .positioning-matrix-wrap::-webkit-scrollbar {
@@ -2270,7 +2283,7 @@ body{background:#fff}
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    touch-action: pan-x;
+    touch-action: auto;
   }
 
   .persona-card,
@@ -2307,7 +2320,7 @@ body{background:#fff}
     padding: 8px 24px 14px 0;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    touch-action: pan-x;
+    touch-action: auto;
   }
 
   .questions-list::-webkit-scrollbar,
@@ -2335,7 +2348,7 @@ body{background:#fff}
     overflow-x: auto;
     border-radius: 20px 0 0 20px;
     scrollbar-width: none;
-    touch-action: pan-x;
+    touch-action: auto;
   }
 
   .user-flow-scroll img {
@@ -2368,7 +2381,7 @@ body{background:#fff}
     padding: 8px 24px 16px 0;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    touch-action: pan-x;
+    touch-action: auto;
   }
 
   #concept .features-grid::-webkit-scrollbar,
