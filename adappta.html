@@ -2450,6 +2450,27 @@ body{background:#fff}
     line-height: 1.25;
   }
 }
+
+/* Mid-fidelity mockups sit directly on the page, without a white frame. */
+.midfi-screen,
+.lightbox-open.midfi-screen {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.midfi-screen img {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
 </style>
 <script data-no-js-fix="true">document.documentElement.classList.remove('no-js');</script><script>
 document.documentElement.classList.add('js-motion-ready');
