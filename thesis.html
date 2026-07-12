@@ -1660,6 +1660,386 @@ body > nav.scrolled {
   }
 }
 
+
+/* =========================================================
+   FINAL LEARNINGS + NEXT PROJECT — MATCH ADAPPTA
+   ========================================================= */
+
+.thesis-learnings-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 56px;
+}
+
+.thesis-learnings-layout .learnings-intro {
+  min-width: 0;
+}
+
+.thesis-learnings-layout .learnings-image {
+  padding-top: 72px;
+}
+
+.thesis-learnings-layout .learnings-image img {
+  width: 115%;
+  max-width: none;
+  margin-left: -32px;
+  display: block;
+  border-radius: 24px;
+}
+
+.thesis-learnings-layout .learnings-lessons {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+.thesis-learnings-layout .learnings-subtitle {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.thesis-learnings-layout .learnings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.thesis-learnings-layout .learning-card {
+  border: 0;
+  border-radius: 22px;
+  padding: 26px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(31,42,31,.04);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.thesis-learnings-layout .learning-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(29,29,29,.08);
+}
+
+.thesis-learnings-layout .learning-card p {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.thesis-learnings-layout .learning-card strong {
+  font-weight: 500;
+}
+
+/* Same Next Project component as Adappta */
+.next-project {
+  margin: 130px 0 0 !important;
+  padding: 0 !important;
+}
+
+.next-project-card {
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 22px !important;
+  padding: 22px !important;
+  border: 1.3px solid var(--accent-border) !important;
+  border-radius: 32px !important;
+  background: #ffffff !important;
+  box-shadow: 0 18px 50px rgba(31,42,31,.07) !important;
+  transition: transform .22s ease, box-shadow .22s ease !important;
+}
+
+.next-project-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 22px 56px rgba(31,42,31,.10) !important;
+}
+
+.next-project-img {
+  width: 280px !important;
+  height: 168px !important;
+  flex: 0 0 280px !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+}
+
+.next-project-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform .3s ease !important;
+}
+
+.next-project-card:hover .next-project-img img {
+  transform: scale(1.025);
+}
+
+.next-project-info {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.next-project-title {
+  font-size: 24px !important;
+  line-height: 1.15 !important;
+  font-weight: 400 !important;
+  margin-bottom: 8px !important;
+}
+
+.next-project-desc {
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  font-weight: 300 !important;
+  margin-bottom: 14px !important;
+}
+
+.next-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  width: fit-content !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #000 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: opacity .2s ease !important;
+}
+
+.next-link svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  transition: transform .2s ease !important;
+}
+
+.next-link:hover {
+  opacity: .55 !important;
+}
+
+.next-link:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .thesis-learnings-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .thesis-learnings-layout .learnings-image {
+    padding-top: 0;
+  }
+
+  .thesis-learnings-layout .learnings-image img {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .thesis-learnings-layout .learnings-lessons {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .thesis-learnings-layout {
+    gap: 32px;
+    margin-top: 44px;
+  }
+
+  .thesis-learnings-layout .learnings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .thesis-learnings-layout .learning-card {
+    padding: 24px;
+  }
+
+  .next-project {
+    margin-top: 72px !important;
+  }
+
+  .next-project-card {
+    max-width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 18px !important;
+    padding: 18px !important;
+    border-radius: 28px !important;
+  }
+
+  .next-project-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    flex: none !important;
+    border-radius: 22px !important;
+  }
+}
+
+
+/* =========================================================
+   PROJECT INFO CARD — EXACT ADAPPTA COMPONENT
+   ========================================================= */
+
+.info-card {
+  border: 1.3px solid var(--accent-border) !important;
+  border-radius: 40px !important;
+  padding: 20px 37px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 60px !important;
+  align-items: flex-start !important;
+  margin-bottom: 48px !important;
+  width: 100% !important;
+  background: #ffffff !important;
+}
+
+.info-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+  flex: 0 1 auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.info-label {
+  font-family: var(--font) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: normal !important;
+  letter-spacing: 0.05em !important;
+  text-transform: none !important;
+  color: var(--text) !important;
+  margin: 0 !important;
+}
+
+.info-value {
+  font-family: var(--font) !important;
+  font-size: 15px !important;
+  font-weight: 300 !important;
+  line-height: 1.5 !important;
+  letter-spacing: normal !important;
+  color: var(--text) !important;
+  max-width: 400px !important;
+  margin: 0 !important;
+}
+
+/* Same mobile behaviour as Adappta */
+@media (max-width: 768px) {
+  .info-card {
+    border-radius: 28px !important;
+    padding: 22px !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 18px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .info-block {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .info-label {
+    font-size: 13px !important;
+  }
+
+  .info-value {
+    font-size: 15px !important;
+    max-width: 100% !important;
+  }
+}
+
+
+/* =========================================================
+   PROJECT INFO CARD — PERFECTLY EVEN SPACING
+   ========================================================= */
+
+.info-card {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  column-gap: 40px !important;
+  row-gap: 0 !important;
+  align-items: start !important;
+
+  padding: 24px 40px !important;
+  margin-bottom: 48px !important;
+
+  border: 1.3px solid var(--accent-border) !important;
+  border-radius: 40px !important;
+  background: #ffffff !important;
+}
+
+.info-block {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  align-items: flex-start !important;
+}
+
+.info-label,
+.info-value {
+  margin: 0 !important;
+}
+
+.info-label {
+  font-family: var(--font) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.05em !important;
+  color: var(--text) !important;
+  text-transform: none !important;
+}
+
+.info-value {
+  font-family: var(--font) !important;
+  font-size: 15px !important;
+  font-weight: 300 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  color: var(--text) !important;
+  max-width: none !important;
+}
+
+@media (max-width: 1100px) {
+  .info-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 24px 40px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding: 22px !important;
+    border-radius: 28px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .info-label {
+    font-size: 13px !important;
+  }
+
+  .info-value {
+    font-size: 15px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2723,35 +3103,33 @@ body > nav.scrolled {
         <p class="sec-text">The system was evaluated through a prototype, not a working product, so feedback reflects perceptions of the concept rather than sustained real-world engagement, on a small, exploratory sample. Technical implementation remains open too: language models can already detect patterns in survivor discourse, but governance, transparency, and accountability still need real answers before this could responsibly go live.</p>
         <p class="sec-text" style="margin-top:16px;">Participants also pointed past the four platforms tested here, toward everyday services like food delivery or banking apps, environments that could reach women who aren't actively searching for help at all. That, and real partnerships with domestic violence organisations, is where this would need to go next.</p>
 
-        <div style="display:grid; grid-template-columns:0.95fr 1.05fr; gap:40px; margin-top:56px;">
-
-          <div>
-            <p class="sec-title" style="margin-top:0;">What this project left me with</p>
+        <div class="thesis-learnings-layout">
+          <div class="learnings-intro">
+            <p class="sec-title">What this project left me with</p>
             <p class="sec-text">This thesis pushed me to design for a moment most systems overlook, the one before someone has language for what's happening to them. Good design doesn't wait for people to arrive fully formed with a clear problem, it meets them earlier, in the mess of figuring things out.</p>
             <p class="sec-text" style="margin-top:24px;">Beyond the framework and the prototype, it changed how I think about care as a design material, not a tone applied at the end, but a structural decision made at every layer.</p>
           </div>
 
-          <div>
-            <img src="thesis-reflection-banner.png" alt="Thesis mockups" style="width:115%; border-radius:24px; margin-left:-32px; margin-top:48px;" />
+          <div class="learnings-image">
+            <img src="thesis-reflection-banner.png" alt="Thesis mockups" />
           </div>
 
-        </div>
+          <div class="learnings-lessons">
+            <p class="learnings-subtitle">A few key lessons stayed:</p>
 
-        <div style="margin-top:56px;">
-          <p class="sec-title" style="font-size:24px;">A few key lessons stayed:</p>
-
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px;">
-            <div style="border:1.3px solid var(--accent-border); border-radius:20px; padding:24px;">
-              <p style="font-size:18px; line-height:1.6;"><strong>Awareness is a process, not a moment.</strong> Designing for gradual recognition instead of a single "aha" changed how I thought about onboarding, tone, and pacing.</p>
-            </div>
-            <div style="border:1.3px solid var(--accent-border); border-radius:20px; padding:24px;">
-              <p style="font-size:18px; line-height:1.6;"><strong>Consent has to be structural.</strong> It can't be a toggle. It has to shape every layer of the system, from architecture down to a single line of copy.</p>
-            </div>
-            <div style="border:1.3px solid var(--accent-border); border-radius:20px; padding:24px;">
-              <p style="font-size:18px; line-height:1.6;"><strong>Sensitive research demands restraint.</strong> Every interview, every prototype decision, every word choice had to be weighed against the risk of causing harm rather than support.</p>
-            </div>
-            <div style="border:1.3px solid var(--accent-border); border-radius:20px; padding:24px;">
-              <p style="font-size:18px; line-height:1.6;"><strong>A concept is only as strong as its edges.</strong> Deciding what the system explicitly isn't, a diagnosis, a substitute for APAV, mattered as much as defining what it is.</p>
+            <div class="learnings-grid">
+              <article class="learning-card">
+                <p><strong>Awareness is a process, not a moment.</strong> Designing for gradual recognition instead of a single "aha" changed how I thought about onboarding, tone, and pacing.</p>
+              </article>
+              <article class="learning-card">
+                <p><strong>Consent has to be structural.</strong> It can't be a toggle. It has to shape every layer of the system, from architecture down to a single line of copy.</p>
+              </article>
+              <article class="learning-card">
+                <p><strong>Sensitive research demands restraint.</strong> Every interview, every prototype decision, every word choice had to be weighed against the risk of causing harm rather than support.</p>
+              </article>
+              <article class="learning-card">
+                <p><strong>A concept is only as strong as its edges.</strong> Deciding what the system explicitly isn't, a diagnosis, a substitute for APAV, mattered as much as defining what it is.</p>
+              </article>
             </div>
           </div>
         </div>
