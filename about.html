@@ -900,6 +900,38 @@ nav.scrolled {
     padding-left: 24px;
   }
 
+  .currently-grid,
+  .skills-card {
+    display: flex;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding-right: 24px;
+    gap: 14px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .currently-grid::-webkit-scrollbar,
+  .skills-card::-webkit-scrollbar {
+    display: none;
+  }
+
+  .currently-item,
+  .skills-card > div {
+    flex: 0 0 min(82vw, 340px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .currently-item {
+    min-height: 156px !important;
+    padding: 24px !important;
+    justify-content: space-between !important;
+  }
+
   .achievement-card {
     min-width: 0;
     padding: 24px;
@@ -915,7 +947,7 @@ nav.scrolled {
 
   .skills-card > div {
     min-width: 0;
-    min-height: 0;
+    min-height: 280px;
     padding: 24px;
   }
 
