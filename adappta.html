@@ -279,7 +279,14 @@ nav.scrolled {
        is scaled down as a whole via transform:scale() (see script at the end of
        the file), so every bubble keeps its exact relative position instead of
        being reflowed individually. */
-    .positioning-matrix-wrap { overflow: hidden; }
+    .positioning-matrix-wrap {
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-inline: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .positioning-matrix-wrap::-webkit-scrollbar { display: none; }
 
     /* User journey map */
     .journey-map {
@@ -757,6 +764,35 @@ footer {
     flex: 0 0 min(82vw, 340px);
     min-width: 0;
     padding: 48px 24px 24px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    /* No reveal/hover animation on mobile — cards are always visible;
+       the swipe interaction is the only motion. */
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* How Might We questions become a swipeable carousel on mobile. */
+  .questions-list {
+    flex-direction: row;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+  }
+
+  .questions-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .question-item {
+    flex: 0 0 min(82vw, 340px);
+    min-width: 0;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
@@ -1646,6 +1682,49 @@ body{background:#fff}
   }
 }
 
+/* User flow: same pattern as instagram.html — the image keeps a readable
+   fixed width inside a horizontally scrollable card, so on mobile you swipe
+   sideways to explore the full diagram instead of shrinking it to fit. */
+.user-flow-scroll {
+  width: 100%;
+  margin: 28px 0 18px;
+  padding: 24px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 16px 45px rgba(31,42,31,.045);
+  scrollbar-width: thin;
+}
+
+.user-flow-scroll img {
+  display: block;
+  width: 1050px;
+  min-width: 1050px;
+  max-width: none;
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .user-flow-scroll {
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding: 18px 24px 18px 18px;
+    border-radius: 20px 0 0 20px;
+    scrollbar-width: none;
+  }
+
+  .user-flow-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .user-flow-scroll img {
+    width: 900px;
+    min-width: 900px;
+  }
+}
+
 /* Mid fidelity screens: 4 individual wireframes, cropped from the combined
    export so each one can be viewed larger and swiped through on mobile
    instead of squeezed into one flat, hard-to-read image. */
@@ -1873,12 +1952,29 @@ body{background:#fff}
 }
 
 @media (max-width: 768px) {
+  /* Key lessons become a swipeable carousel on mobile. */
   .learnings-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+  }
+
+  .learnings-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .learning-card {
+    flex: 0 0 min(82vw, 340px);
+    min-width: 0;
     padding: 24px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .next-project {
@@ -2413,7 +2509,8 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- Competitive Positioning -->
 <p class="sec-text" style="margin-top:48px;">The competitive landscape reinforced this gap. Google Maps dominates in volume but wasn't designed with accessibility in mind. AccessibleGO, TUR4all, and Guia de Rodas address accessibility more directly but fall short on information depth and personalisation. <strong>Adappta sits in a unique position:</strong> high information diversity combined with high adaptive personalisation — the only solution that brings together accessible routing, live warnings, community-driven data, and an AI assistant built specifically for people with reduced mobility.</p>
 <!-- Matrix -->
-<div class="positioning-matrix-wrap">
+<div aria-label="Competitive positioning matrix, swipe horizontally to view the full diagram" class="positioning-matrix-wrap" role="region" tabindex="0">
+<div class="positioning-matrix-sizer">
 <div class="positioning-matrix" style="position:relative; width:100%; height:652px; margin-top:32px; background:white;">
 <!-- Quadrants -->
 <div style="position:absolute; left:100px; top:60px; width:398px; height:280px; background:#f7f7ff;"></div>
@@ -2456,6 +2553,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <img alt="Google Maps" src="googlemaps.png" style="width:77px; height:77px; object-fit:cover;"/>
 </div>
 <p style="position:absolute; left:701px; top:537px; font-size:10px; font-weight:500; text-align:center; width:56px;">Google Maps</p>
+</div>
 </div>
 </div>
 </div><div class="section reveal" id="concept">
@@ -2568,9 +2666,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <p class="sec-label">Ideation</p>
 <p class="sec-title">Mapping the experience before building it</p>
 <p class="sec-text">Before moving into high fidelity, the full user flow was mapped, tracing every path a user could take from the moment they open the app to reaching their destination. The flow branches into five main paths: planning a route, checking accessibility warnings, getting help from Ada, contributing reviews, and accessing saved places. All paths converge on the same goal: arriving at the desired location independently and with confidence.</p>
-<button aria-label="Expand User Flow image" class="lightbox-open" type="button">
-<img alt="User Flow" src="userflow.png" style="width:100%; border-radius:12px; margin:24px 0;"/>
-</button>
+<div aria-label="User flow image, swipe horizontally to view the complete diagram" class="user-flow-scroll" role="region" tabindex="0">
+<img alt="User Flow" src="userflow.png"/>
+</div>
 <p class="sec-title" style="margin-top:48px;">Mid fidelity</p>
 <p class="sec-text">The wireframes focused on structure, hierarchy, and interaction logic across the key screens — making sure every path had a clear purpose before moving to visual design.</p>
 <div class="midfi-screens">
@@ -3038,26 +3136,37 @@ setTimeout(fixSidebar, 100);
 // reflowing individual elements (which distorts the quadrant layout).
 function scalePositioningMatrix() {
   const wrap = document.querySelector('.positioning-matrix-wrap');
+  const sizer = document.querySelector('.positioning-matrix-sizer');
   const matrix = document.querySelector('.positioning-matrix');
-  if (!wrap || !matrix) return;
+  if (!wrap || !sizer || !matrix) return;
 
   const DESIGN_WIDTH = 900;
   const DESIGN_HEIGHT = 652;
+  // Never shrink below this: below ~0.85 the 10px matrix labels become
+  // unreadable. When the clamped matrix is wider than the viewport, the
+  // wrap scrolls horizontally instead (same idea as .user-flow-scroll).
+  const MIN_SCALE = 0.85;
   const wrapWidth = wrap.getBoundingClientRect().width;
 
   if (wrapWidth >= DESIGN_WIDTH || wrapWidth === 0) {
     matrix.style.width = '';
     matrix.style.transform = '';
     matrix.style.transformOrigin = '';
-    wrap.style.height = '';
+    matrix.style.marginTop = '';
+    sizer.style.width = '';
+    sizer.style.height = '';
+    sizer.style.marginTop = '';
     return;
   }
 
-  const scale = wrapWidth / DESIGN_WIDTH;
+  const scale = Math.max(wrapWidth / DESIGN_WIDTH, MIN_SCALE);
   matrix.style.width = DESIGN_WIDTH + 'px';
   matrix.style.transformOrigin = 'top left';
   matrix.style.transform = `scale(${scale})`;
-  wrap.style.height = (DESIGN_HEIGHT * scale) + 'px';
+  matrix.style.marginTop = '0';
+  sizer.style.width = (DESIGN_WIDTH * scale) + 'px';
+  sizer.style.height = (DESIGN_HEIGHT * scale) + 'px';
+  sizer.style.marginTop = '32px';
 }
 
 window.addEventListener('load', scalePositioningMatrix);
