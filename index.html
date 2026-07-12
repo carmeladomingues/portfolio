@@ -1682,6 +1682,60 @@ body > nav:not(.scrolled) .logo img {
   outline-offset: 4px;
 }
 
+/* Mobile footer — same component used by PBL and Adappta. */
+@media (max-width: 768px) {
+  footer {
+    width: 100%;
+    margin-top: 64px;
+    padding: 30px 24px 34px;
+    border-top: .5px solid rgba(29,29,29,.12);
+  }
+
+  .footer-line {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .footer-line p {
+    max-width: 280px;
+    margin: 0;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .footer-links svg {
+    display: block !important;
+    width: 24px;
+    height: 24px;
+  }
+
+  .footer-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1d1d1d;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 380px) {
+  footer {
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1879,6 +1933,7 @@ body > nav:not(.scrolled) .logo img {
       <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
     </svg>
   </a>
+</div>
 </div>
 </footer>
 
