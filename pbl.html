@@ -1010,6 +1010,15 @@ body{background:#fff}
   border-color: var(--text);
 }
 
+.desk-research-image {
+  display: block;
+  width: 110%;
+  max-width: none;
+  height: auto;
+  margin: 8px 0 48px -5%;
+  border-radius: 20px;
+}
+
 @media (max-width: 1100px) {
   .info-card {
     flex-wrap: wrap;
@@ -1191,13 +1200,79 @@ body{background:#fff}
   }
 
   .persona-grid {
-    grid-template-columns: 1fr;
-    gap: 58px;
+    display: flex !important;
+    width: calc(100% + 24px);
+    margin: 18px -24px 0 0;
+    padding: 40px 24px 10px 0;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   .persona-card {
+    flex: 0 0 min(82vw, 340px);
     min-width: 0;
     padding: 48px 24px 24px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .persona-grid::-webkit-scrollbar,
+  .survey-grid::-webkit-scrollbar,
+  .affinity-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .survey-grid {
+    display: flex !important;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding-right: 24px;
+    gap: 14px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .survey-grid > * {
+    flex: 0 0 min(82vw, 340px);
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .affinity-scroll {
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding-right: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .affinity-scroll svg {
+    display: block;
+    width: 920px;
+    min-width: 920px;
+    height: auto;
+    scroll-snap-align: start;
+  }
+
+  .desk-research-image {
+    width: calc(100% + 48px);
+    max-width: none;
+    margin: 8px 0 42px -24px;
+    border-radius: 0;
   }
 
   .ideation-grid,
@@ -1326,10 +1401,18 @@ body{background:#fff}
   .ideation-grid,
   .features-grid,
   .decisions-grid,
-  .learnings-grid {
+  .learnings-grid,
+  .persona-grid,
+  .survey-grid,
+  .affinity-scroll {
     width: calc(100% + 18px);
     margin-right: -18px;
     padding-right: 18px;
+  }
+
+  .desk-research-image {
+    width: calc(100% + 36px);
+    margin-left: -18px;
   }
 }
 </style>
@@ -1455,10 +1538,7 @@ body{background:#fff}
 <div class="highlight-block">
 <p><strong>Desk Research </strong>We analysed articles, reports, and case studies across five themes — Innovation, Design, HR, Collaboration, and Creativity. The literature was consistent: organisations that foster collaboration and psychological safety outperform those that don't. One insight surfaced repeatedly: <em>innovation needs culture, not just tools.</em></p>
 </div>
-<img src="desk-pbl.png" style="width:100%;border-radius:20px;margin-bottom:40px;"/>
-<div style="width:100%;background:var(--accent);border-radius:20px;height:220px;display:flex;align-items:center;justify-content:center;margin-bottom:40px;">
-<p style="color:var(--text-light);font-size:14px;font-weight:300;">Desk research clusters image</p>
-</div>
+<img class="desk-research-image" src="desk-pbl.png" alt="Desk research clusters"/>
 <p class="sec-text"><strong style="font-weight:500;">Interviews </strong>We conducted in-depth interviews with 10 professionals across different industries and work models — hybrid, remote, and in-person. Most felt their ideas weren't heard, cross-department collaboration was rare, and recognition was almost non-existent.</p>
 <div class="tags-wrap">
 <div class="tags-row">
@@ -1479,7 +1559,7 @@ body{background:#fff}
 </div>
 <!-- replace with: <img src="survey-data.png" style="width:100%;border-radius:20px;margin-top:24px;" /> -->
 <!-- SURVEY DATA CHARTS -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;">
+<div class="survey-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;">
 <!-- Chart 1: Gender -->
 <div style="background:var(--accent);border-radius:16px;padding:24px;">
 <p style="font-size:13px;font-weight:500;margin-bottom:4px;">Gender</p>
@@ -1616,7 +1696,7 @@ body{background:#fff}
 <p class="sec-text">The affinity diagram revealed a consistent pattern across all research tracks. People want to collaborate. They have ideas. But organisations lack the culture, tools, and moments to make it happen. Motivation fades. Communication breaks down. Creativity stays untapped.</p>
 <!-- replace with: <img src="affinity-diagram.png" style="width:100%;border-radius:20px;margin:24px 0;" /> -->
 <!-- AFFINITY DIAGRAM -->
-<div style="margin:32px 0;">
+<div class="affinity-scroll" style="margin:32px 0;">
 <svg role="img" viewbox="0 0 680 444" width="100%">
 <title>Affinity diagram with 7 clusters from research</title>
 <desc>Seven thematic clusters identified from interviews and desk research: Leadership, Creativity, Demotivation, Values, Collaboration and Tools, Process Failures, and Communication.</desc>
