@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PBL App — Portfolio</title>
-  <link rel="icon" type="image/png" href="logo.portfolio.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PBL App — Portfolio</title>
+<link href="logo.portfolio.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&amp;display=swap" rel="stylesheet"/>
+<style>
     @font-face {
       font-family: 'Aveburg';
       src: url('Aveburg-Grande-Demo.otf') format('opentype');
@@ -427,228 +428,727 @@
     .s-nav { height: 20px; background: white; display: flex; align-items: center; justify-content: space-around; border-top: 1px solid #eee; margin-top: auto; }
     .s-ni { font-size: 7px; color: #ccc; }
     .s-ni.act { color: #FF6633; }
-  </style>
+  
+/* =========================================================
+   PBL — FINAL PORTFOLIO SYSTEM
+   ========================================================= */
+:root{
+  --accent:#FFF3EE;
+  --accent-border:#F1BEAA;
+  --orange:#F2602F;
+}
+
+html{scroll-padding-top:88px}
+body{background:#fff}
+
+/* Hero */
+.hero{
+  padding:84px var(--margin) 56px;
+}
+.case-tags{
+  flex-wrap:wrap;
+  align-items:center;
+  margin-bottom:28px;
+}
+.case-tag{
+  border:0;
+  background:#FFF0EA;
+  color:#D84F22;
+  font-weight:600;
+  letter-spacing:.07em;
+  padding:7px 14px;
+}
+.hero-title{
+  font-size:clamp(46px,5.4vw,76px);
+  line-height:.98;
+  letter-spacing:-.045em;
+  max-width:1050px;
+  margin-bottom:24px;
+}
+.hero-sub{
+  font-size:20px;
+  line-height:1.55;
+  max-width:760px;
+  color:#6f6f76;
+  margin-bottom:48px;
+}
+.info-card{
+  background:#fff;
+  border:1.3px solid var(--accent-border);
+}
+
+/* Full-bleed banner */
+.banner{
+  width:100vw;
+  max-width:none;
+  height:min(68vw,720px);
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  overflow:hidden;
+}
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+}
+
+/* Structure */
+.body-wrap{
+  padding-top:110px;
+  padding-bottom:48px;
+  gap:72px;
+}
+.content{
+  max-width:1080px;
+  margin:0 auto;
+}
+.section{
+  margin-bottom:130px;
+  scroll-margin-top:92px;
+}
+.sec-label{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:18px;
+}
+.sec-title{
+  font-size:clamp(38px,4vw,58px);
+  line-height:1.04;
+  letter-spacing:-.038em;
+  max-width:900px;
+  margin-bottom:28px;
+}
+.sec-text{
+  font-size:19px;
+  line-height:1.72;
+  max-width:860px;
+  color:#2d2d32;
+  margin-bottom:20px;
+}
+
+/* Sidebar */
+.sidebar-menu{
+  width:220px;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(29,29,29,.07);
+  border-radius:20px;
+  padding:20px;
+  gap:18px;
+  box-shadow:0 10px 30px rgba(29,29,29,.08);
+  backdrop-filter:blur(12px);
+}
+
+/* Shared card motion */
+.persona-card,
+.fivew-item,
+.ideation-card,
+.feature-card,
+.decision-card,
+.learning-card,
+.pbl-hifi-group{
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.persona-card:hover,
+.fivew-item:hover,
+.ideation-card:hover,
+.feature-card:hover,
+.decision-card:hover,
+.learning-card:hover,
+.pbl-hifi-group:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 36px rgba(29,29,29,.08);
+}
+
+/* Softer cards */
+.highlight-block,
+.ideation-card{
+  background:var(--accent);
+}
+.persona-card,
+.fivew-item,
+.feature-card,
+.decision-card{
+  background:#fff;
+  box-shadow:0 12px 30px rgba(31,42,31,.035);
+}
+.learning-card{
+  border:0;
+  border-radius:22px;
+  padding:26px;
+  background:#fff;
+  box-shadow:0 12px 30px rgba(31,42,31,.04);
+}
+.learning-card p{
+  font-size:18px;
+  line-height:1.6;
+  font-weight:300;
+}
+.learning-card strong{font-weight:500}
+
+/* High fidelity */
+.pbl-hifi-showcase{
+  display:flex;
+  flex-direction:column;
+  gap:34px;
+  margin-top:52px;
+}
+.pbl-hifi-intro{
+  max-width:780px;
+  margin-bottom:8px;
+}
+.hifi-kicker,
+.hifi-step{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--orange);
+}
+.hifi-kicker{margin-bottom:12px}
+.hifi-title{
+  font-size:clamp(30px,3.2vw,46px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+  font-weight:400;
+  margin-bottom:16px;
+}
+.hifi-copy{
+  font-size:17px;
+  line-height:1.7;
+  color:var(--text-light);
+  font-weight:300;
+}
+.pbl-hifi-group{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:36px;
+  align-items:start;
+  padding:30px;
+  border-radius:28px;
+  background:#FFF6F2;
+}
+.pbl-hifi-group.reverse{
+  grid-template-columns:1fr 280px;
+}
+.pbl-hifi-group.reverse .pbl-hifi-copy{order:2}
+.pbl-hifi-group.reverse .pbl-screen-grid{order:1}
+.pbl-hifi-copy{padding-top:6px}
+.pbl-hifi-copy h4{
+  font-size:24px;
+  line-height:1.2;
+  letter-spacing:-.02em;
+  font-weight:500;
+  margin:14px 0 12px;
+}
+.pbl-hifi-copy p{
+  font-size:15px;
+  line-height:1.65;
+  color:var(--text-light);
+}
+.pbl-screen-grid{
+  display:grid;
+  gap:18px;
+  align-items:start;
+}
+.pbl-screen-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pbl-screen-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pbl-screen-placeholder{
+  aspect-ratio:9/19.5;
+  min-height:390px;
+  padding:18px;
+  border-radius:24px;
+  background:linear-gradient(180deg,#fff 0%,#FFEDE5 100%);
+  border:1.5px dashed #F0AD92;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-align:center;
+  box-shadow:0 16px 38px rgba(92,45,25,.08);
+}
+.pbl-screen-placeholder>span{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--orange);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+}
+.pbl-screen-placeholder strong{
+  font-size:15px;
+  color:#1d1d1d;
+  margin-top:4px;
+}
+.pbl-screen-placeholder small{
+  font-size:11px;
+  line-height:1.45;
+  color:#77717f;
+  max-width:150px;
+}
+
+/* Learnings */
+#learnings{
+  display:block;
+}
+.learnings-intro{
+  max-width:860px;
+}
+.learnings-lessons{
+  margin-top:48px;
+}
+.learnings-subtitle{
+  font-size:24px;
+  margin-bottom:24px;
+}
+.learnings-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+/* Next project */
+.next-project-visible{
+  display:block!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  margin:130px 0 0!important;
+}
+.next-project-card{
+  width:100%;
+  max-width:760px;
+  margin:0 auto;
+  display:flex!important;
+  align-items:center;
+  gap:22px;
+  padding:22px;
+  border:1.3px solid var(--accent-border)!important;
+  border-radius:32px;
+  background:#fff;
+  box-shadow:0 18px 50px rgba(31,42,31,.07);
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.next-project-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 22px 56px rgba(31,42,31,.10);
+}
+.next-project-card:hover .next-project-img img{
+  transform:scale(1.025);
+}
+.next-project-img img{
+  transition:transform .3s ease;
+}
+
+/* Motion */
+.reveal{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity .75s cubic-bezier(.2,.65,.25,1),
+             transform .75s cubic-bezier(.2,.65,.25,1);
+}
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.hero .case-tags,
+.hero .hero-title,
+.hero .hero-sub,
+.hero .info-card{
+  opacity:0;
+  transform:translateY(28px);
+  animation:heroReveal .8s cubic-bezier(.2,.65,.25,1) forwards;
+}
+.hero .hero-title{animation-delay:.08s}
+.hero .hero-sub{animation-delay:.16s}
+.hero .info-card{animation-delay:.24s}
+@keyframes heroReveal{
+  to{opacity:1;transform:translateY(0)}
+}
+.banner img{
+  transform:scale(1.025);
+  animation:bannerSettle 1.2s cubic-bezier(.2,.65,.25,1) .15s forwards;
+}
+@keyframes bannerSettle{
+  to{transform:scale(1)}
+}
+
+/* Mobile menu */
+.mobile-menu-toggle{display:none}
+
+@media(max-width:1000px){
+  .pbl-hifi-group,
+  .pbl-hifi-group.reverse{
+    grid-template-columns:1fr;
+  }
+  .pbl-hifi-group.reverse .pbl-hifi-copy,
+  .pbl-hifi-group.reverse .pbl-screen-grid{
+    order:initial;
+  }
+}
+
+@media(max-width:768px){
+  :root{--margin:24px}
+  nav{
+    height:76px;
+    padding:0 24px;
+  }
+  .logo img{height:34px}
+  .mobile-menu-toggle{
+    display:flex;
+    width:48px;
+    height:48px;
+    padding:0;
+    border:0;
+    background:transparent;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    cursor:pointer;
+  }
+  .mobile-menu-toggle span{
+    width:28px;
+    height:2px;
+    border-radius:999px;
+    background:#3b3633;
+    transition:transform .22s ease,opacity .22s ease;
+  }
+  nav.menu-open .mobile-menu-toggle span:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+  }
+  nav.menu-open .mobile-menu-toggle span:nth-child(2){
+    opacity:0;
+  }
+  nav.menu-open .mobile-menu-toggle span:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
+  }
+  .nav-links{
+    position:absolute;
+    top:86px;
+    left:24px;
+    right:24px;
+    flex-direction:column;
+    gap:4px;
+    padding:12px;
+    border-radius:28px;
+    background:rgba(255,255,255,.97);
+    border:1px solid rgba(29,29,29,.08);
+    box-shadow:0 18px 44px rgba(29,29,29,.12);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(-8px);
+    transition:opacity .22s ease,transform .22s ease,visibility .22s ease;
+  }
+  nav.menu-open .nav-links{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0);
+  }
+  .nav-links a{
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    padding:12px 18px;
+    border-radius:18px;
+    font-size:17px;
+  }
+  .hero{
+    padding:54px 24px 0;
+  }
+  .hero-title{font-size:43px}
+  .hero-sub{font-size:17px}
+  .info-card{
+    flex-direction:column;
+    gap:18px;
+    padding:22px;
+    border-radius:28px;
+  }
+  .banner{
+    height:300px;
+  }
+  .body-wrap{
+    display:block;
+    padding:48px 24px 24px;
+  }
+  .sidebar,
+  .sidebar-menu{
+    display:none!important;
+  }
+  .section{
+    margin-bottom:96px;
+  }
+  .sec-title{font-size:38px}
+  .sec-text{font-size:17px}
+  .persona-grid,
+  .features-grid,
+  .ideation-grid,
+  .decisions-grid,
+  .learnings-grid{
+    grid-template-columns:1fr;
+  }
+  .pbl-hifi-group{
+    padding:22px;
+    border-radius:24px;
+  }
+  .pbl-screen-grid.three,
+  .pbl-screen-grid.two{
+    display:flex;
+    overflow-x:auto;
+    gap:16px;
+    padding-bottom:14px;
+    scroll-snap-type:x mandatory;
+  }
+  .pbl-screen-placeholder{
+    min-width:190px;
+    min-height:410px;
+    flex:0 0 190px;
+    scroll-snap-align:start;
+  }
+  .next-project-visible{
+    margin-top:72px!important;
+  }
+  .next-project-card{
+    max-width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    padding:18px;
+    border-radius:28px;
+  }
+  .next-project-img{
+    width:100%;
+    height:auto;
+    aspect-ratio:16/10;
+    flex:none;
+  }
+  footer{
+    padding:34px 24px 36px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal,
+  .hero .case-tags,
+  .hero .hero-title,
+  .hero .hero-sub,
+  .hero .info-card,
+  .banner img{
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav>
- <a class="logo logo-img-link" href="index.html" aria-label="Carmela Domingues home">
-  <img src="logo.portfolio.png" alt="Carmela Domingues" class="logo-img" />
+<a aria-label="Carmela Domingues home" class="logo logo-img-link" href="index.html">
+<img alt="Carmela Domingues" class="logo-img" src="logo.portfolio.png"/>
 </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#projects">Projects</a></li>
-    <li><a href="about.html">About Me</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+<button aria-expanded="false" aria-label="Open menu" class="mobile-menu-toggle" type="button"><span></span><span></span><span></span></button><ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#projects">Projects</a></li>
+<li><a href="about.html">About Me</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
 </nav>
-
 <!-- HERO -->
 <div class="hero">
-  <div class="case-tags">
-    <span class="case-tag">END-TO-END APP</span>
-    <span class="case-tag">UX/UI DESIGN</span>
-  </div>
-  <h1 class="hero-title">Team dynamics reimagined</h1>
-  <p class="hero-sub">A mobile app that brings creativity and innovation into organisations through gamified team dynamics and collaboration.</p>
-
-  <div class="info-card">
-    <div class="info-block">
-      <p class="info-label">ROLE</p>
-      <p class="info-value">UX/UI Designer in a master's project</p>
-    </div>
-    <div class="info-block">
-      <p class="info-label">SCOPE</p>
-      <p class="info-value">Design thinking, UX Research, desk research, ethnographic observation, personas, competitive analysis, wireframing, UI design, and branding</p>
-    </div>
-    <div class="info-block">
-      <p class="info-label">TOOLS</p>
-      <p class="info-value">Figma and Miro</p>
-    </div>
-    <div class="info-block">
-      <p class="info-label">TIMEFRAME</p>
-      <p class="info-value">Sep - Dec 2024</p>
-    </div>
-  </div>
+<div class="case-tags">
+<span class="case-tag">END-TO-END APP</span>
+<span class="case-tag">UX/UI DESIGN</span>
 </div>
-
+<h1 class="hero-title">Team dynamics reimagined</h1>
+<p class="hero-sub">A mobile app that brings creativity and innovation into organisations through gamified team dynamics and collaboration.</p>
+<div class="info-card">
+<div class="info-block">
+<p class="info-label">ROLE</p>
+<p class="info-value">UX/UI Designer in a master's project</p>
+</div>
+<div class="info-block">
+<p class="info-label">SCOPE</p>
+<p class="info-value">Design thinking, UX Research, desk research, ethnographic observation, personas, competitive analysis, wireframing, UI design, and branding</p>
+</div>
+<div class="info-block">
+<p class="info-label">TOOLS</p>
+<p class="info-value">Figma and Miro</p>
+</div>
+<div class="info-block">
+<p class="info-label">TIMEFRAME</p>
+<p class="info-value">Sep - Dec 2024</p>
+</div>
+</div>
+</div>
 <!-- BANNER -->
-  <div class="banner">
-    <img src="bannerpbl.jpg" alt="Your Next Event on Instagram" />
-  </div>
-  </div>
+<div class="banner">
+<img alt="Your Next Event on Instagram" src="bannerpbl.jpg"/>
 </div>
+
 
 <!-- BODY -->
 <div class="body-wrap">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <nav class="sidebar-menu">
-      <a href="#overview" class="sidebar-item active">Project Overview</a>
-      <a href="#research" class="sidebar-item">Research</a>
-      <a href="#personas" class="sidebar-item">Personas</a>
-      <a href="#problem" class="sidebar-item">Problem</a>
-      <a href="#exploration" class="sidebar-item">Exploration</a>
-      <a href="#concept" class="sidebar-item">Concept</a>
-      <a href="#design" class="sidebar-item">Ideation</a>
-      <a href="#learnings" class="sidebar-item">Learnings</a>
-    </nav>
-  </aside>
-
-  <!-- CONTENT -->
-  <main class="content">
-
-    <!-- PROJECT OVERVIEW -->
-    <div class="section" id="overview">
-      <div style="display:flex; gap:40px; align-items:flex-end;">
-        <div style="width:441px; flex-shrink:0;">
-          <p class="sec-label">Project Overview</p>
-          <p class="sec-title">An app that makes teamwork more rewarding</p>
-          <p class="sec-text">This project was developed in the context of an academic PBL (Project-Based Learning). The challenge was to create a tool that would help teams manage team building dynamics in a structured and motivating way.</p>
-          <p class="sec-text">The app solves a real problem: the lack of visibility and recognition in team activities. With a points system, achievements, and redeemable odysseys, every member has a reason to actively engage.</p>
-          <p class="sec-text">The central question that guided everything: <strong>How might we bring creativity and innovation into organisations through collaboration?</strong></p>
-        </div>
-        <div class="phone-wrap">
-          <div class="phone-bg"></div>
-          <div class="phone-device">
-            <!-- Replace with: <img src="screen-home.png" alt="Home screen" /> -->
-            <div style="width:100%;height:100%;background:#F7F7F5;display:flex;flex-direction:column;">
-              <div class="s-hdr" style="position:relative;">
-                <div class="s-time">22:45</div>
-                <div class="s-greet">Bem-vindo de volta 👋</div>
-                <div class="s-name">Olá, Michael!</div>
-                <div style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                  <span style="font-size:6px;font-weight:800;color:#FF6633;line-height:1;">150</span>
-                  <span style="font-size:3.5px;color:#999;">pts</span>
-                </div>
-              </div>
-              <div style="padding:0 5px 3px;">
-                <div class="s-stats">
-                  <div class="s-stat"><div class="s-sv">12</div><div class="s-sl">Dinâmicas</div></div>
-                  <div class="s-sdv"></div>
-                  <div class="s-stat"><div class="s-sv o">150</div><div class="s-sl">Pontos</div></div>
-                  <div class="s-sdv"></div>
-                  <div class="s-stat"><div class="s-sv">#3</div><div class="s-sl">Ranking</div></div>
-                </div>
-              </div>
-              <div class="s-body" style="flex:1;">
-                <div class="s-stitle">Dinâmicas Recentes</div>
-                <div class="s-card"><div class="s-cico">🏚️</div><div><div class="s-ctitle">Escape Room</div><div class="s-csub">Janeiro · 2h</div></div><div class="s-cpts">+50</div></div>
-                <div class="s-card"><div class="s-cico">🗺️</div><div><div class="s-ctitle">Treasure Hunt</div><div class="s-csub">Dezembro · 3h</div></div><div class="s-cpts">+40</div></div>
-                <div class="s-stitle" style="margin-top:6px;">Próximas Odisseias</div>
-                <div class="s-odrow">
-                  <div class="s-odc c1"><div class="s-otitle">Jantar</div></div>
-                  <div class="s-odc c2"><div class="s-otitle">Cinema</div></div>
-                  <div class="s-odc c3"><div class="s-otitle">Spa</div></div>
-                </div>
-              </div>
-              <div class="s-nav"><span class="s-ni act">⊞</span><span class="s-ni">⌕</span><span class="s-ni">✦</span><span class="s-ni">◉</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RESEARCH -->
-    <div class="section" id="research">
-      <p class="sec-label">Research</p>
-      <p class="sec-title">Listening before designing</p>
-      <p class="sec-text">Before designing anything, we mapped how creativity and collaboration actually work — or fail — inside real organisations. Three tracks, one clear pattern.</p>
-
-      <div class="highlight-block">
-        <p><strong>Desk Research </strong>We analysed articles, reports, and case studies across five themes — Innovation, Design, HR, Collaboration, and Creativity. The literature was consistent: organisations that foster collaboration and psychological safety outperform those that don't. One insight surfaced repeatedly: <em>innovation needs culture, not just tools.</em></p>
-      </div>
-
-      <img src="desk-pbl.png" style="width:100%;border-radius:20px;margin-bottom:40px;" />
-      <div style="width:100%;background:var(--accent);border-radius:20px;height:220px;display:flex;align-items:center;justify-content:center;margin-bottom:40px;">
-        <p style="color:var(--text-light);font-size:14px;font-weight:300;">Desk research clusters image</p>
-      </div>
-
-      <p class="sec-text"><strong style="font-weight:500;">Interviews </strong>We conducted in-depth interviews with 10 professionals across different industries and work models — hybrid, remote, and in-person. Most felt their ideas weren't heard, cross-department collaboration was rare, and recognition was almost non-existent.</p>
-
-      <div class="tags-wrap">
-        <div class="tags-row">
-          <span class="insight-tag">Ideas are rarely heard</span>
-          <span class="insight-tag">No cross-team collaboration</span>
-        </div>
-        <div class="tags-row">
-          <span class="insight-tag">Recognition is almost non-existent</span>
-          <span class="insight-tag">Hybrid breaks spontaneous exchange</span>
-        </div>
-        <div class="tags-row">
-          <span class="insight-tag">No collaborative tool for the whole org</span>
-          <span class="insight-tag">Motivation fades without connection</span>
-        </div>
-      </div>
-
-      <div class="highlight-block" style="margin-top:8px;">
-        <p><strong>Survey </strong>56 responses. Nearly 50/50 gender split, majority aged 18–25. <strong>84% considered cross-department collaboration necessary</strong> — yet half said their teams only met weekly, and communication frequency was consistently rated as low. Work model (hybrid, remote, in-person) was not seen as the barrier — culture was.</p>
-      </div>
-
-      <!-- replace with: <img src="survey-data.png" style="width:100%;border-radius:20px;margin-top:24px;" /> -->
-      <!-- SURVEY DATA CHARTS -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;">
-
-        <!-- Chart 1: Gender -->
-        <div style="background:var(--accent);border-radius:16px;padding:24px;">
-          <p style="font-size:13px;font-weight:500;margin-bottom:4px;">Gender</p>
-          <p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:12px;">56 responses</p>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#FF6633;display:inline-block;"></span>Female 44%</span>
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#f5c4b0;display:inline-block;"></span>Male 55%</span>
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#ddd;display:inline-block;"></span>Other 1%</span>
-          </div>
-          <div style="position:relative;height:160px;"><canvas id="chartGender" role="img" aria-label="Pie chart: Female 44%, Male 55%, Other 1%">Female 44%, Male 55%, Other 1%</canvas></div>
-        </div>
-
-        <!-- Chart 2: Age -->
-        <div style="background:var(--accent);border-radius:16px;padding:24px;">
-          <p style="font-size:13px;font-weight:500;margin-bottom:4px;">Age</p>
-          <p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:12px;">56 responses</p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#FF6633;display:inline-block;"></span>18–25: 70%</span>
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#f5c4b0;display:inline-block;"></span>26–35: 22%</span>
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#ddd;display:inline-block;"></span>36+: 8%</span>
-          </div>
-          <div style="position:relative;height:160px;"><canvas id="chartAge" role="img" aria-label="Pie chart: 18-25 70%, 26-35 22%, 36+ 8%">18–25: 70%, 26–35: 22%, 36+: 8%</canvas></div>
-        </div>
-
-        <!-- Chart 3: Work model -->
-        <div style="background:var(--accent);border-radius:16px;padding:24px;">
-          <p style="font-size:13px;font-weight:500;margin-bottom:4px;">Work model</p>
-          <p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:12px;">56 responses</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#FF6633;display:inline-block;"></span>Hybrid 62%</span>
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#f5c4b0;display:inline-block;"></span>In-person 26%</span>
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#ddd;display:inline-block;"></span>Remote 12%</span>
-          </div>
-          <div style="position:relative;height:160px;"><canvas id="chartWork" role="img" aria-label="Pie chart: Hybrid 62%, In-person 26%, Remote 12%">Hybrid 62%, In-person 26%, Remote 12%</canvas></div>
-        </div>
-
-        <!-- Chart 4: Cross-dept collaboration -->
-        <div style="background:var(--accent);border-radius:16px;padding:24px;">
-          <p style="font-size:13px;font-weight:500;margin-bottom:4px;">Is cross-dept collaboration necessary?</p>
-          <p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:12px;">56 responses</p>
-          <div style="display:flex;gap:8px;margin-bottom:8px;">
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#FF6633;display:inline-block;"></span>Yes 84%</span>
-            <span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#ddd;display:inline-block;"></span>No 16%</span>
-          </div>
-          <div style="position:relative;height:160px;"><canvas id="chartCollab" role="img" aria-label="Pie chart: Yes 84%, No 16%">Yes: 84%, No: 16%</canvas></div>
-        </div>
-
-        <!-- Chart 5: Meeting frequency (horizontal bar, full width) -->
-        <div style="background:var(--accent);border-radius:16px;padding:24px;grid-column:1/-1;">
-          <p style="font-size:13px;font-weight:500;margin-bottom:4px;">How often do teams meet between departments?</p>
-          <p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:16px;">56 responses</p>
-          <div style="position:relative;height:180px;"><canvas id="chartMeeting" role="img" aria-label="Bar chart showing meeting frequency between departments">Never: 4%, Rarely: 16%, Sometimes: 12%, Weekly: 50%, Daily: 18%</canvas></div>
-        </div>
-
-      </div>
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-      <script>
+<!-- SIDEBAR -->
+<aside aria-label="Case study sections" class="sidebar">
+<nav aria-label="Case study sections" class="sidebar-menu">
+<a class="sidebar-item active" href="#overview">Project Overview</a>
+<a class="sidebar-item" href="#research">Research</a>
+<a class="sidebar-item" href="#personas">Personas</a>
+<a class="sidebar-item" href="#problem">Problem</a>
+<a class="sidebar-item" href="#exploration">Exploration</a>
+<a class="sidebar-item" href="#concept">Concept</a>
+<a class="sidebar-item" href="#ideation">Ideation</a>
+<a class="sidebar-item" href="#learnings">Learnings</a>
+</nav>
+</aside>
+<!-- CONTENT -->
+<main class="content">
+<!-- PROJECT OVERVIEW -->
+<div class="section" id="overview">
+<div style="display:flex; gap:40px; align-items:flex-end;">
+<div style="width:441px; flex-shrink:0;">
+<p class="sec-label">Project Overview</p>
+<p class="sec-title">An app that makes teamwork more rewarding</p>
+<p class="sec-text">This project was developed in the context of an academic PBL (Project-Based Learning). The challenge was to create a tool that would help teams manage team building dynamics in a structured and motivating way.</p>
+<p class="sec-text">The app solves a real problem: the lack of visibility and recognition in team activities. With a points system, achievements, and redeemable odysseys, every member has a reason to actively engage.</p>
+<p class="sec-text">The central question that guided everything: <strong>How might we bring creativity and innovation into organisations through collaboration?</strong></p>
+</div>
+<div class="phone-wrap">
+<div class="phone-bg"></div>
+<div class="phone-device">
+<!-- Replace with: <img src="screen-home.png" alt="Home screen" /> -->
+<div style="width:100%;height:100%;background:#F7F7F5;display:flex;flex-direction:column;">
+<div class="s-hdr" style="position:relative;">
+<div class="s-time">22:45</div>
+<div class="s-greet">Bem-vindo de volta 👋</div>
+<div class="s-name">Olá, Michael!</div>
+<div style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+<span style="font-size:6px;font-weight:800;color:#FF6633;line-height:1;">150</span>
+<span style="font-size:3.5px;color:#999;">pts</span>
+</div>
+</div>
+<div style="padding:0 5px 3px;">
+<div class="s-stats">
+<div class="s-stat"><div class="s-sv">12</div><div class="s-sl">Dinâmicas</div></div>
+<div class="s-sdv"></div>
+<div class="s-stat"><div class="s-sv o">150</div><div class="s-sl">Pontos</div></div>
+<div class="s-sdv"></div>
+<div class="s-stat"><div class="s-sv">#3</div><div class="s-sl">Ranking</div></div>
+</div>
+</div>
+<div class="s-body" style="flex:1;">
+<div class="s-stitle">Dinâmicas Recentes</div>
+<div class="s-card"><div class="s-cico">🏚️</div><div><div class="s-ctitle">Escape Room</div><div class="s-csub">Janeiro · 2h</div></div><div class="s-cpts">+50</div></div>
+<div class="s-card"><div class="s-cico">🗺️</div><div><div class="s-ctitle">Treasure Hunt</div><div class="s-csub">Dezembro · 3h</div></div><div class="s-cpts">+40</div></div>
+<div class="s-stitle" style="margin-top:6px;">Próximas Odisseias</div>
+<div class="s-odrow">
+<div class="s-odc c1"><div class="s-otitle">Jantar</div></div>
+<div class="s-odc c2"><div class="s-otitle">Cinema</div></div>
+<div class="s-odc c3"><div class="s-otitle">Spa</div></div>
+</div>
+</div>
+<div class="s-nav"><span class="s-ni act">⊞</span><span class="s-ni">⌕</span><span class="s-ni">✦</span><span class="s-ni">◉</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RESEARCH -->
+<div class="section" id="research">
+<p class="sec-label">Research</p>
+<p class="sec-title">Listening before designing</p>
+<p class="sec-text">Before designing anything, we mapped how creativity and collaboration actually work — or fail — inside real organisations. Three tracks, one clear pattern.</p>
+<div class="highlight-block">
+<p><strong>Desk Research </strong>We analysed articles, reports, and case studies across five themes — Innovation, Design, HR, Collaboration, and Creativity. The literature was consistent: organisations that foster collaboration and psychological safety outperform those that don't. One insight surfaced repeatedly: <em>innovation needs culture, not just tools.</em></p>
+</div>
+<img src="desk-pbl.png" style="width:100%;border-radius:20px;margin-bottom:40px;"/>
+<div style="width:100%;background:var(--accent);border-radius:20px;height:220px;display:flex;align-items:center;justify-content:center;margin-bottom:40px;">
+<p style="color:var(--text-light);font-size:14px;font-weight:300;">Desk research clusters image</p>
+</div>
+<p class="sec-text"><strong style="font-weight:500;">Interviews </strong>We conducted in-depth interviews with 10 professionals across different industries and work models — hybrid, remote, and in-person. Most felt their ideas weren't heard, cross-department collaboration was rare, and recognition was almost non-existent.</p>
+<div class="tags-wrap">
+<div class="tags-row">
+<span class="insight-tag">Ideas are rarely heard</span>
+<span class="insight-tag">No cross-team collaboration</span>
+</div>
+<div class="tags-row">
+<span class="insight-tag">Recognition is almost non-existent</span>
+<span class="insight-tag">Hybrid breaks spontaneous exchange</span>
+</div>
+<div class="tags-row">
+<span class="insight-tag">No collaborative tool for the whole org</span>
+<span class="insight-tag">Motivation fades without connection</span>
+</div>
+</div>
+<div class="highlight-block" style="margin-top:8px;">
+<p><strong>Survey </strong>56 responses. Nearly 50/50 gender split, majority aged 18–25. <strong>84% considered cross-department collaboration necessary</strong> — yet half said their teams only met weekly, and communication frequency was consistently rated as low. Work model (hybrid, remote, in-person) was not seen as the barrier — culture was.</p>
+</div>
+<!-- replace with: <img src="survey-data.png" style="width:100%;border-radius:20px;margin-top:24px;" /> -->
+<!-- SURVEY DATA CHARTS -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;">
+<!-- Chart 1: Gender -->
+<div style="background:var(--accent);border-radius:16px;padding:24px;">
+<p style="font-size:13px;font-weight:500;margin-bottom:4px;">Gender</p>
+<p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:12px;">56 responses</p>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#FF6633;display:inline-block;"></span>Female 44%</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#f5c4b0;display:inline-block;"></span>Male 55%</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#ddd;display:inline-block;"></span>Other 1%</span>
+</div>
+<div style="position:relative;height:160px;"><canvas aria-label="Pie chart: Female 44%, Male 55%, Other 1%" id="chartGender" role="img">Female 44%, Male 55%, Other 1%</canvas></div>
+</div>
+<!-- Chart 2: Age -->
+<div style="background:var(--accent);border-radius:16px;padding:24px;">
+<p style="font-size:13px;font-weight:500;margin-bottom:4px;">Age</p>
+<p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:12px;">56 responses</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#FF6633;display:inline-block;"></span>18–25: 70%</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#f5c4b0;display:inline-block;"></span>26–35: 22%</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#ddd;display:inline-block;"></span>36+: 8%</span>
+</div>
+<div style="position:relative;height:160px;"><canvas aria-label="Pie chart: 18-25 70%, 26-35 22%, 36+ 8%" id="chartAge" role="img">18–25: 70%, 26–35: 22%, 36+: 8%</canvas></div>
+</div>
+<!-- Chart 3: Work model -->
+<div style="background:var(--accent);border-radius:16px;padding:24px;">
+<p style="font-size:13px;font-weight:500;margin-bottom:4px;">Work model</p>
+<p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:12px;">56 responses</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#FF6633;display:inline-block;"></span>Hybrid 62%</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#f5c4b0;display:inline-block;"></span>In-person 26%</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#ddd;display:inline-block;"></span>Remote 12%</span>
+</div>
+<div style="position:relative;height:160px;"><canvas aria-label="Pie chart: Hybrid 62%, In-person 26%, Remote 12%" id="chartWork" role="img">Hybrid 62%, In-person 26%, Remote 12%</canvas></div>
+</div>
+<!-- Chart 4: Cross-dept collaboration -->
+<div style="background:var(--accent);border-radius:16px;padding:24px;">
+<p style="font-size:13px;font-weight:500;margin-bottom:4px;">Is cross-dept collaboration necessary?</p>
+<p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:12px;">56 responses</p>
+<div style="display:flex;gap:8px;margin-bottom:8px;">
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#FF6633;display:inline-block;"></span>Yes 84%</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-light);"><span style="width:10px;height:10px;border-radius:2px;background:#ddd;display:inline-block;"></span>No 16%</span>
+</div>
+<div style="position:relative;height:160px;"><canvas aria-label="Pie chart: Yes 84%, No 16%" id="chartCollab" role="img">Yes: 84%, No: 16%</canvas></div>
+</div>
+<!-- Chart 5: Meeting frequency (horizontal bar, full width) -->
+<div style="background:var(--accent);border-radius:16px;padding:24px;grid-column:1/-1;">
+<p style="font-size:13px;font-weight:500;margin-bottom:4px;">How often do teams meet between departments?</p>
+<p style="font-size:11px;font-weight:300;color:var(--text-light);margin-bottom:16px;">56 responses</p>
+<div style="position:relative;height:180px;"><canvas aria-label="Bar chart showing meeting frequency between departments" id="chartMeeting" role="img">Never: 4%, Rarely: 16%, Sometimes: 12%, Weekly: 50%, Daily: 18%</canvas></div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
         const orangePalette = ['#FF6633','#f5c4b0','#e0e0e0'];
         const pieOpts = { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } } };
 
@@ -680,450 +1180,428 @@
           }
         });
       </script>
-    </div>
+</div>
+<!-- PERSONAS -->
+<div class="section" id="personas">
+<p class="sec-label">Personas</p>
+<p class="sec-title">Two people, one shared frustration</p>
+<p class="sec-text">Two personas were built to represent the range of people affected by this problem — different roles, different contexts, the same daily struggle with a disconnected workplace.</p>
+<!-- replace with: <img src="personas.png" style="width:100%;border-radius:20px;margin-top:24px;" /> -->
+<div class="persona-grid">
+<div class="persona-card">
+<!-- Replace src with your photo: <img src="miguel.jpg" alt="Miguel" /> -->
+<div class="persona-avatar">
+<svg height="72" viewbox="0 0 72 72" width="72" xmlns="http://www.w3.org/2000/svg">
+<circle cx="36" cy="28" fill="#f5c4b0" r="14"></circle>
+<ellipse cx="36" cy="62" fill="#f5c4b0" rx="22" ry="16"></ellipse>
+</svg>
+</div>
+<p class="persona-name">Miguel</p>
+<p class="persona-role">29 years old · UX/UI Designer · Porto</p>
+<p class="persona-quote">"Working from home gives me freedom I never had, but I also miss the energy you feel in the office."</p>
+<p class="persona-section-title">Context</p>
+<p class="persona-section-text">Works hybrid at a tech company. Values work-life balance. Misses the spontaneous exchanges that happen in the office and help with idea sharing.</p>
+<p class="persona-section-title">Pain</p>
+<p class="persona-section-text">Feels a lack of knowledge sharing within his team. Struggles to stay connected with colleagues when working remotely.</p>
+<p class="persona-section-title">Need</p>
+<p class="persona-section-text">Regular team meetups and a way to stay connected with what colleagues are doing and thinking.</p>
+</div>
+<div class="persona-card">
+<!-- Replace src with your photo: <img src="pedro.jpg" alt="Pedro" /> -->
+<div class="persona-avatar">
+<svg height="72" viewbox="0 0 72 72" width="72" xmlns="http://www.w3.org/2000/svg">
+<circle cx="36" cy="28" fill="#f5c4b0" r="14"></circle>
+<ellipse cx="36" cy="62" fill="#f5c4b0" rx="22" ry="16"></ellipse>
+</svg>
+</div>
+<p class="persona-name">Pedro</p>
+<p class="persona-role">37 years old · Interior Designer · Lisbon</p>
+<p class="persona-quote">"I love the freedom my company gives me with hybrid work — I can finally have a real work-life balance."</p>
+<p class="persona-section-title">Context</p>
+<p class="persona-section-text">Works hybrid at a small atelier for 7 years. Team of 3. When in the office, everyone works in the same room.</p>
+<p class="persona-section-title">Pain</p>
+<p class="persona-section-text">Doesn't know what other departments are working on. Collaboration is limited and mostly informal.</p>
+<p class="persona-section-title">Need</p>
+<p class="persona-section-text">More sharing among colleagues — projects, knowledge, and progress — because the lack of visibility limits creativity.</p>
+</div>
+</div>
+</div>
+<!-- PROBLEM -->
+<div class="section" id="problem">
+<p class="sec-label">Problem</p>
+<p class="sec-title">Too many ideas lost between floors</p>
+<p class="sec-text">The affinity diagram revealed a consistent pattern across all research tracks. People want to collaborate. They have ideas. But organisations lack the culture, tools, and moments to make it happen. Motivation fades. Communication breaks down. Creativity stays untapped.</p>
+<!-- replace with: <img src="affinity-diagram.png" style="width:100%;border-radius:20px;margin:24px 0;" /> -->
+<!-- AFFINITY DIAGRAM -->
+<div style="margin:32px 0;">
+<svg role="img" viewbox="0 0 680 444" width="100%">
+<title>Affinity diagram with 7 clusters from research</title>
+<desc>Seven thematic clusters identified from interviews and desk research: Leadership, Creativity, Demotivation, Values, Collaboration and Tools, Process Failures, and Communication.</desc>
+<defs>
+<marker id="aff-arrow" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</marker>
+</defs>
+<!-- Title label -->
+<text fill="rgba(79,78,78,0.67)" font-family="DM Sans, sans-serif" font-size="12" font-weight="400" text-anchor="middle" x="340" y="22">Affinity diagram — 7 clusters from research</text>
+<!-- Row 1: 4 clusters -->
+<!-- Leadership -->
+<rect fill="#FFF0EB" height="170" rx="10" stroke="#f5c4b0" stroke-width="0.5" width="148" x="20" y="38"></rect>
+<text fill="#c25a30" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" text-anchor="middle" x="94" y="60">Leadership</text>
+<rect fill="white" height="28" rx="6" stroke="#f5c4b0" stroke-width="0.5" width="124" x="32" y="72"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="94" y="91"><tspan x="94" dy="-3.5">No collaborative</tspan><tspan x="94" dy="11">leadership</tspan></text>
+<rect fill="white" height="28" rx="6" stroke="#f5c4b0" stroke-width="0.5" width="124" x="32" y="106"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="94" y="125">Unilateral decisions</text>
+<rect fill="white" height="28" rx="6" stroke="#f5c4b0" stroke-width="0.5" width="124" x="32" y="140"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="94" y="159">Ideas poorly received</text>
+<rect fill="white" height="28" rx="6" stroke="#f5c4b0" stroke-width="0.5" width="124" x="32" y="174"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="94" y="193">Change the boss</text>
+<!-- Creativity -->
+<rect fill="#FFF8E8" height="170" rx="10" stroke="#f5dfa0" stroke-width="0.5" width="148" x="180" y="38"></rect>
+<text fill="#c28a10" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" text-anchor="middle" x="254" y="60">Creativity</text>
+<rect fill="white" height="28" rx="6" stroke="#f5dfa0" stroke-width="0.5" width="124" x="192" y="72"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="254" y="91"><tspan x="254" dy="-3.5">Creativity is</tspan><tspan x="254" dy="11">very limited</tspan></text>
+<rect fill="white" height="28" rx="6" stroke="#f5dfa0" stroke-width="0.5" width="124" x="192" y="106"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="254" y="125">No creative references</text>
+<rect fill="white" height="28" rx="6" stroke="#f5dfa0" stroke-width="0.5" width="124" x="192" y="140"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="254" y="159">Fear of failure</text>
+<rect fill="white" height="28" rx="6" stroke="#f5dfa0" stroke-width="0.5" width="124" x="192" y="174"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="254" y="193">No space to experiment</text>
+<!-- Demotivation -->
+<rect fill="#fce8e8" height="170" rx="10" stroke="#f0b0b0" stroke-width="0.5" width="148" x="340" y="38"></rect>
+<text fill="#b03030" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" text-anchor="middle" x="414" y="60">Demotivation</text>
+<rect fill="white" height="28" rx="6" stroke="#f0b0b0" stroke-width="0.5" width="124" x="352" y="72"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="414" y="91">Burnout and monotony</text>
+<rect fill="white" height="28" rx="6" stroke="#f0b0b0" stroke-width="0.5" width="124" x="352" y="106"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="414" y="125">Lack of recognition</text>
+<rect fill="white" height="28" rx="6" stroke="#f0b0b0" stroke-width="0.5" width="124" x="352" y="140"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="414" y="159">Work feels undervalued</text>
+<rect fill="white" height="28" rx="6" stroke="#f0b0b0" stroke-width="0.5" width="124" x="352" y="174"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="414" y="193">No financial incentive</text>
+<!-- Values -->
+<rect fill="#eaf3de" height="170" rx="10" stroke="#b0d48a" stroke-width="0.5" width="160" x="500" y="38"></rect>
+<text fill="#3a6a10" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" text-anchor="middle" x="580" y="60">Values</text>
+<rect fill="white" height="28" rx="6" stroke="#b0d48a" stroke-width="0.5" width="136" x="512" y="72"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="580" y="91"><tspan x="580" dy="-3.5">Undefined company</tspan><tspan x="580" dy="11">values</tspan></text>
+<rect fill="white" height="28" rx="6" stroke="#b0d48a" stroke-width="0.5" width="136" x="512" y="106"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="580" y="125">No focus on people</text>
+<rect fill="white" height="28" rx="6" stroke="#b0d48a" stroke-width="0.5" width="136" x="512" y="140"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="580" y="159">No innovation culture</text>
+<rect fill="white" height="28" rx="6" stroke="#b0d48a" stroke-width="0.5" width="136" x="512" y="174"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="580" y="193">Misaligned priorities</text>
+<!-- Row 2: 3 clusters -->
+<!-- Collaboration & Tools -->
+<rect fill="#e8f4fb" height="170" rx="10" stroke="#90c8ec" stroke-width="0.5" width="200" x="20" y="228"></rect>
+<text fill="#185fa5" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" text-anchor="middle" x="120" y="250">Collaboration &amp; Tools</text>
+<rect fill="white" height="28" rx="6" stroke="#90c8ec" stroke-width="0.5" width="176" x="32" y="262"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="120" y="281">Very little idea debate</text>
+<rect fill="white" height="28" rx="6" stroke="#90c8ec" stroke-width="0.5" width="176" x="32" y="296"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="120" y="315"><tspan x="120" dy="-3.5">No company-wide</tspan><tspan x="120" dy="11">collab tool</tspan></text>
+<rect fill="white" height="28" rx="6" stroke="#90c8ec" stroke-width="0.5" width="176" x="32" y="330"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="120" y="349"><tspan x="120" dy="-3.5">Many communication</tspan><tspan x="120" dy="11">failures</tspan></text>
+<rect fill="white" height="28" rx="6" stroke="#90c8ec" stroke-width="0.5" width="176" x="32" y="364"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="120" y="383">Teams work in silos</text>
+<!-- Process Failures -->
+<rect fill="#eeedfe" height="170" rx="10" stroke="#c9b8e8" stroke-width="0.5" width="206" x="234" y="228"></rect>
+<text fill="#534ab7" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" text-anchor="middle" x="337" y="250">Process Failures</text>
+<rect fill="white" height="28" rx="6" stroke="#c9b8e8" stroke-width="0.5" width="182" x="246" y="262"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="337" y="281">Ineffective briefings</text>
+<rect fill="white" height="28" rx="6" stroke="#c9b8e8" stroke-width="0.5" width="182" x="246" y="296"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="337" y="315"><tspan x="337" dy="-3.5">Meetings with</tspan><tspan x="337" dy="11">no outcome</tspan></text>
+<rect fill="white" height="28" rx="6" stroke="#c9b8e8" stroke-width="0.5" width="182" x="246" y="330"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="337" y="349"><tspan x="337" dy="-3.5">Too many rules,</tspan><tspan x="337" dy="11">no agility</tspan></text>
+<rect fill="white" height="28" rx="6" stroke="#c9b8e8" stroke-width="0.5" width="182" x="246" y="364"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="337" y="383">Lack of feedback culture</text>
+<!-- Communication -->
+<rect fill="#FFF0EB" height="170" rx="10" stroke="#f5c4b0" stroke-width="1" width="206" x="454" y="228"></rect>
+<!-- Highlight border for main theme -->
+<rect fill="none" height="170" rx="10" stroke="#FF6633" stroke-width="1.5" width="206" x="454" y="228"></rect>
+<text fill="#FF6633" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" text-anchor="middle" x="557" y="250">Communication ★</text>
+<rect fill="white" height="28" rx="6" stroke="#f5c4b0" stroke-width="0.5" width="182" x="466" y="262"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="557" y="281">No cross-dept sharing</text>
+<rect fill="white" height="28" rx="6" stroke="#f5c4b0" stroke-width="0.5" width="182" x="466" y="296"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="557" y="315">Hybrid breaks info flow</text>
+<rect fill="white" height="28" rx="6" stroke="#f5c4b0" stroke-width="0.5" width="182" x="466" y="330"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="557" y="349">Projects not shared</text>
+<rect fill="white" height="28" rx="6" stroke="#f5c4b0" stroke-width="0.5" width="182" x="466" y="364"></rect>
+<text fill="#555" font-family="DM Sans, sans-serif" font-size="9.5" font-weight="300" text-anchor="middle" x="557" y="383">Knowledge stays in silos</text>
+<!-- Legend note -->
+<rect fill="#FF6633" height="14" rx="3" stroke="#FF6633" stroke-width="1" width="14" x="454" y="420"></rect>
+<text fill="rgba(79,78,78,0.67)" font-family="DM Sans, sans-serif" font-size="11" font-weight="300" x="474" y="432">Main theme selected for the project</text>
+</svg>
+</div>
+<div class="fivew-grid">
+<div class="fivew-item">
+<div class="fivew-q">WHO</div>
+<div class="fivew-a">Creative professionals in hybrid organisations who offer flexible work but lack the capacity to manage it collaboratively.</div>
+</div>
+<div class="fivew-item">
+<div class="fivew-q">WHAT</div>
+<div class="fivew-a">Lack of sharing within hybrid work — projects, communication, and knowledge between departments and people.</div>
+</div>
+<div class="fivew-item">
+<div class="fivew-q">WHERE</div>
+<div class="fivew-a">In creative agencies and companies with hybrid work models.</div>
+</div>
+<div class="fivew-item">
+<div class="fivew-q">WHEN</div>
+<div class="fivew-a">When there are no regular cross-team meetings, no collaborative tool for the whole organisation, and communication is not valued as part of culture.</div>
+</div>
+<div class="fivew-item">
+<div class="fivew-q">WHY</div>
+<div class="fivew-a">Because it affects team profitability, interferes with essential collaboration for growth, and reduces the stimulation of creativity and innovation.</div>
+</div>
+</div>
+</div>
+<!-- EXPLORATION -->
+<div class="section" id="exploration">
+<p class="sec-label">Exploration</p>
+<p class="sec-title">Every idea on the table</p>
+<p class="sec-text">We ran a broad ideation session — no filters, no limits. Solutions were then grouped into two clusters: tools and systems that improve collaboration, and activities that bring people together through shared experiences.</p>
+<p class="sec-text">The concept that united both: a <strong>gamified platform</strong> that turns team dynamics into rewarding experiences — combining participation, recognition, and fun to foster the culture change organisations need.</p>
+<div class="ideation-grid">
+<div class="ideation-card">
+<p class="ideation-card-title">Collaboration Solutions</p>
+<div class="ideation-tags">
+<span class="ideation-tag">Mandatory collaboration tools</span>
+<span class="ideation-tag">Weekly mentoring sessions</span>
+<span class="ideation-tag">Shared documentation platform</span>
+<span class="ideation-tag">Speed networking sessions</span>
+<span class="ideation-tag">Shared briefings</span>
+<span class="ideation-tag">Knowledge sharing at happy hour</span>
+<span class="ideation-tag">Newsletter quinzenal</span>
+<span class="ideation-tag">Design thinking rooms</span>
+<span class="ideation-tag">Idea debate rounds</span>
+<span class="ideation-tag">Sharing platform</span>
+</div>
+</div>
+<div class="ideation-card">
+<p class="ideation-card-title">Team Building Solutions</p>
+<div class="ideation-tags">
+<span class="ideation-tag">Escape Room</span>
+<span class="ideation-tag">Game Night</span>
+<span class="ideation-tag">Pizza Day</span>
+<span class="ideation-tag">Family Day</span>
+<span class="ideation-tag">Secret Friends</span>
+<span class="ideation-tag">Talent Show</span>
+<span class="ideation-tag">Sports tournaments</span>
+<span class="ideation-tag">Team lunches</span>
+<span class="ideation-tag">Themed happy hours</span>
+<span class="ideation-tag">Lego Building Day</span>
+<span class="ideation-tag">Creativity workshops</span>
+<span class="ideation-tag">Reward platform</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CONCEPT -->
+<div class="section" id="concept">
+<p class="sec-label">Concept</p>
+<p class="sec-title">Collaboration shouldn't feel like work</p>
+<p class="sec-text">The PBL App is a mobile platform built to make team dynamics visible, rewarding, and fun. Not a project management tool — a gamified experience designed around what actually motivates people: recognition, connection, and shared moments.</p>
+<div class="highlight-block">
+<p>The concept is simple: give teams a reason to participate, celebrate every contribution, and turn collaboration into something people look forward to — not another obligation on the calendar.</p>
+</div>
+<div class="features-grid">
+<div class="feature-card">
+<p class="feature-icon">⭐</p>
+<p class="feature-title">Points System</p>
+<p class="feature-text">Every completed dynamic earns points. Progress is visible and motivating, with a progression bar toward the next reward.</p>
+</div>
+<div class="feature-card">
+<p class="feature-icon">🗺️</p>
+<p class="feature-title">Odysseys</p>
+<p class="feature-text">Real rewards — dinner, cinema, spa — redeemable with accumulated points. Each odyssey has a clear cost and description.</p>
+</div>
+<div class="feature-card">
+<p class="feature-icon">🏆</p>
+<p class="feature-title">Leaderboard</p>
+<p class="feature-text">Visual team ranking with a top-3 podium. Each member can see their position and what it takes to climb.</p>
+</div>
+<div class="feature-card">
+<p class="feature-icon">📋</p>
+<p class="feature-title">Project Briefing</p>
+<p class="feature-text">Structured template for client projects — objectives, audience, phases. The team always knows where they stand.</p>
+</div>
+<div class="feature-card">
+<p class="feature-icon">📅</p>
+<p class="feature-title">Next Dynamic</p>
+<p class="feature-text">Full detail of the next activity — location, time, team, points to earn — with attendance confirmation and calendar add.</p>
+</div>
+<div class="feature-card">
+<p class="feature-icon">🎯</p>
+<p class="feature-title">Achievements</p>
+<p class="feature-text">Unlockable badges that recognise individual contributions: Top 3, Focus, Fast, Team. Visible on each member's profile.</p>
+</div>
+</div>
+</div>
+<!-- IDEATION -->
+<div class="section" id="ideation">
+<p class="sec-label">Ideation</p>
+<p class="sec-title">Screens redesigned for consistency</p>
+<p class="sec-text">Starting from an initial prototype, the redesign unified the visual language with a consistent coral primary colour, clear typographic hierarchy, and reusable components across all screens.</p>
+<!-- Screens showcase -->
 
-    <!-- PERSONAS -->
-    <div class="section" id="personas">
-      <p class="sec-label">Personas</p>
-      <p class="sec-title">Two people, one shared frustration</p>
-      <p class="sec-text">Two personas were built to represent the range of people affected by this problem — different roles, different contexts, the same daily struggle with a disconnected workplace.</p>
-
-      <!-- replace with: <img src="personas.png" style="width:100%;border-radius:20px;margin-top:24px;" /> -->
-      <div class="persona-grid">
-        <div class="persona-card">
-          <!-- Replace src with your photo: <img src="miguel.jpg" alt="Miguel" /> -->
-          <div class="persona-avatar">
-            <svg viewBox="0 0 72 72" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="36" cy="28" r="14" fill="#f5c4b0"/>
-              <ellipse cx="36" cy="62" rx="22" ry="16" fill="#f5c4b0"/>
-            </svg>
-          </div>
-          <p class="persona-name">Miguel</p>
-          <p class="persona-role">29 years old · UX/UI Designer · Porto</p>
-          <p class="persona-quote">"Working from home gives me freedom I never had, but I also miss the energy you feel in the office."</p>
-          <p class="persona-section-title">Context</p>
-          <p class="persona-section-text">Works hybrid at a tech company. Values work-life balance. Misses the spontaneous exchanges that happen in the office and help with idea sharing.</p>
-          <p class="persona-section-title">Pain</p>
-          <p class="persona-section-text">Feels a lack of knowledge sharing within his team. Struggles to stay connected with colleagues when working remotely.</p>
-          <p class="persona-section-title">Need</p>
-          <p class="persona-section-text">Regular team meetups and a way to stay connected with what colleagues are doing and thinking.</p>
-        </div>
-        <div class="persona-card">
-          <!-- Replace src with your photo: <img src="pedro.jpg" alt="Pedro" /> -->
-          <div class="persona-avatar">
-            <svg viewBox="0 0 72 72" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="36" cy="28" r="14" fill="#f5c4b0"/>
-              <ellipse cx="36" cy="62" rx="22" ry="16" fill="#f5c4b0"/>
-            </svg>
-          </div>
-          <p class="persona-name">Pedro</p>
-          <p class="persona-role">37 years old · Interior Designer · Lisbon</p>
-          <p class="persona-quote">"I love the freedom my company gives me with hybrid work — I can finally have a real work-life balance."</p>
-          <p class="persona-section-title">Context</p>
-          <p class="persona-section-text">Works hybrid at a small atelier for 7 years. Team of 3. When in the office, everyone works in the same room.</p>
-          <p class="persona-section-title">Pain</p>
-          <p class="persona-section-text">Doesn't know what other departments are working on. Collaboration is limited and mostly informal.</p>
-          <p class="persona-section-title">Need</p>
-          <p class="persona-section-text">More sharing among colleagues — projects, knowledge, and progress — because the lack of visibility limits creativity.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROBLEM -->
-    <div class="section" id="problem">
-      <p class="sec-label">Problem</p>
-      <p class="sec-title">Too many ideas lost between floors</p>
-      <p class="sec-text">The affinity diagram revealed a consistent pattern across all research tracks. People want to collaborate. They have ideas. But organisations lack the culture, tools, and moments to make it happen. Motivation fades. Communication breaks down. Creativity stays untapped.</p>
-
-      <!-- replace with: <img src="affinity-diagram.png" style="width:100%;border-radius:20px;margin:24px 0;" /> -->
-      <!-- AFFINITY DIAGRAM -->
-      <div style="margin:32px 0;">
-        <svg width="100%" viewBox="0 0 680 420" role="img">
-          <title>Affinity diagram with 7 clusters from research</title>
-          <desc>Seven thematic clusters identified from interviews and desk research: Leadership, Creativity, Demotivation, Values, Collaboration and Tools, Process Failures, and Communication.</desc>
-          <defs>
-            <marker id="aff-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </marker>
-          </defs>
-
-          <!-- Title label -->
-          <text font-family="DM Sans, sans-serif" font-size="12" font-weight="400" fill="rgba(79,78,78,0.67)" x="340" y="22" text-anchor="middle">Affinity diagram — 7 clusters from research</text>
-
-          <!-- Row 1: 4 clusters -->
-          <!-- Leadership -->
-          <rect x="20" y="38" width="148" height="170" rx="10" fill="#FFF0EB" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#c25a30" x="94" y="60" text-anchor="middle">Leadership</text>
-          <rect x="32" y="72" width="124" height="28" rx="6" fill="white" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="94" y="91" text-anchor="middle">No collaborative leadership</text>
-          <rect x="32" y="106" width="124" height="28" rx="6" fill="white" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="94" y="125" text-anchor="middle">Unilateral decisions</text>
-          <rect x="32" y="140" width="124" height="28" rx="6" fill="white" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="94" y="159" text-anchor="middle">Ideas poorly received</text>
-          <rect x="32" y="174" width="124" height="28" rx="6" fill="white" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="94" y="193" text-anchor="middle">Change the boss</text>
-
-          <!-- Creativity -->
-          <rect x="180" y="38" width="148" height="170" rx="10" fill="#FFF8E8" stroke="#f5dfa0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#c28a10" x="254" y="60" text-anchor="middle">Creativity</text>
-          <rect x="192" y="72" width="124" height="28" rx="6" fill="white" stroke="#f5dfa0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="254" y="91" text-anchor="middle">Creativity is very limited</text>
-          <rect x="192" y="106" width="124" height="28" rx="6" fill="white" stroke="#f5dfa0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="254" y="125" text-anchor="middle">No creative references</text>
-          <rect x="192" y="140" width="124" height="28" rx="6" fill="white" stroke="#f5dfa0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="254" y="159" text-anchor="middle">Fear of failure</text>
-          <rect x="192" y="174" width="124" height="28" rx="6" fill="white" stroke="#f5dfa0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="254" y="193" text-anchor="middle">No space to experiment</text>
-
-          <!-- Demotivation -->
-          <rect x="340" y="38" width="148" height="170" rx="10" fill="#fce8e8" stroke="#f0b0b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#b03030" x="414" y="60" text-anchor="middle">Demotivation</text>
-          <rect x="352" y="72" width="124" height="28" rx="6" fill="white" stroke="#f0b0b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="414" y="91" text-anchor="middle">Burnout and monotony</text>
-          <rect x="352" y="106" width="124" height="28" rx="6" fill="white" stroke="#f0b0b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="414" y="125" text-anchor="middle">Lack of recognition</text>
-          <rect x="352" y="140" width="124" height="28" rx="6" fill="white" stroke="#f0b0b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="414" y="159" text-anchor="middle">Work feels undervalued</text>
-          <rect x="352" y="174" width="124" height="28" rx="6" fill="white" stroke="#f0b0b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="414" y="193" text-anchor="middle">No financial incentive</text>
-
-          <!-- Values -->
-          <rect x="500" y="38" width="160" height="170" rx="10" fill="#eaf3de" stroke="#b0d48a" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#3a6a10" x="580" y="60" text-anchor="middle">Values</text>
-          <rect x="512" y="72" width="136" height="28" rx="6" fill="white" stroke="#b0d48a" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="580" y="91" text-anchor="middle">Undefined company values</text>
-          <rect x="512" y="106" width="136" height="28" rx="6" fill="white" stroke="#b0d48a" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="580" y="125" text-anchor="middle">No focus on people</text>
-          <rect x="512" y="140" width="136" height="28" rx="6" fill="white" stroke="#b0d48a" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="580" y="159" text-anchor="middle">No innovation culture</text>
-          <rect x="512" y="174" width="136" height="28" rx="6" fill="white" stroke="#b0d48a" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="580" y="193" text-anchor="middle">Misaligned priorities</text>
-
-          <!-- Row 2: 3 clusters -->
-          <!-- Collaboration & Tools -->
-          <rect x="20" y="228" width="200" height="170" rx="10" fill="#e8f4fb" stroke="#90c8ec" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#185fa5" x="120" y="250" text-anchor="middle">Collaboration &amp; Tools</text>
-          <rect x="32" y="262" width="176" height="28" rx="6" fill="white" stroke="#90c8ec" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="120" y="281" text-anchor="middle">Very little idea debate</text>
-          <rect x="32" y="296" width="176" height="28" rx="6" fill="white" stroke="#90c8ec" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="120" y="315" text-anchor="middle">No company-wide collab tool</text>
-          <rect x="32" y="330" width="176" height="28" rx="6" fill="white" stroke="#90c8ec" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="120" y="349" text-anchor="middle">Many communication failures</text>
-          <rect x="32" y="364" width="176" height="28" rx="6" fill="white" stroke="#90c8ec" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="120" y="383" text-anchor="middle">Teams work in silos</text>
-
-          <!-- Process Failures -->
-          <rect x="234" y="228" width="206" height="170" rx="10" fill="#eeedfe" stroke="#c9b8e8" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#534ab7" x="337" y="250" text-anchor="middle">Process Failures</text>
-          <rect x="246" y="262" width="182" height="28" rx="6" fill="white" stroke="#c9b8e8" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="337" y="281" text-anchor="middle">Ineffective briefings</text>
-          <rect x="246" y="296" width="182" height="28" rx="6" fill="white" stroke="#c9b8e8" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="337" y="315" text-anchor="middle">Meetings with no outcome</text>
-          <rect x="246" y="330" width="182" height="28" rx="6" fill="white" stroke="#c9b8e8" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="337" y="349" text-anchor="middle">Too many rules, no agility</text>
-          <rect x="246" y="364" width="182" height="28" rx="6" fill="white" stroke="#c9b8e8" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="337" y="383" text-anchor="middle">Lack of feedback culture</text>
-
-          <!-- Communication -->
-          <rect x="454" y="228" width="206" height="170" rx="10" fill="#FFF0EB" stroke="#f5c4b0" stroke-width="1"/>
-          <!-- Highlight border for main theme -->
-          <rect x="454" y="228" width="206" height="170" rx="10" fill="none" stroke="#FF6633" stroke-width="1.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#FF6633" x="557" y="250" text-anchor="middle">Communication ★</text>
-          <rect x="466" y="262" width="182" height="28" rx="6" fill="white" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="557" y="281" text-anchor="middle">No cross-dept sharing</text>
-          <rect x="466" y="296" width="182" height="28" rx="6" fill="white" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="557" y="315" text-anchor="middle">Hybrid breaks info flow</text>
-          <rect x="466" y="330" width="182" height="28" rx="6" fill="white" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="557" y="349" text-anchor="middle">Projects not shared</text>
-          <rect x="466" y="364" width="182" height="28" rx="6" fill="white" stroke="#f5c4b0" stroke-width="0.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="#555" x="557" y="383" text-anchor="middle">Knowledge stays in silos</text>
-
-          <!-- Legend note -->
-          <rect x="454" y="400" width="14" height="14" rx="3" fill="none" stroke="#FF6633" stroke-width="1.5"/>
-          <text font-family="DM Sans, sans-serif" font-size="11" font-weight="300" fill="rgba(79,78,78,0.67)" x="474" y="412">Main theme selected for the project</text>
-        </svg>
-      </div>
-
-      <div class="fivew-grid">
-        <div class="fivew-item">
-          <div class="fivew-q">WHO</div>
-          <div class="fivew-a">Creative professionals in hybrid organisations who offer flexible work but lack the capacity to manage it collaboratively.</div>
-        </div>
-        <div class="fivew-item">
-          <div class="fivew-q">WHAT</div>
-          <div class="fivew-a">Lack of sharing within hybrid work — projects, communication, and knowledge between departments and people.</div>
-        </div>
-        <div class="fivew-item">
-          <div class="fivew-q">WHERE</div>
-          <div class="fivew-a">In creative agencies and companies with hybrid work models.</div>
-        </div>
-        <div class="fivew-item">
-          <div class="fivew-q">WHEN</div>
-          <div class="fivew-a">When there are no regular cross-team meetings, no collaborative tool for the whole organisation, and communication is not valued as part of culture.</div>
-        </div>
-        <div class="fivew-item">
-          <div class="fivew-q">WHY</div>
-          <div class="fivew-a">Because it affects team profitability, interferes with essential collaboration for growth, and reduces the stimulation of creativity and innovation.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- EXPLORATION -->
-    <div class="section" id="exploration">
-      <p class="sec-label">Exploration</p>
-      <p class="sec-title">Every idea on the table</p>
-      <p class="sec-text">We ran a broad ideation session — no filters, no limits. Solutions were then grouped into two clusters: tools and systems that improve collaboration, and activities that bring people together through shared experiences.</p>
-      <p class="sec-text">The concept that united both: a <strong>gamified platform</strong> that turns team dynamics into rewarding experiences — combining participation, recognition, and fun to foster the culture change organisations need.</p>
-
-      <div class="ideation-grid">
-        <div class="ideation-card">
-          <p class="ideation-card-title">Collaboration Solutions</p>
-          <div class="ideation-tags">
-            <span class="ideation-tag">Mandatory collaboration tools</span>
-            <span class="ideation-tag">Weekly mentoring sessions</span>
-            <span class="ideation-tag">Shared documentation platform</span>
-            <span class="ideation-tag">Speed networking sessions</span>
-            <span class="ideation-tag">Shared briefings</span>
-            <span class="ideation-tag">Knowledge sharing at happy hour</span>
-            <span class="ideation-tag">Newsletter quinzenal</span>
-            <span class="ideation-tag">Design thinking rooms</span>
-            <span class="ideation-tag">Idea debate rounds</span>
-            <span class="ideation-tag">Sharing platform</span>
-          </div>
-        </div>
-        <div class="ideation-card">
-          <p class="ideation-card-title">Team Building Solutions</p>
-          <div class="ideation-tags">
-            <span class="ideation-tag">Escape Room</span>
-            <span class="ideation-tag">Game Night</span>
-            <span class="ideation-tag">Pizza Day</span>
-            <span class="ideation-tag">Family Day</span>
-            <span class="ideation-tag">Secret Friends</span>
-            <span class="ideation-tag">Talent Show</span>
-            <span class="ideation-tag">Sports tournaments</span>
-            <span class="ideation-tag">Team lunches</span>
-            <span class="ideation-tag">Themed happy hours</span>
-            <span class="ideation-tag">Lego Building Day</span>
-            <span class="ideation-tag">Creativity workshops</span>
-            <span class="ideation-tag">Reward platform</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONCEPT -->
-    <div class="section" id="concept">
-      <p class="sec-label">Concept</p>
-      <p class="sec-title">Collaboration shouldn't feel like work</p>
-      <p class="sec-text">The PBL App is a mobile platform built to make team dynamics visible, rewarding, and fun. Not a project management tool — a gamified experience designed around what actually motivates people: recognition, connection, and shared moments.</p>
-
-      <div class="highlight-block">
-        <p>The concept is simple: give teams a reason to participate, celebrate every contribution, and turn collaboration into something people look forward to — not another obligation on the calendar.</p>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <p class="feature-icon">⭐</p>
-          <p class="feature-title">Points System</p>
-          <p class="feature-text">Every completed dynamic earns points. Progress is visible and motivating, with a progression bar toward the next reward.</p>
-        </div>
-        <div class="feature-card">
-          <p class="feature-icon">🗺️</p>
-          <p class="feature-title">Odysseys</p>
-          <p class="feature-text">Real rewards — dinner, cinema, spa — redeemable with accumulated points. Each odyssey has a clear cost and description.</p>
-        </div>
-        <div class="feature-card">
-          <p class="feature-icon">🏆</p>
-          <p class="feature-title">Leaderboard</p>
-          <p class="feature-text">Visual team ranking with a top-3 podium. Each member can see their position and what it takes to climb.</p>
-        </div>
-        <div class="feature-card">
-          <p class="feature-icon">📋</p>
-          <p class="feature-title">Project Briefing</p>
-          <p class="feature-text">Structured template for client projects — objectives, audience, phases. The team always knows where they stand.</p>
-        </div>
-        <div class="feature-card">
-          <p class="feature-icon">📅</p>
-          <p class="feature-title">Next Dynamic</p>
-          <p class="feature-text">Full detail of the next activity — location, time, team, points to earn — with attendance confirmation and calendar add.</p>
-        </div>
-        <div class="feature-card">
-          <p class="feature-icon">🎯</p>
-          <p class="feature-title">Achievements</p>
-          <p class="feature-text">Unlockable badges that recognise individual contributions: Top 3, Focus, Fast, Team. Visible on each member's profile.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- IDEATION -->
-    <div class="section" id="ideation">
-      <p class="sec-label">Ideation</p>
-      <p class="sec-title">Screens redesigned for consistency</p>
-      <p class="sec-text">Starting from an initial prototype, the redesign unified the visual language with a consistent coral primary colour, clear typographic hierarchy, and reusable components across all screens.</p>
-
-      <!-- Screens showcase -->
-      <div class="screens-row">
-        <div class="screen-item">
-          <!-- Replace with: <div class="screen-img"><img src="screen-home.png" alt="Home" /></div> -->
-          <div class="screen-img" style="background:var(--accent);display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:13px;color:var(--text-light);font-weight:300;">Home</span>
-          </div>
-          <p class="screen-caption">Home</p>
-        </div>
-        <div class="screen-item">
-          <div class="screen-img" style="background:var(--accent);display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:13px;color:var(--text-light);font-weight:300;">Profile</span>
-          </div>
-          <p class="screen-caption">Profile</p>
-        </div>
-        <div class="screen-item">
-          <div class="screen-img" style="background:var(--accent);display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:13px;color:var(--text-light);font-weight:300;">Odysseys</span>
-          </div>
-          <p class="screen-caption">Odysseys</p>
-        </div>
-        <div class="screen-item">
-          <div class="screen-img" style="background:var(--accent);display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:13px;color:var(--text-light);font-weight:300;">Leaderboard</span>
-          </div>
-          <p class="screen-caption">Leaderboard</p>
-        </div>
-        <div class="screen-item">
-          <div class="screen-img" style="background:var(--accent);display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:13px;color:var(--text-light);font-weight:300;">Next Dynamic</span>
-          </div>
-          <p class="screen-caption">Next Dynamic</p>
-        </div>
-      </div>
-
-      <!-- Design decisions -->
-      <p class="sec-title" style="font-size:24px; margin-top:56px;">Key design decisions</p>
-
-      <div class="decisions-grid">
-        <div class="decision-card">
-          <p class="decision-title">Consistent primary colour</p>
-          <p class="decision-text">The original prototype mixed cyan blue, orange, and white without clear hierarchy. The redesign unified everything around coral #FF6633 — warmer, more energetic, and aligned with the team building spirit.</p>
-          <div class="decision-pills">
-            <span class="d-pill before">Blue + Orange + White</span>
-            <span class="d-arrow">→</span>
-            <span class="d-pill after">Coral #FF6633</span>
-          </div>
-        </div>
-        <div class="decision-card">
-          <p class="decision-title">Header with context</p>
-          <p class="decision-text">The original header was just a name and avatar. The new header includes real-time stats (dynamics, points, ranking) giving users immediate context about their standing in the team.</p>
-          <div class="decision-pills">
-            <span class="d-pill before">Name + Avatar</span>
-            <span class="d-arrow">→</span>
-            <span class="d-pill after">Stats + Context</span>
-          </div>
-        </div>
-        <div class="decision-card">
-          <p class="decision-title">Profile filled with meaning</p>
-          <p class="decision-text">The original profile had a lot of empty space and only a points balance. The redesign added achievement badges, a progression bar, and a clear CTA — turning the profile into a source of motivation.</p>
-          <div class="decision-pills">
-            <span class="d-pill before">Isolated balance</span>
-            <span class="d-arrow">→</span>
-            <span class="d-pill after">Achievements + Progress</span>
-          </div>
-        </div>
-        <div class="decision-card">
-          <p class="decision-title">Odysseys in a grid</p>
-          <p class="decision-text">Odyssey cards were horizontal and cut off information. The new 2×3 grid shows more content without scrolling, with category filters and clear CTAs on each card.</p>
-          <div class="decision-pills">
-            <span class="d-pill before">Horizontal scroll</span>
-            <span class="d-arrow">→</span>
-            <span class="d-pill after">Grid with filters</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LEARNINGS -->
-    <div class="section" id="learnings">
-      <div style="display:flex; gap:40px; align-items:flex-start;">
-        <div style="flex:1;">
-          <p class="sec-label">Learnings</p>
-          <p class="sec-title">What this project taught us</p>
-          <p class="sec-text">This was one of the most complete academic projects of the year, combining real research, strategic thinking, and end-to-end product design. The process revealed how deeply culture shapes design decisions.</p>
-          <p class="sec-text" style="margin-top:16px;">Beyond the app itself, the project confirmed something more important: solving collaboration problems is not a tool problem — it's a human and cultural one.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:40px;">
-        <p class="sec-title" style="font-size:24px;">A few key lessons stayed:</p>
-        <div class="learnings-grid" style="margin-top:24px;">
-          <div class="learning-card">
-            <p><strong>Research shapes everything</strong><br>The depth of the research defined every design decision — from the points system to the briefing template. Without the interviews and survey, we would have built the wrong thing.</p>
-          </div>
-          <div class="learning-card">
-            <p><strong>Culture over tools</strong><br>People don't disengage because they lack software. They disengage because they don't feel seen. The app needed to address recognition first, features second.</p>
-          </div>
-          <div class="learning-card">
-            <p><strong>Consistency is not optional</strong><br>A well-defined design system from the start saves time and makes the app recognisable. Colour, spacing, and typography must be decided before designing any screen.</p>
-          </div>
-          <div class="learning-card">
-            <p><strong>New flows emerge from use</strong><br>The Leaderboard and Next Dynamic screens weren't in the original prototype — they emerged from understanding how teams would actually use the app day to day.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <!-- NEXT PROJECT -->
-<section class="next-project">
-  <div class="next-project-card">
-    <div class="next-project-img">
-      <img src="graphic-design.jpg" alt="Instagram Events preview">
-    </div>
-
-    <div class="next-project-info">
-      <h2 class="next-project-title">Graphic Design</h2>
-
-      <p class="next-project-desc">
-       A collection of graphic design work across tech companies and volunteering, from social media to branding and event materials.
-      </p>
-
-      <a class="next-link" href="pbl.html">
-        <span>next project</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-          <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
-  </div>
+<div aria-labelledby="pblHifiTitle" class="pbl-hifi-showcase">
+<div class="pbl-hifi-intro">
+<p class="hifi-kicker">Final UI</p>
+<h3 class="hifi-title" id="pblHifiTitle">A gamified experience built around participation and recognition</h3>
+<p class="hifi-copy">The final interface is organised around the moments that keep teams engaged: understanding progress, joining dynamics, earning rewards, and seeing individual contributions recognised.</p>
+</div>
+<section class="pbl-hifi-group">
+<div class="pbl-hifi-copy">
+<span class="hifi-step">01 · Overview</span>
+<h4>Give every team member a clear sense of progress</h4>
+<p>The home experience brings recent dynamics, points, ranking, and upcoming rewards into one immediate view.</p>
+</div>
+<div class="pbl-screen-grid three">
+<div class="pbl-screen-placeholder"><span>01</span><strong>Home</strong><small>Replace with: pbl-hifi-home.png</small></div>
+<div class="pbl-screen-placeholder"><span>02</span><strong>Profile</strong><small>Replace with: pbl-hifi-profile.png</small></div>
+<div class="pbl-screen-placeholder"><span>03</span><strong>Achievements</strong><small>Replace with: pbl-hifi-achievements.png</small></div>
+</div>
 </section>
-
-</main>
+<section class="pbl-hifi-group reverse">
+<div class="pbl-hifi-copy">
+<span class="hifi-step">02 · Participate</span>
+<h4>Make team dynamics easy to discover and join</h4>
+<p>Upcoming activities show the essential information at a glance, helping people understand what is happening, when, and what they can earn.</p>
+</div>
+<div class="pbl-screen-grid three">
+<div class="pbl-screen-placeholder"><span>04</span><strong>Dynamics</strong><small>Replace with: pbl-hifi-dynamics.png</small></div>
+<div class="pbl-screen-placeholder"><span>05</span><strong>Dynamic Details</strong><small>Replace with: pbl-hifi-dynamic-detail.png</small></div>
+<div class="pbl-screen-placeholder"><span>06</span><strong>Calendar</strong><small>Replace with: pbl-hifi-calendar.png</small></div>
+</div>
+</section>
+<section class="pbl-hifi-group">
+<div class="pbl-hifi-copy">
+<span class="hifi-step">03 · Reward</span>
+<h4>Turn participation into something tangible</h4>
+<p>Odysseys translate earned points into meaningful shared experiences, while the leaderboard keeps recognition visible.</p>
+</div>
+<div class="pbl-screen-grid three">
+<div class="pbl-screen-placeholder"><span>07</span><strong>Odysseys</strong><small>Replace with: pbl-hifi-odysseys.png</small></div>
+<div class="pbl-screen-placeholder"><span>08</span><strong>Reward Details</strong><small>Replace with: pbl-hifi-reward.png</small></div>
+<div class="pbl-screen-placeholder"><span>09</span><strong>Leaderboard</strong><small>Replace with: pbl-hifi-leaderboard.png</small></div>
+</div>
+</section>
+<section class="pbl-hifi-group reverse">
+<div class="pbl-hifi-copy">
+<span class="hifi-step">04 · Collaborate</span>
+<h4>Keep projects and team contributions visible</h4>
+<p>Structured briefings and shared progress create a common reference point across departments and reduce the information gaps found in research.</p>
+</div>
+<div class="pbl-screen-grid two">
+<div class="pbl-screen-placeholder"><span>10</span><strong>Project Briefing</strong><small>Replace with: pbl-hifi-briefing.png</small></div>
+<div class="pbl-screen-placeholder"><span>11</span><strong>Team Progress</strong><small>Replace with: pbl-hifi-progress.png</small></div>
+</div>
+</section>
 </div>
 
+<!-- Design decisions -->
+<p class="sec-title" style="font-size:24px; margin-top:56px;">Key design decisions</p>
+<div class="decisions-grid">
+<div class="decision-card">
+<p class="decision-title">Consistent primary colour</p>
+<p class="decision-text">The original prototype mixed cyan blue, orange, and white without clear hierarchy. The redesign unified everything around coral #FF6633 — warmer, more energetic, and aligned with the team building spirit.</p>
+<div class="decision-pills">
+<span class="d-pill before">Blue + Orange + White</span>
+<span class="d-arrow">→</span>
+<span class="d-pill after">Coral #FF6633</span>
+</div>
+</div>
+<div class="decision-card">
+<p class="decision-title">Header with context</p>
+<p class="decision-text">The original header was just a name and avatar. The new header includes real-time stats (dynamics, points, ranking) giving users immediate context about their standing in the team.</p>
+<div class="decision-pills">
+<span class="d-pill before">Name + Avatar</span>
+<span class="d-arrow">→</span>
+<span class="d-pill after">Stats + Context</span>
+</div>
+</div>
+<div class="decision-card">
+<p class="decision-title">Profile filled with meaning</p>
+<p class="decision-text">The original profile had a lot of empty space and only a points balance. The redesign added achievement badges, a progression bar, and a clear CTA — turning the profile into a source of motivation.</p>
+<div class="decision-pills">
+<span class="d-pill before">Isolated balance</span>
+<span class="d-arrow">→</span>
+<span class="d-pill after">Achievements + Progress</span>
+</div>
+</div>
+<div class="decision-card">
+<p class="decision-title">Odysseys in a grid</p>
+<p class="decision-text">Odyssey cards were horizontal and cut off information. The new 2×3 grid shows more content without scrolling, with category filters and clear CTAs on each card.</p>
+<div class="decision-pills">
+<span class="d-pill before">Horizontal scroll</span>
+<span class="d-arrow">→</span>
+<span class="d-pill after">Grid with filters</span>
+</div>
+</div>
+</div>
+</div>
+<!-- LEARNINGS -->
+<div class="section" id="learnings">
+<div class="learnings-intro">
+<p class="sec-label">Learnings</p>
+<h2 class="sec-title">What this project taught us</h2>
+<p class="sec-text">This was one of the most complete academic projects of the year, combining real research, strategic thinking, and end-to-end product design. The process revealed how deeply culture shapes design decisions.</p>
+<p class="sec-text">Beyond the app itself, the project confirmed something more important: solving collaboration problems is not a tool problem — it is a human and cultural one.</p>
+</div>
+<div class="learnings-lessons">
+<p class="sec-title learnings-subtitle">A few key lessons stayed:</p>
+<div class="learnings-grid">
+<div class="learning-card"><p><strong>Research shapes everything</strong><br/>The depth of the research defined every design decision, from the points system to the briefing template.</p></div>
+<div class="learning-card"><p><strong>Culture over tools</strong><br/>People do not disengage because they lack software. They disengage because they do not feel seen.</p></div>
+<div class="learning-card"><p><strong>Consistency is not optional</strong><br/>A well-defined design system saves time and makes the experience recognisable across every screen.</p></div>
+<div class="learning-card"><p><strong>New flows emerge from use</strong><br/>The Leaderboard and Next Dynamic screens emerged from understanding how teams would actually use the product.</p></div>
+</div>
+</div>
+</div>
+<!-- NEXT PROJECT -->
+<section class="next-project next-project-visible">
+<div class="next-project-card">
+<div class="next-project-img">
+<img alt="Graphic Design project preview" src="graphic-design.jpg"/>
+</div>
+<div class="next-project-info">
+<h2 class="next-project-title">Graphic Design</h2>
+<p class="next-project-desc">
+       A collection of graphic design work across tech companies and volunteering, from social media to branding and event materials.
+      </p>
+<a class="next-link" href="graphic-design.html">
+<span>next project</span>
+<svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
+<path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+</div>
+</section>
+</main>
+</div>
 <!-- FOOTER -->
 <footer>
-  <div class="footer-line">
-    <p>© all rights reserved to carmela domingues</p>
-
-    <div class="footer-links">
-      <a href="https://www.linkedin.com/in/carmeladomingues/" target="_blank" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-          <circle cx="4" cy="4" r="2"/>
-        </svg>
-      </a>
-
-      <a href="mailto:carmeladomingues@outlook.com" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-      </a>
-    </div>
-  </div>
+<div class="footer-line">
+<p>© 2026 Carmela Domingues. All rights reserved.</p>
+<div class="footer-links">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/in/carmeladomingues/" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path>
+<circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+<a aria-label="Email" href="mailto:carmeladomingues@outlook.com">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+</svg>
+</a>
+</div>
+</div>
 </footer>
-
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
-    <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+<svg fill="none" stroke="#1d1d1d" stroke-width="1.5" viewbox="0 0 24 24">
+<path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
 </button>
-
 <script>
   // Back to top
   const backToTop = document.querySelector('.back-to-top');
@@ -1200,7 +1678,59 @@
     });
   });
   window.addEventListener('load', () => setActiveSidebarItem(getCurrentSectionId()));
-</script>
 
+
+// Mobile navigation
+const mainNav = document.querySelector('body > nav');
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+
+if (mobileMenuToggle && mainNav) {
+  mobileMenuToggle.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('menu-open');
+    mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+    mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('menu-open');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+    });
+  });
+}
+
+// Smooth section reveals
+const revealTargets = [
+  ...document.querySelectorAll('.section'),
+  ...document.querySelectorAll('.persona-card'),
+  ...document.querySelectorAll('.fivew-item'),
+  ...document.querySelectorAll('.ideation-card'),
+  ...document.querySelectorAll('.feature-card'),
+  ...document.querySelectorAll('.decision-card'),
+  ...document.querySelectorAll('.learning-card'),
+  ...document.querySelectorAll('.pbl-hifi-group')
+];
+
+revealTargets.forEach(el => el.classList.add('reveal'));
+
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  revealTargets.forEach(el => revealObserver.observe(el));
+} else {
+  revealTargets.forEach(el => el.classList.add('is-visible'));
+}
+</script>
 </body>
 </html>
