@@ -2040,6 +2040,674 @@ body > nav.scrolled {
   }
 }
 
+/* =========================================================
+   THESIS — FINAL RESPONSIVE SYSTEM
+   ========================================================= */
+.info-card {
+  padding-block: 18px !important;
+  margin-bottom: 48px !important;
+}
+
+.research-disclosure {
+  margin-bottom: 76px !important;
+}
+
+.back-to-top {
+  width: 52px;
+  height: 52px;
+  background: transparent;
+  border: 1.2px solid var(--text);
+  box-shadow: none;
+  transition: opacity .3s ease, background .2s ease, border-color .2s ease;
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+  transform: rotate(180deg);
+}
+
+.back-to-top:hover {
+  background: var(--text);
+  border-color: var(--text);
+}
+
+.back-to-top:hover svg path {
+  stroke: #fff;
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    width: 100%;
+    padding: 42px 24px 0;
+  }
+
+  .hero-title {
+    max-width: 100%;
+    font-size: clamp(36px, 11vw, 43px);
+    line-height: 1.04;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .info-card {
+    gap: 13px !important;
+    padding: 16px 22px !important;
+    margin-bottom: 34px !important;
+    border-radius: 26px !important;
+  }
+
+  .info-block {
+    gap: 2px !important;
+  }
+
+  .info-label {
+    font-size: 12px !important;
+  }
+
+  .info-value {
+    overflow-wrap: anywhere;
+  }
+
+  .banner {
+    min-height: 220px;
+  }
+
+  .body-wrap {
+    width: 100%;
+    padding: 54px 24px 72px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  section,
+  .section,
+  .case-section,
+  .content-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .section {
+    width: 100%;
+    margin-bottom: 82px;
+  }
+
+  .sec-title {
+    max-width: 100%;
+    font-size: clamp(31px, 9.5vw, 38px);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  .sec-text,
+  .research-text,
+  .learning-text {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .overview-card,
+  .insight-block,
+  .jd-card,
+  .persona-card,
+  .research-disclosure-card,
+  .editorial-break {
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+  }
+
+  .jd-row,
+  .criteria-item {
+    min-width: 0;
+  }
+
+  .jd-row {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .jd-row-label {
+    width: auto;
+  }
+
+  .density-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+
+  .density-label {
+    width: 100%;
+  }
+
+  .density-track {
+    min-width: 120px;
+  }
+
+  .density-examples {
+    flex-basis: 100%;
+  }
+
+  .dv-type-pills {
+    flex-wrap: nowrap;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding-right: 24px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .dv-type-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dv-pill {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .outcomes-grid,
+  .phase-strip,
+  .dv-phase-cards,
+  .typology-grid,
+  .persona-mini-grid,
+  .compare-grid,
+  .req-grid,
+  .principle-grid,
+  .features-grid,
+  .quant-row,
+  .thesis-learnings-layout .learnings-grid {
+    display: flex !important;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding-right: 24px;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .outcomes-grid::-webkit-scrollbar,
+  .phase-strip::-webkit-scrollbar,
+  .dv-phase-cards::-webkit-scrollbar,
+  .typology-grid::-webkit-scrollbar,
+  .persona-mini-grid::-webkit-scrollbar,
+  .compare-grid::-webkit-scrollbar,
+  .req-grid::-webkit-scrollbar,
+  .principle-grid::-webkit-scrollbar,
+  .features-grid::-webkit-scrollbar,
+  .quant-row::-webkit-scrollbar,
+  .thesis-learnings-layout .learnings-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .outcomes-grid > *,
+  .phase-strip > *,
+  .dv-phase-cards > *,
+  .typology-grid > *,
+  .persona-mini-grid > *,
+  .compare-grid > *,
+  .req-grid > *,
+  .principle-grid > *,
+  .features-grid > *,
+  .quant-row > *,
+  .thesis-learnings-layout .learnings-grid > * {
+    flex: 0 0 min(82vw, 340px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .persona-grid {
+    grid-template-columns: 1fr;
+    gap: 54px;
+  }
+
+  .table-wrap,
+  .bp-diagram,
+  .ux-h-wrap {
+    max-width: 100%;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .research-disclosure {
+    margin-bottom: 58px !important;
+  }
+
+  .research-process.is-open {
+    margin-bottom: 52px !important;
+  }
+
+  .editorial-break {
+    margin-top: 0 !important;
+  }
+
+  .thesis-learnings-layout {
+    width: 100%;
+  }
+
+  .next-project {
+    width: 100%;
+    margin-top: 92px !important;
+  }
+
+  .next-project-card,
+  .next-project-info {
+    min-width: 0 !important;
+  }
+
+  .next-project-title {
+    overflow-wrap: anywhere;
+  }
+
+  footer {
+    width: 100%;
+    margin-top: 64px;
+    padding: 30px 24px 34px;
+  }
+
+  .footer-line {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .footer-line p {
+    max-width: 280px;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 380px) {
+  nav,
+  .hero,
+  .body-wrap,
+  footer {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .nav-links {
+    right: 18px;
+    left: 18px;
+  }
+
+  .hero-title {
+    font-size: 35px;
+  }
+
+  .info-card,
+  .overview-card,
+  .insight-block,
+  .jd-card,
+  .research-disclosure-card,
+  .editorial-break {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+
+  .dv-type-pills,
+  .outcomes-grid,
+  .phase-strip,
+  .dv-phase-cards,
+  .typology-grid,
+  .persona-mini-grid,
+  .compare-grid,
+  .req-grid,
+  .principle-grid,
+  .features-grid,
+  .quant-row,
+  .thesis-learnings-layout .learnings-grid {
+    width: calc(100% + 18px);
+    margin-right: -18px;
+    padding-right: 18px;
+  }
+}
+
+/* =========================================================
+   THESIS HERO — EXACT ADAPPTA SPACING
+   ========================================================= */
+.hero {
+  padding: 84px var(--margin) 56px !important;
+}
+
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px !important;
+}
+
+.case-tag {
+  padding: 7px 14px;
+}
+
+.hero-title {
+  max-width: 1050px;
+  margin-bottom: 24px !important;
+  font-size: clamp(46px, 5.4vw, 76px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.hero-sub {
+  max-width: 760px;
+  margin-bottom: 48px !important;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.info-card {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  gap: 60px !important;
+  padding: 20px 37px !important;
+  margin-bottom: 48px !important;
+  border: 1.3px solid var(--accent-border) !important;
+  border-radius: 40px !important;
+}
+
+.info-block {
+  width: auto !important;
+  flex: 0 1 auto !important;
+  gap: 4px !important;
+}
+
+.info-value {
+  max-width: 400px !important;
+}
+
+@media (max-width: 1100px) {
+  .info-card {
+    flex-wrap: wrap !important;
+    gap: 28px 44px !important;
+  }
+
+  .info-block {
+    flex: 1 1 calc(50% - 22px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 54px 24px 0 !important;
+  }
+
+  .case-tags {
+    gap: 8px;
+    margin-bottom: 18px !important;
+  }
+
+  .case-tag {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+
+  .hero-title {
+    margin-bottom: 12px !important;
+    font-size: 43px;
+    line-height: 1.08;
+  }
+
+  .hero-sub {
+    margin-bottom: 28px !important;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .info-card {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 18px !important;
+    padding: 22px !important;
+    margin-bottom: 36px !important;
+    border-radius: 28px !important;
+  }
+
+  .info-block {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .info-label {
+    font-size: 13px !important;
+  }
+
+  .info-value {
+    max-width: 100% !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 31px;
+  }
+
+  .hero {
+    padding-right: 22px !important;
+    padding-left: 22px !important;
+  }
+}
+
+/* =========================================================
+   THESIS — MOBILE MENU + PROTOTYPE GALLERIES
+   ========================================================= */
+.user-flow-image-scroll {
+  width: 100%;
+  margin-top: 28px;
+  padding: 24px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 16px 45px rgba(31,42,31,.045);
+  scrollbar-width: thin;
+}
+
+.user-flow-image-scroll img {
+  display: block;
+  width: auto;
+  min-width: 1180px;
+  max-width: none;
+  height: auto;
+  border-radius: 12px;
+}
+
+.user-flow-image-placeholder {
+  display: none;
+  width: 1180px;
+  min-height: 420px;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  border: 1.3px dashed var(--accent-border);
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--purple);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-align: center;
+}
+
+.ux-h-wrap--legacy {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: transparent !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .mobile-menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 2px;
+    border-radius: 999px;
+    background: #3b3633;
+    transition: transform .22s ease, opacity .22s ease;
+  }
+
+  nav.menu-open .mobile-menu-toggle span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  nav.menu-open .mobile-menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  nav.menu-open .mobile-menu-toggle span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .flow-lanes {
+    display: flex !important;
+    flex-direction: row !important;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding-right: 24px;
+    gap: 14px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .flow-lanes::-webkit-scrollbar,
+  .screens-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .flow-lanes > .wireframe-phone {
+    flex: 0 0 min(82vw, 340px);
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .screens-gallery {
+    display: flex !important;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding: 12px 24px 24px 0;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .screen-card {
+    flex: 0 0 min(78vw, 310px);
+    width: auto;
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .screen-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .user-flow-image-scroll {
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding: 18px 24px 18px 18px;
+    border-radius: 20px 0 0 20px;
+    scroll-snap-type: x proximity;
+  }
+
+  .user-flow-image-scroll img,
+  .user-flow-image-placeholder {
+    min-width: 980px;
+    width: 980px;
+  }
+
+  .thesis-learnings-layout,
+  .thesis-learnings-layout .learnings-intro,
+  .thesis-learnings-layout .learnings-lessons {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .thesis-learnings-layout .learnings-intro .sec-title,
+  .thesis-learnings-layout .learnings-intro .sec-text {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .thesis-learnings-layout .learnings-image {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .thesis-learnings-layout .learnings-image img {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .flow-lanes,
+  .screens-gallery,
+  .user-flow-image-scroll {
+    width: calc(100% + 18px);
+    margin-right: -18px;
+    padding-right: 18px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2847,7 +3515,12 @@ body > nav.scrolled {
         <p class="sec-title" style="margin-top:48px;">User Flow</p>
         <p class="sec-text">The user flow translates the blueprint into an actual sequence of decisions, from a first search across four entry points to structured support. It's a loop, she can disengage anytime and come back weeks later in context. Scroll sideways to follow it end to end.</p>
 
-        <div class="ux-h-wrap">
+        <div class="user-flow-image-scroll" role="region" aria-label="User flow image, scroll horizontally to view the complete diagram" tabindex="0">
+          <img src="user-flow.png" alt="Complete user flow from first digital interaction to structured support" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="user-flow-image-placeholder">Add the exported flow image as “user-flow.png” to display it here. This area is already prepared for horizontal navigation.</div>
+        </div>
+
+        <div class="ux-h-wrap ux-h-wrap--legacy" aria-hidden="true">
           <div class="ux-h-flow">
 
             <div class="ux-entry-grid">
