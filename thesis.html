@@ -1309,22 +1309,17 @@ body {
 }
 
 
-/* ---- Smooth section reveal ---- */
-.reveal,
-section,
-.case-section,
-.content-section{
+/* ---- Smooth reveal ---- */
+.reveal{
     opacity:0;
-    transform:translateY(18px);
+    transform:translateY(34px);
     transition:
-        opacity .65s ease,
-        transform .65s cubic-bezier(.22,1,.36,1);
+        opacity .75s cubic-bezier(.2,.65,.25,1),
+        transform .75s cubic-bezier(.2,.65,.25,1);
 }
 
 .reveal.visible,
-section.visible,
-.case-section.visible,
-.content-section.visible{
+.reveal.is-visible{
     opacity:1;
     transform:translateY(0);
 }
@@ -2388,6 +2383,34 @@ body > nav.scrolled {
   }
 }
 
+/* Overview statement: calmer type with more breathing room. */
+.overview-card {
+  max-width: 900px;
+  margin-top: 38px;
+  padding: 26px 34px;
+  border-left: 3px solid var(--editorial-green);
+  background: #f4f7f2;
+}
+
+.overview-card p {
+  max-width: 820px;
+  font-size: 18px !important;
+  line-height: 1.68 !important;
+  letter-spacing: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .overview-card {
+    margin-top: 30px;
+    padding: 22px 24px;
+  }
+
+  .overview-card p {
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+  }
+}
+
 /* =========================================================
    THESIS HERO — EXACT ADAPPTA SPACING
    ========================================================= */
@@ -2702,6 +2725,246 @@ body > nav.scrolled {
   .flow-lanes,
   .screens-gallery,
   .user-flow-image-scroll {
+    width: calc(100% + 18px);
+    margin-right: -18px;
+    padding-right: 18px;
+  }
+}
+
+/* =========================================================
+   THESIS — MOBILE CARDS + FULL RESEARCH PROCESS
+   ========================================================= */
+@media (max-width: 768px) {
+  /* Carousel cards use swipe only; no vertical entrance animation. */
+  .outcomes-grid > *,
+  .phase-strip > *,
+  .dv-phase-cards > *,
+  .typology-grid > *,
+  .persona-mini-grid > *,
+  .compare-grid > *,
+  .req-grid > *,
+  .principle-grid > *,
+  .features-grid > *,
+  .quant-row > *,
+  .thesis-learnings-layout .learnings-grid > * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: box-shadow .2s ease, border-color .2s ease !important;
+    transition-delay: 0s !important;
+    border: 1px solid rgba(79,111,82,.18) !important;
+    box-shadow: 0 12px 28px rgba(31,42,31,.10) !important;
+  }
+
+  .outcome-card,
+  .typology-card,
+  .persona-mini,
+  .req-card,
+  .feature-card,
+  .learning-card {
+    background: #fff !important;
+  }
+
+  .outcomes-grid,
+  .phase-strip,
+  .dv-phase-cards,
+  .typology-grid,
+  .persona-mini-grid,
+  .compare-grid,
+  .req-grid,
+  .principle-grid,
+  .features-grid,
+  .quant-row,
+  .thesis-learnings-layout .learnings-grid {
+    padding-top: 8px;
+    padding-bottom: 18px;
+  }
+
+  /* Complete research process becomes a true mobile layout. */
+  #researchProcess,
+  #researchProcess.is-open,
+  #researchProcess .research-process-inner {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #researchProcess.is-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  #researchProcess .research-process-inner {
+    overflow: visible;
+  }
+
+  #researchProcess .section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-bottom: 78px;
+  }
+
+  #researchProcess .sec-title {
+    font-size: clamp(29px, 9vw, 36px);
+  }
+
+  #researchProcess .mini-title {
+    margin-top: 28px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  #researchProcess .stats-row {
+    display: flex;
+    flex-wrap: nowrap;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding: 8px 24px 18px 0;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  #researchProcess .stats-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  #researchProcess .stat-item {
+    flex: 0 0 170px;
+    padding: 18px;
+    border: 1px solid rgba(79,111,82,.16);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(31,42,31,.08);
+    scroll-snap-align: start;
+  }
+
+  #researchProcess .persona-profile {
+    width: 100%;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #researchProcess .persona-photo-card,
+  #researchProcess .persona-data,
+  #researchProcess .persona-data-card,
+  #researchProcess .jd-card,
+  #researchProcess .arch-diagram {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #researchProcess .persona-data-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #researchProcess .ai-tool-list {
+    gap: 12px;
+  }
+
+  #researchProcess .ai-tool-row {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid rgba(79,111,82,.16);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(31,42,31,.06);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  #researchProcess .ai-tool-name,
+  #researchProcess .ai-tool-phasebar,
+  #researchProcess .ai-tool-note {
+    width: 100%;
+  }
+
+  #researchProcess .ai-tool-privacy {
+    width: auto;
+  }
+
+  #researchProcess .journey-row {
+    width: 100%;
+    padding: 16px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #researchProcess .journey-row-label {
+    width: auto;
+    padding-top: 0;
+  }
+
+  #researchProcess .journey-cells {
+    width: calc(100% + 16px);
+    margin-right: -16px;
+    padding-right: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  #researchProcess .journey-cell {
+    flex: 0 0 min(72vw, 270px);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  #researchProcess .layer-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  #researchProcess .layer-name {
+    width: auto;
+  }
+
+  #researchProcess .density-row {
+    padding: 16px;
+    border-radius: 14px;
+    background: #fafafa;
+  }
+
+  #researchProcess .table-wrap,
+  #researchProcess .bp-diagram,
+  #researchProcess .ux-h-wrap,
+  #researchProcess .user-flow-image-scroll {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+
+  #researchProcess .table-wrap,
+  #researchProcess .bp-diagram,
+  #researchProcess .ux-h-wrap {
+    padding: 16px;
+    border: 1px solid rgba(79,111,82,.14);
+    box-shadow: 0 10px 26px rgba(31,42,31,.07);
+  }
+
+  #researchProcess .criteria-item,
+  #researchProcess .research-item,
+  #researchProcess .testing-item {
+    min-width: 0;
+  }
+
+  #researchProcess .criteria-body,
+  #researchProcess .research-text,
+  #researchProcess .testing-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 380px) {
+  #researchProcess .stats-row {
     width: calc(100% + 18px);
     margin-right: -18px;
     padding-right: 18px;
@@ -4162,25 +4425,12 @@ body > nav.scrolled {
 
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll(".reveal, section, .case-section, .content-section");
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
-      }
-    });
-  }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
-  items.forEach(el=>observer.observe(el));
-});
-
-
-// Thesis reveal system aligned with the Instagram case
+// Shared portfolio reveal system
 const thesisRevealTargets = [
-  ...document.querySelectorAll('.section'),
   ...document.querySelectorAll('.outcomes-section'),
   ...document.querySelectorAll('.research-disclosure'),
   ...document.querySelectorAll('.editorial-break'),
+  ...document.querySelectorAll('.overview-card'),
   ...document.querySelectorAll('.outcome-card'),
   ...document.querySelectorAll('.phase-card'),
   ...document.querySelectorAll('.typology-card'),
@@ -4218,8 +4468,8 @@ if ('IntersectionObserver' in window) {
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -8% 0px'
+    threshold: 0.08,
+    rootMargin: '0px 0px -5% 0px'
   });
 
   thesisRevealTargets.forEach((element) => thesisRevealObserver.observe(element));
