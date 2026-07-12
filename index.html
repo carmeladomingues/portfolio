@@ -1656,6 +1656,37 @@ body > nav:not(.scrolled) .logo img {
   letter-spacing: 0.3px;
 }
 
+/* Small project cards: preserve the complete mockup and make it clickable. */
+.project-card .project-img.project-img-link {
+  display: block;
+  cursor: pointer;
+  background: #f4f4f4;
+}
+
+.project-card .project-img.project-img-link img {
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+  object-fit: contain;
+  object-position: center;
+  transform: none !important;
+}
+
+.project-card .project-img.project-img-link:hover img {
+  transform: none !important;
+}
+
+.project-card .project-img.project-img-link:focus-visible {
+  outline: 3px solid rgba(232,165,152,.7);
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .project-card .project-img.project-img-link img {
+    padding: 10px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1739,9 +1770,9 @@ body > nav:not(.scrolled) .logo img {
 
   <div class="projects-row">
     <div class="project-card">
-      <div class="project-img">
+      <a class="project-img project-img-link" href="thesis.html" target="_blank" rel="noopener" aria-label="Open Designing for Early Recognition in a new tab">
         <img src="thesis.webp" alt="Master's thesis" />
-      </div>
+      </a>
 
       <div class="project-content">
         <div class="project-tags">
@@ -1762,9 +1793,9 @@ body > nav:not(.scrolled) .logo img {
     </div>
 
     <div class="project-card">
-      <div class="project-img">
+      <a class="project-img project-img-link" href="instagram.html" target="_blank" rel="noopener" aria-label="Open Your next event on Instagram in a new tab">
         <img src="Instagram-menor.webp" alt="Add a feature" />
-      </div>
+      </a>
 
       <div class="project-content">
         <div class="project-tags">
@@ -1787,9 +1818,9 @@ body > nav:not(.scrolled) .logo img {
 
   <div class="projects-row">
     <div class="project-card">
-      <div class="project-img">
+      <a class="project-img project-img-link" href="pbl.html" target="_blank" rel="noopener" aria-label="Open Team dynamics reimagined in a new tab">
         <img src="Moodify.webp" alt="Moodify" />
-      </div>
+      </a>
 
       <div class="project-content">
         <div class="project-tags">
@@ -1810,9 +1841,9 @@ body > nav:not(.scrolled) .logo img {
     </div>
 
     <div class="project-card">
-      <div class="project-img">
+      <a class="project-img project-img-link" href="graphic-design.html" target="_blank" rel="noopener" aria-label="Open Graphic Design projects in a new tab">
         <img src="graphic-design.webp" alt="Graphic Design" />
-      </div>
+      </a>
 
       <div class="project-content">
         <div class="project-tags">
