@@ -1329,6 +1329,337 @@ section.visible,
     transform:translateY(0);
 }
 
+
+/* =========================================================
+   THESIS — INSTAGRAM SYSTEM ALIGNMENT
+   ========================================================= */
+
+/* Project metadata: same visual weight as the other cases */
+.info-card {
+  width: 100%;
+  display: grid !important;
+  grid-template-columns: 1fr 1.45fr 1.45fr .8fr;
+  gap: 34px !important;
+  align-items: stretch !important;
+  padding: 28px 34px !important;
+  border-radius: 32px !important;
+}
+
+.info-block {
+  min-width: 0;
+  padding-right: 26px;
+  border-right: 1px solid rgba(79,111,82,.14);
+  gap: 9px !important;
+}
+
+.info-block:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.info-label {
+  font-size: 11px !important;
+  line-height: 1.2;
+  font-weight: 700 !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.info-value {
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+  max-width: none !important;
+}
+
+/* Shared card lift interaction */
+.outcome-card,
+.phase-card,
+.typology-card,
+.persona-mini,
+.persona-card,
+.compare-box,
+.req-card,
+.principle-card,
+.feature-card,
+.quant-item,
+.jd-card,
+.arch-diagram,
+.bp-diagram,
+.ux-h-wrap,
+.table-wrap,
+.learning-card,
+.next-project-card,
+.research-disclosure-card,
+.editorial-break {
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease;
+}
+
+.outcome-card:hover,
+.phase-card:hover,
+.typology-card:hover,
+.persona-mini:hover,
+.persona-card:hover,
+.compare-box:hover,
+.req-card:hover,
+.principle-card:hover,
+.feature-card:hover,
+.quant-item:hover,
+.jd-card:hover,
+.arch-diagram:hover,
+.bp-diagram:hover,
+.ux-h-wrap:hover,
+.table-wrap:hover,
+.learning-card:hover,
+.next-project-card:hover,
+.research-disclosure-card:hover,
+.editorial-break:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(29,29,29,.08);
+}
+
+/* Motion system, aligned with Instagram */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity .75s cubic-bezier(.2,.65,.25,1),
+    transform .75s cubic-bezier(.2,.65,.25,1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: .08s; }
+.reveal-delay-2 { transition-delay: .16s; }
+
+.hero .case-tags,
+.hero .hero-title,
+.hero .hero-sub,
+.hero .info-card {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: thesisHeroReveal .8s cubic-bezier(.2,.65,.25,1) forwards;
+}
+
+.hero .hero-title { animation-delay: .08s; }
+.hero .hero-sub { animation-delay: .16s; }
+.hero .info-card { animation-delay: .24s; }
+
+@keyframes thesisHeroReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.banner img {
+  transform: scale(1.03);
+  animation: thesisBannerSettle 1.2s cubic-bezier(.2,.65,.25,1) .15s forwards;
+}
+
+@keyframes thesisBannerSettle {
+  to { transform: scale(1); }
+}
+
+@media (max-width: 1100px) {
+  .info-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .info-block:nth-child(2) {
+    border-right: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding: 24px !important;
+  }
+
+  .info-block {
+    padding: 0 0 18px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(79,111,82,.14);
+  }
+
+  .info-block:last-child {
+    padding-bottom: 0 !important;
+    border-bottom: 0;
+  }
+
+  .info-value {
+    font-size: 15px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero .case-tags,
+  .hero .hero-title,
+  .hero .hero-sub,
+  .hero .info-card,
+  .banner img {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL FIX — PROJECT INFO CARD MATCHING INSTAGRAM
+   ========================================================= */
+
+.info-card {
+  width: 100% !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 60px !important;
+  padding: 20px 37px !important;
+  border: 1.3px solid var(--accent-border) !important;
+  border-radius: 40px !important;
+  background: #ffffff !important;
+}
+
+.info-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  min-width: 0;
+  padding-right: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.info-label {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: .05em !important;
+  line-height: 1.3 !important;
+  text-transform: none !important;
+  color: var(--text) !important;
+}
+
+.info-value {
+  font-size: 15px !important;
+  font-weight: 300 !important;
+  line-height: 1.5 !important;
+  max-width: 400px !important;
+}
+
+@media (max-width: 1100px) {
+  .info-card {
+    flex-wrap: wrap !important;
+    gap: 28px 44px !important;
+  }
+
+  .info-block {
+    flex: 1 1 calc(50% - 22px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 20px !important;
+    padding: 24px !important;
+    border-radius: 24px !important;
+  }
+
+  .info-block {
+    width: 100% !important;
+    flex: none !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  .info-label {
+    font-size: 14px !important;
+  }
+
+  .info-value {
+    font-size: 15px !important;
+    max-width: none !important;
+  }
+}
+
+
+/* Match Adappta banner size */
+.banner{
+  width:100% !important;
+  height:600px !important;
+  overflow:hidden !important;
+}
+.banner img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+}
+
+@media (max-width:768px){
+  .banner{
+    height:auto !important;
+    aspect-ratio:16/10 !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL FIX — NAVBAR + SPACING BETWEEN DEEP DIVE AND QUOTE
+   ========================================================= */
+
+body > nav {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 0.5px solid rgba(29, 29, 29, 0.08) !important;
+}
+
+body > nav.scrolled {
+  background: #ffffff !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 0.5px solid rgba(29, 29, 29, 0.08) !important;
+}
+
+.research-disclosure {
+  margin: 0 0 36px !important;
+}
+
+.research-process {
+  margin-bottom: 0 !important;
+}
+
+.research-process.is-open {
+  margin-bottom: 64px !important;
+}
+
+.editorial-break {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .research-disclosure {
+    margin-bottom: 28px !important;
+  }
+
+  .research-process.is-open {
+    margin-bottom: 44px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2791,6 +3122,60 @@ document.addEventListener("DOMContentLoaded", () => {
   }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
   items.forEach(el=>observer.observe(el));
 });
+
+
+// Thesis reveal system aligned with the Instagram case
+const thesisRevealTargets = [
+  ...document.querySelectorAll('.section'),
+  ...document.querySelectorAll('.outcomes-section'),
+  ...document.querySelectorAll('.research-disclosure'),
+  ...document.querySelectorAll('.editorial-break'),
+  ...document.querySelectorAll('.outcome-card'),
+  ...document.querySelectorAll('.phase-card'),
+  ...document.querySelectorAll('.typology-card'),
+  ...document.querySelectorAll('.persona-mini'),
+  ...document.querySelectorAll('.persona-card'),
+  ...document.querySelectorAll('.compare-box'),
+  ...document.querySelectorAll('.req-card'),
+  ...document.querySelectorAll('.principle-card'),
+  ...document.querySelectorAll('.feature-card'),
+  ...document.querySelectorAll('.quant-item'),
+  ...document.querySelectorAll('.jd-card'),
+  ...document.querySelectorAll('.arch-diagram'),
+  ...document.querySelectorAll('.bp-diagram'),
+  ...document.querySelectorAll('.ux-h-wrap'),
+  ...document.querySelectorAll('.table-wrap'),
+  ...document.querySelectorAll('.learning-card')
+];
+
+thesisRevealTargets.forEach((element, index) => {
+  element.classList.add('reveal');
+
+  if (element.matches('.outcome-card, .phase-card, .typology-card, .persona-mini, .principle-card, .quant-item')) {
+    const delayClass = index % 3;
+    if (delayClass === 1) element.classList.add('reveal-delay-1');
+    if (delayClass === 2) element.classList.add('reveal-delay-2');
+  }
+});
+
+if ('IntersectionObserver' in window) {
+  const thesisRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        thesisRevealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  thesisRevealTargets.forEach((element) => thesisRevealObserver.observe(element));
+} else {
+  thesisRevealTargets.forEach((element) => element.classList.add('is-visible'));
+}
+
 </script>
 
 </body>
