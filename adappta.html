@@ -256,12 +256,134 @@ nav.scrolled {
     .swot-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
     .swot-text { font-size: 15px; font-weight: 300; line-height: 1.7; }
 
+    /* Competitive positioning matrix */
+    .positioning-matrix { margin-top: 32px; }
+    .positioning-axis { font-size: 11px; color: #999; margin: 0 0 10px; }
+    .positioning-axis-bottom { margin: 14px 0 0; }
+    .positioning-axis-x { display: flex; justify-content: space-between; font-size: 11px; color: #999; margin-top: 10px; }
+    .positioning-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border: 1px solid #e0e0e5;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .positioning-quadrant {
+      padding: 22px;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .positioning-quadrant-label { font-size: 11px; font-weight: 300; color: #b3b3bd; }
+    .positioning-chip-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: auto; }
+    .positioning-chip { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 76px; text-align: center; }
+    .positioning-chip img {
+      width: 56px; height: 56px; border-radius: 24px; object-fit: cover;
+      background: #ededf2; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .positioning-chip span { font-size: 11px; font-weight: 500; line-height: 1.3; }
+    .positioning-chip-adappta {
+      width: 78px; height: 78px; border-radius: 36px; background: #3d2a6a;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0px 6px 20px rgba(98,89,232,0.45); margin-top: auto;
+    }
+    .positioning-chip-adappta span { font-size: 12px; font-weight: 700; color: white; }
+    @media (max-width: 640px) {
+      .positioning-grid { grid-template-columns: 1fr; }
+      .positioning-axis, .positioning-axis-x { display: none; }
+    }
+
+    /* User journey map */
+    .journey-map {
+      margin: 40px 0 80px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 20px;
+      border: 1px solid rgba(29,29,29,0.08);
+    }
+    .journey-grid {
+      display: grid;
+      grid-template-columns: 130px repeat(5, 200px);
+      min-width: 1130px;
+    }
+    .journey-cell {
+      padding: 14px;
+      border-bottom: 1px solid rgba(29,29,29,0.06);
+      border-right: 1px solid rgba(29,29,29,0.06);
+    }
+    .journey-corner, .journey-col-header {
+      background: #6259E8;
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .journey-corner { background: #1d1d1d; }
+    .journey-row-label {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: #f7f6fb;
+      font-weight: 600;
+      font-size: 14px;
+      color: #2d2d32;
+      display: flex;
+      align-items: center;
+    }
+    .journey-corner { position: sticky; left: 0; z-index: 3; }
+    .journey-data { background: #fff; }
+    .journey-chip {
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .journey-chip:last-child { margin-bottom: 0; }
+    .journey-chip.story { background: #FDEDEE; }
+    .journey-chip.action { background: #E8F4F8; }
+    .journey-chip.touch { background: #FFF8E8; }
+    .journey-chip.emotion { background: #E9F8EF; }
+    .journey-chip.pain { background: #FFF0F0; }
+    .journey-chip.opportunity { background: #F5F2FB; }
+
     /* Features */
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
 .feature-card { border: 1.3px solid var(--accent-border); border-radius: 16px; padding: 20px; }
 .feature-icon { font-size: 20px;  margin-bottom: 10px; }
 .feature-title { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
 .feature-text { font-size: 14px; font-weight: 300; line-height: 1.5; color: var(--text-light); }
+
+    /* User flow paths */
+    .flow-entry {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      margin: 24px 0 28px;
+    }
+    .flow-entry .flow-node {
+      background: #6259E8; color: #fff; border-radius: 999px;
+      padding: 10px 20px; font-size: 14px; font-weight: 500;
+    }
+    .flow-entry .flow-arrow { color: var(--text-light); font-size: 16px; }
+    .flow-paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .flow-path { border: 1.3px solid var(--accent-border); border-radius: 16px; padding: 20px; }
+    .flow-path-title { font-size: 15px; font-weight: 500; margin-bottom: 12px; }
+    .flow-steps { display: flex; flex-direction: column; gap: 6px; }
+    .flow-step {
+      background: var(--accent); border-radius: 10px; padding: 8px 12px;
+      font-size: 13px; font-weight: 300; line-height: 1.4;
+    }
+    .flow-step-arrow { text-align: center; color: var(--text-light); font-size: 12px; }
+    .flow-exit {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 20px; padding: 16px; border-radius: 16px;
+      background: #1d1d1d; color: #fff; font-size: 14px; font-weight: 500;
+    }
+    @media (max-width: 768px) {
+      .flow-paths { grid-template-columns: 1fr; }
+    }
 
     /* Brand colors */
     .brand-colors { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
@@ -691,12 +813,6 @@ footer {
     grid-template-columns: 1fr !important;
   }
 
-  [style*="height:652px"] {
-    height: 420px !important;
-    overflow-x: auto !important;
-    border-radius: 20px;
-    border: 1px solid rgba(29,29,29,0.08);
-  }
 
   .next-project {
     margin: 64px 0 0;
@@ -862,14 +978,6 @@ footer {
     width: 100% !important;
     display: block !important;
     line-height: 1.35 !important;
-  }
-
-  #strategy div[style*="height:652px"] {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
   }
 
   #identity div[style*="width:150px"] {
@@ -2005,15 +2113,135 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 <!-- User Journey Map -->
 <p class="sec-text">The User Journey Map, built around Madalena, traced her experience from planning a weekly trip to Lisbon all the way through to reflecting on it. The emotional arc was consistent: anxiety in the planning phase, brief relief when a viable route was found, and frustration when unexpected barriers appeared.</p>
-<div style="display:flex; flex-direction:column; gap:60px; margin-top:40px; margin-bottom:80px; align-items:center;">
-<img alt="User Journey" src="userjourneyaddapta.png" style="width:75%; border-radius:20px;"/>
+<div class="journey-map">
+<div class="journey-grid">
+<div class="journey-cell journey-corner"></div>
+<div class="journey-cell journey-col-header">Onboarding</div>
+<div class="journey-cell journey-col-header">Trip Planning</div>
+<div class="journey-cell journey-col-header">Trip Execution</div>
+<div class="journey-cell journey-col-header">Closing &amp; Retrospective</div>
+<div class="journey-cell journey-col-header">Growth &amp; Development</div>
+
+<div class="journey-cell journey-row-label">Story</div>
+<div class="journey-cell journey-data"><p class="journey-chip story">Madalena plans her weekly in-person trips to Lisbon. She worries about transport and office accessibility.</p></div>
+<div class="journey-cell journey-data"><p class="journey-chip story">Madalena organises her in-person day, checking accessibility at all places she needs to visit.</p></div>
+<div class="journey-cell journey-data"><p class="journey-chip story">Madalena leaves home for Lisbon, facing mobility and accessibility challenges throughout the day.</p></div>
+<div class="journey-cell journey-data"><p class="journey-chip story">Madalena finishes her day and reflects on the challenges and solutions encountered.</p></div>
+<div class="journey-cell journey-data"><p class="journey-chip story">Madalena looks for ways to improve her mobility experience and contribute to structural change.</p></div>
+
+<div class="journey-cell journey-row-label">Actions</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip action">Searches accessible transport</p>
+<p class="journey-chip action">Contacts office to check parking</p>
+<p class="journey-chip action">Checks nearby accessible spots</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip action">Confirms transport accessibility</p>
+<p class="journey-chip action">Chooses accessible restaurant</p>
+<p class="journey-chip action">Prepares for route challenges</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip action">Uses transport apps</p>
+<p class="journey-chip action">Confirms car availability</p>
+<p class="journey-chip action">Has lunch at accessible spot</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip action">Shares feedback on visited places</p>
+<p class="journey-chip action">Plans improvements for next visit</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip action">Joins advocacy communities</p>
+<p class="journey-chip action">Pressures public entities for inclusion</p>
+<p class="journey-chip action">Shares experience to help others</p>
+</div>
+
+<div class="journey-cell journey-row-label">Touch-points</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip touch">Transport apps</p>
+<p class="journey-chip touch">Company website</p>
+<p class="journey-chip touch">Lisbon accessibility maps</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip touch">Transport apps</p>
+<p class="journey-chip touch">Restaurant review apps</p>
+<p class="journey-chip touch">Route planning tools</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip touch">Transport apps</p>
+<p class="journey-chip touch">City physical structures</p>
+<p class="journey-chip touch">Restaurant staff &amp; conditions</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip touch">Accessibility forums</p>
+<p class="journey-chip touch">Business contact for improvements</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip touch">Activism groups</p>
+<p class="journey-chip touch">Conferences on inclusion</p>
+<p class="journey-chip touch">Social media &amp; networking</p>
+</div>
+
+<div class="journey-cell journey-row-label">Emotions</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip emotion">😟 Insecurity about accessibility</p>
+<p class="journey-chip emotion">😰 Anxiety about route issues</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip emotion">😫 Frustrated by lack of info</p>
+<p class="journey-chip emotion">✨ Hopeful about solutions</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip emotion">😌 Relieved to find a viable route</p>
+<p class="journey-chip emotion">😠 Frustrated by obstacles</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip emotion">😊 Satisfied when all goes well</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip emotion">💪 Motivated to drive change</p>
+<p class="journey-chip emotion">😅 Tired of slow progress</p>
+</div>
+
+<div class="journey-cell journey-row-label">Pain Points</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip pain">Limited accessible transport</p>
+<p class="journey-chip pain">Unclear restaurant accessibility info</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip pain">No guarantee venues are truly accessible</p>
+<p class="journey-chip pain">Hard to find reliable options</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip pain">Poor ramp maintenance</p>
+<p class="journey-chip pain">Transport doesn't always deliver</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip pain">No direct feedback channel</p>
+<p class="journey-chip pain">Slow policy change</p>
+</div>
+<div class="journey-cell journey-data">
+<p class="journey-chip pain">Low corporate commitment</p>
+<p class="journey-chip pain">Weak enforcement of policies</p>
+</div>
+
+<div class="journey-cell journey-row-label">Opportunities</div>
+<div class="journey-cell journey-data"><p class="journey-chip opportunity">Digital guide of accessible places. Improve PMR parking info. Validate accessibility in restaurants.</p></div>
+<div class="journey-cell journey-data"><p class="journey-chip opportunity">Improve accessibility signage. Autonomous ways for PMR to use transport. Create accessibility certification.</p></div>
+<div class="journey-cell journey-data"><p class="journey-chip opportunity">Real-time accessibility assessment app. Better training of drivers and staff on inclusion.</p></div>
+<div class="journey-cell journey-data"><p class="journey-chip opportunity">Direct channel for business improvement requests. Incentivise public policies for infrastructure.</p></div>
+<div class="journey-cell journey-data"><p class="journey-chip opportunity">Mentoring programmes for reduced mobility. Expand regulations for accessible environments.</p></div>
+</div>
 </div>
 <!-- How Might We -->
 <p class="sec-title" style="font-size:24px;">
         These insights converged into five design questions:
     </p>
-<div style="display:flex; flex-direction:column; gap:60px; margin-top:40px; margin-bottom:80px; align-items:center;">
-<img alt="How Might" src="howmight.png" style="width:75%; border-radius:20px;"/>
+<div class="questions-list" style="margin-bottom:80px;">
+<p class="question-item"><strong>How might</strong> accessibility information be delivered in real time, before and during a trip?</p>
+<p class="question-item"><strong>How might</strong> route planning feel effortless instead of exhausting?</p>
+<p class="question-item"><strong>How might</strong> users contribute and validate accessibility data together?</p>
+<p class="question-item"><strong>How might</strong> people discover new accessible places with confidence?</p>
+<p class="question-item"><strong>How might</strong> the experience feel empowering, not limiting?</p>
 </div>
 <!-- STRATEGY -->
 <!-- CONCEPT -->
@@ -2043,48 +2271,52 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- Competitive Positioning -->
 <p class="sec-text" style="margin-top:48px;">The competitive landscape reinforced this gap. Google Maps dominates in volume but wasn't designed with accessibility in mind. AccessibleGO, TUR4all, and Guia de Rodas address accessibility more directly but fall short on information depth and personalisation. <strong>Adappta sits in a unique position:</strong> high information diversity combined with high adaptive personalisation — the only solution that brings together accessible routing, live warnings, community-driven data, and an AI assistant built specifically for people with reduced mobility.</p>
 <!-- Matrix -->
-<div style="position:relative; width:100%; height:652px; margin-top:32px; background:white;">
-<!-- Quadrants -->
-<div style="position:absolute; left:100px; top:60px; width:398px; height:280px; background:#f7f7ff;"></div>
-<div style="position:absolute; left:498px; top:60px; width:398px; height:280px; background:#f5faf7;"></div>
-<div style="position:absolute; left:100px; top:340px; width:398px; height:280px; background:#fcfcfc;"></div>
-<div style="position:absolute; left:498px; top:340px; width:398px; height:280px; background:#fcfcfc;"></div>
-<!-- Dividers -->
-<div style="position:absolute; left:100px; top:339.5px; width:796px; height:1px; background:#e0e0e5;"></div>
-<div style="position:absolute; left:497.5px; top:60px; width:1px; height:560px; background:#e0e0e5;"></div>
-<!-- Labels -->
-<p style="position:absolute; left:108px; top:68px; font-size:10px; font-weight:300; color:#c7c7d1;">Low info · High personalisation</p>
-<p style="position:absolute; left:506px; top:68px; font-size:10px; font-weight:300; color:#c7c7d1;">High info · High personalisation</p>
-<p style="position:absolute; left:108px; top:600px; font-size:10px; font-weight:300; color:#c7c7d1;">Low info · Low personalisation</p>
-<p style="position:absolute; left:506px; top:600px; font-size:10px; font-weight:300; color:#c7c7d1;">High info · Low personalisation</p>
-<p style="position:absolute; left:100px; top:330px; font-size:11px; color:#999;">← Low Information Diversity</p>
-<p style="position:absolute; right:55px; top:330px; font-size:11px; color:#999;">High Information Diversity →</p>
-<p style="position:absolute; left:439px; top:40px; font-size:11px; color:#999;">↑ High Personalisation</p>
-<p style="position:absolute; left:441px; top:626px; font-size:11px; color:#999;">↓ Low Personalisation</p>
-<!-- Adappta -->
-<div style="position:absolute; left:735px; top:108px; width:78px; height:78px; background:#3d2a6a; border-radius:36px; display:flex; align-items:center; justify-content:center; box-shadow:0px 6px 20px rgba(98,89,232,0.45);">
-<p style="font-size:12px; font-weight:700; color:white; text-align:center;">Adappta</p>
+<div class="positioning-matrix">
+<p class="positioning-axis positioning-axis-top">↑ High Personalisation</p>
+<div class="positioning-grid">
+<div class="positioning-quadrant" style="background:#f7f7ff;">
+<p class="positioning-quadrant-label">Low info · High personalisation</p>
 </div>
-<!-- TUR4all -->
-<div style="position:absolute; left:295px; top:346px; width:69px; height:69px; background:#ededf2; border-radius:28px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0px 2px 8px rgba(0,0,0,0.08);">
-<img alt="TUR4all" src="tur4all.png" style="width:77px; height:77px; object-fit:cover;"/>
+<div class="positioning-quadrant" style="background:#f5faf7;">
+<p class="positioning-quadrant-label">High info · High personalisation</p>
+<div class="positioning-chip-row">
+<div class="positioning-chip positioning-chip-adappta">
+<span>Adappta</span>
 </div>
-<p style="position:absolute; left:308px; top:420px; font-size:10px; font-weight:500; text-align:center; width:44px;">TUR4all</p>
-<!-- Guia de Rodas -->
-<div style="position:absolute; left:195px; top:444px; width:69px; height:69px; background:#ededf2; border-radius:28px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0px 2px 8px rgba(0,0,0,0.08);">
-<img alt="Guia de Rodas" src="guiaderodas.png" style="width:77px; height:77px; object-fit:cover;"/>
 </div>
-<p style="position:absolute; left:208px; top:518px; font-size:10px; font-weight:500; text-align:center; width:44px;">Guia de Rodas</p>
-<!-- AccessibleGO -->
-<div style="position:absolute; left:467px; top:294px; width:69px; height:69px; background:#ededf2; border-radius:28px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0px 2px 8px rgba(0,0,0,0.08);">
-<img alt="AccessibleGO" src="accessiblego.png" style="width:77px; height:77px; object-fit:cover;"/>
 </div>
-<p style="position:absolute; left:471px; top:368px; font-size:10px; font-weight:500; text-align:center; width:56px;">Accessible GO</p>
-<!-- Google Maps -->
-<div style="position:absolute; left:697px; top:463px; width:69px; height:69px; background:#ededf2; border-radius:28px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0px 2px 8px rgba(0,0,0,0.08);">
-<img alt="Google Maps" src="googlemaps.png" style="width:77px; height:77px; object-fit:cover;"/>
+<div class="positioning-quadrant" style="background:#fcfcfc;">
+<p class="positioning-quadrant-label">Low info · Low personalisation</p>
+<div class="positioning-chip-row">
+<div class="positioning-chip">
+<img alt="TUR4all" src="tur4all.png"/>
+<span>TUR4all</span>
 </div>
-<p style="position:absolute; left:701px; top:537px; font-size:10px; font-weight:500; text-align:center; width:56px;">Google Maps</p>
+<div class="positioning-chip">
+<img alt="Guia de Rodas" src="guiaderodas.png"/>
+<span>Guia de Rodas</span>
+</div>
+</div>
+</div>
+<div class="positioning-quadrant" style="background:#fcfcfc;">
+<p class="positioning-quadrant-label">High info · Low personalisation</p>
+<div class="positioning-chip-row">
+<div class="positioning-chip">
+<img alt="AccessibleGO" src="accessiblego.png"/>
+<span>Accessible GO</span>
+</div>
+<div class="positioning-chip">
+<img alt="Google Maps" src="googlemaps.png"/>
+<span>Google Maps</span>
+</div>
+</div>
+</div>
+</div>
+<p class="positioning-axis positioning-axis-bottom">↓ Low Personalisation</p>
+<div class="positioning-axis-x">
+<span>← Low Information Diversity</span>
+<span>High Information Diversity →</span>
+</div>
 </div>
 </div><div class="section reveal" id="concept">
 <p class="sec-label">Concept</p>
@@ -2139,7 +2371,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- Color swatches -->
 <div style="display:flex; flex-direction:column; gap:28px; align-items:center; margin-top:36px; margin-bottom:90px;">
 <!-- Row 1 -->
-<div style="display:flex; gap:24px; align-items:center;">
+<div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap; justify-content:center;">
 <div style="display:flex; flex-direction:column; gap:6px; align-items:center; width:150px;">
 <div style="background:#6F74B9; border-radius:16px; width:150px; height:100px; display:flex; align-items:flex-end; padding:6px 12px;">
 <p style="font-size:15px; font-weight:300; color:white; white-space:nowrap;">#6F74B9</p>
@@ -2166,7 +2398,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </div>
 <!-- Row 2 -->
-<div style="display:flex; gap:24px; align-items:center;">
+<div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap; justify-content:center;">
 <div style="display:flex; flex-direction:column; gap:6px; align-items:center; width:150px;">
 <div style="background:#BEDCF4; border-radius:16px; width:150px; height:100px; display:flex; align-items:flex-end; padding:6px 12px;">
 <p style="font-size:15px; font-weight:300; color:#1d1d1d; white-space:nowrap;">#BEDCF4</p>
@@ -2194,7 +2426,48 @@ document.addEventListener('DOMContentLoaded', () => {
 <p class="sec-label">Ideation</p>
 <p class="sec-title">Mapping the experience before building it</p>
 <p class="sec-text">Before moving into high fidelity, the full user flow was mapped, tracing every path a user could take from the moment they open the app to reaching their destination. The flow branches into five main paths: planning a route, checking accessibility warnings, getting help from Ada, contributing reviews, and accessing saved places. All paths converge on the same goal: arriving at the desired location independently and with confidence.</p>
-<img alt="User Flow" src="userflow.png" style="width:100%; border-radius:12px; margin:24px 0;"/>
+<div class="flow-entry">
+<span class="flow-node">Open app</span>
+<span class="flow-arrow">→</span>
+<span class="flow-node">Map with current location &amp; nav menu</span>
+</div>
+<div class="flow-paths">
+<div class="flow-path">
+<p class="flow-path-title">Map a route to a destination</p>
+<div class="flow-steps">
+<p class="flow-step">Write destination</p>
+<p class="flow-step-arrow">↓</p>
+<p class="flow-step">Route options + accessibility alerts</p>
+<p class="flow-step-arrow">↓</p>
+<p class="flow-step">Choose transport mode</p>
+</div>
+</div>
+<div class="flow-path">
+<p class="flow-path-title">Accessibility warnings</p>
+<div class="flow-steps">
+<p class="flow-step">Real-time transport status screen</p>
+</div>
+</div>
+<div class="flow-path">
+<p class="flow-path-title">Help me (Ada AI)</p>
+<div class="flow-steps">
+<p class="flow-step">Chat to ask questions &amp; get help</p>
+</div>
+</div>
+<div class="flow-path">
+<p class="flow-path-title">Reviews about places</p>
+<div class="flow-steps">
+<p class="flow-step">Rate &amp; review accessibility</p>
+</div>
+</div>
+<div class="flow-path">
+<p class="flow-path-title">Saved places &amp; routes</p>
+<div class="flow-steps">
+<p class="flow-step">View saved places &amp; routes</p>
+</div>
+</div>
+</div>
+<div class="flow-exit">Arrive at destination</div>
 <p class="sec-title" style="margin-top:48px;">Mid fidelity</p>
 <p class="sec-text">The wireframes focused on structure, hierarchy, and interaction logic across the key screens — making sure every path had a clear purpose before moving to visual design.</p>
 <img alt="Mid Fidelity Screens" src="midfidelityaddapta.png" style="width:100%; border-radius:12px; margin:24px 0;"/>
@@ -2689,8 +2962,14 @@ window.addEventListener('load', () => setActiveSidebarItem(getCurrentSectionId()
 
   
 // Smooth section reveals
+// #ideation is excluded: it's several times taller than every other section
+// (full-width images + a stacked screen showcase), which puts it right at the
+// edge of the IntersectionObserver's threshold/rootMargin math on mobile
+// viewports, so it can end up never crossing the visibility ratio and stay
+// stuck at opacity:0. Long sections like this stay visible by default instead;
+// only normally-sized sections and cards keep the scroll-reveal animation.
 const revealTargets = [
-  ...document.querySelectorAll('.section'),
+  ...document.querySelectorAll('.section:not(#ideation)'),
   ...document.querySelectorAll('.recognition-panel'),
   ...document.querySelectorAll('.editorial-break'),
   ...document.querySelectorAll('.hifi-feature'),
