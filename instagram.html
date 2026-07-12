@@ -2186,18 +2186,238 @@ body > nav {
   box-shadow: 0 16px 36px rgba(29,29,29,.08) !important;
 }
 
+/* User-flow images keep their readable scale and can be explored sideways. */
+.instagram-user-flow-scroll {
+  width: 100%;
+  margin: 28px 0 18px;
+  padding: 24px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 16px 45px rgba(31,42,31,.045);
+  scrollbar-width: thin;
+}
+
+.instagram-user-flow-scroll img {
+  display: block;
+  width: var(--flow-width, 1050px);
+  min-width: var(--flow-width, 1050px);
+  max-width: none;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Low-fidelity images use the same expandable-image pattern as PBL. */
+.lowfi-grid {
+  display: grid;
+  grid-template-columns: .85fr 1.9fr;
+  gap: 16px;
+  width: 100%;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.lowfi-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.lowfi-open:focus-visible {
+  outline: 3px solid rgba(184,95,115,.38);
+  outline-offset: 4px;
+}
+
+.lowfi-open img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.lowfi-lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: 64px 48px 40px;
+  border: 0;
+  border-radius: 0;
+  background: rgba(0,0,0,.88);
+  box-shadow: none;
+  overflow: auto;
+}
+
+.lowfi-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lowfi-lightbox::backdrop {
+  background: rgba(0,0,0,.88);
+}
+
+.lowfi-lightbox img {
+  display: block;
+  width: auto;
+  max-width: 92vw;
+  max-height: 84vh;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+.lowfi-lightbox-close {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border: 1.5px solid rgba(255,255,255,.9);
+  border-radius: 50%;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
+  /* Cards become compact swipe galleries with the next item peeking in. */
+  #persona .persona-grid,
+  .insights-cols,
+  .goals-grid,
+  .benchmark-grid {
+    display: flex !important;
+    width: calc(100% + 24px);
+    max-width: none;
+    margin-right: -24px;
+    gap: 16px !important;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 8px 24px 18px 0;
+  }
+
+  #persona .persona-grid::-webkit-scrollbar,
+  .insights-cols::-webkit-scrollbar,
+  .goals-grid::-webkit-scrollbar,
+  .benchmark-grid::-webkit-scrollbar,
+  .instagram-user-flow-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
   #persona .persona-grid {
     margin-top: 48px !important;
   }
 
   #persona .persona-card {
+    flex: 0 0 min(84vw, 350px);
     padding: 22px !important;
     border-radius: 22px !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   #persona .persona-card.has-avatar {
     padding-top: 48px !important;
+  }
+
+  .insight-col,
+  .goal-card {
+    flex: 0 0 min(82vw, 330px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .bench-item {
+    flex: 0 0 min(88vw, 370px);
+    flex-direction: row !important;
+    align-items: stretch;
+    gap: 12px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .bench-img {
+    width: 96px !important;
+    min-width: 96px !important;
+    height: 210px !important;
+    min-height: 210px !important;
+    flex: 0 0 96px !important;
+    border-radius: 16px;
+  }
+
+  .bench-info {
+    min-width: 0;
+    padding: 17px;
+    border-radius: 18px;
+  }
+
+  .bench-name {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .bench-card {
+    padding: 9px;
+  }
+
+  .bench-card-text {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  /* Swipe galleries do not use vertical entrance animations on mobile. */
+  #persona .persona-card,
+  .insight-col,
+  .goal-card,
+  .bench-item {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: box-shadow .2s ease, border-color .2s ease !important;
+    transition-delay: 0s !important;
+  }
+
+  .instagram-user-flow-scroll {
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding: 18px 24px 18px 18px;
+    border-radius: 20px 0 0 20px;
+    scrollbar-width: none;
+  }
+
+  .instagram-user-flow-scroll img {
+    width: var(--mobile-flow-width, 900px);
+    min-width: var(--mobile-flow-width, 900px);
+  }
+
+  .lowfi-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .lowfi-lightbox {
+    padding: 64px 18px 28px;
+  }
+
+  .lowfi-lightbox img {
+    max-width: 94vw;
+    max-height: 82vh;
   }
 }
 
@@ -2540,11 +2760,11 @@ body > nav {
         <!-- Userflow -->
         <p class="sec-title" style="margin-top:50px">Userflow</p>
         <p class="sec-text">Before jumping into wireframes, I mapped out the user flow to make sure every possible move had a clear path, for me and for the user.</p>
-        <div class="flow-img">
-          <img src="userflow.insta.avif" alt="Userflow" />
+        <div class="instagram-user-flow-scroll" role="region" aria-label="User flow image, swipe horizontally to view the complete diagram" tabindex="0" style="--flow-width:1050px; --mobile-flow-width:900px;">
+          <img src="userflow.insta.avif" alt="Complete Instagram Events user flow" />
         </div>
-        <div style="text-align:center; margin-top:16px;">
-          <img src="userflow.insta2.avif" alt="Userflow detail" style="max-width:633px; width:100%;" />
+        <div class="instagram-user-flow-scroll" role="region" aria-label="User flow detail, swipe horizontally to view the complete diagram" tabindex="0" style="--flow-width:760px; --mobile-flow-width:720px;">
+          <img src="userflow.insta2.avif" alt="Instagram Events user flow detail" />
         </div>
       </div>
 
@@ -2555,10 +2775,19 @@ body > nav {
         <p class="sec-text">This was my first project in Figma. I had taken a beginner's course, but I learn best by doing, so I jumped in. My Photoshop background helped with the basics, and the rest was trial and error.</p>
         <p class="sec-text">Before even opening Figma, I sketched every wireframe on paper and tested it with 5 Instagram users to get early feedback.</p>
 
-          <div style="display:grid; grid-template-columns: 0.85fr 1.9fr; gap:16px; margin-top:24px; width:100%; align-items:start;">
-          <img src="lowfi1.avif" alt="Low fi sketch" style="width:100%; height:auto; display:block; border-radius:8px;" />
-          <img src="lowfi2.avif" alt="Low fi wireframe" style="width:100%; height:auto; display:block; border-radius:8px;" />
+        <div class="lowfi-grid">
+          <button class="lowfi-open" type="button" data-full-image="lowfi1.avif" aria-label="Expand low fidelity sketch">
+            <img src="lowfi1.avif" alt="Low fidelity sketch" />
+          </button>
+          <button class="lowfi-open" type="button" data-full-image="lowfi2.avif" aria-label="Expand low fidelity wireframe">
+            <img src="lowfi2.avif" alt="Low fidelity wireframe" />
+          </button>
         </div>
+
+        <dialog class="lowfi-lightbox" id="lowfiLightbox" aria-label="Expanded low fidelity image">
+          <button class="lowfi-lightbox-close" type="button" aria-label="Close expanded image">×</button>
+          <img alt="" />
+        </dialog>
 
         <p class="sec-title" style="margin-top:48px">Mid fidelity</p>
         <p class="sec-text">With the sketches validated, I moved to Figma and built out the wireframes for both user flows, which made the jump to UI design a lot smoother.</p>
@@ -2853,6 +3082,26 @@ body > nav {
         mobileMenuToggle.setAttribute('aria-expanded', 'false');
         mobileMenuToggle.setAttribute('aria-label', 'Open menu');
       });
+    });
+
+    // Expandable low-fidelity images, following the PBL lightbox pattern.
+    const lowfiLightbox = document.getElementById('lowfiLightbox');
+    const lowfiLightboxImage = lowfiLightbox?.querySelector('img');
+    const lowfiLightboxClose = lowfiLightbox?.querySelector('.lowfi-lightbox-close');
+
+    document.querySelectorAll('.lowfi-open').forEach(button => {
+      button.addEventListener('click', () => {
+        if (!lowfiLightbox || !lowfiLightboxImage) return;
+        const preview = button.querySelector('img');
+        lowfiLightboxImage.src = button.dataset.fullImage || preview?.src || '';
+        lowfiLightboxImage.alt = preview?.alt ? `${preview.alt}, expanded view` : 'Expanded low fidelity image';
+        lowfiLightbox.showModal();
+      });
+    });
+
+    lowfiLightboxClose?.addEventListener('click', () => lowfiLightbox.close());
+    lowfiLightbox?.addEventListener('click', event => {
+      if (event.target === lowfiLightbox) lowfiLightbox.close();
     });
 
 
