@@ -1804,6 +1804,28 @@ body{background:#fff}
     font-size: 15px !important;
   }
 }
+
+/* Final metadata alignment: four evenly spaced columns. */
+@media (min-width: 1101px) {
+  .info-card {
+    display: grid !important;
+    grid-template-columns: max-content max-content max-content max-content !important;
+    justify-content: space-between !important;
+    column-gap: 60px !important;
+    align-items: start !important;
+  }
+
+  .info-block,
+  .info-block:last-child {
+    width: auto !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .info-value {
+    max-width: none !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1834,7 +1856,7 @@ body{background:#fff}
 </div>
 <div class="info-block">
 <p class="info-label">SCOPE</p>
-<p class="info-value">UX research, ethnographic observation, personas, competitive analysis, wireframing, UI design and branding</p>
+<p class="info-value">UX research, personas, wireframing,<br/>UI design and branding</p>
 </div>
 <div class="info-block">
 <p class="info-label">TOOLS</p>
