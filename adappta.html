@@ -2471,6 +2471,46 @@ body{background:#fff}
   border: 0 !important;
   background: transparent !important;
 }
+
+/* Mobile footer — exact layout used by pbl.html. */
+@media (max-width: 768px) {
+  footer {
+    width: 100%;
+    margin-top: 64px;
+    padding: 30px 24px 34px;
+    border-top: .5px solid rgba(29,29,29,.12);
+  }
+
+  .footer-line {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .footer-line p {
+    max-width: 280px;
+    margin: 0;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 380px) {
+  footer {
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+  }
+}
 </style>
 <script data-no-js-fix="true">document.documentElement.classList.remove('no-js');</script><script>
 document.documentElement.classList.add('js-motion-ready');
