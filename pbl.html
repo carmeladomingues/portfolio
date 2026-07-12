@@ -1027,14 +1027,44 @@ body{background:#fff}
   border-radius: 20px;
 }
 
+/* Match the proportional metadata grid used by Thesis on desktop. */
+.info-card {
+  display: grid !important;
+  grid-template-columns: 1fr 1.45fr 1.45fr .8fr !important;
+  gap: 34px !important;
+  align-items: stretch !important;
+  padding: 28px 34px !important;
+  border-radius: 32px !important;
+}
+
+.info-block {
+  width: 100% !important;
+  min-width: 0 !important;
+  padding-right: 0;
+  border: 0;
+  gap: 9px !important;
+}
+
+.info-block:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.affinity-cluster-carousel {
+  display: none;
+}
+
 @media (max-width: 1100px) {
   .info-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     flex-wrap: wrap;
     gap: 28px 44px;
   }
 
   .info-block {
     flex: 1 1 calc(50% - 22px);
+    padding-right: 0;
+    border-right: 0;
   }
 }
 
@@ -1077,6 +1107,8 @@ body{background:#fff}
   }
 
   .info-card {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     flex-direction: column;
     flex-wrap: nowrap;
     gap: 18px;
@@ -1089,6 +1121,14 @@ body{background:#fff}
     width: 100%;
     flex: none;
     min-width: 0;
+    padding: 0;
+    border: 0;
+    gap: 4px !important;
+  }
+
+  .info-block:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
   }
 
   .info-label {
@@ -1257,23 +1297,64 @@ body{background:#fff}
   }
 
   .affinity-scroll {
+    display: none;
+  }
+
+  .affinity-cluster-carousel {
+    display: flex;
     width: calc(100% + 24px);
-    margin-right: -24px;
-    padding-right: 24px;
+    margin: 28px -24px 32px 0;
+    padding: 0 24px 10px 0;
+    gap: 14px;
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-inline: contain;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
 
-  .affinity-scroll svg {
-    display: block;
-    width: 920px;
-    min-width: 920px;
-    height: auto;
+  .affinity-cluster-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .affinity-cluster-card {
+    flex: 0 0 min(82vw, 330px);
+    min-height: 290px;
+    padding: 24px;
+    border: 1px solid var(--cluster-border, var(--accent-border));
+    border-radius: 22px;
+    background: var(--cluster-bg, var(--accent));
     scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .affinity-cluster-card h3 {
+    margin-bottom: 18px;
+    color: var(--cluster-color, var(--orange));
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .affinity-cluster-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    list-style: none;
+  }
+
+  .affinity-cluster-card li {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #fff;
+    color: #555;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  .affinity-cluster-card.is-main {
+    border-width: 2px;
   }
 
   .desk-research-scroll {
@@ -1434,7 +1515,7 @@ body{background:#fff}
   .learnings-grid,
   .persona-grid,
   .survey-grid,
-  .affinity-scroll {
+  .affinity-cluster-carousel {
     width: calc(100% + 18px);
     margin-right: -18px;
     padding-right: 18px;
@@ -1824,6 +1905,29 @@ body{background:#fff}
 <rect fill="#FF6633" height="14" rx="3" stroke="#FF6633" stroke-width="1" width="14" x="454" y="420"></rect>
 <text fill="rgba(79,78,78,0.67)" font-family="DM Sans, sans-serif" font-size="11" font-weight="300" x="474" y="432">Main theme selected for the project</text>
 </svg>
+</div>
+<div class="affinity-cluster-carousel" aria-label="Affinity clusters, swipe horizontally">
+  <article class="affinity-cluster-card" style="--cluster-bg:#FFF0EB;--cluster-border:#f5c4b0;--cluster-color:#c25a30;">
+    <h3>Leadership</h3><ul><li>No collaborative leadership</li><li>Unilateral decisions</li><li>Ideas poorly received</li><li>Change the boss</li></ul>
+  </article>
+  <article class="affinity-cluster-card" style="--cluster-bg:#FFF8E8;--cluster-border:#f5dfa0;--cluster-color:#c28a10;">
+    <h3>Creativity</h3><ul><li>Creativity is very limited</li><li>No creative references</li><li>Fear of failure</li><li>No space to experiment</li></ul>
+  </article>
+  <article class="affinity-cluster-card" style="--cluster-bg:#fce8e8;--cluster-border:#f0b0b0;--cluster-color:#b03030;">
+    <h3>Demotivation</h3><ul><li>Burnout and monotony</li><li>Lack of recognition</li><li>Work feels undervalued</li><li>No financial incentive</li></ul>
+  </article>
+  <article class="affinity-cluster-card" style="--cluster-bg:#eaf3de;--cluster-border:#b0d48a;--cluster-color:#3a6a10;">
+    <h3>Values</h3><ul><li>Undefined company values</li><li>No focus on people</li><li>No innovation culture</li><li>Misaligned priorities</li></ul>
+  </article>
+  <article class="affinity-cluster-card" style="--cluster-bg:#e8f4fb;--cluster-border:#90c8ec;--cluster-color:#185fa5;">
+    <h3>Collaboration &amp; Tools</h3><ul><li>Very little idea debate</li><li>No company-wide collaboration tool</li><li>Many communication failures</li><li>Teams work in silos</li></ul>
+  </article>
+  <article class="affinity-cluster-card" style="--cluster-bg:#eeedfe;--cluster-border:#c9b8e8;--cluster-color:#534ab7;">
+    <h3>Process Failures</h3><ul><li>Ineffective briefings</li><li>Meetings with no outcome</li><li>Too many rules, no agility</li><li>Lack of feedback culture</li></ul>
+  </article>
+  <article class="affinity-cluster-card is-main" style="--cluster-bg:#FFF0EB;--cluster-border:#FF6633;--cluster-color:#FF6633;">
+    <h3>Communication ★</h3><ul><li>No cross-department sharing</li><li>Hybrid breaks information flow</li><li>Projects not shared</li><li>Knowledge stays in silos</li></ul>
+  </article>
 </div>
 <div class="fivew-grid">
 <div class="fivew-item">
