@@ -1018,6 +1018,21 @@ body{background:#fff}
   border-radius: 20px;
 }
 
+.desk-research-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.desk-research-open:focus-visible {
+  outline: 3px solid rgba(242,96,47,.42);
+  outline-offset: 4px;
+}
+
 .desk-research-image {
   display: block;
   width: 100%;
@@ -1054,6 +1069,46 @@ body{background:#fff}
 
 .affinity-cluster-carousel {
   display: none;
+}
+
+.desk-research-lightbox {
+  width: min(94vw, 1500px);
+  max-width: none;
+  height: auto;
+  max-height: 92vh;
+  padding: 56px 24px 24px;
+  border: 0;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 28px 80px rgba(0,0,0,.28);
+  overflow: auto;
+}
+
+.desk-research-lightbox::backdrop {
+  background: rgba(20,20,20,.78);
+  backdrop-filter: blur(6px);
+}
+
+.desk-research-lightbox img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.desk-research-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #1d1d1d;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 @media (max-width: 1100px) {
@@ -1348,13 +1403,18 @@ body{background:#fff}
   }
 
   .affinity-cluster-card li {
-    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 58px;
+    padding: 12px 14px;
     border-radius: 10px;
     background: #fff;
     color: #555;
     font-size: 14px;
     font-weight: 300;
     line-height: 1.4;
+    text-align: center;
   }
 
   .affinity-cluster-card.is-main {
@@ -1388,6 +1448,23 @@ body{background:#fff}
     margin: 0;
     border-radius: 18px;
     scroll-snap-align: start;
+  }
+
+  .desk-research-open {
+    width: 920px;
+    min-width: 920px;
+  }
+
+  .desk-research-lightbox {
+    width: 96vw;
+    max-height: 90vh;
+    padding: 54px 14px 18px;
+    border-radius: 20px;
+  }
+
+  .desk-research-lightbox img {
+    width: 1200px;
+    max-width: none;
   }
 
   .ideation-grid,
@@ -1757,8 +1834,14 @@ body{background:#fff}
 <p><strong>Desk Research </strong>We analysed articles, reports, and case studies across five themes — Innovation, Design, HR, Collaboration, and Creativity. The literature was consistent: organisations that foster collaboration and psychological safety outperform those that don't. One insight surfaced repeatedly: <em>innovation needs culture, not just tools.</em></p>
 </div>
 <div class="desk-research-scroll" role="region" aria-label="Desk research clusters, scroll horizontally on mobile" tabindex="0">
+<button class="desk-research-open" type="button" aria-label="Expand desk research image">
 <img class="desk-research-image" src="desk-pbl.png" alt="Desk research clusters"/>
+</button>
 </div>
+<dialog class="desk-research-lightbox" id="deskResearchLightbox" aria-label="Expanded desk research image">
+  <button class="desk-research-close" type="button" aria-label="Close expanded image">×</button>
+  <img src="desk-pbl.png" alt="Desk research clusters, expanded view"/>
+</dialog>
 <p class="sec-text"><strong style="font-weight:500;">Interviews </strong>We conducted in-depth interviews with 10 professionals across different industries and work models — hybrid, remote, and in-person. Most felt their ideas weren't heard, cross-department collaboration was rare, and recognition was almost non-existent.</p>
 <div class="tags-wrap">
 <div class="tags-row">
@@ -2322,6 +2405,19 @@ body{background:#fff}
       backToTop.classList.remove('visible');
     }
   });
+
+  // Expandable Desk Research image
+  const deskResearchOpen = document.querySelector('.desk-research-open');
+  const deskResearchLightbox = document.getElementById('deskResearchLightbox');
+  const deskResearchClose = document.querySelector('.desk-research-close');
+
+  if (deskResearchOpen && deskResearchLightbox && deskResearchClose) {
+    deskResearchOpen.addEventListener('click', () => deskResearchLightbox.showModal());
+    deskResearchClose.addEventListener('click', () => deskResearchLightbox.close());
+    deskResearchLightbox.addEventListener('click', event => {
+      if (event.target === deskResearchLightbox) deskResearchLightbox.close();
+    });
+  }
 
   // Sidebar position fix
   function fixSidebar() {
