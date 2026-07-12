@@ -1326,6 +1326,51 @@ html{scroll-padding-top:88px}
     gap: 14px;
   }
 
+  .img-grid-2,
+  .img-grid-3,
+  .img-grid-4,
+  .img-grid-2-1,
+  .img-grid-4-fit,
+  .img-grid-2-fit,
+  .img-grid-3-fit,
+  .media-grid-3 {
+    display: flex !important;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding-right: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .img-grid-2::-webkit-scrollbar,
+  .img-grid-3::-webkit-scrollbar,
+  .img-grid-4::-webkit-scrollbar,
+  .img-grid-2-1::-webkit-scrollbar,
+  .img-grid-4-fit::-webkit-scrollbar,
+  .img-grid-2-fit::-webkit-scrollbar,
+  .img-grid-3-fit::-webkit-scrollbar,
+  .media-grid-3::-webkit-scrollbar {
+    display: none;
+  }
+
+  .img-grid-2 > .img-placeholder,
+  .img-grid-3 > .img-placeholder,
+  .img-grid-4 > .img-placeholder,
+  .img-grid-2-1 > .img-placeholder,
+  .img-grid-4-fit > .img-placeholder,
+  .img-grid-2-fit > .img-placeholder,
+  .img-grid-3-fit > .img-placeholder,
+  .media-grid-3 > .media-item {
+    flex: 0 0 min(82vw, 340px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   .img-placeholder,
   .media-item {
     width: 100%;
@@ -1407,6 +1452,19 @@ html{scroll-padding-top:88px}
   .company-header,
   .brand-block {
     padding: 20px;
+  }
+
+  .img-grid-2,
+  .img-grid-3,
+  .img-grid-4,
+  .img-grid-2-1,
+  .img-grid-4-fit,
+  .img-grid-2-fit,
+  .img-grid-3-fit,
+  .media-grid-3 {
+    width: calc(100% + 18px);
+    margin-right: -18px;
+    padding-right: 18px;
   }
 }
 
