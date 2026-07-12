@@ -917,16 +917,74 @@ background:transparent!important;
 flex-shrink:0;
 }
 @media(max-width:768px){
-body{overflow:auto;}
+html,
+body {
+  height: auto;
+  min-height: 100%;
+}
+
+body {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 main.contact-page{
-padding:96px 24px 12px!important;
+  display: block;
+  min-height: 0 !important;
+  padding: 112px 24px 64px !important;
 }
+
+.contact-hero,
+.contact-content {
+  width: 100%;
+}
+
 .contact-title{
-font-size:40px!important;
+  overflow-wrap: anywhere;
+  font-size: clamp(34px, 10.5vw, 40px) !important;
+  line-height: 1.08 !important;
 }
-footer{
-padding:22px 24px!important;
+
+.contact-ctas {
+  margin-bottom: 0 !important;
 }
+
+.contact-action {
+  min-width: 0;
+}
+
+footer {
+  position: static;
+  width: 100%;
+  margin-top: 0 !important;
+  padding: 28px 24px 32px !important;
+  flex-shrink: initial;
+  clear: both;
+}
+
+.footer-line {
+  width: 100%;
+}
+
+.back-to-top {
+  right: 20px;
+  bottom: 20px;
+}
+}
+
+@media (max-width: 380px) {
+  main.contact-page {
+    padding-inline: 18px !important;
+  }
+
+  .contact-title {
+    font-size: 34px !important;
+  }
+
+  footer {
+    padding-inline: 18px !important;
+  }
 }
 
 </style>
@@ -1009,6 +1067,7 @@ padding:22px 24px!important;
       <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
     </svg>
   </a>
+</div>
 </div>
 </footer>
 
