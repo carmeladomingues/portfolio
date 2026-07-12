@@ -2174,7 +2174,7 @@ body > nav {
   border: 1.3px solid var(--accent-border) !important;
   border-radius: 24px !important;
   background: #fff !important;
-  box-shadow: none !important;
+  box-shadow: 0 12px 30px rgba(31,42,31,.035) !important;
 }
 
 #persona .persona-card.has-avatar {
@@ -2321,13 +2321,19 @@ body > nav {
   }
 
   #persona .persona-grid {
-    margin-top: 48px !important;
+    width: calc(100% + 24px);
+    margin: 18px -24px 0 0 !important;
+    padding: 40px 24px 12px 0 !important;
+    overflow-y: hidden;
+    touch-action: pan-x;
   }
 
   #persona .persona-card {
-    flex: 0 0 min(84vw, 350px);
-    padding: 22px !important;
+    flex: 0 0 min(82vw, 340px);
+    min-width: 0;
+    padding: 24px !important;
     border-radius: 22px !important;
+    box-shadow: 0 12px 30px rgba(31,42,31,.035) !important;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
@@ -2336,7 +2342,20 @@ body > nav {
     padding-top: 48px !important;
   }
 
-  .insight-col,
+  .insights-cols {
+    flex-wrap: nowrap !important;
+    margin-top: 0;
+    touch-action: pan-x;
+  }
+
+  .insight-col {
+    flex: 0 0 min(82vw, 330px) !important;
+    min-width: 0;
+    box-shadow: 0 12px 30px rgba(31,42,31,.04) !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   .goal-card {
     flex: 0 0 min(82vw, 330px);
     scroll-snap-align: start;
