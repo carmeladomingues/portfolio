@@ -1030,7 +1030,7 @@ body{background:#fff}
 /* Match the proportional metadata grid used by Thesis on desktop. */
 .info-card {
   display: grid !important;
-  grid-template-columns: 1fr 1.45fr 1.45fr .8fr !important;
+  grid-template-columns: .95fr 1.7fr 1.3fr .6fr !important;
   gap: 34px !important;
   align-items: stretch !important;
   padding: 28px 34px !important;
@@ -1048,6 +1048,8 @@ body{background:#fff}
 .info-block:last-child {
   padding-right: 0;
   border-right: 0;
+  justify-self: end;
+  min-width: 180px !important;
 }
 
 .affinity-cluster-carousel {
@@ -1129,6 +1131,8 @@ body{background:#fff}
   .info-block:last-child {
     padding-bottom: 0;
     border-bottom: 0;
+    justify-self: stretch;
+    min-width: 0 !important;
   }
 
   .info-label {
@@ -1556,7 +1560,7 @@ body{background:#fff}
 </div>
 <div class="info-block">
 <p class="info-label">SCOPE</p>
-<p class="info-value">Design thinking, UX Research, desk research, ethnographic observation, personas, competitive analysis, wireframing, UI design, and branding</p>
+<p class="info-value">UX research, ethnographic observation, personas, competitive analysis, wireframing, UI design and branding</p>
 </div>
 <div class="info-block">
 <p class="info-label">TOOLS</p>
