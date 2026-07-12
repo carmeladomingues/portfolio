@@ -1006,7 +1006,24 @@ footer {
   }
 }
 
-  
+    /* PROTOTYPE SHOWCASE MOBILE */
+    @media (max-width: 768px) {
+  .prototype-showcase-wrap {
+    padding-left: 0 !important;
+  }
+
+  .prototype-showcase {
+    min-height: auto !important;
+    padding: 24px !important;
+    justify-content: center !important;
+  }
+
+  .prototype-feature-img {
+    display: none !important;
+  }
+}
+
+
 /* =========================================================
    ADAPPTA — REFINED CASE STUDY SYSTEM
    ========================================================= */
@@ -1850,6 +1867,70 @@ body{background:#fff}
     border-radius: 28px !important;
   }
 }
+
+/* ── LIGHTBOX ── */
+.content img:not(.no-lightbox) {
+  cursor: pointer;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(10,10,14,0.86);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-overlay img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.24);
+}
+
+@media (max-width: 768px) {
+  .lightbox-close {
+    top: 16px;
+    right: 16px;
+  }
+}
 </style>
 <script data-no-js-fix="true">document.documentElement.classList.remove('no-js');</script><script>
 document.documentElement.classList.add('js-motion-ready');
@@ -2014,7 +2095,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="persona-grid">
 <div class="persona-card reveal">
 <div class="persona-avatar">
-<img alt="Madalena" src="madalena.jpg"/>
+<img alt="Madalena" class="no-lightbox" src="madalena.jpg"/>
 </div>
 <p class="persona-name">Madalena</p>
 <p class="persona-role">32 years old · Lawyer · Alges</p>
@@ -2028,7 +2109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 <div class="persona-card reveal">
 <div class="persona-avatar">
-<img alt="Miguel" src="miguel.jpg"/>
+<img alt="Miguel" class="no-lightbox" src="miguel.jpg"/>
 </div>
 <p class="persona-name">Miguel</p>
 <p class="persona-role">45 years old · Project Manager · Benfica, Lisbon</p>
@@ -2236,22 +2317,22 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 <!-- TUR4all -->
 <div style="position:absolute; left:295px; top:346px; width:69px; height:69px; background:#ededf2; border-radius:28px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0px 2px 8px rgba(0,0,0,0.08);">
-<img alt="TUR4all" src="tur4all.png" style="width:77px; height:77px; object-fit:cover;"/>
+<img alt="TUR4all" class="no-lightbox" src="tur4all.png" style="width:77px; height:77px; object-fit:cover;"/>
 </div>
 <p style="position:absolute; left:308px; top:420px; font-size:10px; font-weight:500; text-align:center; width:44px;">TUR4all</p>
 <!-- Guia de Rodas -->
 <div style="position:absolute; left:195px; top:444px; width:69px; height:69px; background:#ededf2; border-radius:28px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0px 2px 8px rgba(0,0,0,0.08);">
-<img alt="Guia de Rodas" src="guiaderodas.png" style="width:77px; height:77px; object-fit:cover;"/>
+<img alt="Guia de Rodas" class="no-lightbox" src="guiaderodas.png" style="width:77px; height:77px; object-fit:cover;"/>
 </div>
 <p style="position:absolute; left:208px; top:518px; font-size:10px; font-weight:500; text-align:center; width:44px;">Guia de Rodas</p>
 <!-- AccessibleGO -->
 <div style="position:absolute; left:467px; top:294px; width:69px; height:69px; background:#ededf2; border-radius:28px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0px 2px 8px rgba(0,0,0,0.08);">
-<img alt="AccessibleGO" src="accessiblego.png" style="width:77px; height:77px; object-fit:cover;"/>
+<img alt="AccessibleGO" class="no-lightbox" src="accessiblego.png" style="width:77px; height:77px; object-fit:cover;"/>
 </div>
 <p style="position:absolute; left:471px; top:368px; font-size:10px; font-weight:500; text-align:center; width:56px;">Accessible GO</p>
 <!-- Google Maps -->
 <div style="position:absolute; left:697px; top:463px; width:69px; height:69px; background:#ededf2; border-radius:28px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0px 2px 8px rgba(0,0,0,0.08);">
-<img alt="Google Maps" src="googlemaps.png" style="width:77px; height:77px; object-fit:cover;"/>
+<img alt="Google Maps" class="no-lightbox" src="googlemaps.png" style="width:77px; height:77px; object-fit:cover;"/>
 </div>
 <p style="position:absolute; left:701px; top:537px; font-size:10px; font-weight:500; text-align:center; width:56px;">Google Maps</p>
 </div>
@@ -2541,12 +2622,12 @@ document.addEventListener('DOMContentLoaded', () => {
 <p class="sec-label">Prototype &amp; Testing</p>
 <p class="sec-title">Putting the design to the test</p>
 <p class="sec-text">The interactive prototype was built in Figma, connecting all key screens into a navigable flow, from opening the app and searching for a destination, through checking live warnings, chatting with Ada, and selecting an accessible route.</p>
-<div style="
+<div class="prototype-showcase-wrap" style="
   position:relative;
   margin-top:56px;
   padding-left:clamp(32px, 7vw, 88px);
 ">
-<div style="
+<div class="prototype-showcase" style="
     position:relative;
     background:#6259E8;
     border-radius:40px;
@@ -2558,7 +2639,7 @@ document.addEventListener('DOMContentLoaded', () => {
     justify-content:flex-end;
   ">
 <!-- FEATURE CARDS -->
-<img alt="Prototype feature highlights" src="adapptafeatures.png" style="
+<img alt="Prototype feature highlights" class="prototype-feature-img" src="adapptafeatures.png" style="
         position:absolute;
         left:clamp(-88px, -7vw, -40px);
         bottom:0;
@@ -2569,7 +2650,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filter:drop-shadow(0 24px 36px rgba(43,43,43,0.18));
       "/>
 <!-- VIDEO CONTAINER -->
-<div style="
+<div class="prototype-video-wrap" style="
       width:min(100%, 440px);
       border-radius:32px;
       overflow:hidden;
@@ -2706,7 +2787,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div><section class="next-project next-project-visible">
 <div class="next-project-card">
 <div class="next-project-img">
-<img alt="Instagram Events preview" src="Instagram-menor.jpg"/>
+<img alt="Instagram Events preview" class="no-lightbox" src="Instagram-menor.jpg"/>
 </div>
 <div class="next-project-info">
 <h2 class="next-project-title">Your Next Event On Instagram</h2>
@@ -2935,5 +3016,53 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!('IntersectionObserver' in window)) el.classList.add('is-visible');
   });
 });
+</script>
+<script>
+// Lightbox: click any content image to view it full-size.
+// Excluded via .no-lightbox: nav logo (outside .content), competitor
+// icons, persona photos, and the next-project preview thumbnail.
+(function () {
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'Image preview');
+
+  const lightboxImg = document.createElement('img');
+  overlay.appendChild(lightboxImg);
+
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.className = 'lightbox-close';
+  closeBtn.setAttribute('aria-label', 'Close image preview');
+  closeBtn.textContent = '×';
+  overlay.appendChild(closeBtn);
+
+  document.body.appendChild(overlay);
+
+  function openLightbox(img) {
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt || '';
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLightbox();
+  });
+
+  document.querySelectorAll('.content img:not(.no-lightbox)').forEach((img) => {
+    img.addEventListener('click', () => openLightbox(img));
+  });
+})();
 </script></body>
 </html>
