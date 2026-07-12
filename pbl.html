@@ -949,6 +949,389 @@ body{background:#fff}
     transition:none!important;
   }
 }
+
+/* =========================================================
+   PBL — FINAL THESIS-ALIGNED RESPONSIVE SYSTEM
+   ========================================================= */
+.hero {
+  padding: 84px var(--margin) 56px !important;
+}
+
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px !important;
+}
+
+.case-tag {
+  padding: 7px 14px;
+}
+
+.hero-title {
+  max-width: 1050px;
+  margin-bottom: 24px !important;
+  font-size: clamp(46px, 5.4vw, 76px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.hero-sub {
+  max-width: 760px;
+  margin-bottom: 48px !important;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.info-card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 60px;
+  padding: 20px 37px;
+  margin-bottom: 48px;
+  border-radius: 40px;
+}
+
+.back-to-top {
+  width: 52px;
+  height: 52px;
+  background: transparent;
+  border: 1.2px solid var(--text);
+  box-shadow: none;
+  transition: opacity .3s ease, background .2s ease, border-color .2s ease;
+}
+
+.back-to-top:hover {
+  background: var(--text);
+  border-color: var(--text);
+}
+
+@media (max-width: 1100px) {
+  .info-card {
+    flex-wrap: wrap;
+    gap: 28px 44px;
+  }
+
+  .info-block {
+    flex: 1 1 calc(50% - 22px);
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    width: 100%;
+    padding: 54px 24px 0 !important;
+  }
+
+  .case-tags {
+    gap: 8px;
+    margin-bottom: 18px !important;
+  }
+
+  .case-tag {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+
+  .hero-title {
+    max-width: 100%;
+    margin-bottom: 12px !important;
+    font-size: 43px;
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+    margin-bottom: 28px !important;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .info-card {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 18px;
+    padding: 22px;
+    margin-bottom: 36px;
+    border-radius: 28px;
+  }
+
+  .info-block {
+    width: 100%;
+    flex: none;
+    min-width: 0;
+  }
+
+  .info-label {
+    font-size: 13px;
+  }
+
+  .info-value {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .banner {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    margin: 0;
+  }
+
+  .body-wrap {
+    width: 100%;
+    padding: 54px 24px 72px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .section {
+    width: 100%;
+    margin-bottom: 82px;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .sec-title {
+    max-width: 100%;
+    font-size: clamp(31px, 9.5vw, 38px);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  .sec-text,
+  .highlight-block p,
+  .fivew-a {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  #overview > div {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 36px !important;
+  }
+
+  #overview > div > div:first-child {
+    width: 100% !important;
+    min-width: 0;
+  }
+
+  .phone-wrap {
+    width: 100%;
+    height: 500px;
+    align-self: auto;
+  }
+
+  .phone-bg {
+    display: none;
+  }
+
+  .phone-device {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(220px, 70vw);
+    height: 476px;
+    margin: 0 auto;
+    transform: none;
+  }
+
+  #research > div[style*="display:grid"],
+  #research > div[style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .highlight-block,
+  .fivew-item,
+  .pbl-hifi-group,
+  .next-project-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .highlight-block {
+    padding: 24px;
+  }
+
+  .insight-tag {
+    max-width: 100%;
+    padding: 8px 12px;
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .fivew-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+  }
+
+  .fivew-q {
+    width: auto;
+  }
+
+  .persona-grid {
+    grid-template-columns: 1fr;
+    gap: 58px;
+  }
+
+  .persona-card {
+    min-width: 0;
+    padding: 48px 24px 24px;
+  }
+
+  .ideation-grid,
+  .features-grid,
+  .decisions-grid,
+  .learnings-grid {
+    display: flex !important;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    padding-right: 24px;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ideation-grid::-webkit-scrollbar,
+  .features-grid::-webkit-scrollbar,
+  .decisions-grid::-webkit-scrollbar,
+  .learnings-grid::-webkit-scrollbar,
+  .pbl-screen-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ideation-grid > *,
+  .features-grid > *,
+  .decisions-grid > *,
+  .learnings-grid > * {
+    flex: 0 0 min(82vw, 340px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .pbl-hifi-group,
+  .pbl-hifi-group.reverse {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+
+  .pbl-hifi-group.reverse .pbl-hifi-copy,
+  .pbl-hifi-group.reverse .pbl-screen-grid {
+    order: initial;
+  }
+
+  .pbl-screen-grid.three,
+  .pbl-screen-grid.two {
+    display: flex;
+    width: calc(100% + 22px);
+    margin-right: -22px;
+    padding-right: 22px;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .pbl-screen-placeholder {
+    flex: 0 0 min(70vw, 260px);
+    min-width: 0;
+    min-height: 430px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .next-project-visible {
+    width: 100%;
+    margin-top: 92px !important;
+  }
+
+  .next-project-info,
+  .next-project-title {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  footer {
+    width: 100%;
+    margin-top: 64px;
+    padding: 30px 24px 34px;
+  }
+
+  .footer-line {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .footer-line p {
+    max-width: 280px;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 31px;
+  }
+
+  .hero {
+    padding-right: 22px !important;
+    padding-left: 22px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  nav,
+  .hero,
+  .body-wrap,
+  footer {
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+  }
+
+  .nav-links {
+    right: 18px;
+    left: 18px;
+  }
+
+  .ideation-grid,
+  .features-grid,
+  .decisions-grid,
+  .learnings-grid {
+    width: calc(100% + 18px);
+    margin-right: -18px;
+    padding-right: 18px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1597,7 +1980,7 @@ body{background:#fff}
 </div>
 </div>
 </footer>
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button class="back-to-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
 <svg fill="none" stroke="#1d1d1d" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -1702,7 +2085,6 @@ if (mobileMenuToggle && mainNav) {
 
 // Smooth section reveals
 const revealTargets = [
-  ...document.querySelectorAll('.section'),
   ...document.querySelectorAll('.persona-card'),
   ...document.querySelectorAll('.fivew-item'),
   ...document.querySelectorAll('.ideation-card'),
@@ -1723,8 +2105,8 @@ if ('IntersectionObserver' in window) {
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -8% 0px'
+    threshold: 0.02,
+    rootMargin: '0px 0px -3% 0px'
   });
 
   revealTargets.forEach(el => revealObserver.observe(el));
