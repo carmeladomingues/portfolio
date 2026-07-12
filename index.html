@@ -1656,35 +1656,34 @@ body > nav:not(.scrolled) .logo img {
   letter-spacing: 0.3px;
 }
 
-/* Small project cards: preserve the complete mockup and make it clickable. */
-.project-card .project-img.project-img-link {
-  display: block;
+/* Every project card is one link; images fill their frame without a grey edge. */
+.project-featured.project-card-link,
+.project-card.project-card-link {
+  color: inherit;
+  text-decoration: none;
   cursor: pointer;
-  background: #f4f4f4;
 }
 
-.project-card .project-img.project-img-link img {
+.project-card-link .project-img {
+  background: transparent !important;
+}
+
+.project-card-link .project-img img {
   width: 100%;
   height: 100%;
-  padding: 14px;
-  object-fit: contain;
+  padding: 0;
+  object-fit: cover;
   object-position: center;
-  transform: none !important;
 }
 
-.project-card .project-img.project-img-link:hover img {
-  transform: none !important;
-}
-
-.project-card .project-img.project-img-link:focus-visible {
+.project-featured.project-card-link:focus-visible,
+.project-card.project-card-link:focus-visible {
   outline: 3px solid rgba(232,165,152,.7);
   outline-offset: 4px;
 }
 
-@media (max-width: 768px) {
-  .project-card .project-img.project-img-link img {
-    padding: 10px;
-  }
+.project-card-link .view-link {
+  pointer-events: none;
 }
 
 </style>
@@ -1743,7 +1742,7 @@ body > nav:not(.scrolled) .logo img {
     <p>From accessible mobility to early-stage domestic violence support, each project explores how design can make complex experiences clearer and more human.</p>
   </div>
 
-  <div class="project-featured" id="featured-project">
+  <a class="project-featured project-card-link" id="featured-project" href="adappta.html" target="_blank" rel="noopener" aria-label="Open Adappta: Mobility-First Navigation App in a new tab">
   <div class="project-img">
     <img src="Adappta-home.webp" alt="Adappta accessible navigation app" />
   </div>
@@ -1754,25 +1753,25 @@ body > nav:not(.scrolled) .logo img {
     </div>
     <h2 class="project-title">Adappta: Mobility-First Navigation App</h2>
     <p class="project-desc">An accessible navigation app designed to help people with reduced mobility move through the city with more confidence, using accessible routes, real-time warnings, and community-verified data.</p>
-    <a class="view-link" href="adappta.html" target="_blank" rel="noopener">
+    <div class="view-link" aria-hidden="true">
       <div class="view-link-circle">
         <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
           <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <span class="view-link-text">view case study</span>
-    </a>
+    </div>
   </div>
-</div>
+</a>
 
 
 <div class="projects-grid">
 
   <div class="projects-row">
-    <div class="project-card">
-      <a class="project-img project-img-link" href="thesis.html" target="_blank" rel="noopener" aria-label="Open Designing for Early Recognition in a new tab">
+    <a class="project-card project-card-link" href="thesis.html" target="_blank" rel="noopener" aria-label="Open Designing for Early Recognition in a new tab">
+      <div class="project-img">
         <img src="thesis.webp" alt="Master's thesis" />
-      </a>
+      </div>
 
       <div class="project-content">
         <div class="project-tags">
@@ -1781,21 +1780,21 @@ body > nav:not(.scrolled) .logo img {
         </div>
         <h2 class="project-title">Designing for Early Recognition</h2>
         <p class="project-desc">A service design and AI system exploring how support can reach women before they identify domestic violence.</p>
-        <a class="view-link" href="thesis.html" target="_blank" rel="noopener">
+        <div class="view-link" aria-hidden="true">
           <div class="view-link-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
               <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <span class="view-link-text">view case study</span>
-               </a>
+        </div>
       </div>
-    </div>
+    </a>
 
-    <div class="project-card">
-      <a class="project-img project-img-link" href="instagram.html" target="_blank" rel="noopener" aria-label="Open Your next event on Instagram in a new tab">
+    <a class="project-card project-card-link" href="instagram.html" target="_blank" rel="noopener" aria-label="Open Your next event on Instagram in a new tab">
+      <div class="project-img">
         <img src="Instagram-menor.webp" alt="Add a feature" />
-      </a>
+      </div>
 
       <div class="project-content">
         <div class="project-tags">
@@ -1804,23 +1803,23 @@ body > nav:not(.scrolled) .logo img {
         </div>
         <h2 class="project-title">Your next event on Instagram</h2>
         <p class="project-desc">This concept brings a seamless way to discover, share, and plan events, making it personal, interactive, and social.</p>
-        <a class="view-link" href="instagram.html" target="_blank" rel="noopener">
+        <div class="view-link" aria-hidden="true">
           <div class="view-link-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
               <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <span class="view-link-text">view case study</span>
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="projects-row">
-    <div class="project-card">
-      <a class="project-img project-img-link" href="pbl.html" target="_blank" rel="noopener" aria-label="Open Team dynamics reimagined in a new tab">
+    <a class="project-card project-card-link" href="pbl.html" target="_blank" rel="noopener" aria-label="Open Team dynamics reimagined in a new tab">
+      <div class="project-img">
         <img src="Moodify.webp" alt="Moodify" />
-      </a>
+      </div>
 
       <div class="project-content">
         <div class="project-tags">
@@ -1829,21 +1828,21 @@ body > nav:not(.scrolled) .logo img {
         </div>
         <h2 class="project-title">Team dynamics reimagined</h2>
         <p class="project-desc">A mobile app that turns team dynamics management into motivating experiences with points, quests, and real-time tracking.</p>
-        <a class="view-link" href="pbl.html" target="_blank" rel="noopener">
+        <div class="view-link" aria-hidden="true">
           <div class="view-link-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
               <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <span class="view-link-text">view case study</span>
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
 
-    <div class="project-card">
-      <a class="project-img project-img-link" href="graphic-design.html" target="_blank" rel="noopener" aria-label="Open Graphic Design projects in a new tab">
+    <a class="project-card project-card-link" href="graphic-design.html" target="_blank" rel="noopener" aria-label="Open Graphic Design projects in a new tab">
+      <div class="project-img">
         <img src="graphic-design.webp" alt="Graphic Design" />
-      </a>
+      </div>
 
       <div class="project-content">
         <div class="project-tags">
@@ -1852,16 +1851,16 @@ body > nav:not(.scrolled) .logo img {
         </div>
         <h2 class="project-title">Graphic Design</h2>
         <p class="project-desc">A collection of graphic design work across tech companies and volunteering, from social media to branding and event materials.</p>
-        <a class="view-link" href="graphic-design.html" target="_blank" rel="noopener">
+        <div class="view-link" aria-hidden="true">
           <div class="view-link-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1d" stroke-width="1.5">
               <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <span class="view-link-text">view projects</span>
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 
 </div>
