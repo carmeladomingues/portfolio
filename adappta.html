@@ -2142,6 +2142,301 @@ body{background:#fff}
     right: 16px;
   }
 }
+
+/* =========================================================
+   ADAPPTA — FINAL MOBILE INTERACTION STANDARD
+   ========================================================= */
+.recognition-media {
+  width: 260px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 0 12px rgba(255,255,255,.08);
+}
+
+.recognition-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recognition-image-placeholder {
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 28px;
+  border: 2px dashed rgba(98,89,232,.34);
+  border-radius: 50%;
+  background: #fff;
+  color: #6259E8;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.recognition-image-placeholder span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.recognition-image-placeholder small {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+/* Match the transparent scroll-up control used by the other pages. */
+.back-to-top {
+  background: transparent !important;
+  border: 1.2px solid var(--text) !important;
+  box-shadow: none !important;
+}
+
+.back-to-top svg path {
+  stroke: var(--text) !important;
+}
+
+.back-to-top:hover {
+  background: var(--text) !important;
+  border-color: var(--text) !important;
+}
+
+.back-to-top:hover svg path {
+  stroke: #fff !important;
+}
+
+@media (max-width: 1000px) {
+  .recognition-media {
+    width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recognition-media {
+    width: 210px;
+    margin: 10px auto 0;
+  }
+
+  /* Keep the matrix at its readable design size and swipe across it. */
+  .positioning-matrix-wrap {
+    width: calc(100% + 24px);
+    max-width: none;
+    margin: 28px -24px 0 0;
+    padding: 18px 24px 18px 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 20px 0 0 20px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(31,42,31,.04);
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+
+  .positioning-matrix-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .positioning-matrix-sizer {
+    width: 900px !important;
+    height: 652px !important;
+    margin-top: 0 !important;
+  }
+
+  .positioning-matrix {
+    width: 900px !important;
+    min-width: 900px !important;
+    height: 652px !important;
+    margin-top: 0 !important;
+    transform: none !important;
+    transform-origin: top left !important;
+  }
+
+  .positioning-matrix p {
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Swipe-only personas: no reveal or hover movement on mobile. */
+  .persona-grid {
+    display: flex !important;
+    width: calc(100% + 24px);
+    margin: 18px -24px 0 0 !important;
+    padding: 40px 24px 12px 0 !important;
+    gap: 14px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+
+  .persona-card,
+  .persona-card.reveal,
+  .persona-card.reveal.is-visible {
+    flex: 0 0 min(82vw, 340px);
+    min-width: 0;
+    padding: 48px 24px 24px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .persona-card:hover {
+    transform: none !important;
+  }
+
+  /* How Might We and Key Lessons use the same edge-to-edge swipe pattern. */
+  .questions-list,
+  .learnings-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: calc(100% + 24px);
+    max-width: none;
+    margin-right: -24px;
+    gap: 14px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 24px 14px 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+
+  .questions-list::-webkit-scrollbar,
+  .learnings-grid::-webkit-scrollbar,
+  .persona-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .question-item,
+  .learning-card {
+    flex: 0 0 min(82vw, 340px) !important;
+    min-width: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .user-flow-scroll {
+    width: calc(100% + 24px) !important;
+    margin-right: -24px !important;
+    padding: 18px 24px 18px 18px !important;
+    overflow-x: auto;
+    border-radius: 20px 0 0 20px;
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+
+  .user-flow-scroll img {
+    width: 900px !important;
+    min-width: 900px !important;
+    max-width: none !important;
+  }
+
+  .back-to-top {
+    width: 48px !important;
+    height: 48px !important;
+    right: 22px !important;
+    bottom: 22px !important;
+    background: transparent !important;
+    border-color: var(--text) !important;
+  }
+
+  /* Concept cards and testing insights become compact swipe galleries. */
+  #concept .features-grid,
+  .testing-revealed-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: calc(100% + 24px);
+    max-width: none;
+    margin-right: -24px;
+    gap: 14px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 24px 16px 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+
+  #concept .features-grid::-webkit-scrollbar,
+  .testing-revealed-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  #concept .feature-card,
+  #concept .feature-card.reveal,
+  .testing-revealed-card {
+    flex: 0 0 min(82vw, 340px) !important;
+    min-width: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  #concept .feature-card:hover {
+    transform: none !important;
+  }
+
+  /* Keep the complete Learnings composition inside the mobile viewport. */
+  #learnings {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #learnings .learnings-intro,
+  #learnings .learnings-image,
+  #learnings .learnings-lessons {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    grid-column: auto !important;
+  }
+
+  #learnings .learnings-image {
+    padding-top: 24px !important;
+    overflow: hidden;
+  }
+
+  #learnings .learnings-image img {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    border-radius: 20px;
+  }
+
+  #learnings .learnings-lessons {
+    margin-top: 38px !important;
+  }
+
+  #learnings .learnings-subtitle {
+    width: 100%;
+    max-width: 100%;
+    font-size: 24px !important;
+    line-height: 1.25;
+  }
+}
 </style>
 <script data-no-js-fix="true">document.documentElement.classList.remove('no-js');</script><script>
 document.documentElement.classList.add('js-motion-ready');
@@ -2253,11 +2548,13 @@ document.addEventListener('DOMContentLoaded', () => {
 </svg>
 </a>
 </div>
-<div class="recognition-badge">
-<span class="recognition-year">2026</span>
-<strong>NOMINATED</strong>
-<span>UX Design Awards</span>
-<small>New Talent</small>
+<div class="recognition-media">
+<!-- Replace ux-awards-nomination.webp with the final nomination image. -->
+<img alt="UX Design Awards nomination" class="recognition-image" src="ux-awards-nomination.webp" onerror="this.hidden=true; this.nextElementSibling.style.display='flex';"/>
+<div aria-label="Nomination image placeholder" class="recognition-image-placeholder" role="img">
+<span>Nomination image</span>
+<small>Add image here</small>
+</div>
 </div>
 </section><div class="section reveal" id="research">
 <p class="sec-label">Research</p>
@@ -2928,13 +3225,13 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </div>
 <!-- Key insights -->
-<div style="margin-top:56px;">
+<div class="testing-revealed" style="margin-top:56px;">
 <p class="sec-title" style="font-size:32px;">
       What testing revealed
     </p>
-<div style="display:grid; grid-template-columns:1fr; gap:20px; margin-top:28px;">
+<div class="testing-revealed-grid" style="display:grid; grid-template-columns:1fr; gap:20px; margin-top:28px;">
 <!-- Insight 1 -->
-<div style="border:1.5px solid #D9CCFF; border-radius:24px; padding:24px;">
+<div class="testing-revealed-card" style="border:1.5px solid #D9CCFF; border-radius:24px; padding:24px;">
 <p style="font-size:22px; font-weight:600; color:#2B2B2B;">
           The concept felt relevant
         </p>
@@ -2943,7 +3240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
 </div>
 <!-- Insight 2 -->
-<div style="border:1.5px solid #D9CCFF; border-radius:24px; padding:24px;">
+<div class="testing-revealed-card" style="border:1.5px solid #D9CCFF; border-radius:24px; padding:24px;">
 <p style="font-size:22px; font-weight:600; color:#2B2B2B;">
           Warnings and community reports stood out
         </p>
@@ -2952,7 +3249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
 </div>
 <!-- Insight 3 -->
-<div style="border:1.5px solid #D9CCFF; border-radius:24px; padding:24px;">
+<div class="testing-revealed-card" style="border:1.5px solid #D9CCFF; border-radius:24px; padding:24px;">
 <p style="font-size:22px; font-weight:600; color:#2B2B2B;">
           Ada added confidence
         </p>
