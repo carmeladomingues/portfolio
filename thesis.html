@@ -2971,6 +2971,206 @@ body > nav.scrolled {
   }
 }
 
+/* =========================================================
+   THESIS — FINAL ADAPPTA ALIGNMENT
+   ========================================================= */
+
+/* User Flow remains readable without dominating the desktop layout. */
+@media (min-width: 769px) {
+  .user-flow-image-scroll {
+    width: 100%;
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-x: hidden;
+  }
+
+  .user-flow-image-scroll img {
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto;
+  }
+
+  .user-flow-image-placeholder {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Softer screen treatment, especially for white-background interfaces. */
+.screen-card img {
+  border: 1px solid rgba(29,29,29,.055) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 28px rgba(31,42,31,.045) !important;
+  background: #fff;
+}
+
+/* Next Project uses the same position and proportions as Adappta. */
+.next-project {
+  width: 100% !important;
+  margin: 130px 0 0 !important;
+  padding: 0 !important;
+}
+
+.next-project-card {
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  gap: 22px !important;
+  padding: 22px !important;
+  border-radius: 32px !important;
+}
+
+@media (max-width: 768px) {
+  /* Adappta-style screen galleries: compact screens and horizontal swipe. */
+  .screens-gallery {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: calc(100% + 24px);
+    max-width: none;
+    margin-right: -24px;
+    padding: 8px 24px 16px 0 !important;
+    gap: 16px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: auto;
+  }
+
+  .screens-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .screen-card {
+    flex: 0 0 190px !important;
+    width: 190px !important;
+    min-width: 190px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .screen-card img {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 22px rgba(31,42,31,.04) !important;
+  }
+
+  .user-flow-image-scroll {
+    width: calc(100% + 24px);
+    max-width: none;
+    margin-right: -24px;
+    padding: 16px 24px 16px 16px;
+    overflow-x: auto;
+    border-radius: 20px 0 0 20px;
+    scrollbar-width: none;
+    touch-action: auto;
+  }
+
+  .user-flow-image-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .user-flow-image-scroll img,
+  .user-flow-image-placeholder {
+    width: 760px !important;
+    min-width: 760px !important;
+    max-width: none !important;
+  }
+
+  .next-project {
+    margin-top: 72px !important;
+  }
+
+  .next-project-card {
+    max-width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 18px !important;
+    padding: 18px !important;
+    border-radius: 28px !important;
+  }
+
+  .next-project-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    flex: none !important;
+    border-radius: 22px !important;
+  }
+
+  /* Mobile footer — exact component used by Adappta. */
+  footer {
+    width: 100%;
+    margin-top: 64px;
+    padding: 30px 24px 34px;
+    border-top: .5px solid rgba(29,29,29,.12);
+  }
+
+  .footer-line {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .footer-line p {
+    max-width: 280px;
+    margin: 0;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .footer-links svg {
+    display: block !important;
+    width: 24px;
+    height: 24px;
+  }
+
+  .footer-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1d1d1d;
+    font-size: 0 !important;
+    letter-spacing: normal !important;
+    text-decoration: none !important;
+  }
+
+  .footer-link-linkedin::after,
+  .footer-link-email::after {
+    content: none !important;
+    display: none !important;
+  }
+}
+
+@media (max-width: 380px) {
+  footer {
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+  }
+}
+
 </style>
 </head>
 <body>
