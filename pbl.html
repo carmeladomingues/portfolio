@@ -695,6 +695,9 @@ body{background:#fff}
   max-width:150px;
 }
 
+.pbl-screen-placeholder.has-img{padding:0;border:0;background:none;aspect-ratio:auto;min-height:0;box-shadow:none;display:block}
+.pbl-screen-placeholder.has-img img{display:block;width:100%;height:auto;filter:drop-shadow(0 16px 30px rgba(92,45,25,.14))}
+
 /* Learnings */
 #learnings{
   display:block;
@@ -2352,9 +2355,9 @@ body{background:#fff}
 <p>The home experience brings recent dynamics, points, ranking, and upcoming rewards into one immediate view.</p>
 </div>
 <div class="pbl-screen-grid three">
-<div class="pbl-screen-placeholder"><span>01</span><strong>Home</strong><small>Replace with: pbl-hifi-home.png</small></div>
-<div class="pbl-screen-placeholder"><span>02</span><strong>Profile</strong><small>Replace with: pbl-hifi-profile.png</small></div>
-<div class="pbl-screen-placeholder"><span>03</span><strong>Achievements</strong><small>Replace with: pbl-hifi-achievements.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-home" data-alt="Home screen with recent dynamics, points and upcoming odysseys"><span>01</span><strong>Home</strong><small>Replace with: pbl-hifi-home.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-profile" data-alt="Profile screen with stats, achievements and points progress"><span>02</span><strong>Profile</strong><small>Replace with: pbl-hifi-profile.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-achievements" data-alt="Achievements screen with unlocked and locked badges"><span>03</span><strong>Achievements</strong><small>Replace with: pbl-hifi-achievements.png</small></div>
 </div>
 </section>
 <section class="pbl-hifi-group reverse">
@@ -2364,9 +2367,9 @@ body{background:#fff}
 <p>Upcoming activities show the essential information at a glance, helping people understand what is happening, when, and what they can earn.</p>
 </div>
 <div class="pbl-screen-grid three">
-<div class="pbl-screen-placeholder"><span>04</span><strong>Dynamics</strong><small>Replace with: pbl-hifi-dynamics.png</small></div>
-<div class="pbl-screen-placeholder"><span>05</span><strong>Dynamic Details</strong><small>Replace with: pbl-hifi-dynamic-detail.png</small></div>
-<div class="pbl-screen-placeholder"><span>06</span><strong>Calendar</strong><small>Replace with: pbl-hifi-calendar.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-dynamics" data-alt="Dynamics list with filters"><span>04</span><strong>Dynamics</strong><small>Replace with: pbl-hifi-dynamics.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-dynamic-detail" data-alt="Next dynamic details with attendance and calendar actions"><span>05</span><strong>Dynamic Details</strong><small>Replace with: pbl-hifi-dynamic-detail.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-calendar" data-alt="Team calendar with the selected dynamic"><span>06</span><strong>Calendar</strong><small>Replace with: pbl-hifi-calendar.png</small></div>
 </div>
 </section>
 <section class="pbl-hifi-group">
@@ -2376,9 +2379,9 @@ body{background:#fff}
 <p>Odysseys translate earned points into meaningful shared experiences, while the leaderboard keeps recognition visible.</p>
 </div>
 <div class="pbl-screen-grid three">
-<div class="pbl-screen-placeholder"><span>07</span><strong>Odysseys</strong><small>Replace with: pbl-hifi-odysseys.png</small></div>
-<div class="pbl-screen-placeholder"><span>08</span><strong>Reward Details</strong><small>Replace with: pbl-hifi-reward.png</small></div>
-<div class="pbl-screen-placeholder"><span>09</span><strong>Leaderboard</strong><small>Replace with: pbl-hifi-leaderboard.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-odysseys" data-alt="Odysseys screen with reward categories"><span>07</span><strong>Odysseys</strong><small>Replace with: pbl-hifi-odysseys.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-reward" data-alt="Reward details with exchange action"><span>08</span><strong>Reward Details</strong><small>Replace with: pbl-hifi-reward.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-leaderboard" data-alt="Leaderboard with top three podium and ranking"><span>09</span><strong>Leaderboard</strong><small>Replace with: pbl-hifi-leaderboard.png</small></div>
 </div>
 </section>
 <section class="pbl-hifi-group reverse">
@@ -2388,8 +2391,8 @@ body{background:#fff}
 <p>Structured briefings and shared progress create a common reference point across departments and reduce the information gaps found in research.</p>
 </div>
 <div class="pbl-screen-grid two">
-<div class="pbl-screen-placeholder"><span>10</span><strong>Project Briefing</strong><small>Replace with: pbl-hifi-briefing.png</small></div>
-<div class="pbl-screen-placeholder"><span>11</span><strong>Team Progress</strong><small>Replace with: pbl-hifi-progress.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-briefing" data-alt="Project briefing with company, challenge and audience"><span>10</span><strong>Project Briefing</strong><small>Replace with: pbl-hifi-briefing.png</small></div>
+<div class="pbl-screen-placeholder" data-src="pbl-hifi-progress" data-alt="Team progress by project phase and contributions"><span>11</span><strong>Team Progress</strong><small>Replace with: pbl-hifi-progress.png</small></div>
 </div>
 </section>
 </div>
@@ -2686,6 +2689,17 @@ if ('IntersectionObserver' in window) {
 } else {
   revealTargets.forEach(el => el.classList.add('is-visible'));
 }
+
+// Final UI screens: swap each placeholder for its image once the file exists in the repo (.webp or .png)
+document.querySelectorAll('.pbl-screen-placeholder[data-src]').forEach(el => {
+  const exts = ['webp', 'png'];
+  let i = 0;
+  const img = new Image();
+  img.alt = el.dataset.alt || '';
+  img.onload = () => { el.classList.add('has-img'); el.replaceChildren(img); };
+  img.onerror = () => { i += 1; if (i < exts.length) img.src = el.dataset.src + '.' + exts[i]; };
+  img.src = el.dataset.src + '.' + exts[0];
+});
 </script>
 </body>
 </html>
