@@ -2698,6 +2698,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <a class="sidebar-item" href="#concept">Concept</a>
 <a class="sidebar-item" href="#identity">Branding</a>
 <a class="sidebar-item" href="#ideation">Ideation</a>
+<a class="sidebar-item" href="#design-system">Design System</a>
 <a class="sidebar-item" href="#prototype">Prototype &amp; Testing</a><a class="sidebar-item" href="#film">Project Film</a>
 <a class="sidebar-item" href="#learnings">Learnings</a>
 </nav>
@@ -3329,6 +3330,49 @@ document.addEventListener('DOMContentLoaded', () => {
 </button>
 </div>
 </section>
+</div>
+</div><style>
+.ds-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:36px 0 40px}
+.ds-stat{background:#F5F2FB;border:1px solid #CFC3E8;border-radius:20px;padding:22px 22px 20px}
+.ds-stat strong{display:block;font-size:clamp(32px,3.4vw,44px);line-height:1;letter-spacing:-.03em;font-weight:500;color:#6259E8;margin-bottom:8px}
+.ds-stat span{font-size:14px;line-height:1.4;color:rgba(29,29,29,.7)}
+.ds-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;margin-bottom:40px}
+.ds-cols h4{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:500;margin-bottom:10px}
+.ds-cols p{font-size:16px;line-height:1.7;font-weight:300;color:#2d2d32;margin:0}
+.ds-components{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.ds-components li{background:#fff;border:1px solid #CFC3E8;border-radius:100px;padding:8px 16px;font-size:14px;font-weight:500;color:#3D2A6A}
+.ds-shot{margin-top:40px;border-radius:24px;overflow:hidden;border:1px solid rgba(29,29,29,.08)}
+.ds-shot img{display:block;width:100%;height:auto}
+</style><div class="section reveal" id="design-system">
+<p class="sec-label">Design System</p>
+<h2 class="sec-title">A documented system behind every screen</h2>
+<p class="sec-text">Once the screens were final, I consolidated the interface into a design system in Figma. Every pattern that appears in the app is now a reusable component with documented variants, so new screens can be built from the same parts instead of redrawn.</p>
+<div class="ds-stats">
+<div class="ds-stat"><strong>14</strong><span>components with variants and properties</span></div>
+<div class="ds-stat"><strong>36</strong><span>semantic colour tokens, aliased to 22 primitives</span></div>
+<div class="ds-stat"><strong>19</strong><span>text styles on a single Inter scale</span></div>
+<div class="ds-stat"><strong>16</strong><span>icons as 24px components</span></div>
+</div>
+<div class="ds-cols">
+<div>
+<h4>Tokens in two layers</h4>
+<p>Raw values live in a primitives collection. Semantic tokens such as brand, text, icon, background and status point to them, and spacing and radius are variables too. Components never use a raw colour.</p>
+</div>
+<div>
+<h4>Built to be reused</h4>
+<p>Components use auto layout and are bound to the variables. Variants cover states such as Default and Active, and component properties handle text, icons and optional parts.</p>
+</div>
+<div>
+<h4>One value where there were many</h4>
+<p>The screens carried near-duplicate greys, two ambers and slightly different font sizes. Merging them into single tokens made the system smaller and the interface more consistent.</p>
+</div>
+</div>
+<ul class="ds-components" aria-label="Components in the Adappta design system">
+<li>Icon Button</li><li>Status Bar</li><li>Tag</li><li>Chip</li><li>Button</li><li>Search Bar</li><li>Route Input</li><li>Mode Tab</li><li>Score Card</li><li>Warning Card</li><li>Chat Bubble</li><li>Bottom Nav</li><li>Bottom Sheet</li><li>Map Marker</li>
+</ul>
+<!-- Drop an export of the Figma "Design System" page here as adappta-design-system.webp (or .png) and it appears automatically. -->
+<div class="ds-shot" hidden id="dsShot">
+<img alt="Adappta design system in Figma: components, variants and tokens" src="adappta-design-system.webp" onload="document.getElementById('dsShot').hidden=false" onerror="this.onerror=null; this.src='adappta-design-system.png';"/>
 </div>
 </div><div class="section reveal" id="prototype">
 <p class="sec-label">Prototype &amp; Testing</p>
