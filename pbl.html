@@ -1886,6 +1886,7 @@ body{background:#fff}
 <a class="sidebar-item" href="#exploration">Exploration</a>
 <a class="sidebar-item" href="#concept">Concept</a>
 <a class="sidebar-item" href="#ideation">Ideation</a>
+<a class="sidebar-item" href="#design-system">Design System</a>
 <a class="sidebar-item" href="#learnings">Learnings</a>
 </nav>
 </aside>
@@ -2432,6 +2433,52 @@ body{background:#fff}
 <span class="d-pill after">Grid with filters</span>
 </div>
 </div>
+</div>
+</div>
+<!-- DESIGN SYSTEM -->
+<style>
+.pbl-ds-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:36px 0 40px}
+.pbl-ds-stat{background:var(--accent);border:1px solid var(--accent-border);border-radius:20px;padding:22px 22px 20px}
+.pbl-ds-stat strong{display:block;font-size:clamp(32px,3.4vw,44px);line-height:1;letter-spacing:-.03em;font-weight:500;color:var(--orange);margin-bottom:8px}
+.pbl-ds-stat span{font-size:14px;line-height:1.4;color:rgba(29,29,29,.7)}
+.pbl-ds-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;margin-bottom:40px}
+.pbl-ds-cols h4{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:500;margin-bottom:10px}
+.pbl-ds-cols p{font-size:16px;line-height:1.7;font-weight:300;color:#2d2d32;margin:0}
+.pbl-ds-components{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.pbl-ds-components li{background:#fff;border:1px solid var(--accent-border);border-radius:100px;padding:8px 16px;font-size:14px;font-weight:500;color:#8A2F0F}
+.pbl-ds-shot{margin-top:40px;border-radius:24px;overflow:hidden;border:1px solid rgba(29,29,29,.08)}
+.pbl-ds-shot img{display:block;width:100%;height:auto}
+</style>
+<div class="section" id="design-system">
+<p class="sec-label">Design System</p>
+<p class="sec-title">One system behind every screen</p>
+<p class="sec-text">Once the screens were final, I extracted a compact design system from them in Figma. Every pattern that repeats across Home, Profile, Leaderboard, Next Dynamic and Odysseys became a component, and the colour, type, spacing and radius values behind them became variables.</p>
+<div class="pbl-ds-stats">
+<div class="pbl-ds-stat"><strong>16</strong><span>components with variants and properties</span></div>
+<div class="pbl-ds-stat"><strong>32</strong><span>semantic colour tokens, aliased to 27 primitives</span></div>
+<div class="pbl-ds-stat"><strong>25</strong><span>text styles on a single Inter scale</span></div>
+<div class="pbl-ds-stat"><strong>12</strong><span>spacing and radius variables</span></div>
+</div>
+<div class="pbl-ds-cols">
+<div>
+<h4>Tokens in two layers</h4>
+<p>Raw values sit in a primitives collection. Semantic tokens for brand, text, surface, border, category tones and ranking point to them, so components never use a raw colour.</p>
+</div>
+<div>
+<h4>Colour that follows meaning</h4>
+<p>Each reward category has one tone that drives the colour bar, icon tint, points badge and Exchange button. Gold, silver and bronze are their own ranking tokens.</p>
+</div>
+<div>
+<h4>One value where there were many</h4>
+<p>Pulling the patterns together showed small drifts between screens: three blues, two greens, two yellows and shadows at five different opacities. The system settles on a single value for each.</p>
+</div>
+</div>
+<ul class="pbl-ds-components" aria-label="Components in the PBL design system">
+<li>Button</li><li>Exchange Button</li><li>Filter Pill</li><li>Tag</li><li>Points Badge</li><li>Progress Bar</li><li>Nav Tab</li><li>Bottom Nav</li><li>List Item</li><li>Odyssey Card</li><li>Reward Card</li><li>Achievement Card</li><li>Stat Card</li><li>Points Card</li><li>Detail Row</li><li>Leaderboard Row</li>
+</ul>
+<!-- Drop an export of the Figma "Cover" frame (Design System page) here as pbl-design-system.webp (or .png) and it appears automatically. -->
+<div class="pbl-ds-shot" hidden id="pblDsShot">
+<img alt="PBL design system in Figma: components, variants and tokens" src="pbl-design-system.webp" onload="document.getElementById('pblDsShot').hidden=false" onerror="this.onerror=null; this.src='pbl-design-system.png';"/>
 </div>
 </div>
 <!-- LEARNINGS -->
